@@ -1,0 +1,101 @@
+@import './styles.scss';
+
+.app-wrapper {
+  font-family: $font-family;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.headerUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Добавлено свойство для выравнивания по центру
+  height: 97.5vh;
+  .profile-section {
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    &:last-child {
+      margin-top: auto;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    .userAppointments {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .newAppointment {
+      width: 100%;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      font-family: $font-family;
+      border-width: 0;
+      border-style: none;
+      background-color: $secondary-color;
+      color: $white-color;
+      &:hover {
+        background-color: $secondary-color-hover;
+        cursor: pointer;
+      }
+    }
+    .logout {
+      button {
+        font-family: $font-family;
+        font-size: $font-size-16;
+        padding-left: 0;
+        border-width: 0;
+        border-style: none;
+        color: $logout-color;
+        &:hover {
+          color: $logout-color-hover;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: auto;
+    justify-content: space-between;
+
+    &__pcol {
+      display: flex;
+      flex-direction: column;
+      &-p {
+        margin: 0;
+        &:first-child {
+          font-size: $font-size-16;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+      }
+    }
+    &-link {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
