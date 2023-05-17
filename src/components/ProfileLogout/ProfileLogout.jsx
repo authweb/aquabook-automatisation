@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../contexts/AuthContexts';
+import { MdLogout } from 'react-icons/md';
 
 const ProfileLogout = () => {
   const { logout } = useAuth();
@@ -9,9 +10,12 @@ const ProfileLogout = () => {
   };
 
   return (
-    <div className="logout">
-      <button onClick={handleLogout}>Выход</button>
-    </div>
+    <button className="logout">
+      <MdLogout className="logout-icon" onClick={handleLogout} />
+      <label className="logout-label" onClick={handleLogout}>
+        Выход
+      </label>
+    </button>
   );
 };
 

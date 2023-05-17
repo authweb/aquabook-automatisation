@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContexts';
 
 import '../../scss/header.scss';
@@ -12,20 +12,24 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <ul className="nav__list">
+        <ul className="nav__list-first">
           <li className="nav__item">
             <Link to="/">Главная</Link>
           </li>
           <li className="nav__item">
             <Link to="/appointment">Запись</Link>
           </li>
+        </ul>
+        <ul className="nav__list-last">
           {isAuthenticated && (
             <>
               <li className="nav__item">
                 <Link to={`/profile/${user.id}`}>{user.first_name}</Link>
               </li>
               <li className="nav__item">
-                <button onClick={handleLogout}>Выход</button>
+                <button className="nav__item-btn" onClick={handleLogout}>
+                  Выход
+                </button>
               </li>
             </>
           )}

@@ -4,18 +4,56 @@
   font-family: $font-family;
   max-width: 600px;
   margin: 0 auto;
+  color: $secondary-color;
 }
-
 .headerUser {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  max-width: 600px;
+  width: 100%;
+  min-height: 56px;
   background-color: #f3f3f3;
   border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 10px;
-}
 
+  margin-bottom: 10px;
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-icon,
+    &-space {
+      display: flex;
+      flex: 1;
+    }
+    &-icon {
+      font-size: $font-size-22;
+      margin-left: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &-title {
+      display: flex;
+      flex: 4;
+      justify-content: center;
+    }
+  }
+}
+.personalProfile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 97.5vh;
+
+  .personalProfile-section {
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    padding: 20px;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+}
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -36,13 +74,35 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      text-decoration: none;
+      &__flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        &-icon {
+          color: $secondary-color;
+          font-size: $font-size-18;
+        }
+        &-h3 {
+          margin-left: 15px;
+          font-size: $font-size-18;
+          font-weight: $font-weight-medium;
+          color: $secondary-color;
+        }
+      }
+
+      &-arrow {
+        color: $secondary-color;
+        font-size: $font-size-22;
+      }
     }
     .newAppointment {
       width: 100%;
-      padding: 10px 20px;
+      padding: 15px 20px;
       border-radius: 10px;
       border: none;
       font-family: $font-family;
+      font-size: $font-size-18;
       border-width: 0;
       border-style: none;
       background-color: $secondary-color;
@@ -53,26 +113,65 @@
       }
     }
     .logout {
-      button {
-        font-family: $font-family;
-        font-size: $font-size-16;
-        padding-left: 0;
-        border-width: 0;
-        border-style: none;
-        color: $logout-color;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-family: $font-family;
+
+      padding-left: 0;
+      border-width: 0;
+      border-style: none;
+      color: $logout-color;
+      &:hover {
+        cursor: pointer;
+      }
+      &-icon {
+        font-size: $font-size-24;
+      }
+      &-label {
+        font-size: $font-size-18;
+        font-weight: $font-weight-medium;
+        margin-left: 10px;
         &:hover {
-          color: $logout-color-hover;
           cursor: pointer;
         }
       }
     }
   }
 }
-
+.personalInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  &__flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &__pcol {
+      display: flex;
+      flex-direction: column;
+      &-p {
+        color: $gray-text-color;
+        margin: 0;
+        text-align: center;
+        font-size: $font-size-16;
+        &:first-child {
+          font-size: $font-size-18;
+          font-weight: 600;
+          margin-bottom: 5px;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
 .profileInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-decoration: none;
 
   &__flex {
     display: flex;
@@ -85,17 +184,21 @@
       display: flex;
       flex-direction: column;
       &-p {
+        color: $gray-text-color;
         margin: 0;
         &:first-child {
           font-size: $font-size-16;
           font-weight: 600;
           margin-bottom: 5px;
+          color: $secondary-color;
         }
       }
     }
-    &-link {
+    &-arrow {
       display: flex;
       flex-wrap: wrap;
+      font-size: $font-size-22;
+      color: $secondary-color;
     }
   }
 }

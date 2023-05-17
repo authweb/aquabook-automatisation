@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components';
-import Spinner from '../../assets/images/Spinner-2.gif';
 import { AuthContext } from '../../contexts/AuthContexts';
 import '../../scss/authemployee.scss';
 

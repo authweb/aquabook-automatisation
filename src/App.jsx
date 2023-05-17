@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './scss/styles.scss'; // добавляем импорт стилей
-import { HomePage, Appointment, AuthPage, Profile, LogoutPage } from './pages';
+import { HomePage, Appointment, AuthPage, Profile, PersonalInfo } from './pages';
 import { UserContext } from './contexts/UserContexts';
 import AuthProvider from './contexts/AuthContexts';
 
@@ -20,8 +20,8 @@ const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/appointment" element={<Appointment />} />
               <Route path="/auth" element={<AuthPage />} />
-              <Route path="/logout" element={<LogoutPage />} />
               <Route path="/profile/:id" element={<Profile />} />
+              <Route path="/profile/:id/personal-info" element={<PersonalInfo />} />
             </Routes>
           </UserContext.Provider>
         </AuthProvider>
