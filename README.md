@@ -70,14 +70,6 @@ If you'd like to contribute to this project, please follow these steps:
 
 Please ensure that your code follows the project's coding conventions and standards. Also, make sure to include tests for any new functionality or bug fixes.
 
-## License
-
-[Include the license information here if applicable.]
-
-## Acknowledgements
-
-If you would like to acknowledge any third-party libraries, contributors, or other resources, you can do so here.
-
 ## Contact
 
 If you have any questions or need further assistance, please feel free to contact [https://vk.com/rest_da6po, https://t.me/rest_da6po].
