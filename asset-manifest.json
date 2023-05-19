@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-aqualord/static/css/main.69ff78eb.css",
+    "main.js": "/react-aqualord/static/js/main.1b3e2caa.js",
+    "index.html": "/react-aqualord/index.html",
+    "main.69ff78eb.css.map": "/react-aqualord/static/css/main.69ff78eb.css.map",
+    "main.1b3e2caa.js.map": "/react-aqualord/static/js/main.1b3e2caa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69ff78eb.css",
+    "static/js/main.1b3e2caa.js"
+  ]
+}
