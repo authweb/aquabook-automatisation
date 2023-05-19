@@ -1,6 +1,6 @@
 # React Aqualord
 
-This is a React application named "Aqualord" built using React.js. It allows users to [describe the purpose and functionality of your application].
+This is a React application named "Aqualord" built using React.js. It allows users to [ARM for employees of the carwash complex AQUALORD].
 
 ## Getting Started
 
@@ -80,4 +80,4 @@ If you would like to acknowledge any third-party libraries, contributors, or oth
 
 ## Contact
 
-If you have any questions or need further assistance, please feel free to contact [provide your contact information or instructions for getting in touch].
+If you have any questions or need further assistance, please feel free to contact [https://vk.com/rest_da6po, https://t.me/rest_da6po].
