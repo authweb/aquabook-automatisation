@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NewAppointment = () => {
+const NewAppointment = ({ btn }) => {
   return (
     <>
-      <button className="newAppointment">Новая запись</button>
+      <button className="newAppointment">{btn}</button>
       {/* Разметка для создания новой записи */}
     </>
   );

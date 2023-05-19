@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContexts';
+import { Link, useNavigate } from 'react-router-dom';
+
+import '../../scss/profile.scss';
 
 const CarInfoForm = () => {
+  const navigate = useNavigate();
   const { clients, updateCarInfo } = useAuth();
   const [carNumber, setCarNumber] = useState('');
   const [carMake, setCarMake] = useState('');
@@ -44,12 +48,12 @@ const CarInfoForm = () => {
   };
 
   return (
-    <div className="car-info">
-      <h2>Информация о машине</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <form className="carInfo" onSubmit={handleSubmit}>
+      <div className="carInfo__flex">
+        <label className="carInfo__flex__inputcol">
           Номер машины:
           <input
+            className="carInfo__flex__inputcol-input"
             type="text"
             id="car_number"
             name="car_number"
@@ -57,9 +61,10 @@ const CarInfoForm = () => {
             onChange={(e) => setCarNumber(e.target.value)}
           />
         </label>
-        <label>
+        <label className="carInfo__flex__inputcol">
           Марка машины:
           <input
+            className="carInfo__flex__inputcol-input"
             type="text"
             id="car_make"
             name="car_make"
@@ -67,9 +72,10 @@ const CarInfoForm = () => {
             onChange={(e) => setCarMake(e.target.value)}
           />
         </label>
-        <label>
+        <label className="carInfo__flex__inputcol">
           Модель машины:
           <input
+            className="carInfo__flex__inputcol-input"
             type="text"
             id="car_model"
             name="car_model"
@@ -77,9 +83,10 @@ const CarInfoForm = () => {
             onChange={(e) => setCarModel(e.target.value)}
           />
         </label>
-        <label>
+        <label className="carInfo__flex__inputcol">
           Тип машины:
           <input
+            className="carInfo__flex__inputcol-input"
             type="text"
             id="car_type"
             name="car_type"
@@ -87,9 +94,17 @@ const CarInfoForm = () => {
             onChange={(e) => setCarType(e.target.value)}
           />
         </label>
-        <button type="submit">Сохранить</button>
-      </form>
-    </div>
+        <button
+          className="carInfo__flex__inputcol updateCarInfo"
+          type="submit"
+          onClick={() => navigate(-1)}>
+          Сохранить
+        </button>
+        <Link className="carInfo__flex__inputcol cancelCarInfo" onClick={() => navigate(-1)}>
+          Отменить
+        </Link>
+      </div>
+    </form>
   );
 };
 

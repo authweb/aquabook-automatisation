@@ -41,7 +41,7 @@ const Profile = () => {
             </div>
 
             <div className="profile-section btn-new">
-              <NewAppointment />
+              <NewAppointment btn="Новая запись" />
             </div>
           </>
         )}

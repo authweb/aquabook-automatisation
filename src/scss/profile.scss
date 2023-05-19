@@ -52,6 +52,41 @@
     height: 100%;
     margin-bottom: 10px;
   }
+  .newAppointment {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: none;
+    font-family: $font-family;
+    font-size: $font-size-18;
+    border-width: 0;
+    border-style: none;
+    background-color: $secondary-color;
+    color: $white-color;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: $secondary-color-hover;
+      cursor: pointer;
+    }
+  }
+  .deleteCarInfo {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: none;
+    font-family: $font-family;
+    font-size: $font-size-18;
+    border-width: 0;
+    border-style: none;
+    background-color: $delete-color;
+    color: $white-color;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: $delete-color-hover;
+      cursor: pointer;
+    }
+  }
 }
 .profile-container {
   display: flex;
@@ -106,6 +141,7 @@
       border-style: none;
       background-color: $secondary-color;
       color: $white-color;
+      transition: all 0.2s ease-in-out;
       &:hover {
         background-color: $secondary-color-hover;
         cursor: pointer;
@@ -121,6 +157,7 @@
       border-width: 0;
       border-style: none;
       color: $logout-color;
+      transition: all 0.2s ease-in-out;
       &:hover {
         cursor: pointer;
       }
@@ -131,6 +168,7 @@
         font-size: $font-size-18;
         font-weight: $font-weight-medium;
         margin-left: 10px;
+        transition: all 0.2s ease-in-out;
         &:hover {
           cursor: pointer;
         }
@@ -138,6 +176,78 @@
     }
   }
 }
+.carInfo {
+  &-h3 {
+    text-align: center;
+  }
+  &-p {
+    text-align: center;
+    &:nth-child(5) {
+      margin-bottom: 30px;
+    }
+  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &__flex {
+    display: flex;
+    flex-direction: column;
+    &__inputcol {
+      margin-top: 10px;
+      &.updateCarInfo {
+        padding: 15px 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        border: none;
+        font-family: $font-family;
+        font-size: $font-size-18;
+        border-width: 0;
+        border-style: none;
+        background-color: $secondary-color;
+        color: $white-color;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: $secondary-color-hover;
+          cursor: pointer;
+        }
+      }
+      &.cancelCarInfo {
+        text-decoration: none;
+        padding: 10px 10px;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 10px;
+        border: none;
+        font-family: $font-family;
+        font-size: $font-size-18;
+        border-width: 0;
+        border-style: none;
+        background-color: $delete-color;
+        color: $white-color;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: $delete-color-hover;
+          cursor: pointer;
+        }
+      }
+      &-input {
+        width: 100%;
+        padding: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-top: 5px;
+
+        &:focus {
+          outline: none;
+          border-color: #666;
+        }
+      }
+    }
+  }
+}
+
 .personalInfo {
   display: flex;
   flex-direction: row;

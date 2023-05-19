@@ -2,12 +2,19 @@ import React from 'react';
 import { useAuth } from '../../contexts/AuthContexts';
 import { Link } from 'react-router-dom';
 
-import { HeaderUser } from '../../components';
+import { HeaderUser, NewAppointment, DeleteCarInfo } from '../../components';
+import '../../scss/profile.scss';
 
 const PersonalInfo = () => {
   const { clients, carInfo } = useAuth();
 
-  const { car_number, car_make, car_model, car_type } = carInfo || {};
+  const { clients_id, car_number, car_make, car_model, car_type } = carInfo || {
+    clients_id: null,
+    car_number: null,
+    car_make: null,
+    car_model: null,
+    car_type: null,
+  };
 
   return (
     <div className="app-wrapper">
@@ -30,20 +37,24 @@ const PersonalInfo = () => {
                 carInfo.car_model,
                 carInfo.car_type, */}
         <div className="personalProfile-section">
-          {console.log(car_number, car_make, car_model, car_type)}
-          {carInfo ? (
-            <div className="carsUser">
-              <p>Информация о машине:</p>
-              <p>Номер автомобиля: {carInfo.car_number}</p>
-              <p>Марка автомобиля: {carInfo.car_make}</p>
-              <p>Модель автомобиля: {carInfo.car_model}</p>
-              <p>Тип автомобиля: {carInfo.car_type}</p>
-              <Link to="car-info">Обновить информацию о машине</Link>
+          {carInfo && clients_id ? (
+            <div className="personalProfile carInfo">
+              <h3 className="carInfo-h3">Информация о машине:</h3>
+              <p className="carInfo-p">Номер автомобиля: {carInfo.car_number}</p>
+              <p className="carInfo-p">Марка автомобиля: {carInfo.car_make}</p>
+              <p className="carInfo-p">Модель автомобиля: {carInfo.car_model}</p>
+              <p className="carInfo-p">Тип автомобиля: {carInfo.car_type}</p>
+              <Link to="car-info" className="btn-update">
+                <NewAppointment btn="Обновить" />
+              </Link>
+              <DeleteCarInfo />
             </div>
           ) : (
-            <div className="noCarInfo">
+            <div className="pesronalProfile-noCarInfo">
               <p>Информация о машине отсутствует</p>
-              <Link to="car-info">Добавить информацию о машине</Link>
+              <Link to="car-info" className="btn-update">
+                <NewAppointment btn="Добавить информацию о машине" />
+              </Link>
             </div>
           )}
         </div>

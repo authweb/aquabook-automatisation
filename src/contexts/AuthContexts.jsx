@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 export const AuthContext = createContext();
 
@@ -9,6 +10,7 @@ const AuthProvider = ({ children }) => {
   const [carInfo, setCarInfo] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoadingCarInfo, setIsLoadingCarInfo] = useState(true);
+  const [isCarInfoDeleted, setIsCarInfoDeleted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +25,6 @@ const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
     }
     if (carInfo) {
-      console.log(carInfo);
       const { clients_id, car_number, car_make, car_model, car_type } = JSON.parse(carInfo);
       setCarInfo({ clients_id, car_number, car_make, car_model, car_type });
       setIsLoadingCarInfo(false); // Информация о машине загружена
@@ -50,9 +51,35 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem('carInfo', JSON.stringify(carInfo));
   };
 
+  const deleteCarInfo = async () => {
+    try {
+      await axios.delete('/api/deletecarinfo', { data: { clients_id: clients.id } });
+      setIsCarInfoDeleted(true);
+
+      console.log('Car info deleted');
+    } catch (error) {
+      console.error('Error deleting car info:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (isCarInfoDeleted) {
+      setCarInfo(null);
+    }
+  }, [isCarInfoDeleted]);
+
   return (
     <AuthContext.Provider
-      value={{ clients, carInfo, isAuthenticated, isLoadingCarInfo, login, logout, updateCarInfo }}>
+      value={{
+        clients,
+        carInfo,
+        isAuthenticated,
+        isLoadingCarInfo,
+        login,
+        logout,
+        updateCarInfo,
+        deleteCarInfo,
+      }}>
       {children}
     </AuthContext.Provider>
   );
