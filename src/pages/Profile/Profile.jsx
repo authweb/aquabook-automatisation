@@ -13,7 +13,7 @@ import '../../scss/profile.scss';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth();
+  const { clients, isAuthenticated } = useAuth();
   // Проверяем, аутентифицирован ли пользователь
   useEffect(() => {
     // Проверяем, аутентифицирован ли пользователь
@@ -26,7 +26,7 @@ const Profile = () => {
     <div className="app-wrapper">
       <div className="profile-container">
         <HeaderUser title="Личный кабинет" />
-        {user && (
+        {clients && (
           <>
             <div className="profile-section">
               <ProfileInfo />

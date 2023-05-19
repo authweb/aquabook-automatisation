@@ -5,3 +5,4 @@ export { default as ProfileInfo } from './ProfileInfo/ProfileInfo';
 export { default as UserAppointment } from './UserAppointment/UserAppointment';
 export { default as ProfileLogout } from './ProfileLogout/ProfileLogout';
 export { default as NewAppointment } from './NewAppointment/NewAppointment';
+export { default as CarInfoForm } from './CarInfoForm/CarInfoForm';

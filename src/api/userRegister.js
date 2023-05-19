@@ -18,9 +18,16 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Insert new user into database
+    const [userResult] = await db.execute(
+      'INSERT INTO users (first_name, last_name, email, phone, password) VALUES (?, ?, ?, ?, ?)',
+      [first_name, last_name, email, phone, hashedPassword],
+    );
+    console.log(userResult); // Выводим данные пользователя в консоль
+    const userId = userResult.insertId;
+
     await db.execute(
-      'INSERT INTO users (first_name, last_name, phone, email, password) VALUES (?, ?, ?, ?, ?)',
-      [first_name, last_name, phone, email, hashedPassword],
+      'INSERT INTO clients (id, first_name, last_name, phone, email ) VALUES (?, ?, ?, ?, ?)',
+      [userId, first_name, last_name, phone, email],
     );
 
     res.status(201).json({ message: 'User registered' });

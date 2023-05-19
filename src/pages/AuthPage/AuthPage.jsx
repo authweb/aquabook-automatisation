@@ -37,27 +37,6 @@ const AuthPage = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
-  //   const handleLogin = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const { data } = await axios.post(
-  //         '/api/login',
-  //         {
-  //           email: formState.email,
-  //           password: formState.password,
-  //         },
-  //         {
-  //           headers: { 'Content-Type': 'application/json' },
-  //         },
-  //       );
-  //       const { token, id, first_name, last_name } = data;
-  //       login({ token, id, first_name, last_name });
-  //       navigate('/profile');
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
   const submitHandler = async (event) => {
     event.preventDefault();
     setIsLoading(true);
