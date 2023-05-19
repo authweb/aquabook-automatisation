@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-aqualord/static/css/main.41b1546b.css",
-    "main.js": "/react-aqualord/static/js/main.0ee49d8e.js",
-    "index.html": "/react-aqualord/index.html",
-    "main.41b1546b.css.map": "/react-aqualord/static/css/main.41b1546b.css.map",
-    "main.0ee49d8e.js.map": "/react-aqualord/static/js/main.0ee49d8e.js.map"
+    "main.css": "https://authweb.github.io/react-aqualord/static/css/main.41b1546b.css",
+    "main.js": "https://authweb.github.io/react-aqualord/static/js/main.86ebc3ae.js",
+    "index.html": "https://authweb.github.io/react-aqualord/index.html",
+    "main.41b1546b.css.map": "https://authweb.github.io/react-aqualord/static/css/main.41b1546b.css.map",
+    "main.86ebc3ae.js.map": "https://authweb.github.io/react-aqualord/static/js/main.86ebc3ae.js.map"
   },
   "entrypoints": [
     "static/css/main.41b1546b.css",
-    "static/js/main.0ee49d8e.js"
+    "static/js/main.86ebc3ae.js"
   ]
 }
