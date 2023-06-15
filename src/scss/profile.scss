@@ -2,7 +2,8 @@
 
 .app-wrapper {
   font-family: $font-family;
-  max-width: 600px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   color: $secondary-color;
 }
@@ -10,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 600px;
+  max-width: 1200px;
   width: 100%;
   min-height: 56px;
   background-color: #f3f3f3;

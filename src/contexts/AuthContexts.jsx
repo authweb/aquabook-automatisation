@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const [clients, setClients] = useState(null);
+  const [users, setUsers] = useState(null);
   const [carInfo, setCarInfo] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoadingCarInfo, setIsLoadingCarInfo] = useState(true);
@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
 
     if (userData) {
       const { token, id, first_name, last_name, phone, email } = JSON.parse(userData);
-      setClients({ token, id, first_name, last_name, phone, email });
+      setUsers({ token, id, first_name, last_name, phone, email });
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     localStorage.setItem('userData', JSON.stringify(userData));
-    setClients(userData);
+    setUsers(userData);
     setIsAuthenticated(true);
     console.log('Clients data from AuthContext:', userData);
     // Вывод данных пользователя в консоль
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('userData');
-    setClients(null);
+    setUsers(null);
     setIsAuthenticated(false);
     navigate('/');
   };
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
 
   const deleteCarInfo = async () => {
     try {
-      await axios.delete('/api/deletecarinfo', { data: { clients_id: clients.id } });
+      await axios.delete('/api/deletecarinfo', { data: { clients_id: users.id } });
       setIsCarInfoDeleted(true);
 
       console.log('Car info deleted');
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        clients,
+        users,
         carInfo,
         isAuthenticated,
         isLoadingCarInfo,

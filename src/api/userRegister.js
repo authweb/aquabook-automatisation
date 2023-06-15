@@ -26,6 +26,11 @@ router.post('/register', async (req, res) => {
     const userId = userResult.insertId;
 
     await db.execute(
+      'INSERT INTO employees (id, first_name, last_name, phone, email ) VALUES (?, ?, ?, ?, ?)',
+      [userId, first_name, last_name, phone, email],
+    );
+
+    await db.execute(
       'INSERT INTO clients (id, first_name, last_name, phone, email ) VALUES (?, ?, ?, ?, ?)',
       [userId, first_name, last_name, phone, email],
     );

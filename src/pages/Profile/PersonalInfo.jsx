@@ -6,10 +6,10 @@ import { HeaderUser, NewAppointment, DeleteCarInfo } from '../../components';
 import '../../scss/profile.scss';
 
 const PersonalInfo = () => {
-  const { clients, carInfo } = useAuth();
+  const { users, carInfo } = useAuth();
 
-  const { clients_id, car_number, car_make, car_model, car_type } = carInfo || {
-    clients_id: null,
+  const { client_id, car_number, car_make, car_model, car_type } = carInfo || {
+    client_id: null,
     car_number: null,
     car_make: null,
     car_model: null,
@@ -24,10 +24,10 @@ const PersonalInfo = () => {
           <div className="personalInfo__flex">
             <div className="personalInfo__flex__pcol">
               <p className="personalInfo__flex__pcol-p">
-                {clients?.first_name} {clients?.last_name}
+                {users?.first_name} {users?.last_name}
               </p>
-              <p className="personalInfo__flex__pcol-p">{clients?.email}</p>
-              <p className="personalInfo__flex__pcol-p">{clients?.phone}</p>
+              <p className="personalInfo__flex__pcol-p">{users?.email}</p>
+              <p className="personalInfo__flex__pcol-p">{users?.phone}</p>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@ const PersonalInfo = () => {
                 carInfo.car_model,
                 carInfo.car_type, */}
         <div className="personalProfile-section">
-          {carInfo && clients_id ? (
+          {carInfo && client_id ? (
             <div className="personalProfile carInfo">
               <h3 className="carInfo-h3">Информация о машине:</h3>
               <p className="carInfo-p">Номер автомобиля: {carInfo.car_number}</p>

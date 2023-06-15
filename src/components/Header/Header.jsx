@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContexts';
 import '../../scss/header.scss';
 
 const Header = () => {
-  const { clients, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -24,7 +24,7 @@ const Header = () => {
           {isAuthenticated && (
             <>
               <li className="nav__item">
-                <Link to={`/profile/${clients.id}`}>{clients.first_name}</Link>
+                <Link to={`/dashboard/${user?.id}/`}>{user?.first_name}</Link>
               </li>
               <li className="nav__item">
                 <button className="nav__item-btn" onClick={handleLogout}>
