@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/AuthContexts';
 import {
   FileOutlined,
   UserOutlined,
@@ -9,36 +10,13 @@ import {
   BarsOutlined,
   PoweroffOutlined,
 } from '@ant-design/icons';
-import { useRoutes, useNavigate, Link, Routes, Route } from 'react-router-dom';
-import { Breadcrumb, Layout, Menu, Item, theme } from 'antd';
+import { useNavigate, Routes, Route, Link } from 'react-router-dom';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
-import { Clients, Employees, PersonalInfoDashboard, ProfileInfo } from '../../components';
+import { Clients, Employees, PersonalInfoDashboard } from '../../components';
+import SubMenu from 'antd/es/menu/SubMenu';
 
 const { Header, Content, Footer, Sider } = Layout;
-
-// function getItem(label, key, icon, children) {
-//   return {
-//     key,
-//     icon,
-//     children,
-//     label,
-//   };
-// }
-// // 'dashboard/sub1/tom';
-// // 'dashboard/sub2/list';
-// const items = [
-//   getItem('Сотрудники', 'dashboard/employees', <UserOutlined />, [
-//     getItem('Tom', '3'),
-//     getItem('Bill', '4'),
-//     getItem('Alex', '5'),
-//   ]),
-//   getItem('Клиенты', 'dashboard/clients', <TeamOutlined />, [
-//     getItem('Клиентская база', 'list'),
-//     getItem('Категории клиентов', 'category'),
-//   ]),
-//   getItem('Files', '9', <FileOutlined />),
-//   getItem('Личный кабинет', 'dashboard/:id/profile', <ProfileOutlined />),
-// ];
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -46,6 +24,21 @@ const Dashboard = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const navigate = useNavigate();
+  const { users, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/employees')
+      .then((response) => response.json())
+      .then((data) => {
+        setEmployees(data.employees);
+      });
+  }, []);
 
   return (
     <Layout
@@ -53,34 +46,52 @@ const Dashboard = () => {
         minHeight: '100vh',
       }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <Menu
-          theme="dark"
-          mode="inline"
-          onClick={({ key }) => {
-            if (key === 'signout') {
-            } else {
-              navigate(key);
-            }
-          }}>
-          <Menu.Item key="employees" icon=<UserOutlined />>
-            <Link to="employees">Сотрудники</Link>
-          </Menu.Item>
-          <Menu.Item key="clients" icon=<TeamOutlined />>
-            <Link to="clients">Клиенты</Link>
-          </Menu.Item>
-          <Menu.Item key="services" icon=<BarsOutlined />>
-            <Link to="services">Услуги</Link>
-          </Menu.Item>
-          <Menu.Item key="settings" icon=<SettingOutlined />>
-            <Link to="settings">Настройки</Link>
-          </Menu.Item>
-          <Menu.Item key="profile" icon=<IdcardOutlined />>
-            <Link to="profile">Личный кабинет</Link>
-          </Menu.Item>
-          <Menu.Item key="signout" icon=<PoweroffOutlined />>
-            <Link to="signout">Выход</Link>
-          </Menu.Item>
-        </Menu>
+        {users ? (
+          <Menu
+            theme="dark"
+            mode="inline"
+            onClick={({ key }) => {
+              if (key === 'signout') {
+              } else {
+                navigate(`./${key}`);
+              }
+            }}>
+            <SubMenu
+              key="sub1"
+              title={
+                <span>
+                  <UserOutlined /> <span>Сотрудники</span>
+                </span>
+              }>
+              {employees &&
+                employees.map((employee) => (
+                  <Menu.Item key={employee.id}>
+                    <Link to={`employees/${employee.id}`}>{employee.first_name}</Link>
+                  </Menu.Item>
+                ))}
+            </SubMenu>
+            <Menu.Item key="clients" icon=<TeamOutlined />>
+              <Link to="clients">Клиенты</Link>
+            </Menu.Item>
+            <Menu.Item key="services" icon=<BarsOutlined />>
+              <Link to="services">Услуги</Link>
+            </Menu.Item>
+            <Menu.Item key="settings" icon=<SettingOutlined />>
+              <Link to="settings">Настройки</Link>
+            </Menu.Item>
+            <Menu.Item key="profile" icon=<IdcardOutlined />>
+              <Link to="profile">Личный кабинет</Link>
+              {/* <Link to={`${users.id}/profile`}>Личный кабинет</Link> */}
+            </Menu.Item>
+            <Menu.Item key="signout" icon=<PoweroffOutlined />>
+              <Link onClick={handleLogout} to="/">
+                Выход
+              </Link>
+            </Menu.Item>
+          </Menu>
+        ) : (
+          <div>Loading...</div>
+        )}
       </Sider>
       <Layout>
         <Header
@@ -93,13 +104,13 @@ const Dashboard = () => {
           style={{
             margin: '0 16px',
           }}>
-          {/* <Breadcrumb
+          <Breadcrumb
             style={{
               margin: '16px 0',
             }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb> */}
+          </Breadcrumb>
           <div
             style={{
               padding: 24,
@@ -107,11 +118,11 @@ const Dashboard = () => {
               background: colorBgContainer,
             }}>
             <Routes>
-              <Route path="profile" element={<PersonalInfoDashboard />} />
               <Route path="employees" element={<Employees />} />
               <Route path="clients" element={<Clients />} />
               <Route path="services" element={<div>Services</div>} />
               <Route path="settings" element={<div>Settings</div>} />
+              <Route path="profile" element={<PersonalInfoDashboard />} />
             </Routes>
           </div>
         </Content>

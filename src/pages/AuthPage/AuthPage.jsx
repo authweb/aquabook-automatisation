@@ -49,6 +49,7 @@ const AuthPage = () => {
         phone: formState.phone,
         email: formState.email,
         password: formState.password,
+        token: formState.token,
       });
 
       const responseData = response.data;
@@ -60,7 +61,7 @@ const AuthPage = () => {
       if (isLoginMode) {
         const { token, id, first_name, last_name, phone, email } = responseData.user;
         login({ token, id, first_name, last_name, phone, email });
-        navigate(`/dashboard/${id}/`);
+        navigate(`/dashboard/profile`);
       } else {
         navigate('/');
       }

@@ -3,8 +3,8 @@ const router = express.Router();
 
 // Получение профиля пользователя
 router.get('/', (req, res) => {
-  const clients = req.clients;
-  res.json(clients);
+  const users = req.users;
+  res.json(users);
 });
 
 module.exports = router;

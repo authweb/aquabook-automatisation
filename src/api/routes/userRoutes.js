@@ -7,12 +7,17 @@ const userAppointments = require('../userAppointments');
 const userNewAppointment = require('../userNewAppointment');
 const updateCarInfo = require('../updateCarInfo');
 const deleteCarInfo = require('../deleteCarInfo');
+const employees = require('../employees');
+const clients = require('../clients');
 
 router.post('/updatecarinfo', updateCarInfo);
 router.post('/myappointments', userAppointments);
 router.post('/newappointment', userNewAppointment);
 router.post('/register', userRegister);
 router.post('/login', userLogin);
+
+router.get('/employees', employees);
+router.get('/clients', clients);
 
 router.delete('/deletecarinfo', deleteCarInfo);
 

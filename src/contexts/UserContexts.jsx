@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react';
 
 export const UserContext = createContext();
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({ items }) => {
   const [users, setUsers] = useState(null);
 
   // Функции для установки значения пользователя
@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
     setUsers(null);
   };
 
-  return <UserContext.Provider value={{ users, login, logout }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ users, login, logout }}>{items}</UserContext.Provider>;
 };
 
 export const useUser = () => useContext(UserContext);
