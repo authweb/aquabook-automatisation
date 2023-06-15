@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcr = require('bcrypt');
 const db = require('../config/dbConnect');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -20,6 +23,9 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
+    // Create a token
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
     console.log(user); // Выводим данные пользователя в консоль
 
     res.json({
@@ -32,6 +38,7 @@ router.post('/login', async (req, res) => {
         email: user.email,
         password: user.password,
       },
+      token: token, // Включаем токен в ответ
     });
   } catch (error) {
     console.error(error);

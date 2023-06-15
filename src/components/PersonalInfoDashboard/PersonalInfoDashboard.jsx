@@ -10,7 +10,7 @@ const PersonalInfoDashboard = () => {
 
   return (
     <div className="app-wrapper">
-      <Row>
+      <Row gutter={16}>
         <Col span={9}>
           <div className="personalProfile-container">
             <HeaderUser title="Личная информация" />

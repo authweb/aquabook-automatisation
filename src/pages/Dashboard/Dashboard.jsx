@@ -10,9 +10,9 @@ import {
   PoweroffOutlined,
 } from '@ant-design/icons';
 import { useRoutes, useNavigate, Link, Routes, Route } from 'react-router-dom';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, Item, theme } from 'antd';
 
-import { Clients, PersonalInfoDashboard, ProfileInfo } from '../../components';
+import { Clients, Employees, PersonalInfoDashboard, ProfileInfo } from '../../components';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -53,7 +53,6 @@ const Dashboard = () => {
         minHeight: '100vh',
       }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
           mode="inline"
@@ -62,15 +61,26 @@ const Dashboard = () => {
             } else {
               navigate(key);
             }
-          }}
-          items={[
-            { label: 'Сотрудники', key: 'employees', icon: <UserOutlined /> },
-            { label: 'Клиенты', key: 'clients', icon: <TeamOutlined /> },
-            { label: 'Услуги', key: 'services', icon: <BarsOutlined /> },
-            { label: 'Настройки', key: 'settings', icon: <SettingOutlined /> },
-            { label: 'Личный кабинет', key: 'profile', icon: <IdcardOutlined /> },
-            { label: 'Выход', key: 'signout', icon: <PoweroffOutlined />, danger: true },
-          ]}></Menu>
+          }}>
+          <Menu.Item key="employees" icon=<UserOutlined />>
+            <Link to="employees">Сотрудники</Link>
+          </Menu.Item>
+          <Menu.Item key="clients" icon=<TeamOutlined />>
+            <Link to="clients">Клиенты</Link>
+          </Menu.Item>
+          <Menu.Item key="services" icon=<BarsOutlined />>
+            <Link to="services">Услуги</Link>
+          </Menu.Item>
+          <Menu.Item key="settings" icon=<SettingOutlined />>
+            <Link to="settings">Настройки</Link>
+          </Menu.Item>
+          <Menu.Item key="profile" icon=<IdcardOutlined />>
+            <Link to="profile">Личный кабинет</Link>
+          </Menu.Item>
+          <Menu.Item key="signout" icon=<PoweroffOutlined />>
+            <Link to="signout">Выход</Link>
+          </Menu.Item>
+        </Menu>
       </Sider>
       <Layout>
         <Header
@@ -83,13 +93,13 @@ const Dashboard = () => {
           style={{
             margin: '0 16px',
           }}>
-          <Breadcrumb
+          {/* <Breadcrumb
             style={{
               margin: '16px 0',
             }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          </Breadcrumb> */}
           <div
             style={{
               padding: 24,
@@ -97,12 +107,11 @@ const Dashboard = () => {
               background: colorBgContainer,
             }}>
             <Routes>
-              <Route path="/employees" element={<div>Employees</div>} />
-              <Route path="/clients" element={<div>Clients</div>} />
-              <Route path="/services" element={<div>Services</div>} />
-              <Route path="/settings" element={<div>Settings</div>} />
-              <Route path="/profile" element={<PersonalInfoDashboard />} />
-              <Route path="signout" element={<div>Signout</div>} />
+              <Route path="profile" element={<PersonalInfoDashboard />} />
+              <Route path="employees" element={<Employees />} />
+              <Route path="clients" element={<Clients />} />
+              <Route path="services" element={<div>Services</div>} />
+              <Route path="settings" element={<div>Settings</div>} />
             </Routes>
           </div>
         </Content>

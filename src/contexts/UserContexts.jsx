@@ -3,18 +3,18 @@ import { createContext, useContext, useState } from 'react';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [clients, setClients] = useState(null);
+  const [users, setUsers] = useState(null);
 
   // Функции для установки значения пользователя
   const login = (userData) => {
-    setClients(userData);
+    setUsers(userData);
   };
 
   const logout = () => {
-    setClients(null);
+    setUsers(null);
   };
 
-  return <UserContext.Provider value={{ clients, login, logout }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ users, login, logout }}>{children}</UserContext.Provider>;
 };
 
 export const useUser = () => useContext(UserContext);

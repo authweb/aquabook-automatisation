@@ -9,6 +9,7 @@ export { default as NewAppointment } from './NewAppointment/NewAppointment';
 export { default as CarInfoForm } from './CarInfoForm/CarInfoForm';
 export { default as DeleteCarInfo } from './DeleteCarInfo/DeleteCarInfo';
 export { default as PersonalInfoDashboard } from './PersonalInfoDashboard/PersonalInfoDashboard';
+export { default as Employees } from './Employees/Employees';
 export { default as ChangePassword } from './SettingsPersonalInfo/ChangePassword';
 export { default as ChangeEmail } from './SettingsPersonalInfo/ChangeEmail';
 export { default as ChangePhoneNumber } from './SettingsPersonalInfo/ChangePhoneNumber';

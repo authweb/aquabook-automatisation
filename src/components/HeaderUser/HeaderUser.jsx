@@ -8,7 +8,7 @@ const HeaderUser = ({ title }) => {
   return (
     <div className="headerUser">
       <div className="headerUser__box">
-        <MdArrowBackIos className="headerUser__box-icon" onClick={() => navigate(-1)} />
+        {/* <MdArrowBackIos className="headerUser__box-icon" onClick={() => navigate(-1)} /> */}
       </div>
       <div className="headerUser__box">
         <h2 className="headerUser__box-title">{title}</h2>

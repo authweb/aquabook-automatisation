@@ -37,7 +37,7 @@ const App = () => {
               <Route path="/auth" element={<AuthPage />} />
               <Route path="dashboard/:id/">
                 <Route index element={<Dashboard />} />
-                <Route path="profile" element={<PersonalInfoDashboard />}></Route>
+                <Route path="profile" element={<PersonalInfoDashboard />} />
               </Route>
             </Routes>
           </UserContext.Provider>
