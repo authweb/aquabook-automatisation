@@ -2,29 +2,30 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/dbConnect'); // Путь к вашему файлу dbConnect может отличаться
 
-router.get('/employees', async (req, res) => {
+router.get('/employees/:id', async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const [rows] = await db.execute('SELECT * FROM employees');
+    const [rows] = await db.execute('SELECT * FROM employees WHERE id = ?', [id]);
     if (rows.length === 0) {
-      return res.status(404).json({ message: 'No employees found' });
+      return res.status(404).json({ message: 'Employee not found' });
     }
 
-    const employees = rows;
+    const employee = rows[0];
     res.json({
-      message: 'Employees fetched successfully',
-      employees: employees.map((employee) => ({
+      message: 'Employee fetched successfully',
+      employee: {
         id: employee.id,
         first_name: employee.first_name,
         last_name: employee.last_name,
         email: employee.email,
         phone: employee.phone,
         access: employee.access,
-      })),
+      },
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-
 module.exports = router;
