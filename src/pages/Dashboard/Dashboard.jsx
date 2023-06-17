@@ -8,7 +8,7 @@ import {
   BarsOutlined,
   PoweroffOutlined,
 } from '@ant-design/icons';
-import { useNavigate, Routes, Route, Link, Outlet } from 'react-router-dom';
+import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
 import {
@@ -18,6 +18,7 @@ import {
   PersonalInfoDashboard,
   Settings,
   DashboardMain,
+  Employees,
 } from '../../components';
 import SubMenu from 'antd/es/menu/SubMenu';
 
@@ -36,9 +37,8 @@ const Dashboard = () => {
   const handleLogout = () => {
     logout();
   };
-
+  let { id } = useParams();
   const [employees, setEmployees] = useState([]);
-
   useEffect(() => {
     fetch('http://localhost:3001/api/employees')
       .then((response) => response.json())
@@ -46,6 +46,50 @@ const Dashboard = () => {
         setEmployees(data.employees);
       });
   }, []);
+
+  const location = useLocation();
+  const pathSnippets = location.pathname.split('/').filter((i) => i);
+
+  const [breadcrumbNameMap, setBreadcrumbNameMap] = useState({
+    '/dashboard': 'Панель управления',
+    '/dashboard/employees': 'Сотрудники',
+    '/dashboard/time-table': 'Расписание',
+    '/dashboard/services': 'Услуги',
+    '/dashboard/profile': 'Профиль',
+    '/dashboard/settings': 'Настройки',
+    '/dashboard/clients': 'Клиенты',
+  });
+  const extraBreadcrumbItems = pathSnippets
+    .map((_, index) => {
+      const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+      let breadcrumbName;
+      if (url.includes('employees') && id) {
+        const employee = employees.find((emp) => emp.id === id);
+        breadcrumbName = employee ? `${employee.first_name}` : 'Loading...';
+      } else {
+        breadcrumbName = breadcrumbNameMap[url];
+      }
+      if (breadcrumbName) {
+        return (
+          <Breadcrumb.Item key={url}>
+            <Link to={url}>{breadcrumbName}</Link>
+          </Breadcrumb.Item>
+        );
+      }
+      return null;
+    })
+    .filter(Boolean);
+
+  const handleEmployeeData = (employee) => {
+    setBreadcrumbNameMap((prev) => ({
+      ...prev,
+      [`/dashboard/employees/${employee.id}`]: `${employee.first_name}`,
+    }));
+  };
+
+  const breadcrumbItems = [<Breadcrumb.Item key="dashboard"></Breadcrumb.Item>].concat(
+    extraBreadcrumbItems,
+  );
 
   return (
     <Layout
@@ -120,15 +164,7 @@ const Dashboard = () => {
           style={{
             margin: '0 16px',
           }}>
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}>
-            <Breadcrumb.Item>
-              <Link to="/dashboard">Панель управления</Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
           <div
             style={{
               padding: 24,
@@ -139,8 +175,11 @@ const Dashboard = () => {
               <Route path="/">
                 <Route index element={<DashboardMain />} />
                 <Route path="employees/">
-                  <Route index element={<Outlet />} />
-                  <Route path=":id" element={<EmployeesPersona />} />
+                  <Route index element={<Employees />} />
+                  <Route
+                    path=":id"
+                    element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
+                  />
                 </Route>
                 <Route path="clients" element={<Clients />} />
                 <Route path="time-table" element={<Calendar />} />

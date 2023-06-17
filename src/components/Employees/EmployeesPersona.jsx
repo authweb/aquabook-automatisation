@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const EmployeesPersona = () => {
+const EmployeesPersona = ({ onEmployeeData }) => {
   let { id } = useParams();
   const [employee, setEmployee] = useState([]);
+
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3001/api/employees/${id}`)
         .then((response) => response.json())
         .then((data) => {
           setEmployee(data.employee);
+          onEmployeeData(data.employee); // вызываем функцию с данными сотрудника
         });
     }
-  }, [id]);
+  }, [id, onEmployeeData]);
 
   return (
     <div>
