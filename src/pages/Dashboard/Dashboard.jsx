@@ -7,9 +7,14 @@ import {
   IdcardOutlined,
   BarsOutlined,
   PoweroffOutlined,
+  CalendarOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
 } from '@ant-design/icons';
 import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Button, Space, Dropdown, message } from 'antd';
+
+import { handleFileUpload, handleDownload } from '../../contexts/excelHandlers';
 
 import {
   Calendar,
@@ -19,6 +24,7 @@ import {
   Settings,
   DashboardMain,
   Employees,
+  ServicesManagement,
 } from '../../components';
 import SubMenu from 'antd/es/menu/SubMenu';
 
@@ -90,13 +96,38 @@ const Dashboard = () => {
   const breadcrumbItems = [<Breadcrumb.Item key="dashboard"></Breadcrumb.Item>].concat(
     extraBreadcrumbItems,
   );
+  const handleMenuClick = (e) => {
+    if (e.key === '1') {
+      handleDownload();
+    } else if (e.key === '2') {
+      handleFileUpload();
+    }
+  };
+  const items = [
+    {
+      label: 'Выгрузить в Excel',
+      key: '1',
+    },
+    {
+      label: 'Загрузить в Excel',
+      key: '2',
+    },
+  ];
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
 
   return (
     <Layout
       style={{
         minHeight: '100vh',
       }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}>
         {users ? (
           <Menu
             theme="dark"
@@ -120,7 +151,7 @@ const Dashboard = () => {
             <Link to="/dashboard">
               <img src={Logo} style={{ width: '100%' }} alt="AQUALORD" />
             </Link>
-            <Menu.Item key="time-table" icon=<TeamOutlined />>
+            <Menu.Item key="time-table" icon=<CalendarOutlined />>
               <Link to="time-table">Календарь</Link>
             </Menu.Item>
             <SubMenu
@@ -160,6 +191,29 @@ const Dashboard = () => {
         )}
       </Sider>
       <Layout>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}>
+          <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              fontSize: '16px',
+              width: 64,
+              height: 64,
+            }}
+          />
+          {['/dashboard/services', '/dashboard/clients'].includes(location.pathname) && (
+            <Dropdown menu={menuProps}>
+              <Button>
+                <Space>Оперции с Excel</Space>
+              </Button>
+            </Dropdown>
+          )}
+        </Header>
         <Content
           style={{
             margin: '0 16px',
@@ -183,7 +237,7 @@ const Dashboard = () => {
                 </Route>
                 <Route path="clients" element={<Clients />} />
                 <Route path="time-table" element={<Calendar />} />
-                <Route path="services" element={<div>Services</div>} />
+                <Route path="services" element={<ServicesManagement />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="profile" element={<PersonalInfoDashboard />} />
               </Route>

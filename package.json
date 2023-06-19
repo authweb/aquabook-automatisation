@@ -1,6 +1,5 @@
 {
   "name": "react-aqualord",
-  "homepage": "https://authweb.github.io/react-aqualord/",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
@@ -33,7 +32,8 @@
     "react-scripts": "5.0.1",
     "sass-loader": "^13.2.2",
     "web-vitals": "^2.1.4",
-    "webpack": "^5.82.0"
+    "webpack": "^5.82.0",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
