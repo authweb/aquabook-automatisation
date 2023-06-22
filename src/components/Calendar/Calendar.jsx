@@ -56,6 +56,22 @@ const CalendarDay = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetch('http://localhost:3001/api/appointments')
+      .then((response) => response.json())
+      .then((data) => {
+        const appointments = data.appointments.map((appointment) => ({
+          start: appointment.start,
+          end: appointment.end,
+          text: appointment.text,
+          resource: appointment.resource,
+          clients_id: appointment.clients_id,
+        }));
+        setConfig((prevConfig) => ({ ...prevConfig, events: appointments }));
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   const handleOk = async () => {
     console.log('handleOk is called');
     const now = DayPilot.Date.today();
