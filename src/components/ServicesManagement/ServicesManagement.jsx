@@ -10,7 +10,7 @@ const ServicesManagement = () => {
 
   useEffect(() => {
     const fetchCategoriesAndServices = async () => {
-      const categoriesResponse = await axios.get('http://localhost:3001/api/services_categories');
+      const categoriesResponse = await axios.get('http://localhost:3001/api/service-categories');
       const servicesResponse = await axios.get('http://localhost:3001/api/services');
 
       setCategories(categoriesResponse.data.servicesCategories);

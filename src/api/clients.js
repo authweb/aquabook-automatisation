@@ -12,7 +12,7 @@ router.get('/clients', async (req, res) => {
     const clients = rows;
     res.json({
       message: 'Clients fetched successfully',
-      employees: clients.map((client) => ({
+      clients: clients.map((client) => ({
         id: client.id,
         first_name: client.first_name,
         last_name: client.last_name,

@@ -8,6 +8,8 @@ const userRegister = require('../userRegister');
 //Записи
 const userAppointments = require('../userAppointments');
 const userNewAppointment = require('../userNewAppointment');
+const getAppointments = require('../getAppointments');
+const addAppointments = require('../addAppointments');
 
 //Информация о машине
 const updateCarInfo = require('../updateCarInfo');
@@ -17,6 +19,7 @@ const deleteCarInfo = require('../deleteCarInfo');
 const employees = require('../employees');
 const employee = require('../employeeId');
 const clients = require('../clients');
+const addClients = require('../addClients');
 
 //Категории услуг - услуги
 const getServices = require('../getServices');
@@ -35,14 +38,17 @@ router.post('/newappointment', userNewAppointment);
 router.post('/register', userRegister);
 router.post('/login', userLogin);
 router.post('/services', addServices);
-router.post('/services_categories', addServicesCategories);
+router.post('/service-categories', addServicesCategories);
+router.post('/clients', addClients);
+router.post('/appointments', addAppointments);
 
 //Получение записей из таблицы базы данных
 router.get('/employees/:id', employee);
 router.get('/employees', employees);
 router.get('/clients', clients);
 router.get('/services', getServices);
-router.get('/services_categories', getServicesCategories);
+router.get('/service-categories', getServicesCategories);
+router.get('/appointments', getAppointments);
 
 //Удаление записей из таблицы базы данных
 router.delete('/deletecarinfo', deleteCarInfo);

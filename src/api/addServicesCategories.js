@@ -6,7 +6,7 @@ router.post('/service-categories', async (req, res) => {
   const { name, description } = req.body;
   try {
     const [result] = await db.execute(
-      'INSERT INTO service_categories (name, description) VALUES (?, ?)',
+      'INSERT INTO services_categories (name, description) VALUES (?, ?)',
       [name, description],
     );
     if (result.affectedRows === 0) {

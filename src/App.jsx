@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './scss/styles.scss'; // добавляем импорт стилей
+import './scss/styles.scss';
 import { AuthContext } from './contexts/AuthContexts';
 import {
   HomePage,
@@ -16,7 +16,7 @@ import AuthProvider from './contexts/AuthContexts';
 
 const App = () => {
   const { users } = useContext(AuthContext);
-  const [user, setUsers] = useState(null);
+  const [_, setUsers] = useState(null);
   console.log(users?.first_name);
   return (
     <div className="App">

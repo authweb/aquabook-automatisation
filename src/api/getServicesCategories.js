@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/dbConnect');
 
-router.get('/services_categories', async (req, res) => {
+router.get('/service-categories', async (req, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM services_categories');
     if (rows.length === 0) {

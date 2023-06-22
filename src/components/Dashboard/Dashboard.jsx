@@ -1,10 +1,10 @@
 import React from 'react';
-import { Calendar } from '../';
+import { CalendarDay } from '../';
 
 const DashboardMain = () => {
   return (
     <>
-      <Calendar />
+      <CalendarDay />
     </>
   );
 };

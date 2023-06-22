@@ -7,17 +7,18 @@ import {
   IdcardOutlined,
   BarsOutlined,
   PoweroffOutlined,
-  CalendarOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
 import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
-import { Breadcrumb, Layout, Menu, theme, Button, Space, Dropdown, message } from 'antd';
-
+import { ConfigProvider, Breadcrumb, Layout, Menu, theme, Button, Space, Dropdown } from 'antd';
+import ruRU from 'antd/lib/locale/ru_RU';
+import '../../scss/homepage.scss';
 import { handleFileUpload, handleDownload } from '../../contexts/excelHandlers';
+import { CalendarProvider } from '../../contexts/CalendarContexts';
 
 import {
-  Calendar,
+  CalendarDay,
   Clients,
   EmployeesPersona,
   PersonalInfoDashboard,
@@ -25,6 +26,7 @@ import {
   DashboardMain,
   Employees,
   ServicesManagement,
+  CalendarNavigator,
 } from '../../components';
 import SubMenu from 'antd/es/menu/SubMenu';
 
@@ -119,139 +121,143 @@ const Dashboard = () => {
   };
 
   return (
-    <Layout
-      style={{
-        minHeight: '100vh',
-      }}>
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}>
-        {users ? (
-          <Menu
-            theme="dark"
-            mode="inline"
-            onClick={({ key }) => {
-              if (key === 'signout') {
-                navigate('/');
-              } else if (
-                key === 'time-table' ||
-                key === 'services' ||
-                key === 'settings' ||
-                key === 'profile' ||
-                key === 'clients'
-              ) {
-                navigate(`./${key}`);
-              } else {
-                // Предполагается, что все остальные ключи являются ID сотрудников
-                navigate(`./employees/${key}`);
-              }
-            }}>
-            <Link to="/dashboard">
-              <img src={Logo} style={{ width: '100%' }} alt="AQUALORD" />
-            </Link>
-            <Menu.Item key="time-table" icon=<CalendarOutlined />>
-              <Link to="time-table">Календарь</Link>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <UserOutlined /> <span>Сотрудники</span>
-                </span>
-              }>
-              {employees &&
-                employees.map((employee) => (
-                  <Menu.Item key={employee.id}>
-                    <Link to={`employees/${employee.id}`}>{employee.first_name}</Link>
-                  </Menu.Item>
-                ))}
-            </SubMenu>
-            <Menu.Item key="clients" icon=<TeamOutlined />>
-              <Link to="clients">Клиенты</Link>
-            </Menu.Item>
-            <Menu.Item key="services" icon=<BarsOutlined />>
-              <Link to="services">Услуги</Link>
-            </Menu.Item>
-            <Menu.Item key="settings" icon=<SettingOutlined />>
-              <Link to="settings">Настройки</Link>
-            </Menu.Item>
-            <Menu.Item key="profile" icon=<IdcardOutlined />>
-              <Link to="profile">Личный кабинет</Link>
-            </Menu.Item>
-            <Menu.Item key="signout" icon=<PoweroffOutlined /> danger>
-              <Link onClick={handleLogout} to="/">
-                Выход
-              </Link>
-            </Menu.Item>
-          </Menu>
-        ) : (
-          <div>Loading...</div>
-        )}
-      </Sider>
-      <Layout>
-        <Header
+    <ConfigProvider locale={ruRU}>
+      <CalendarProvider>
+        <Layout
           style={{
-            padding: 0,
-            background: colorBgContainer,
+            minHeight: '100vh',
           }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-          {['/dashboard/services', '/dashboard/clients'].includes(location.pathname) && (
-            <Dropdown menu={menuProps}>
-              <Button>
-                <Space>Оперции с Excel</Space>
-              </Button>
-            </Dropdown>
-          )}
-        </Header>
-        <Content
-          style={{
-            margin: '0 16px',
-          }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}>
-            <Routes>
-              <Route path="/">
-                <Route index element={<DashboardMain />} />
-                <Route path="employees/">
-                  <Route index element={<Employees />} />
-                  <Route
-                    path=":id"
-                    element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
-                  />
-                </Route>
-                <Route path="clients" element={<Clients />} />
-                <Route path="time-table" element={<Calendar />} />
-                <Route path="services" element={<ServicesManagement />} />
-                <Route path="settings" element={<Settings />} />
-                <Route path="profile" element={<PersonalInfoDashboard />} />
-              </Route>
-            </Routes>
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}>
-          AQUALORD ©2023 Created by Authweb
-        </Footer>
-      </Layout>
-    </Layout>
+          <Sider
+            width={'212px'}
+            trigger={null}
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) => setCollapsed(value)}>
+            {users ? (
+              <Menu
+                style={{ width: '212px' }}
+                theme="dark"
+                mode="inline"
+                onClick={({ key }) => {
+                  if (key === 'signout') {
+                    navigate('/');
+                  } else if (
+                    key === 'time-table' ||
+                    key === 'services' ||
+                    key === 'settings' ||
+                    key === 'profile' ||
+                    key === 'clients'
+                  ) {
+                    navigate(`./${key}`);
+                  } else {
+                    // Предполагается, что все остальные ключи являются ID сотрудников
+                    navigate(`./employees/${key}`);
+                  }
+                }}>
+                {/* <Link to="/dashboard">
+                  <img src={Logo} style={{ width: '100%' }} alt="AQUALORD" />
+                </Link> */}
+                <CalendarNavigator />
+                <SubMenu
+                  key="sub1"
+                  title={
+                    <span>
+                      <UserOutlined /> <span>Сотрудники</span>
+                    </span>
+                  }>
+                  {employees &&
+                    employees.map((employee) => (
+                      <Menu.Item key={employee.id}>
+                        <Link to={`employees/${employee.id}`}>{employee.first_name}</Link>
+                      </Menu.Item>
+                    ))}
+                </SubMenu>
+                <Menu.Item key="clients" icon=<TeamOutlined />>
+                  <Link to="clients">Клиенты</Link>
+                </Menu.Item>
+                <Menu.Item key="services" icon=<BarsOutlined />>
+                  <Link to="services">Услуги</Link>
+                </Menu.Item>
+                <Menu.Item key="settings" icon=<SettingOutlined />>
+                  <Link to="settings">Настройки</Link>
+                </Menu.Item>
+                <Menu.Item key="profile" icon=<IdcardOutlined />>
+                  <Link to="profile">Личный кабинет</Link>
+                </Menu.Item>
+                <Menu.Item key="signout" icon=<PoweroffOutlined /> danger>
+                  <Link onClick={handleLogout} to="/">
+                    Выход
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            ) : (
+              <div>Loading...</div>
+            )}
+          </Sider>
+          <Layout>
+            <Header
+              style={{
+                padding: 0,
+                background: colorBgContainer,
+              }}>
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: '16px',
+                  width: 64,
+                  height: 64,
+                }}
+              />
+              {['/dashboard/services', '/dashboard/clients'].includes(location.pathname) && (
+                <Dropdown menu={menuProps}>
+                  <Button>
+                    <Space>Оперции с Excel</Space>
+                  </Button>
+                </Dropdown>
+              )}
+            </Header>
+            <Content
+              style={{
+                margin: '0 16px',
+              }}>
+              <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
+              <div
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                  background: colorBgContainer,
+                }}>
+                <Routes>
+                  <Route path="/">
+                    <Route index element={<DashboardMain />} />
+                    <Route path="employees/">
+                      <Route index element={<Employees />} />
+                      <Route
+                        path=":id"
+                        element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
+                      />
+                    </Route>
+                    <Route path="clients" element={<Clients />} />
+                    <Route path="time-table/:datetable" element={<CalendarDay />} />
+                    <Route path="services" element={<ServicesManagement />} />
+                    <Route path="settings" element={<Settings />} />
+                    <Route path="profile" element={<PersonalInfoDashboard />} />
+                  </Route>
+                </Routes>
+              </div>
+            </Content>
+            <Footer
+              style={{
+                textAlign: 'center',
+              }}>
+              AQUALORD ©2023 Created by Authweb
+            </Footer>
+          </Layout>
+        </Layout>
+      </CalendarProvider>
+    </ConfigProvider>
   );
 };
 

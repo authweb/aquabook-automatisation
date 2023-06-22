@@ -43,27 +43,27 @@ const AuthProvider = ({ children }) => {
     navigate('/');
   };
 
-  //   const updateCarInfo = (carInfo) => {
-  //     setCarInfo(carInfo);
-  //     localStorage.setItem('carInfo', JSON.stringify(carInfo));
-  //   };
+  // const updateCarInfo = (carInfo) => {
+  //   setCarInfo(carInfo);
+  //   localStorage.setItem('carInfo', JSON.stringify(carInfo));
+  // };
 
-  //   const deleteCarInfo = async () => {
-  //     try {
-  //       await axios.delete('/api/deletecarinfo', { data: { clients_id: users.id } });
-  //       setIsCarInfoDeleted(true);
+  // const deleteCarInfo = async () => {
+  //   try {
+  //     await axios.delete('/api/deletecarinfo', { data: { clients_id: users.id } });
+  //     setIsCarInfoDeleted(true);
 
-  //       console.log('Car info deleted');
-  //     } catch (error) {
-  //       console.error('Error deleting car info:', error);
-  //     }
-  //   };
+  //     console.log('Car info deleted');
+  //   } catch (error) {
+  //     console.error('Error deleting car info:', error);
+  //   }
+  // };
 
-  //   useEffect(() => {
-  //     if (isCarInfoDeleted) {
-  //       setCarInfo(null);
-  //     }
-  //   }, [isCarInfoDeleted]);
+  // useEffect(() => {
+  //   if (isCarInfoDeleted) {
+  //     setCarInfo(null);
+  //   }
+  // }, [isCarInfoDeleted]);
 
   return (
     <AuthContext.Provider

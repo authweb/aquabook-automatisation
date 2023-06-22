@@ -15,6 +15,7 @@ export { default as ChangePassword } from './SettingsPersonalInfo/ChangePassword
 export { default as ChangeEmail } from './SettingsPersonalInfo/ChangeEmail';
 export { default as ChangePhoneNumber } from './SettingsPersonalInfo/ChangePhoneNumber';
 export { default as Settings } from './Settings/Settings';
-export { default as Calendar } from './Calendar/Calendar';
+export { default as CalendarDay } from './Calendar/Calendar';
+export { default as CalendarNavigator } from './Calendar/CalendarNavigator';
 export { default as DashboardMain } from './Dashboard/Dashboard';
 export { default as ServicesManagement } from './ServicesManagement/ServicesManagement';
