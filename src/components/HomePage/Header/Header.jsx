@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContexts';
+import { useAuth } from '../../../contexts/AuthContexts';
 
-import '../../scss/header.scss';
+import '../../../scss/header.scss';
+import Logo from '../../../assets/images/logo.svg';
 
 const Header = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -10,8 +11,13 @@ const Header = () => {
     logout();
   };
   return (
-    <header className="header">
+    <header>
       <nav className="nav">
+        <div className="logo">
+          <Link to="/">
+            <img src={Logo} alt="logo" />
+          </Link>
+        </div>
         <ul className="nav__list-first">
           <li className="nav__item">
             <Link to="/">Главная</Link>

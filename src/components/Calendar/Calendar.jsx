@@ -1,21 +1,39 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { DayPilot, DayPilotCalendar } from '@daypilot/daypilot-lite-react';
-import { Modal, Form, Input, Select, DatePicker, TimePicker } from 'antd';
-import InputMask from 'react-input-mask';
-import moment from 'moment';
+import { DayPilot, DayPilotCalendar } from 'daypilot-pro-react';
+import { Col, Row } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
+import ModalForm from './ModalForm';
 import { CalendarContext } from '../../contexts/CalendarContexts';
 import { useParams } from 'react-router-dom';
+import { CalendarNavigator } from '../../components';
+
+import '../../scss/calendar.scss';
 
 const CalendarDay = () => {
   const { datetable } = useParams();
-  const { selectedDate } = useContext(CalendarContext);
+  const { selectedDate, setSelectedDate } = useContext(CalendarContext);
   const [config, setConfig] = useState({
     viewType: 'Resources',
-    startDate: datetable || '2023-06-15',
+    startDate: datetable,
     columns: [],
     events: [],
+    businessBeginsHour: 9, // начало рабочего дня в 9 утра
+    businessEndsHour: 21, // конец рабочего дня в 9 вечера
+    timeHeaders: [
+      { groupBy: 'Day', format: 'dddd MMMM yyyy' },
+      { groupBy: 'Hour', format: 'h tt' },
+    ],
+    cellDuration: 30, // длительность ячейки в минутах
+    cellWidth: 30, // ширина ячейки в пикселях
+    eventHeight: 30, // высота события в пикселях
+    timeRangeSelectedHandling: 'Enabled',
   });
+  useEffect(() => {
+    if (datetable) {
+      setSelectedDate(new DayPilot.Date(datetable));
+    }
+  }, [datetable, setSelectedDate]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [clientName, setClientName] = useState('');
   const [clientsId] = useState('');
@@ -54,6 +72,22 @@ const CalendarDay = () => {
         }));
         setConfig((prevConfig) => ({ ...prevConfig, columns }));
       });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/appointments')
+      .then((response) => response.json())
+      .then((data) => {
+        const appointments = data.appointments.map((appointment) => ({
+          start: appointment.start,
+          end: appointment.end,
+          text: appointment.text,
+          resource: appointment.resource,
+          clients_id: appointment.clients_id,
+        }));
+        setConfig((prevConfig) => ({ ...prevConfig, events: appointments }));
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   const handleOk = async () => {
@@ -142,69 +176,60 @@ const CalendarDay = () => {
     }
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
   return (
-    <div>
-      <h1>Выбранная дата: {selectedDate.toString()}</h1>
-      <DayPilotCalendar
-        startDate={selectedDate}
-        events={events}
-        {...config}
-        onTimeRangeSelected={(args) => {
-          setEmployee(args.resource); // Запоминаем выбранного сотрудника
-          setIsModalVisible(true);
-        }}
-      />
-      <Modal open={isModalVisible} onCancel={handleCancel} onOk={handleOk}>
-        <Form>
-          <Form.Item label="Имя">
-            <Input value={clientName} onChange={(e) => setClientName(e.target.value)} />
-          </Form.Item>
-          <Form.Item label="Почта">
-            <Input value={email} onChange={(e) => setEmail(e.target.value)} />
-          </Form.Item>
-          <Form.Item label="Телефон">
-            <InputMask
-              mask="+7 999 999 99 99"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}>
-              {(inputProps) => <Input {...inputProps} />}
-            </InputMask>
-          </Form.Item>
-          <Form.Item label="Услуга">
-            <Select value={service} onChange={(value) => setService(value)}>
-              {categories.map((category) => (
-                <Select.OptGroup label={category.name} key={category.id}>
-                  {services[category.id] &&
-                    services[category.id].map((serviceItem) => (
-                      <Select.Option key={serviceItem.id} value={serviceItem.name}>
-                        {serviceItem.name}
-                      </Select.Option>
-                    ))}
-                </Select.OptGroup>
-              ))}
-            </Select>
-          </Form.Item>
-          <Form.Item label="Дата">
-            <DatePicker value={date} onChange={(value) => setDate(value)} />
-          </Form.Item>
-          <Form.Item label="Время записи">
-            <TimePicker.RangePicker
-              format="HH:mm"
-              minuteStep={15}
-              value={timeRange}
-              onChange={(value) => setTimeRange(value)}
-            />
-          </Form.Item>
-          <Form.Item label="Примечания">
-            <Input.TextArea value={notes} onChange={(e) => setNotes(e.target.value)} />
-          </Form.Item>
-        </Form>
-      </Modal>
-    </div>
+    <Row
+      gutter={{
+        xs: 8,
+        sm: 16,
+        md: 24,
+        lg: 32,
+      }}>
+      <Col span={19}>
+        {/* Остальной код календаря */}
+        <DayPilotCalendar
+          startDate={selectedDate}
+          events={events}
+          {...config}
+          onTimeRangeSelected={(args) => {
+            setEmployee(args.resource); // Запоминаем выбранного сотрудника
+            showModal();
+          }}
+        />
+        <ModalForm
+          visible={isModalVisible}
+          onCancel={handleCancel}
+          onOk={handleOk}
+          // Передайте необходимые значения и функции обратного вызова в ModalForm
+          clientName={clientName}
+          setClientName={setClientName}
+          email={email}
+          setEmail={setEmail}
+          phone={phone}
+          setPhone={setPhone}
+          service={service}
+          setService={setService}
+          categories={categories}
+          services={services}
+          date={date}
+          setDate={setDate}
+          timeRange={timeRange}
+          setTimeRange={setTimeRange}
+          notes={notes}
+          setNotes={setNotes}
+        />
+      </Col>
+      <Col span={5}>
+        <CalendarNavigator />
+      </Col>
+    </Row>
   );
 };
 

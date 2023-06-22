@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DayPilot, DayPilotNavigator } from '@daypilot/daypilot-lite-react';
+import { DayPilotNavigator } from 'daypilot-pro-react';
 import { CalendarContext } from '../../contexts/CalendarContexts';
 import { useNavigate } from 'react-router-dom';
 import '../../scss/homepage.scss';
@@ -14,8 +14,10 @@ const CalendarNavigator = () => {
       showMonths={1}
       selectionDay={selectedDate}
       onTimeRangeSelected={(args) => {
+        console.log('Выбранная дата:', args.day.toString());
         setSelectedDate(args.day);
-        navigate(`time-table/${args.day.toString('yyyy-MM-dd')}`);
+        console.log(args.day.toString('yyyy-MM-dd'));
+        navigate(`/dashboard/${args.day.toString('yyyy-MM-dd')}`);
       }}
     />
   );

@@ -1,5 +1,6 @@
 export { default as AppointmentForm } from './AppointmentForm/AppointmentForm';
-export { default as Header } from './Header/Header';
+export { default as Header } from './HomePage/Header/Header';
+export { default as Main } from './HomePage/Main/Main';
 export { default as HeaderUser } from './HeaderUser/HeaderUser';
 export { default as ProfileInfo } from './ProfileInfo/ProfileInfo';
 export { default as Clients } from './Clients/Clients';
@@ -19,3 +20,4 @@ export { default as CalendarDay } from './Calendar/Calendar';
 export { default as CalendarNavigator } from './Calendar/CalendarNavigator';
 export { default as DashboardMain } from './Dashboard/Dashboard';
 export { default as ServicesManagement } from './ServicesManagement/ServicesManagement';
+export { default as ModalForm } from './Calendar/ModalForm';

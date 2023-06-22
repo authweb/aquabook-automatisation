@@ -1,0 +1,50 @@
+/* Стили для темного фона */
+.dp-cell-wrap {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.dp-nav-main {
+  background-color: #34495e;
+}
+
+.dp-cell-selected {
+  background-color: #2980b9;
+}
+
+/* Стили для событий */
+.dp-event {
+  background-color: #3498db;
+  color: white;
+  border: 1px solid #2980b9;
+}
+
+.dp-event:hover {
+  background-color: #2980b9;
+  border: 1px solid #3498db;
+}
+
+/* Стили для ресурсов (если используются) */
+.dp-rowheader-col {
+  background-color: #2c3e50;
+  color: white;
+  border-bottom: 1px solid #34495e;
+}
+
+/* Стили для кнопок навигации */
+.dp-nav-button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+}
+
+.dp-nav-button:hover {
+  background-color: #34495e;
+}
+
+/* Стили для всплывающих окон (если используются) */
+.dp-popup {
+  background-color: #2c3e50;
+  color: white;
+  border: 1px solid #34495e;
+}

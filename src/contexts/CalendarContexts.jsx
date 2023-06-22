@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { DayPilot } from '@daypilot/daypilot-lite-react';
+import { DayPilot } from 'daypilot-pro-react';
 
 export const CalendarContext = createContext();
 

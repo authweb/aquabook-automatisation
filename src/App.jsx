@@ -20,13 +20,7 @@ const App = () => {
   console.log(users?.first_name);
   return (
     <div className="App">
-      <main className="App-main container">
-        {/* <Route path="profile/:clients_id">
-          <Route index element={<Profile />} />
-          <Route path="personal-info" element={<PersonalInfo />}>
-            <Route path="car-info" element={<CarInfoPage />} />
-          </Route>
-        </Route> */}
+      <main className="App-main container-fluid">
         <AuthProvider>
           <UserContext.Provider value={{ users, setUsers }}>
             <Routes>
@@ -34,7 +28,13 @@ const App = () => {
               <Route path="/appointment" element={<Appointment />} />
               <Route path="/auth" element={<AuthPage />} />
 
-              <Route path="dashboard/*" element={<Dashboard />}></Route>
+              <Route path="dashboard/*" element={<Dashboard />} />
+              {/* <Route path="profile/:clients_id">
+                <Route index element={<Profile />} />
+                <Route path="personal-info" element={<PersonalInfo />}>
+                  <Route path="car-info" element={<CarInfoPage />} />
+                </Route>
+              </Route> */}
             </Routes>
           </UserContext.Provider>
         </AuthProvider>

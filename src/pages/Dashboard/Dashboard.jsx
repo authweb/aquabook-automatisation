@@ -30,7 +30,7 @@ import {
 } from '../../components';
 import SubMenu from 'antd/es/menu/SubMenu';
 
-import Logo from '../../assets/images/Logo.png';
+import LogoMini from '../../assets/images/logomini.svg';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -128,21 +128,19 @@ const Dashboard = () => {
             minHeight: '100vh',
           }}>
           <Sider
-            width={'212px'}
             trigger={null}
             collapsible
-            collapsed={collapsed}
-            onCollapse={(value) => setCollapsed(value)}>
+            collapsed={true}
+            // onCollapse={(value) => setCollapsed(value)}
+          >
             {users ? (
               <Menu
-                style={{ width: '212px' }}
                 theme="dark"
                 mode="inline"
                 onClick={({ key }) => {
                   if (key === 'signout') {
                     navigate('/');
                   } else if (
-                    key === 'time-table' ||
                     key === 'services' ||
                     key === 'settings' ||
                     key === 'profile' ||
@@ -154,10 +152,18 @@ const Dashboard = () => {
                     navigate(`./employees/${key}`);
                   }
                 }}>
-                {/* <Link to="/dashboard">
-                  <img src={Logo} style={{ width: '100%' }} alt="AQUALORD" />
-                </Link> */}
-                <CalendarNavigator />
+                <Link to="/dashboard">
+                  <img
+                    src={LogoMini}
+                    style={{
+                      maxWidth: '80%',
+                      margin: '0 auto',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                    alt="AQUALORD"
+                  />
+                </Link>
                 <SubMenu
                   key="sub1"
                   title={
@@ -195,7 +201,7 @@ const Dashboard = () => {
             )}
           </Sider>
           <Layout>
-            <Header
+            {/* <Header
               style={{
                 padding: 0,
                 background: colorBgContainer,
@@ -217,7 +223,7 @@ const Dashboard = () => {
                   </Button>
                 </Dropdown>
               )}
-            </Header>
+            </Header> */}
             <Content
               style={{
                 margin: '0 16px',
@@ -225,7 +231,6 @@ const Dashboard = () => {
               <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
               <div
                 style={{
-                  padding: 24,
                   minHeight: 360,
                   background: colorBgContainer,
                 }}>
@@ -240,7 +245,7 @@ const Dashboard = () => {
                       />
                     </Route>
                     <Route path="clients" element={<Clients />} />
-                    <Route path="time-table/:datetable" element={<CalendarDay />} />
+                    <Route path=":datetable" element={<CalendarDay />} />
                     <Route path="services" element={<ServicesManagement />} />
                     <Route path="settings" element={<Settings />} />
                     <Route path="profile" element={<PersonalInfoDashboard />} />
