@@ -25,9 +25,9 @@ const PersonalInfo = () => {
           </div>
         )}
       </Link> */}
-      <div className="personalProfile-container">
+      <div className="personalSettings__container">
         <HeaderUser title={'AQUALORD Detailing'} />
-        <div className="personalProfile-section">
+        <div className="personalSettings__section">
           <div className="personalInfo__flex">
             <div className="personalInfo__flex__pcol">
               <p className="personalInfo__flex__pcol-p"></p>

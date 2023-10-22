@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { DayPilot, DayPilotCalendar } from 'daypilot-pro-react';
-import { Col, Row } from 'antd';
+import { DayPilot, DayPilotCalendar } from '@daypilot/daypilot-lite-react';
 import axios from 'axios';
 import moment from 'moment';
 import ModalForm from './ModalForm';
 import { CalendarContext } from '../../contexts/CalendarContexts';
 import { useParams } from 'react-router-dom';
-import { CalendarNavigator } from '../../components';
 
-import '../../scss/calendar.scss';
+import '../../scss/CalendarStyles.scss';
 
 const CalendarDay = () => {
   const { datetable } = useParams();
@@ -23,15 +21,17 @@ const CalendarDay = () => {
     viewType: 'Resources',
     startDate: selectedDate,
     columns: [],
+    heightSpec: 'BusinessHoursNoScroll',
+    theme: 'aquabook_theme',
     businessBeginsHour: 9,
     businessEndsHour: 21,
+    timeFormat: 'Clock24Hours',
+    showNonBusiness: false,
     timeHeaders: [
-      { groupBy: 'Day', format: 'dddd MM yyyy' },
+      { groupBy: 'Day', format: 'dddd MMMM yyyy' },
       { groupBy: 'Hour', format: 'h tt' },
     ],
-    cellDuration: 30,
-    cellWidth: 30,
-    eventHeight: 30,
+    cellDuration: 60,
     timeRangeSelectedHandling: 'Enabled',
   });
 
@@ -66,15 +66,18 @@ const CalendarDay = () => {
 
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState({});
-  useEffect(() => {
-    console.log('config updated:', config);
-  }, [config]);
 
   useEffect(() => {
-    async function fetchAppointmentsAndEmployees() {
+    async function fetchData() {
       try {
         const appointmentsResponse = await axios.get('http://localhost:3001/api/appointments');
         const employeesResponse = await axios.get('http://localhost:3001/api/employees');
+
+        const categoriesResponse = await axios.get('http://localhost:3001/api/service-categories');
+        const servicesResponse = await axios.get('http://localhost:3001/api/services');
+
+        const { servicesCategories } = categoriesResponse.data;
+        const { services } = servicesResponse.data;
 
         const appointments = appointmentsResponse.data.appointments.map((appointment) => ({
           start: appointment.start,
@@ -83,6 +86,9 @@ const CalendarDay = () => {
           resource: appointment.resource,
           clients_id: appointment.clients_id,
         }));
+
+        setCategories(servicesCategories);
+        setServices(services);
 
         const columns = employeesResponse.data.employees.map((employee) => ({
           name: employee.first_name,
@@ -99,7 +105,7 @@ const CalendarDay = () => {
       }
     }
 
-    fetchAppointmentsAndEmployees();
+    fetchData();
   }, []);
 
   const handleOk = async () => {
@@ -142,6 +148,7 @@ const CalendarDay = () => {
 
     setEvents((prevEvents) => {
       const updatedEvents = [...prevEvents, newEvent];
+      console.log('Updated events:', updatedEvents); // Добавьте эту строку
       setConfig((prevConfig) => ({ ...prevConfig, events: updatedEvents }));
       return updatedEvents;
     });
@@ -197,51 +204,40 @@ const CalendarDay = () => {
   };
 
   return (
-    <Row
-      gutter={{
-        xs: 8,
-        sm: 16,
-        md: 24,
-        lg: 32,
-      }}>
-      <Col span={19}>
-        {/* Остальной код календаря */}
-        <DayPilotCalendar
-          startDate={selectedDate}
-          events={events} // ensure this is correctly reflecting the updated state
-          {...config}
-          onTimeRangeSelected={(args) => {
-            setEmployee(args.resource); // Remembering the selected employee
-            showModal();
-          }}
-        />
-        <ModalForm
-          visible={isModalVisible}
-          onCancel={handleCancel}
-          onOk={handleOk}
-          // Передайте необходимые значения и функции обратного вызова в ModalForm
-          clientName={clientName}
-          setClientName={setClientName}
-          email={email}
-          setEmail={setEmail}
-          phone={phone}
-          setPhone={setPhone}
-          service={service}
-          setService={setService}
-          categories={categories}
-          services={services}
-          date={date}
-          setDate={setDate}
-          timeRange={timeRange}
-          setTimeRange={setTimeRange}
-          notes={notes}
-          setNotes={setNotes}
-        />
-      </Col>
-      <Col span={5}>
-        <CalendarNavigator />
-      </Col>
-    </Row>
+    <>
+      {/* Остальной код календаря */}
+      <DayPilotCalendar
+        startDate={selectedDate}
+        events={events} // ensure this is correctly reflecting the updated state
+        {...config}
+        onTimeRangeSelected={(args) => {
+          setEmployee(args.resource); // Remembering the selected employee
+          showModal();
+        }}
+      />
+      <ModalForm
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        onOk={handleOk}
+        // Передайте необходимые значения и функции обратного вызова в ModalForm
+        clientName={clientName}
+        setClientName={setClientName}
+        email={email}
+        setEmail={setEmail}
+        phone={phone}
+        setPhone={setPhone}
+        service={service}
+        setService={setService}
+        categories={categories}
+        services={services}
+        date={date}
+        setDate={setDate}
+        timeRange={timeRange}
+        setTimeRange={setTimeRange}
+        notes={notes}
+        setNotes={setNotes}
+      />
+    </>
   );
 };
 

@@ -6,8 +6,9 @@
   width: 100%;
   margin: 0 auto;
   color: $secondary-color;
+  margin-bottom: 10px;
 }
-.headerUser {
+.headerSettings {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,26 +42,28 @@
     }
   }
 }
-.personal-settings__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  .settings-section {
-    background-color: #f3f3f3;
+.personalSettings {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  &__section {
+    background-color: $card-color;
     border-radius: 20px;
     padding: 20px;
     height: 100%;
     margin-bottom: 10px;
   }
 }
-.profile-container {
+
+.settings-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between; // Добавлено свойство для выравнивания по центру
   height: 97.5vh;
-  .profile-section {
-    background-color: #f3f3f3;
+  .settings-section {
+    background-color: $bg-color;
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 10px;
@@ -68,60 +71,6 @@
       margin-top: auto;
       margin-bottom: 0;
       padding: 0;
-    }
-    .userAppointments {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      &__flex {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        &-icon {
-          color: $secondary-color;
-          font-size: $font-size-18;
-        }
-        &-h3 {
-          margin-left: 15px;
-          font-size: $font-size-18;
-          font-weight: $font-weight-medium;
-          color: $secondary-color;
-        }
-      }
-
-      &-arrow {
-        color: $secondary-color;
-        font-size: $font-size-22;
-      }
-    }
-    .logout {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-family: $font-family;
-      padding-left: 0;
-      border-width: 0;
-      border-style: none;
-      color: $logout-color;
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        cursor: pointer;
-      }
-      &-icon {
-        font-size: $font-size-24;
-      }
-      &-label {
-        font-size: $font-size-18;
-        font-weight: $font-weight-medium;
-        margin-left: 10px;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          cursor: pointer;
-        }
-      }
     }
   }
 }
@@ -160,7 +109,7 @@
   text-decoration: none;
   background-color: none;
   transition: background-color 0.3s ease-in-out;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   padding: 10px;
   margin: 2px 0 2px 0;
@@ -182,9 +131,8 @@
         margin: 0;
         &:first-child {
           font-size: $font-size-16;
-          font-weight: 600;
-          margin-bottom: 5px;
-          color: $secondary-color;
+          font-weight: 500;
+          color: $white-color;
         }
       }
     }
@@ -192,7 +140,13 @@
       display: flex;
       flex-wrap: wrap;
       font-size: $font-size-22;
-      color: $secondary-color;
+      color: $white-color;
     }
   }
+}
+
+.ant-card-head {
+  color: $secondary-color !important;
+}
+.app-wrapper {
 }

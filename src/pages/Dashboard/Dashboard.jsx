@@ -13,11 +13,12 @@ import {
 import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import { ConfigProvider, Breadcrumb, Layout, Menu, theme, Button, Space, Dropdown } from 'antd';
 import ruRU from 'antd/lib/locale/ru_RU';
-import '../../scss/homepage.scss';
+import '../../scss/dashboard.scss';
 import { handleFileUpload, handleDownload } from '../../contexts/excelHandlers';
 import { CalendarProvider } from '../../contexts/CalendarContexts';
 
 import {
+  CalendarNavigator,
   CalendarDay,
   Clients,
   EmployeesPersona,
@@ -27,6 +28,9 @@ import {
   Employees,
   ServicesManagement,
 } from '../../components';
+
+import { Company } from '../../components/Settings';
+
 import SubMenu from 'antd/es/menu/SubMenu';
 
 import LogoMini from '../../assets/images/logomini.svg';
@@ -61,14 +65,19 @@ const Dashboard = () => {
         console.error('There has been a problem with your fetch operation:', error);
       });
   }, []);
-
+  const [showSider, setShowSider] = useState(false);
   const location = useLocation();
   const pathSnippets = location.pathname.split('/').filter((i) => i);
+
+  useEffect(() => {
+    // Проверьте, соответствует ли текущий путь корневому пути или пути к странице календаря
+    setShowSider(location.pathname === '/' || location.pathname.startsWith('/datetable'));
+  }, [location.pathname]);
 
   const [breadcrumbNameMap, setBreadcrumbNameMap] = useState({
     '/dashboard': 'Панель управления',
     '/dashboard/employees': 'Сотрудники',
-    '/dashboard/time-table': 'Расписание',
+    '/dashboard/:datetable': 'Расписание',
     '/dashboard/services': 'Услуги',
     '/dashboard/profile': 'Профиль',
     '/dashboard/settings': 'Настройки',
@@ -87,7 +96,9 @@ const Dashboard = () => {
       if (breadcrumbName) {
         return (
           <Breadcrumb.Item key={url}>
-            <Link to={url}>{breadcrumbName}</Link>
+            <Link to={url} style={{ color: '#fff' }}>
+              {breadcrumbName}
+            </Link>
           </Breadcrumb.Item>
         );
       }
@@ -130,10 +141,7 @@ const Dashboard = () => {
   return (
     <ConfigProvider locale={ruRU}>
       <CalendarProvider>
-        <Layout
-          style={{
-            minHeight: '100vh',
-          }}>
+        <Layout style={{ height: '100vh' }}>
           <Sider trigger={null} collapsible collapsed={true}>
             {users ? (
               <Menu
@@ -163,7 +171,7 @@ const Dashboard = () => {
                       display: 'flex',
                       justifyContent: 'center',
                     }}
-                    alt="AQUALORD"
+                    alt="AquaBook Logo"
                   />
                 </Link>
                 <SubMenu
@@ -202,7 +210,7 @@ const Dashboard = () => {
               <div>Loading...</div>
             )}
           </Sider>
-          <Layout>
+          <Layout style={{ background: '#001529' }}>
             {/* <Header
               style={{
                 padding: 0,
@@ -234,7 +242,7 @@ const Dashboard = () => {
               <div
                 style={{
                   minHeight: 360,
-                  background: colorBgContainer,
+                  background: '#001529',
                 }}>
                 <Routes>
                   <Route path="/">
@@ -249,18 +257,35 @@ const Dashboard = () => {
                     <Route path="clients" element={<Clients />} />
                     <Route path=":datetable" element={<CalendarDay />} />
                     <Route path="services" element={<ServicesManagement />} />
-                    <Route path="settings" element={<Settings />} />
+                    <Route path="settings/">
+                      <Route index element={<Settings />} />
+                      <Route path="company" element={<Company />} />
+                      <Route path="location" element={<Company />} />
+                      <Route path="services" element={<Company />} />
+                      <Route path="general" element={<Company />} />
+                      <Route path="service-record" element={<Company />} />
+                      <Route path="employees" element={<Company />} />
+                    </Route>
+
                     <Route path="profile" element={<PersonalInfoDashboard />} />
                   </Route>
                 </Routes>
               </div>
             </Content>
-            <Footer
+            {showSider && (
+              <Sider width={212} style={{ background: '#001529' }}>
+                <CalendarNavigator />
+              </Sider>
+            )}
+
+            {/* <Footer
               style={{
                 textAlign: 'center',
+                background: '#001529',
+                color: '#fff',
               }}>
               AQUALORD ©2023 Created by Authweb
-            </Footer>
+            </Footer> */}
           </Layout>
         </Layout>
       </CalendarProvider>

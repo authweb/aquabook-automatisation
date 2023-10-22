@@ -2,7 +2,7 @@ import React from 'react';
 
 const Employees = () => {
   return (
-    <div>
+    <div className="bg-color">
       <h1>Привет, ЯМы сотрудники</h1>
     </div>
   );
