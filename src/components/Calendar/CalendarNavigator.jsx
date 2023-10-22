@@ -13,10 +13,10 @@ const CalendarNavigator = () => {
       selectMode={'day'}
       showMonths={1}
       selectionDay={selectedDate}
-      onTimeRangeSelected={(args) => {
+      onTimeRangeSelect={(args) => {
         console.log('Выбранная дата:', args.day.toString());
         setSelectedDate(args.day);
-        console.log(args.day.toString('yyyy-MM-dd'));
+        console.log('Updated selectedDate:', selectedDate);
         navigate(`/dashboard/${args.day.toString('yyyy-MM-dd')}`);
       }}
     />

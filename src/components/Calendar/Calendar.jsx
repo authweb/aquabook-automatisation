@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { DayPilot, DayPilotCalendar } from 'daypilot-pro-react';
 import { Col, Row } from 'antd';
 import axios from 'axios';
@@ -13,27 +13,45 @@ import '../../scss/calendar.scss';
 const CalendarDay = () => {
   const { datetable } = useParams();
   const { selectedDate, setSelectedDate } = useContext(CalendarContext);
+  const prevDatetableRef = useRef();
+
+  useEffect(() => {
+    prevDatetableRef.current = datetable;
+  }, [datetable]);
+
   const [config, setConfig] = useState({
     viewType: 'Resources',
-    startDate: datetable,
+    startDate: selectedDate,
     columns: [],
-    events: [],
-    businessBeginsHour: 9, // начало рабочего дня в 9 утра
-    businessEndsHour: 21, // конец рабочего дня в 9 вечера
+    businessBeginsHour: 9,
+    businessEndsHour: 21,
     timeHeaders: [
-      { groupBy: 'Day', format: 'dddd MMMM yyyy' },
+      { groupBy: 'Day', format: 'dddd MM yyyy' },
       { groupBy: 'Hour', format: 'h tt' },
     ],
-    cellDuration: 30, // длительность ячейки в минутах
-    cellWidth: 30, // ширина ячейки в пикселях
-    eventHeight: 30, // высота события в пикселях
+    cellDuration: 30,
+    cellWidth: 30,
+    eventHeight: 30,
     timeRangeSelectedHandling: 'Enabled',
   });
+
+  // Эффект для обработки изменения datetable
   useEffect(() => {
-    if (datetable) {
-      setSelectedDate(new DayPilot.Date(datetable));
+    const date = datetable ? new DayPilot.Date(datetable) : new DayPilot.Date();
+    if (datetable !== prevDatetableRef.current) {
+      setSelectedDate(date);
     }
-  }, [datetable, setSelectedDate]);
+  }, [datetable]);
+
+  // Эффект для обработки изменения selectedDate
+  useEffect(() => {
+    setConfig((prevConfig) => ({
+      ...prevConfig,
+      startDate: selectedDate,
+    }));
+  }, [selectedDate]);
+
+  const [events, setEvents] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [clientName, setClientName] = useState('');
   const [clientsId] = useState('');
@@ -42,52 +60,46 @@ const CalendarDay = () => {
   const [date, setDate] = useState(null);
   const [timeRange, setTimeRange] = useState([null, null]);
   const [notes, setNotes] = useState('');
-  const [events, setEvents] = useState([]);
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [last_name] = useState('');
 
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState({});
+  useEffect(() => {
+    console.log('config updated:', config);
+  }, [config]);
 
   useEffect(() => {
-    const fetchCategoriesAndServices = async () => {
-      const categoriesResponse = await axios.get('http://localhost:3001/api/service-categories');
-      const servicesResponse = await axios.get('http://localhost:3001/api/services');
+    async function fetchAppointmentsAndEmployees() {
+      try {
+        const appointmentsResponse = await axios.get('http://localhost:3001/api/appointments');
+        const employeesResponse = await axios.get('http://localhost:3001/api/employees');
 
-      setCategories(categoriesResponse.data.servicesCategories);
-      setServices(servicesResponse.data.services);
-    };
-
-    fetchCategoriesAndServices();
-  }, []);
-
-  useEffect(() => {
-    fetch('http://localhost:3001/api/employees')
-      .then((response) => response.json())
-      .then((data) => {
-        const columns = data.employees.map((employee) => ({
-          name: employee.first_name,
-          id: employee.id,
-        }));
-        setConfig((prevConfig) => ({ ...prevConfig, columns }));
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch('http://localhost:3001/api/appointments')
-      .then((response) => response.json())
-      .then((data) => {
-        const appointments = data.appointments.map((appointment) => ({
+        const appointments = appointmentsResponse.data.appointments.map((appointment) => ({
           start: appointment.start,
           end: appointment.end,
           text: appointment.text,
           resource: appointment.resource,
           clients_id: appointment.clients_id,
         }));
-        setConfig((prevConfig) => ({ ...prevConfig, events: appointments }));
-      })
-      .catch((error) => console.error(error));
+
+        const columns = employeesResponse.data.employees.map((employee) => ({
+          name: employee.first_name,
+          id: employee.id,
+        }));
+
+        setConfig((prevConfig) => ({
+          ...prevConfig,
+          columns,
+        }));
+        setEvents(appointments);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchAppointmentsAndEmployees();
   }, []);
 
   const handleOk = async () => {
@@ -196,10 +208,10 @@ const CalendarDay = () => {
         {/* Остальной код календаря */}
         <DayPilotCalendar
           startDate={selectedDate}
-          events={events}
+          events={events} // ensure this is correctly reflecting the updated state
           {...config}
           onTimeRangeSelected={(args) => {
-            setEmployee(args.resource); // Запоминаем выбранного сотрудника
+            setEmployee(args.resource); // Remembering the selected employee
             showModal();
           }}
         />

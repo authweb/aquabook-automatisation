@@ -26,7 +26,6 @@ import {
   DashboardMain,
   Employees,
   ServicesManagement,
-  CalendarNavigator,
 } from '../../components';
 import SubMenu from 'antd/es/menu/SubMenu';
 
@@ -35,7 +34,7 @@ import LogoMini from '../../assets/images/logomini.svg';
 const { Header, Content, Footer, Sider } = Layout;
 
 const Dashboard = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  //   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -49,9 +48,17 @@ const Dashboard = () => {
   const [employees, setEmployees] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3001/api/employees')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
       .then((data) => {
         setEmployees(data.employees);
+      })
+      .catch((error) => {
+        console.error('There has been a problem with your fetch operation:', error);
       });
   }, []);
 
@@ -127,12 +134,7 @@ const Dashboard = () => {
           style={{
             minHeight: '100vh',
           }}>
-          <Sider
-            trigger={null}
-            collapsible
-            collapsed={true}
-            // onCollapse={(value) => setCollapsed(value)}
-          >
+          <Sider trigger={null} collapsible collapsed={true}>
             {users ? (
               <Menu
                 theme="dark"
