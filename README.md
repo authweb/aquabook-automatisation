@@ -1,6 +1,6 @@
-# React Aqualord
+# React Aquabook Automatisation
 
-This is a React application named "Aqualord" built using React.js. It allows users to [ARM for employees of the carwash complex AQUALORD].
+This is a React application named "Aquabook Automatisation" built using React.js. It allows users to [ARM for employees of the carwash complex AquaBook].
 
 ## Getting Started
 
