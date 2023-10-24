@@ -9,36 +9,32 @@ const PersonalInfoDashboard = () => {
   const { users, setUsers } = useAuth();
 
   return (
-    <div className="app-wrapper">
-      <Row gutter={16}>
-        <Col span={9}>
-          <div className="personalProfile-container">
-            <HeaderUser title="Личная информация" />
-            <div className="personalProfile-section">
-              <div className="personalInfo__flex">
-                <div className="personalInfo__flex__pcol">
-                  <p className="personalInfo__flex__pcol-p">
-                    {users?.first_name} {users?.last_name}
-                  </p>
-                  <p className="personalInfo__flex__pcol-p">{users?.email}</p>
-                  <p className="personalInfo__flex__pcol-p">{users?.phone}</p>
-                </div>
+    <>
+      <div className="container ab-page__grid">
+        <div>
+          <HeaderUser title="Личная информация" />
+          <div className="personalProfile-section">
+            <div className="personalInfo__flex">
+              <div className="personalInfo__flex__pcol">
+                <p className="personalInfo__flex__pcol-p">
+                  {users?.first_name} {users?.last_name}
+                </p>
+                <p className="personalInfo__flex__pcol-p">{users?.email}</p>
+                <p className="personalInfo__flex__pcol-p">{users?.phone}</p>
               </div>
             </div>
           </div>
-        </Col>
-        <Col span={14}>
-          <div className="personalProfile-container">
-            <HeaderUser title="Настройки" />
-            <div className="personalProfile-section">
-              <ChangePassword />
-              <ChangePhoneNumber />
-              <ChangeEmail />
-            </div>
+        </div>
+        <div>
+          <HeaderUser title="Настройки" />
+          <div className="personalProfile-section">
+            <ChangePassword />
+            <ChangePhoneNumber />
+            <ChangeEmail />
           </div>
-        </Col>
-      </Row>
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 

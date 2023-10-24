@@ -46,9 +46,16 @@ $breakpoint-xl: 1200px;
   align-items: center;
 }
 
-.container-fluid {
-  max-width: 100%;
-  margin: 0 auto;
+.container .container-fluid .container-small {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  --container-padding: 1.5rem;
+}
+.container {
+  max-width: 1350px;
 }
 h1 {
   font-size: $font-size-22;

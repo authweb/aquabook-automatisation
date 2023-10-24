@@ -70,8 +70,9 @@ const Dashboard = () => {
   const pathSnippets = location.pathname.split('/').filter((i) => i);
 
   useEffect(() => {
-    // Проверьте, соответствует ли текущий путь корневому пути или пути к странице календаря
-    setShowSider(location.pathname === '/' || location.pathname.startsWith('/datetable'));
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    const isDatePath = datePattern.test(location.pathname.split('dashboard/')[1]);
+    setShowSider(location.pathname === '/dashboard' || isDatePath);
   }, [location.pathname]);
 
   const [breadcrumbNameMap, setBreadcrumbNameMap] = useState({
@@ -210,7 +211,47 @@ const Dashboard = () => {
               <div>Loading...</div>
             )}
           </Sider>
-          <Layout style={{ background: '#001529' }}>
+          <Layout className="ab-page" style={{ background: '#001529' }}>
+            <div div className="app-wrapper">
+              <Content
+                style={{
+                  margin: '0 16px',
+                }}>
+                <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
+                <div
+                  style={{
+                    minHeight: 360,
+                    background: '#001529',
+                  }}>
+                  <Routes>
+                    <Route path="/">
+                      <Route index element={<DashboardMain />} />
+                      <Route path="employees/">
+                        <Route index element={<Employees />} />
+                        <Route
+                          path=":id"
+                          element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
+                        />
+                      </Route>
+                      <Route path="clients" element={<Clients />} />
+                      <Route path=":datetable" element={<CalendarDay />} />
+                      <Route path="services" element={<ServicesManagement />} />
+                      <Route path="settings/">
+                        <Route index element={<Settings />} />
+                        <Route path="company" element={<Company />} />
+                        <Route path="location" element={<Company />} />
+                        <Route path="services" element={<Company />} />
+                        <Route path="general" element={<Company />} />
+                        <Route path="service-record" element={<Company />} />
+                        <Route path="employees" element={<Company />} />
+                      </Route>
+
+                      <Route path="profile" element={<PersonalInfoDashboard />} />
+                    </Route>
+                  </Routes>
+                </div>
+              </Content>
+            </div>
             {/* <Header
               style={{
                 padding: 0,
@@ -234,44 +275,7 @@ const Dashboard = () => {
                 </Dropdown>
               )}
             </Header> */}
-            <Content
-              style={{
-                margin: '0 16px',
-              }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
-              <div
-                style={{
-                  minHeight: 360,
-                  background: '#001529',
-                }}>
-                <Routes>
-                  <Route path="/">
-                    <Route index element={<DashboardMain />} />
-                    <Route path="employees/">
-                      <Route index element={<Employees />} />
-                      <Route
-                        path=":id"
-                        element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
-                      />
-                    </Route>
-                    <Route path="clients" element={<Clients />} />
-                    <Route path=":datetable" element={<CalendarDay />} />
-                    <Route path="services" element={<ServicesManagement />} />
-                    <Route path="settings/">
-                      <Route index element={<Settings />} />
-                      <Route path="company" element={<Company />} />
-                      <Route path="location" element={<Company />} />
-                      <Route path="services" element={<Company />} />
-                      <Route path="general" element={<Company />} />
-                      <Route path="service-record" element={<Company />} />
-                      <Route path="employees" element={<Company />} />
-                    </Route>
 
-                    <Route path="profile" element={<PersonalInfoDashboard />} />
-                  </Route>
-                </Routes>
-              </div>
-            </Content>
             {showSider && (
               <Sider width={212} style={{ background: '#001529' }}>
                 <CalendarNavigator />

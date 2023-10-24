@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './scss/styles.scss';
 import { AuthContext } from './contexts/AuthContexts';
 import {
   HomePage,
@@ -20,7 +19,7 @@ const App = () => {
   console.log(users?.first_name);
   return (
     <div className="App">
-      <main className="App-main container-fluid">
+      <main className="App-main">
         <AuthProvider>
           <UserContext.Provider value={{ users, setUsers }}>
             <Routes>
