@@ -9,7 +9,7 @@ const RedirectSettings = ({ to, labelText }) => {
   const { users } = useAuth();
 
   return (
-    <div className="app-wrapper">
+    <>
       <Link className="settingsInfo" to={to}>
         {users && (
           <div className="settingsInfo__flex">
@@ -22,7 +22,7 @@ const RedirectSettings = ({ to, labelText }) => {
           </div>
         )}
       </Link>
-    </div>
+    </>
   );
 };
 

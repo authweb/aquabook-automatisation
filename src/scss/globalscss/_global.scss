@@ -1,0 +1,294 @@
+@import './variables';
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  border: 0 solid rgba(20, 23, 29, 0.1);
+  border-color: $hr-color;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container .container-fluid .container-small {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.container {
+  max-width: 1350px;
+}
+
+.container-full .ab-card,
+.container-small .ab-card,
+.container .ab-card {
+  margin-left: calc($container-padding * -1);
+  margin-right: calc($container-padding * -1);
+  width: calc(100% + $container-padding * 2);
+  @media (min-width: 1024px) {
+    & {
+      margin-left: unset;
+      margin-right: unset;
+      width: 100%;
+    }
+  }
+}
+
+input {
+  color: #ffffff;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border-top-width: 1px;
+  margin: 1rem 0;
+  border-color: $hr-color;
+}
+
+h1 {
+  font-size: $font-size-22;
+}
+h2 {
+  font-size: $font-size-20;
+}
+h3 {
+  font-size: $font-size-18;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  cursor: inherit;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+  margin-bottom: 0;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+  margin-top: 0;
+}
+
+p {
+  font-size: $font-size-14;
+}
+
+a {
+  color: $white-color;
+  &:hover {
+    color: $white-color !important;
+  }
+}
+
+/*Flex Box*/
+.flex {
+  display: flex;
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &-grow {
+    flex-grow: 1;
+  }
+}
+.justify-end {
+  justify-content: flex-end;
+}
+/*/Flex Box*/
+
+/*Grid*/
+.grid {
+  display: grid;
+}
+.gap-4 {
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+/*/Grid*/
+
+.max-w-full {
+  max-width: 100%;
+}
+.relative {
+  position: relative;
+}
+.whitespace-no-wrap {
+  white-space: nowrap;
+}
+.leading-none {
+  line-height: 1;
+}
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.inline-block {
+  display: inline-block;
+}
+
+.rounded-lg {
+  border-radius: 0.375rem;
+}
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.w-10 {
+  width: 2.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
+}
+.pt-4 {
+  padding-top: 1rem;
+}
+.pt-5 {
+  padding-top: 1.25rem;
+}
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+.items-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-gray {
+  color: $gray-color;
+}
+
+.text-black {
+  color: $black-color;
+}
+
+.text-white {
+  color: $white-color;
+}
+
+.bg-color {
+  background-color: $bg-color;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+}
+
+.bg-secondary {
+  background-color: $secondary-color;
+}
+
+.bg-gray {
+  background-color: $gray-color;
+}
+
+.bg-black {
+  background-color: $black-color;
+}
+
+.bg-white {
+  background-color: $white-color;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+  font-size: $font-size-16;
+  font-weight: $font-weight-medium;
+  color: $white-color;
+  background-color: $primary-color;
+  border-radius: 25px;
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.btn-form {
+  display: inline-block;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+  font-size: $font-size-16;
+  font-weight: $font-weight-medium;
+  color: $white-color;
+  background-color: $primary-color;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}

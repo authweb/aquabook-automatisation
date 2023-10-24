@@ -1,11 +1,5 @@
-.app-wrapper {
-  font-family: $font-family;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  color: $secondary-color;
-  margin-bottom: 10px;
-}
+@import './globalscss/variables';
+
 .headerSettings {
   display: flex;
   justify-content: space-between;
@@ -105,7 +99,6 @@
   flex-direction: row;
   justify-content: space-between;
   text-decoration: none;
-  background-color: none;
   transition: background-color 0.3s ease-in-out;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
@@ -145,6 +138,4 @@
 
 .ant-card-head {
   color: $secondary-color !important;
-}
-.app-wrapper {
 }

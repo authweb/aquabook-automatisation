@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../../contexts/AuthContexts';
 import { Link } from 'react-router-dom';
 
-import { HeaderUser, NewAppointment, DeleteCarInfo } from '../../components';
+import { HeaderDashboard, NewAppointment, DeleteCarInfo } from '../../components';
 import '../../scss/profile.scss';
 
 const PersonalInfo = () => {
@@ -19,7 +19,7 @@ const PersonalInfo = () => {
   return (
     <div className="app-wrapper">
       <div className="personalProfile-container">
-        <HeaderUser title="Персональная информация" />
+        <HeaderDashboard title="Персональная информация" />
         <div className="personalProfile-section">
           <div className="personalInfo__flex">
             <div className="personalInfo__flex__pcol">

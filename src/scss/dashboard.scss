@@ -1,6 +1,388 @@
+@import './globalscss/variables';
 .custom {
   &_layout {
-    background: #001529;
+    background: $bg-color;
     height: 100vh;
   }
+}
+.ab-avatar {
+  display: inline-grid;
+  vertical-align: middle;
+  flex-shrink: 0;
+  overflow: hidden;
+  contain: content;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  width: 2.25rem;
+  width: $avatar-size, 2.25rem;
+  height: 2.25rem;
+  height: $avatar-size, 2.25rem;
+  min-width: 2.25rem;
+  min-width: $avatar-size, 2.25rem;
+  min-height: 2.25rem;
+  min-height: $avatar-size, 2.25rem;
+  border-radius: 2.25rem;
+  border-radius: $avatar-size, 2.25rem;
+  > * {
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 2.25rem;
+    border-radius: $avatar-size, 2.25rem;
+  }
+}
+
+.ab-sub-headline {
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.125;
+  display: inline-block;
+}
+
+.ab-slider {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  &__scroller {
+    display: flex;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    transition: transform 0.1s;
+    overflow: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    > * {
+      flex: 0 0 auto;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      user-drag: none;
+      scroll-snap-align: start;
+    }
+  }
+}
+
+.ab-button-nav {
+  background-color: #e7eaed;
+  background-color: $button-e-color;
+  color: #535557;
+  color: $white-color;
+  border: none;
+  border-radius: 1rem;
+  &__wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  &__toggler {
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.625rem;
+    line-height: 1.6;
+    border-radius: 0;
+    border-top: 2px solid $button-e-color;
+    border-bottom: 2px solid $button-e-color;
+    > span {
+      text-transform: uppercase;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: 100%;
+      border-radius: calc(1rem - 2px);
+      min-height: 2.75rem;
+    }
+    &:first-child {
+      border-radius: 1rem 0 0 1rem;
+      border-left: 2px solid $button-e-color;
+    }
+    &:last-child {
+      border-radius: 0 1rem 1rem 0;
+      border-right: 2px solid $button-e-color;
+    }
+    &_active {
+      > span {
+        background-color: #fff;
+        background-color: $button-e-color-hover;
+        color: #14171d;
+        color: $gray-color;
+        border-radius: 0.125rem;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.ab-button-nav__toggler,
+.ab-button-nav__toggler > span {
+  color: $gray-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ab-text-field .ab-search {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ab-text-field.has-icon .ab-text-field__element {
+  padding-right: 3rem;
+}
+.ab-search .ab-text-field__element,
+.ab-search input {
+  background: transparent;
+  padding-right: 3rem;
+  padding-left: 1rem;
+  height: 2.875rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+}
+
+.ab-search {
+  background: transparent;
+  padding-bottom: 0;
+  border-radius: 1rem;
+}
+.ab-text-field {
+  background-color: $primary-color;
+  &__element {
+    width: 100%;
+    border-radius: 0.125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    background-color: #fff;
+    background-color: $button-e-color;
+    color: #14171d;
+    color: $gray-color;
+    line-height: 1.5;
+    filter: none;
+  }
+  &__icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-right-radius: 0.125rem;
+    border-bottom-right-radius: 0.125rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.ab-icon {
+  color: inherit;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.ab-description {
+  font-size: 0.875rem;
+  color: $gray-text-color;
+}
+
+.ab-info {
+  word-break: break-word;
+  &__label {
+    margin-bottom: 0.25rem;
+    > .ab-description {
+      font-size: 0.75rem;
+      margin-bottom: 0;
+    }
+  }
+}
+.ab-button {
+  background: $button-e-color;
+  box-shadow: 0 0 0 1px $button-e-color inset;
+  color: $white-color;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 1rem;
+  border-radius: 0.625rem;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: $button-e-color-hover;
+  }
+  @media (min-width: 1024px) {
+    & {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+    }
+  }
+}
+.ab-page {
+  &-menu {
+    &-buttons {
+      display: flex;
+    }
+  }
+  &-headline {
+    &__container {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+    &__heading {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      margin: 0;
+    }
+    &__buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-left: auto;
+      font-size: 1rem;
+      min-width: 0;
+    }
+    &__back-wrapper {
+    }
+  }
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-family: $font-family;
+  min-height: 360px;
+  background-color: $bg-color;
+  &__wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    color: $white-color;
+    margin-bottom: 10px;
+  }
+  &__heading {
+    display: contents;
+  }
+  &__content {
+    min-height: 360px;
+    background-color: $bg-color;
+  }
+  &__grid {
+    display: grid;
+    grid-gap: 1rem;
+    gap: 1rem;
+  }
+  @media (min-width: 1024px) {
+    &__grid {
+      grid-template-columns: repeat(2, minmax(1rem, 1fr));
+      padding-top: 1.5rem;
+    }
+  }
+}
+
+.ab-island {
+  &__heading {
+    display: grid;
+    grid-template-columns: minmax(0, max-content) 1fr minmax(0, max-content);
+    grid-template-areas: 'icon title arrow' 'icon description description' 'options options options';
+    margin: calc($card-padding-y * -1) calc($card-padding-x * -1);
+    padding: $card-padding-y $card-padding-x;
+    @media (min-width: 692px) {
+      & {
+        grid-template-columns: minmax(min-content, max-content) 1fr minmax(min-content, max-content) minmax(
+            min-content,
+            max-content
+          );
+        grid-template-areas: 'icon title options arrow' 'icon description options arrow';
+      }
+    }
+  }
+  &__content {
+    &-wrap {
+      margin: 0 $card-padding-x * -1;
+    }
+  }
+  &__content,
+  &__footer {
+    padding: $card-padding-y $card-padding-x 0;
+  }
+  &__arrow {
+    &-wrap {
+      grid-area: arrow;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: #838587;
+      color: $gray-text-color;
+      max-height: $island-icon-height;
+      padding-left: 0.5rem;
+      @media (min-width: 692px) {
+        & {
+          align-self: stretch;
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    &-wrap {
+      grid-area: icon;
+      padding-right: 0.5rem;
+      max-width: calc($island-icon-height + 0.5rem);
+    }
+  }
+  &-avatar {
+    &__icon {
+      display: grid;
+      &-userpic {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        text-align: center;
+        grid-column: 1/-1;
+        grid-row: 1/-1;
+        transition: opacity 0.12s;
+      }
+    }
+    &__separator {
+      margin: $card-padding-y 0 0;
+    }
+  }
+  &__title {
+    grid-area: title;
+    &-wrap {
+      grid-area: title;
+      align-self: center;
+      min-width: 0;
+      &--middle {
+        grid-row: 1/-1;
+      }
+    }
+  }
+  &__description {
+    grid-area: description;
+    padding-top: 5px;
+    min-width: 0;
+    @media (min-width: 692px) {
+      & {
+        align-self: center;
+      }
+    }
+  }
+}
+
+.ab-card {
+  display: block;
+  min-width: 100%;
+  color: $white-color;
+  background-color: $card-color;
+  border-radius: 1.25rem;
+  padding: $card-padding-y $card-padding-x;
 }

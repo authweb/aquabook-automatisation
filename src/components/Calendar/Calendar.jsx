@@ -216,6 +216,7 @@ const CalendarDay = () => {
         }}
       />
       <ModalForm
+        title="Запись"
         visible={isModalVisible}
         onCancel={handleCancel}
         onOk={handleOk}

@@ -25,7 +25,7 @@ const ModalForm = ({
 }) => {
   return (
     <Modal visible={visible} onCancel={onCancel} onOk={onOk}>
-      <Form>
+      <Form style={{ padding: '30px' }}>
         <Form.Item label="Имя">
           <Input value={clientName} onChange={(e) => setClientName(e.target.value)} />
         </Form.Item>

@@ -6,22 +6,18 @@ const Settings = () => {
     <>
       <Space
         direction="vertical"
-        size="middle"
+        size="small"
+        rowGap="10"
         style={{
           display: 'flex',
         }}>
-        <Card title="Бизнес" color="#fff" size="small" style={{ background: '#001529' }}>
-          <div className="settings-section" style={{ color: '#fff' }}>
-            <RedirectSettings to="company" labelText="Компания" />
-            <RedirectSettings to="location" labelText="Локация" />
-            <RedirectSettings to="services" labelText="Услуги" />
-          </div>
-        </Card>
-        <Card title="Управление" size="small" style={{ background: '#001529' }}>
-          <RedirectSettings to="general" labelText="Общие" />
-          <RedirectSettings to="service-record" labelText="Запись" />
-          <RedirectSettings to="employees" labelText="Сотрудники" />
-        </Card>
+        <h3>Бизнес</h3>
+        <RedirectSettings to="company" labelText="Компания" />
+        <RedirectSettings to="services" labelText="Услуги" />
+        <h3>Управление</h3>
+        <RedirectSettings to="general" labelText="Общие" />
+        <RedirectSettings to="service-record" labelText="Запись" />
+        <RedirectSettings to="employees" labelText="Сотрудники" />
       </Space>
     </>
   );

@@ -23,6 +23,7 @@ const addClients = require('../addClients');
 
 //Категории услуг - услуги
 const getServices = require('../getServices');
+const getServiceId = require('../getServiceId');
 const getServicesCategories = require('../getServicesCategories');
 const addServices = require('../addServices');
 const addServicesCategories = require('../addServicesCategories');
@@ -47,6 +48,7 @@ router.get('/employees/:id', employee);
 router.get('/employees', employees);
 router.get('/clients', clients);
 router.get('/services', getServices);
+router.get('/services/:id', getServiceId);
 router.get('/service-categories', getServicesCategories);
 router.get('/appointments', getAppointments);
 

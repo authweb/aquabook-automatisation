@@ -1,0 +1,49 @@
+// colors
+$primary-color: #182935;
+$secondary-color: #ff7a00;
+$secondary-color-hover: rgba(255, 123, 0, 0.8);
+$bg-color: #001529;
+$card-color: #002950;
+$gray-color: #ece3e4;
+$gray-text-color: #8d8d8d;
+$black-color: #000000;
+$white-color: #ffffff;
+$logout-color: #ff5d1a;
+$logout-color-hover: #ff221a;
+$delete-color: #ff5d1a;
+$delete-color-hover: #ff221a;
+$update-color: #288d00;
+$update-color-hover: #35b900;
+$hr-color: rgb(0, 108, 209, 0.5);
+$button-e-color: #006cd180;
+$button-e-color-hover: rgba(0, 87, 168, 0.5);
+
+// fonts
+$font-family: 'Montserrat', sans-serif;
+$font-size-14: 14px;
+$font-size-16: 16px;
+$font-size-18: 18px;
+$font-size-20: 20px;
+$font-size-22: 22px;
+$font-size-24: 24px;
+$font-size-26: 26px;
+$font-size-28: 28px;
+$font-size-30: 30px;
+$font-size-32: 32px;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// breakpoints
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+$container-padding: 1.5rem;
+$avatar-size: 2.625rem;
+$island-icon-height: 2.625rem;
+$card-padding-y: 1.875rem;
+$card-padding-x: 1.875rem;

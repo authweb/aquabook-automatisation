@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContexts';
 import {
-  HeaderUser,
+  HeaderDashboard,
   ProfileInfo,
   ProfileLogout,
   NewAppointment,
@@ -25,7 +25,7 @@ const Profile = () => {
   return (
     <div className="app-wrapper">
       <div className="profile-container">
-        <HeaderUser title="Личный кабинет" />
+        <HeaderDashboard title="Личный кабинет" />
         {clients && (
           <>
             <div className="profile-section">

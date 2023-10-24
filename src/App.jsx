@@ -13,6 +13,8 @@ import {
 import { UserContext } from './contexts/UserContexts';
 import AuthProvider from './contexts/AuthContexts';
 
+import './scss/globalscss/_global.scss';
+
 const App = () => {
   const { users } = useContext(AuthContext);
   const [_, setUsers] = useState(null);

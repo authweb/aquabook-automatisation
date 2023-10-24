@@ -1,7 +1,8 @@
 export { default as AppointmentForm } from './AppointmentForm/AppointmentForm';
 export { default as Header } from './HomePage/Header/Header';
 export { default as Main } from './HomePage/Main/Main';
-export { default as HeaderUser } from './HeaderUser/HeaderUser';
+export { default as HeaderDashboard } from './Common/HeaderDashboard';
+export { default as CardAb } from './Common/CardAb';
 export { default as ProfileInfo } from './ProfileInfo/ProfileInfo';
 export { default as Clients } from './Clients/Clients';
 export { default as UserAppointment } from './UserAppointment/UserAppointment';
@@ -16,6 +17,7 @@ export { default as ChangePassword } from './SettingsPersonalInfo/ChangePassword
 export { default as ChangeEmail } from './SettingsPersonalInfo/ChangeEmail';
 export { default as ChangePhoneNumber } from './SettingsPersonalInfo/ChangePhoneNumber';
 export { default as Settings } from './Settings/Settings';
+
 export { default as CalendarDay } from './Calendar/Calendar';
 export { default as CalendarNavigator } from './Calendar/CalendarNavigator';
 export { default as DashboardMain } from './Dashboard/Dashboard';

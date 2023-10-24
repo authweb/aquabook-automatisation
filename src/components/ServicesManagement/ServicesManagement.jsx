@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Collapse, Table } from 'antd';
 
+import { HeaderDashboard } from '..';
+
 const { Panel } = Collapse;
 
 const ServicesManagement = () => {
@@ -34,13 +36,15 @@ const ServicesManagement = () => {
     },
     {
       title: 'Цена от',
-      dataIndex: 'price-from',
+      dataIndex: 'price_from',
       key: 'price-from',
+      width: '10%',
     },
     {
       title: 'Цена до',
-      dataIndex: 'price-to',
+      dataIndex: 'price_to',
       key: 'price-to',
+      width: '10%',
     },
   ];
 
@@ -49,15 +53,18 @@ const ServicesManagement = () => {
   }
 
   return (
-    <Collapse accordion>
-      {categories.map((category) => (
-        <Panel header={category.name} key={category.id}>
-          {services[category.id] && (
-            <Table dataSource={services[category.id]} columns={columns} rowKey="id" />
-          )}
-        </Panel>
-      ))}
-    </Collapse>
+    <>
+      <HeaderDashboard title="Попробовать поменять Collapse на Табы" />
+      <Collapse accordion>
+        {categories.map((category) => (
+          <Panel header={category.name} key={category.id}>
+            {services[category.id] && (
+              <Table dataSource={services[category.id]} columns={columns} rowKey="id" />
+            )}
+          </Panel>
+        ))}
+      </Collapse>
+    </>
   );
 };
 

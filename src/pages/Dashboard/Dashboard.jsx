@@ -9,7 +9,9 @@ import {
   PoweroffOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  CalendarOutlined,
 } from '@ant-design/icons';
+
 import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import { ConfigProvider, Breadcrumb, Layout, Menu, theme, Button, Space, Dropdown } from 'antd';
 import ruRU from 'antd/lib/locale/ru_RU';
@@ -29,7 +31,7 @@ import {
   ServicesManagement,
 } from '../../components';
 
-import { Company } from '../../components/Settings';
+import { Company, Services, ServicePage } from '../../components/Settings';
 
 import SubMenu from 'antd/es/menu/SubMenu';
 
@@ -114,6 +116,13 @@ const Dashboard = () => {
     }));
   };
 
+  const handleServiceData = (service) => {
+    setBreadcrumbNameMap((prev) => ({
+      ...prev,
+      [`/dashboard/services/${service.id}`]: `${service.name}`,
+    }));
+  };
+
   const breadcrumbItems = [<Breadcrumb.Item key="dashboard"></Breadcrumb.Item>].concat(
     extraBreadcrumbItems,
   );
@@ -140,7 +149,20 @@ const Dashboard = () => {
   };
 
   return (
-    <ConfigProvider locale={ruRU}>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorBgContainer: '#001529',
+          colorText: '#ffffff',
+          colorLink: '#ffffff',
+          fontFamily: `'Montserrat', 
+				sans-serif`,
+          colorBgElevated: '#002950',
+          boxShadow: 'none',
+          colorIcon: '#ffffff',
+        },
+      }}
+      locale={ruRU}>
       <CalendarProvider>
         <Layout style={{ height: '100vh' }}>
           <Sider trigger={null} collapsible collapsed={true}>
@@ -157,7 +179,9 @@ const Dashboard = () => {
                     key === 'profile' ||
                     key === 'clients'
                   ) {
-                    navigate(`./${key}`);
+                    navigate(`./${key}`); // Изменили относительный путь на абсолютный путь
+                  } else if (key === 'dashboard') {
+                    navigate('/dashboard'); // Добавили специальный случай для ключа 'dashboard'
                   } else {
                     // Предполагается, что все остальные ключи являются ID сотрудников
                     navigate(`./employees/${key}`);
@@ -175,6 +199,9 @@ const Dashboard = () => {
                     alt="AquaBook Logo"
                   />
                 </Link>
+                <Menu.Item key="dashboard" icon=<CalendarOutlined />>
+                  <Link to="/dashboard">Календарь</Link>
+                </Menu.Item>
                 <SubMenu
                   key="sub1"
                   title={
@@ -211,18 +238,15 @@ const Dashboard = () => {
               <div>Loading...</div>
             )}
           </Sider>
-          <Layout className="ab-page" style={{ background: '#001529' }}>
-            <div div className="app-wrapper">
+          <Layout className="ab-page">
+            <div className="ab-page__wrapper">
               <Content
                 style={{
                   margin: '0 16px',
                 }}>
                 <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
-                <div
-                  style={{
-                    minHeight: 360,
-                    background: '#001529',
-                  }}>
+
+                <div className="ab-page__content">
                   <Routes>
                     <Route path="/">
                       <Route index element={<DashboardMain />} />
@@ -239,8 +263,14 @@ const Dashboard = () => {
                       <Route path="settings/">
                         <Route index element={<Settings />} />
                         <Route path="company" element={<Company />} />
-                        <Route path="location" element={<Company />} />
-                        <Route path="services" element={<Company />} />
+                        <Route path="services/">
+                          <Route index element={<Services />} />
+                          <Route
+                            path=":id"
+                            element={<ServicePage onServiceData={handleServiceData} />}
+                          />
+                        </Route>
+
                         <Route path="general" element={<Company />} />
                         <Route path="service-record" element={<Company />} />
                         <Route path="employees" element={<Company />} />

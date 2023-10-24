@@ -1,0 +1,20 @@
+config = fixBabelImports('import', {
+    libraryName: 'antd',
+    libraryDirectory: 'es',
+    style: true,
+  })(config, env);
+
+  config = addLessLoader({
+    lessOptions: {
+      javascriptEnabled: true,
+      modifyVars: {
+        '@primary-color': '#002950',
+        '@info-color': '#002950',
+        '@success-color': '#ff221a',
+        '@error-color': '#ff7a00',
+        '@body-background': '#182935',
+        '@link-color': '#006cd180',
+        '@text-color-base': '#ffffff',
+        '@layout-body-background': '#182935',
+      },
+    },
