@@ -71,51 +71,53 @@ const Services = () => {
   return (
     <>
       <HeaderDashboard showBack title="Услуги" buttons="Создать услугу" to="add" />
-      <div className="container pt-6">
-        <div className="flex flex-wrap items-center">
-          <div className="mb-4 mr-4 max-w-full">
-            <div className="ab-slider ab-button-nav ab-button-nav__wrapper">
-              <span className="ab-slider__scroller">
-                <a href="#" className="ab-button-nav__toggler ab-button-nav__toggler_active">
-                  <span tabIndex={-1}>Активные</span>
-                </a>
-                <a href="#" className="ab-button-nav__toggler">
-                  <span tabIndex={-1}>Все</span>
-                </a>
-              </span>
-            </div>
-          </div>
-          <div className="mb-4 flex-grow flex justify-end">
-            <label
-              htmlFor="input-74"
-              className="flex ab-search w-full ab-text-field is-text has-icon">
-              <div className="relative w-full">
-                <input
-                  type="text"
-                  autoComplete="off"
-                  placeholder="Поиск"
-                  className="ab-text-field__element p-2"
-                  id="input-74"
-                />
-                <span className="ab-text-field__icon">
-                  <SearchOutlined className="ab-icon ab-search__icon-default h-full w-10 p-3 ab-icon--size-text" />
+      <div className="ab-page__content">
+        <div className="container pt-6">
+          <div className="flex flex-wrap items-center">
+            <div className="mb-4 mr-4 max-w-full">
+              <div className="ab-slider ab-button-nav ab-button-nav__wrapper">
+                <span className="ab-slider__scroller">
+                  <a href="#" className="ab-button-nav__toggler ab-button-nav__toggler_active">
+                    <span tabIndex={-1}>Активные</span>
+                  </a>
+                  <a href="#" className="ab-button-nav__toggler">
+                    <span tabIndex={-1}>Все</span>
+                  </a>
                 </span>
               </div>
-            </label>
+            </div>
+            <div className="mb-4 flex-grow flex justify-end">
+              <label
+                htmlFor="input-74"
+                className="flex ab-search w-full ab-text-field is-text has-icon">
+                <div className="relative w-full">
+                  <input
+                    type="text"
+                    autoComplete="off"
+                    placeholder="Поиск"
+                    className="ab-text-field__element p-2"
+                    id="input-74"
+                  />
+                  <span className="ab-text-field__icon">
+                    <SearchOutlined className="ab-icon ab-search__icon-default h-full w-10 p-3 ab-icon--size-text" />
+                  </span>
+                </div>
+              </label>
+            </div>
           </div>
+          <Table
+            className="ab-table"
+            dataSource={flatServices}
+            columns={columns}
+            rowKey="id"
+            onRow={(service) => ({
+              onClick: () => {
+                navigate(`${service.id}`);
+              },
+            })}
+            rowClassName={() => 'cursor-pointer'}
+          />
         </div>
-        <Table
-          className="ab-table"
-          dataSource={flatServices}
-          columns={columns}
-          rowKey="id"
-          onRow={(service) => ({
-            onClick: () => {
-              navigate(`${service.id}`);
-            },
-          })}
-          rowClassName={() => 'cursor-pointer'}
-        />
       </div>
     </>
   );

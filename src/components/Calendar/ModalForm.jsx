@@ -25,7 +25,15 @@ const ModalForm = ({
 }) => {
   return (
     <Modal visible={visible} onCancel={onCancel} onOk={onOk}>
-      <Form style={{ padding: '30px' }}>
+      <Form
+        labelCol={{
+          span: 6,
+        }}
+        wrapperCol={{
+          span: 18,
+        }}
+        layout="horizontal"
+        style={{ padding: '30px' }}>
         <Form.Item label="Имя">
           <Input value={clientName} onChange={(e) => setClientName(e.target.value)} />
         </Form.Item>

@@ -25,6 +25,7 @@ import {
   Clients,
   EmployeesPersona,
   PersonalInfoDashboard,
+  PersonalEdit,
   Settings,
   DashboardMain,
   Employees,
@@ -154,6 +155,7 @@ const Dashboard = () => {
         token: {
           colorBgContainer: '#001529',
           colorText: '#ffffff',
+          colorTextPlaceholder: '#ffffff',
           colorLink: '#ffffff',
           fontFamily: `'Montserrat', 
 				sans-serif`,
@@ -164,7 +166,7 @@ const Dashboard = () => {
       }}
       locale={ruRU}>
       <CalendarProvider>
-        <Layout style={{ height: '100vh' }}>
+        <Layout style={{ height: '100%' }}>
           <Sider trigger={null} collapsible collapsed={true}>
             {users ? (
               <Menu
@@ -246,40 +248,41 @@ const Dashboard = () => {
                 }}>
                 <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
 
-                <div className="ab-page__content">
-                  <Routes>
-                    <Route path="/">
-                      <Route index element={<DashboardMain />} />
-                      <Route path="employees/">
-                        <Route index element={<Employees />} />
+                <Routes>
+                  <Route path="/">
+                    <Route index element={<DashboardMain />} />
+                    <Route path="employees/">
+                      <Route index element={<Employees />} />
+                      <Route
+                        path=":id"
+                        element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
+                      />
+                    </Route>
+                    <Route path="clients" element={<Clients />} />
+                    <Route path=":datetable" element={<CalendarDay />} />
+                    <Route path="services" element={<ServicesManagement />} />
+                    <Route path="settings/">
+                      <Route index element={<Settings />} />
+                      <Route path="company" element={<Company />} />
+                      <Route path="services/">
+                        <Route index element={<Services />} />
                         <Route
                           path=":id"
-                          element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
+                          element={<ServicePage onServiceData={handleServiceData} />}
                         />
                       </Route>
-                      <Route path="clients" element={<Clients />} />
-                      <Route path=":datetable" element={<CalendarDay />} />
-                      <Route path="services" element={<ServicesManagement />} />
-                      <Route path="settings/">
-                        <Route index element={<Settings />} />
-                        <Route path="company" element={<Company />} />
-                        <Route path="services/">
-                          <Route index element={<Services />} />
-                          <Route
-                            path=":id"
-                            element={<ServicePage onServiceData={handleServiceData} />}
-                          />
-                        </Route>
 
-                        <Route path="general" element={<Company />} />
-                        <Route path="service-record" element={<Company />} />
-                        <Route path="employees" element={<Company />} />
-                      </Route>
-
-                      <Route path="profile" element={<PersonalInfoDashboard />} />
+                      <Route path="general" element={<Company />} />
+                      <Route path="service-record" element={<Company />} />
+                      <Route path="employees" element={<Company />} />
                     </Route>
-                  </Routes>
-                </div>
+
+                    <Route path="profile/">
+                      <Route index element={<PersonalInfoDashboard />} />
+                      <Route path="edit" element={<PersonalEdit />} />
+                    </Route>
+                  </Route>
+                </Routes>
               </Content>
             </div>
             {/* <Header

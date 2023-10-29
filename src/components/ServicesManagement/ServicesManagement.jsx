@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Collapse, Table } from 'antd';
+import { Tabs, Table } from 'antd';
 
 import { HeaderDashboard } from '..';
 
-const { Panel } = Collapse;
+const { TabPane } = Tabs;
 
 const ServicesManagement = () => {
   const [categories, setCategories] = useState([]);
@@ -28,6 +28,7 @@ const ServicesManagement = () => {
       title: 'Название услуги',
       dataIndex: 'name',
       key: 'name',
+      width: '20%',
     },
     {
       title: 'Описание',
@@ -55,15 +56,15 @@ const ServicesManagement = () => {
   return (
     <>
       <HeaderDashboard title="Попробовать поменять Collapse на Табы" />
-      <Collapse accordion>
+      <Tabs type="card" tabPosition="left">
         {categories.map((category) => (
-          <Panel header={category.name} key={category.id}>
+          <TabPane tab={category.name} key={category.id}>
             {services[category.id] && (
               <Table dataSource={services[category.id]} columns={columns} rowKey="id" />
             )}
-          </Panel>
+          </TabPane>
         ))}
-      </Collapse>
+      </Tabs>
     </>
   );
 };
