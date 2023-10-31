@@ -1,55 +1,19 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { DayPilot, DayPilotCalendar } from '@daypilot/daypilot-lite-react';
+import { DayPilot, DayPilotCalendar } from 'daypilot-pro-react';
 import axios from 'axios';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import ModalForm from './ModalForm';
 import { CalendarContext } from '../../contexts/CalendarContexts';
-import { useParams } from 'react-router-dom';
+import useDateHandler from '../../hooks/useDateHandler';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 import '../../scss/CalendarStyles.scss';
 
-const CalendarDay = () => {
-  const { datetable } = useParams();
+const CalendarDay = ({ todayParam, paramRangeStart }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { selectedDate, setSelectedDate } = useContext(CalendarContext);
-  const prevDatetableRef = useRef();
-
-  useEffect(() => {
-    prevDatetableRef.current = datetable;
-  }, [datetable]);
-
-  const [config, setConfig] = useState({
-    viewType: 'Resources',
-    startDate: selectedDate,
-    columns: [],
-    heightSpec: 'BusinessHoursNoScroll',
-    theme: 'aquabook_theme',
-    businessBeginsHour: 9,
-    businessEndsHour: 21,
-    timeFormat: 'Clock24Hours',
-    showNonBusiness: false,
-    timeHeaders: [
-      { groupBy: 'Day', format: 'dddd MMMM yyyy' },
-      { groupBy: 'Hour', format: 'h tt' },
-    ],
-    cellDuration: 60,
-    timeRangeSelectedHandling: 'Enabled',
-  });
-
-  // Эффект для обработки изменения datetable
-  useEffect(() => {
-    const date = datetable ? new DayPilot.Date(datetable) : new DayPilot.Date();
-    if (datetable !== prevDatetableRef.current) {
-      setSelectedDate(date);
-    }
-  }, [datetable]);
-
-  // Эффект для обработки изменения selectedDate
-  useEffect(() => {
-    setConfig((prevConfig) => ({
-      ...prevConfig,
-      startDate: selectedDate,
-    }));
-  }, [selectedDate]);
+  const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
 
   const [events, setEvents] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -57,8 +21,8 @@ const CalendarDay = () => {
   const [clientsId] = useState('');
   const [employee, setEmployee] = useState(null);
   const [service, setService] = useState('');
-  const [date, setDate] = useState(null);
-  const [timeRange, setTimeRange] = useState([null, null]);
+  const [date, setDate] = useState(dayjs());
+  const [timeRange, setTimeRange] = useState([dayjs().startOf('hour'), dayjs().endOf('hour')]);
   const [notes, setNotes] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -67,14 +31,40 @@ const CalendarDay = () => {
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState({});
 
+  // Эффект для обработки изменения selectedDate
+  useEffect(() => {
+    let formattedDate;
+    if (selectedDate instanceof dayjs) {
+      // проверка, является ли selectedDate объектом dayjs
+      formattedDate = selectedDate.format('YYYY-MM-DD');
+    } else {
+      formattedDate = dayjs(selectedDate).format('YYYY-MM-DD'); // преобразование в объект dayjs, если это необходимо
+    }
+
+    setConfig((prevConfig) => ({
+      ...prevConfig,
+      startDate: formattedDate,
+    }));
+  }, [selectedDate]);
+
+  useEffect(() => {
+    console.log('Date state updated:', date);
+  }, [date]);
+
+  useEffect(() => {
+    console.log('Time range state updated:', timeRange);
+  }, [timeRange]);
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const appointmentsResponse = await axios.get('http://localhost:3001/api/appointments');
-        const employeesResponse = await axios.get('http://localhost:3001/api/employees');
-
-        const categoriesResponse = await axios.get('http://localhost:3001/api/service-categories');
-        const servicesResponse = await axios.get('http://localhost:3001/api/services');
+        const [appointmentsResponse, employeesResponse, categoriesResponse, servicesResponse] =
+          await Promise.all([
+            axios.get('http://localhost:3001/api/appointments'),
+            axios.get('http://localhost:3001/api/employees'),
+            axios.get('http://localhost:3001/api/service-categories'),
+            axios.get('http://localhost:3001/api/services'),
+          ]);
 
         const { servicesCategories } = categoriesResponse.data;
         const { services } = servicesResponse.data;
@@ -108,26 +98,68 @@ const CalendarDay = () => {
     fetchData();
   }, []);
 
+  const [config, setConfig] = useState({
+    viewType: 'Resources',
+    startDate: (today ? dayjs(today) : selectedDate ? dayjs(selectedDate) : dayjs()).format(
+      'YYYY-MM-DD',
+    ),
+    columns: [],
+    heightSpec: 'BusinessHoursNoScroll',
+    theme: 'eb-calendar_',
+    businessBeginsHour: 9,
+    businessEndsHour: 21,
+    timeFormat: 'Clock24Hours',
+    showNonBusiness: false,
+    timeHeaders: [
+      { groupBy: 'Day', format: 'dddd MMMM yyyy' },
+      { groupBy: 'Hour', format: 'h tt' },
+    ],
+    cellDuration: 15,
+    timeRangeSelectedHandling: 'Enabled',
+  });
+
+  const addAppointment = async (newEvent) => {
+    try {
+      const response = await axios.post('http://localhost:3001/api/appointments', newEvent);
+      console.log('Server response', response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addClient = async (clientData) => {
+    try {
+      const response = await axios.post('http://localhost:3001/api/clients', clientData);
+      return response.data.id;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleOk = async () => {
     console.log('handleOk is called');
-    const now = DayPilot.Date.today();
-    const defaultStart = now.addHours(new Date().getHours()).addMinutes(new Date().getMinutes());
-    const defaultEnd = defaultStart.addHours(1);
+    const now = dayjs();
+    const defaultStart = now
+      .add(new Date().getHours(), 'hour')
+      .add(new Date().getMinutes(), 'minute');
+    const defaultEnd = defaultStart.add(2, 'hour');
 
     let start;
     let end;
 
-    if (timeRange[0] && timeRange[1] && date && moment(date, 'YYYY-MM-DD', true).isValid()) {
-      start = new DayPilot.Date(date)
-        .addHours(timeRange[0].get('hour'))
-        .addMinutes(timeRange[0].get('minute'));
-      end = new DayPilot.Date(date)
-        .addHours(timeRange[1].get('hour'))
-        .addMinutes(timeRange[1].get('minute'));
+    if (
+      date &&
+      date.isValid() &&
+      timeRange[0] &&
+      timeRange[0].isValid() &&
+      timeRange[1] &&
+      timeRange[1].isValid()
+    ) {
+      start = date.format('YYYY-MM-DD') + ' ' + timeRange[0].format('HH:mm:ss');
+      end = date.format('YYYY-MM-DD') + ' ' + timeRange[1].format('HH:mm:ss');
     } else {
-      // Обработка случая, когда время начала и/или окончания не выбрано
-      start = defaultStart;
-      end = defaultEnd;
+      start = defaultStart.format('YYYY-MM-DD HH:mm:ss');
+      end = defaultEnd.format('YYYY-MM-DD HH:mm:ss');
     }
 
     const newEvent = {
@@ -144,16 +176,10 @@ const CalendarDay = () => {
 
     newEvent.text = `${newEvent.clientName} ${newEvent.service} ${newEvent.phone} ${newEvent.email}`;
 
-    console.log('newEvent', newEvent);
-
     setEvents((prevEvents) => {
       const updatedEvents = [...prevEvents, newEvent];
-      console.log('Updated events:', updatedEvents); // Добавьте эту строку
-      setConfig((prevConfig) => ({ ...prevConfig, events: updatedEvents }));
       return updatedEvents;
     });
-
-    console.log('events after update', events);
 
     setClientName('');
     setService('');
@@ -162,32 +188,20 @@ const CalendarDay = () => {
     setNotes('');
     setIsModalVisible(false);
 
-    const addAppointment = async (newEvent) => {
-      try {
-        const response = await axios.post('http://localhost:3001/api/appointments', newEvent);
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     try {
       const response = await axios.get(
         `http://localhost:3001/api/clients?phone=${phone}&email=${email}`,
       );
       if (response.data.length > 0) {
-        // Клиент уже существует, добавляем новую запись
         newEvent.clients_id = response.data[0].id;
         await addAppointment(newEvent);
       } else {
-        // Клиента не существует, добавляем нового клиента и затем новую запись
-        const clientResponse = await axios.post('http://localhost:3001/api/clients', {
+        newEvent.clients_id = await addClient({
           first_name: clientName,
           last_name: last_name,
           phone: phone,
           email: email,
         });
-        newEvent.clients_id = clientResponse.data.id;
         await addAppointment(newEvent);
       }
     } catch (error) {
@@ -207,12 +221,18 @@ const CalendarDay = () => {
     <>
       {/* Остальной код календаря */}
       <DayPilotCalendar
-        startDate={selectedDate}
+        className="eb-calendar__columns"
+        startDate={
+          selectedDate instanceof dayjs
+            ? selectedDate.format('YYYY-MM-DD')
+            : dayjs(selectedDate).format('YYYY-MM-DD')
+        }
         events={events} // ensure this is correctly reflecting the updated state
         {...config}
         onTimeRangeSelected={(args) => {
+          console.log(args);
           setEmployee(args.resource); // Remembering the selected employee
-          showModal();
+          navigate(`${location.pathname}/add${location.search}`);
         }}
       />
       <ModalForm

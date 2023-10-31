@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuth } from '../../contexts/AuthContexts';
-
 import { HeaderDashboard, CardAb } from '../../components';
 
 import imageUser from '../../assets/images/soon.png';

@@ -48,3 +48,22 @@ $island-icon-height: 2.625rem;
 $island-icon-height-media: 60px;
 $card-padding-y: 1.875rem;
 $card-padding-x: 1.875rem;
+
+$flow-min-gap: 0.25rem;
+$flow-gap-scale: 4;
+$flow-gap: calc($flow-gap-scale * $flow-min-gap);
+
+$page-buttons-bottom: 5rem;
+
+$calendar-cell-height: 24px;
+$calendar-cell-width: 8rem;
+$calendar-padding: 2rem;
+$calendar-column-height: 1200px;
+$calendar-hour-height: 96px;
+$calendar-time-width: 3.5rem;
+$calendar-safe-offest-top: env(safe-area-inset-top, 0px);
+$calendar-title-height: 4.5rem;
+$calendar-header-height: calc(3rem + $calendar-safe-offest-top);
+$header-padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+$header-padding-horizontal: 1.5rem;
+$header-padding-bottom: 1.5rem;

@@ -1,6 +1,6 @@
 {
   "name": "aquabook-automatisation",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "dependencies": {
     "@daypilot/daypilot-lite-react": "^3.15.0",
@@ -10,6 +10,7 @@
     "antd": "^5.6.1",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
+    "classnames": "^2.3.2",
     "core-js": "^3.30.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -32,6 +33,7 @@
     "react-input-mask": "^2.0.4",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
+    "reset-css": "^5.0.2",
     "sass-resources-loader": "^2.2.5",
     "web-vitals": "^2.1.4",
     "webpack": "^5.82.0",
@@ -88,5 +90,25 @@
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0",
     "webpack-node-externals": "^3.0.0"
-  }
+  },
+  "description": "This is a React application named \"Aquabook Automatisation\" built using React.js. It allows users to [ARM for employees of the carwash complex AquaBook].",
+  "main": "config-overrides.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/authweb/aquabook-automatisation.git"
+  },
+  "keywords": [
+    "aquabook",
+    "automatisation",
+    "react",
+    "carwash",
+    "js",
+    "s"
+  ],
+  "author": "Valery @Authweb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/authweb/aquabook-automatisation/issues"
+  },
+  "homepage": "https://github.com/authweb/aquabook-automatisation#readme"
 }

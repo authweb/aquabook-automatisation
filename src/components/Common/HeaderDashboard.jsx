@@ -3,7 +3,7 @@ import { CaretLeftOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContexts';
 
-const HeaderUser = ({ showBack, title, titleProfile, buttons, to, containerSmall }) => {
+const HeaderDashboard = ({ showBack, title, titleProfile, buttons, to, containerSmall }) => {
   const navigate = useNavigate();
   const { users, setUsers } = useAuth();
   return (
@@ -12,7 +12,7 @@ const HeaderUser = ({ showBack, title, titleProfile, buttons, to, containerSmall
         {showBack && (
           <div className="ab-page-headline__back-wrapper">
             <span
-              className="ab-button w-10 h-10 ab-page-headline__back cursor-pointer"
+              className="ab-button w-10 h-10 ab-page-headline__back ab-button_md color-mono theme-solid"
               onClick={() => navigate(-1)}>
               <span className="ab-button__overlay"></span>
               <span className="ab-button__content ab-button__content_md px-2">
@@ -29,19 +29,25 @@ const HeaderUser = ({ showBack, title, titleProfile, buttons, to, containerSmall
           }>
           {titleProfile && (
             <h1 className="ab-headline ab-page-headline__heading">
-              {users.first_name} {users.last_name}
+              {users?.first_name} {users?.last_name}
             </h1>
           )}
           {title && <h1 className="ab-headline ab-page-headline__heading">{title}</h1>}
           <div className="ab-page-headline__buttons">
             <div className="ab-page-menu-button">
-              {to && (
-                <Link to={to} className="ab-button">
-                  <span className="ab-button__content">
-                    <span className="ab-button__text">{buttons}</span>
-                  </span>
-                </Link>
-              )}
+              <div className="ab-flow ab-page-menu-buttons__expanded-btns">
+                <div className="ab-flow__wrap justify-end">
+                  <div className="ab-flow__child">
+                    {to && (
+                      <Link to={to} className="ab-button ab-button_md color-default theme-ghost">
+                        <span className="ab-button__content">
+                          <span className="ab-button__text">{buttons}</span>
+                        </span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -54,4 +60,4 @@ const HeaderUser = ({ showBack, title, titleProfile, buttons, to, containerSmall
   );
 };
 
-export default HeaderUser;
+export default HeaderDashboard;

@@ -1,24 +1,36 @@
 import React, { useContext } from 'react';
-import { DayPilotNavigator } from '@daypilot/daypilot-lite-react';
+import { DayPilotNavigator } from 'daypilot-pro-react';
 import { CalendarContext } from '../../contexts/CalendarContexts';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import dayjs from 'dayjs'; // убедитесь, что импортировали dayjs
 import '../../scss/CalendarStyles.scss';
 
 const CalendarNavigator = () => {
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
   const { selectedDate, setSelectedDate } = useContext(CalendarContext);
+
+  const handleDateSelection = (date) => {
+    const formattedDate = dayjs(date).format('YYYY-MM-DD');
+    const rangeStart = dayjs(date).add(1, 'day').format('YYYY-MM-DD');
+    navigate(`/dashboard/calendar?today=${formattedDate}&range_start=${rangeStart}`);
+  };
 
   return (
     <DayPilotNavigator
-      theme={'aquabook_daypicker'}
+      theme={'eb-calendar_'}
       selectMode={'day'}
       showMonths={1}
       selectionDay={selectedDate}
+      autoFocusOnClick={true}
       onTimeRangeSelect={(args) => {
-        console.log('Выбранная дата:', args.day.toString());
+        const formattedDate = dayjs(args.day.value).format('YYYY-MM-DD');
+        console.log('Выбранная дата:', formattedDate);
         setSelectedDate(args.day);
         console.log('Updated selectedDate:', selectedDate);
-        navigate(`/dashboard/${args.day.toString('yyyy-MM-dd')}`);
+        const today = searchParams.get('today');
+        navigate(`/dashboard/calendar?today=${today}&range_start=${formattedDate}`);
       }}
     />
   );

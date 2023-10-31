@@ -1,4 +1,25 @@
 @import './variables';
+@import 'reset-css';
+
+:root {
+  --header-padding-bottom: 0.5rem;
+  --header-padding-top: calc(env(safe-area-inset-top, 0px) + var(--header-padding-bottom, 0.5rem));
+  --header-padding-horizontal: var(--container-padding, 1.5rem);
+  --header-padding: var(--header-padding-top) var(--header-padding-horizontal)
+    var(--header-padding-bottom);
+  --header-height: calc(env(safe-area-inset-top, 0px) + 4rem);
+  @media (min-width: 1024px) {
+    & {
+      --header-padding-bottom: 1.5rem;
+      --header-padding-top: calc(
+        env(safe-area-inset-top, 0px) + var(--header-padding-bottom, 1.5rem)
+      );
+      --header-padding: var(--header-padding-top) var(--header-padding-horizontal)
+        var(--header-padding-bottom);
+      --header-height: calc(env(safe-area-inset-top, 0px) + 5.5rem);
+    }
+  }
+}
 
 *,
 ::after,
@@ -6,6 +27,27 @@
   box-sizing: border-box;
   border: 0 solid rgba(20, 23, 29, 0.1);
   border-color: $hr-color;
+}
+
+#__layout,
+#root,
+body,
+html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#__layout,
+#__layout > *,
+#root body {
+  flex-grow: 1;
+}
+
+.ab-layout {
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -49,8 +91,27 @@ body {
   }
 }
 
+@media (min-width: 692px) {
+  .md\:hidden {
+    display: none;
+  }
+}
+
 input {
   color: #ffffff;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  text-align: inherit;
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+  background-color: transparent;
+  background-image: none;
 }
 
 hr {
@@ -302,6 +363,9 @@ a {
 
 .ant-btn-primary {
   box-shadow: none;
+}
+.eb-calendar-page__aside .ant-layout-sider-children {
+  height: unset;
 }
 
 .btn {

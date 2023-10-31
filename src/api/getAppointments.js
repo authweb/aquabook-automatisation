@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 const db = require('../config/dbConnect');
 
 router.get('/appointments', async (_, res) => {
@@ -14,8 +15,8 @@ router.get('/appointments', async (_, res) => {
       message: 'Appointments fetched successfully',
       appointments: appointments.map((appointment) => ({
         id: appointment.id,
-        start: appointment.start,
-        end: appointment.end,
+        start: moment(appointment.start).format('YYYY-MM-DD HH:mm:ss'),
+        end: moment(appointment.end).format('YYYY-MM-DD HH:mm:ss'),
         text: appointment.text,
         resource: appointment.resource,
         clients_id: appointment.clients_id,

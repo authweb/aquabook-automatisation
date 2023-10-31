@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContexts';
+import React, { useState, useEffect, useReducer } from 'react';
+import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
+
+import { initialState, reducer } from '../../reducers/reduser';
+import dayjs from 'dayjs';
 import {
   UserOutlined,
   SettingOutlined,
@@ -7,19 +10,22 @@ import {
   IdcardOutlined,
   BarsOutlined,
   PoweroffOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   CalendarOutlined,
 } from '@ant-design/icons';
+import { ConfigProvider, Layout, Menu, theme, Button, Space, Dropdown } from 'antd';
+import SubMenu from 'antd/es/menu/SubMenu';
 
-import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
-import { ConfigProvider, Breadcrumb, Layout, Menu, theme, Button, Space, Dropdown } from 'antd';
+import useEmployeeData from '../../hooks/useEmployeeData';
+import useDateHandler from '../../hooks/useDateHandler';
+
 import ruRU from 'antd/lib/locale/ru_RU';
-import '../../scss/dashboard.scss';
+
+import { useAuth } from '../../contexts/AuthContexts';
 import { handleFileUpload, handleDownload } from '../../contexts/excelHandlers';
 import { CalendarProvider } from '../../contexts/CalendarContexts';
 
 import {
+  AddAppointments,
   CalendarNavigator,
   CalendarDay,
   Clients,
@@ -30,13 +36,12 @@ import {
   DashboardMain,
   Employees,
   ServicesManagement,
+  Breadcrumbs,
 } from '../../components';
-
 import { Company, Services, ServicePage } from '../../components/Settings';
 
-import SubMenu from 'antd/es/menu/SubMenu';
-
 import LogoMini from '../../assets/images/logomini.svg';
+import '../../scss/dashboard.scss';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -46,37 +51,92 @@ const Dashboard = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [showSider, setShowSider] = useState(false);
+  const [showAddAppointments, setShowAddAppointments] = useState('');
   const { users, logout } = useAuth();
+
+  const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
+  const { employees, error } = useEmployeeData();
+  const [stats, dispatch] = useReducer(reducer, initialState);
+
+  console.log('location.search:', location.search);
+  console.log('stats.today:', stats.today);
+  console.log('stats.rangeStart:', stats.rangeStart);
+
+  useEffect(() => {
+    if (
+      location.pathname === '/dashboard/calendar/add' &&
+      location.search === `?today=${stats.today}&range_start=${stats.rangeStart}`
+    ) {
+      setShowAddAppointments(true);
+    } else {
+      setShowAddAppointments(false);
+    }
+  }, [location.pathname, location.search, stats.today, stats.rangeStart]);
+
+  console.log('Страница записи:', showAddAppointments);
+
+  //   useEffect(() => {
+  //     console.log('Stats:', stats);
+  //     if (stats.today && stats.rangeStart) {
+  //       // Добавьте эту проверку
+  //       navigate(`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`);
+  //     }
+  //   }, [stats, navigate]);
+
+  useEffect(() => {
+    const newDate = dayjs().format('YYYY-MM-DD');
+    if (stats.rangeStart !== newDate) {
+      console.log('Setting dates:', newDate, stats.rangeStart);
+      dispatch({ type: 'SET_TODAY', payload: newDate });
+      dispatch({ type: 'SET_RANGE_START', payload: newDate });
+    }
+  }, [dispatch, stats.rangeStart]);
+
+  const pathSnippets = (location.pathname + location.search).split('/').filter((i) => i);
 
   const handleLogout = () => {
     logout();
   };
   let { id } = useParams();
-  const [employees, setEmployees] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:3001/api/employees')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setEmployees(data.employees);
-      })
-      .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error);
-      });
-  }, []);
-  const [showSider, setShowSider] = useState(false);
-  const location = useLocation();
-  const pathSnippets = location.pathname.split('/').filter((i) => i);
+
+  //   const currentUser = users.find((user) => user.id === id);
 
   useEffect(() => {
-    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-    const isDatePath = datePattern.test(location.pathname.split('dashboard/')[1]);
-    setShowSider(location.pathname === '/dashboard' || isDatePath);
-  }, [location.pathname]);
+    // Определение классов для layout и wrapper
+    let newLayoutClassName = 'ab-page'; // значение по умолчанию
+    let newWrapperClassName = 'ab-page__wrapper'; // значение по умолчанию
+
+    console.log('today:', today);
+    console.log('rangeStart:', rangeStart);
+
+    const isValidToday = today ? dayjs(today, 'YYYY-MM-DD').isValid() : false;
+    const isValidRangeStart = rangeStart ? dayjs(rangeStart, 'YYYY-MM-DD').isValid() : false;
+
+    console.log(isValidToday, isValidRangeStart);
+
+    const isDateParamsValid = isValidToday && isValidRangeStart;
+
+    console.log('location.search:', location.search);
+
+    console.log(location.pathname, location.search, isDateParamsValid);
+
+    if (location.pathname === '/dashboard' || isDateParamsValid) {
+      newLayoutClassName = 'eb-calendar-page'; // изменить класс, если маршрут соответствует
+      newWrapperClassName = 'eb-calendar eb-calendar-page__calendar'; // изменить класс, если маршрут соответствует
+    }
+
+    setLayoutClassName(newLayoutClassName);
+    setWrapperClassName(newWrapperClassName);
+
+    setShowSider(location.pathname === '/dashboard' || isDateParamsValid);
+  }, [location.pathname, location.search, rangeStart, today]); // Обратите внимание, что теперь зависимость включает location.search
+
+  // Предполагается, что у вас есть соответствующие состояния для хранения className:
+  const [layoutClassName, setLayoutClassName] = useState('ab-page');
+  const [wrapperClassName, setWrapperClassName] = useState('ab-page__wrapper');
 
   const [breadcrumbNameMap, setBreadcrumbNameMap] = useState({
     '/dashboard': 'Панель управления',
@@ -87,28 +147,6 @@ const Dashboard = () => {
     '/dashboard/settings': 'Настройки',
     '/dashboard/clients': 'Клиенты',
   });
-  const extraBreadcrumbItems = pathSnippets
-    .map((_, index) => {
-      const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
-      let breadcrumbName;
-      if (url.includes('employees') && id) {
-        const employee = employees.find((emp) => emp.id === id);
-        breadcrumbName = employee ? `${employee.first_name}` : 'Loading...';
-      } else {
-        breadcrumbName = breadcrumbNameMap[url];
-      }
-      if (breadcrumbName) {
-        return (
-          <Breadcrumb.Item key={url}>
-            <Link to={url} style={{ color: '#fff' }}>
-              {breadcrumbName}
-            </Link>
-          </Breadcrumb.Item>
-        );
-      }
-      return null;
-    })
-    .filter(Boolean);
 
   const handleEmployeeData = (employee) => {
     setBreadcrumbNameMap((prev) => ({
@@ -123,10 +161,6 @@ const Dashboard = () => {
       [`/dashboard/services/${service.id}`]: `${service.name}`,
     }));
   };
-
-  const breadcrumbItems = [<Breadcrumb.Item key="dashboard"></Breadcrumb.Item>].concat(
-    extraBreadcrumbItems,
-  );
   const handleMenuClick = (e) => {
     if (e.key === '1') {
       handleDownload();
@@ -166,87 +200,109 @@ const Dashboard = () => {
       }}
       locale={ruRU}>
       <CalendarProvider>
-        <Layout style={{ height: '100%' }}>
-          <Sider trigger={null} collapsible collapsed={true}>
-            {users ? (
-              <Menu
-                theme="dark"
-                mode="inline"
-                onClick={({ key }) => {
-                  if (key === 'signout') {
-                    navigate('/');
-                  } else if (
-                    key === 'services' ||
-                    key === 'settings' ||
-                    key === 'profile' ||
-                    key === 'clients'
-                  ) {
-                    navigate(`./${key}`); // Изменили относительный путь на абсолютный путь
-                  } else if (key === 'dashboard') {
-                    navigate('/dashboard'); // Добавили специальный случай для ключа 'dashboard'
-                  } else {
-                    // Предполагается, что все остальные ключи являются ID сотрудников
-                    navigate(`./employees/${key}`);
-                  }
-                }}>
-                <Link to="/dashboard">
-                  <img
-                    src={LogoMini}
-                    style={{
-                      maxWidth: '80%',
-                      margin: '0 auto',
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
-                    alt="AquaBook Logo"
-                  />
-                </Link>
-                <Menu.Item key="dashboard" icon=<CalendarOutlined />>
-                  <Link to="/dashboard">Календарь</Link>
-                </Menu.Item>
-                <SubMenu
-                  key="sub1"
-                  title={
-                    <span>
-                      <UserOutlined /> <span>Сотрудники</span>
-                    </span>
-                  }>
-                  {employees &&
-                    employees.map((employee) => (
-                      <Menu.Item key={employee.id}>
-                        <Link to={`employees/${employee.id}`}>{employee.first_name}</Link>
-                      </Menu.Item>
-                    ))}
-                </SubMenu>
-                <Menu.Item key="clients" icon=<TeamOutlined />>
-                  <Link to="clients">Клиенты</Link>
-                </Menu.Item>
-                <Menu.Item key="services" icon=<BarsOutlined />>
-                  <Link to="services">Услуги</Link>
-                </Menu.Item>
-                <Menu.Item key="settings" icon=<SettingOutlined />>
-                  <Link to="settings">Настройки</Link>
-                </Menu.Item>
-                <Menu.Item key="profile" icon=<IdcardOutlined />>
-                  <Link to="profile">Личный кабинет</Link>
-                </Menu.Item>
-                <Menu.Item key="signout" icon=<PoweroffOutlined /> danger>
-                  <Link onClick={handleLogout} to="/">
-                    Выход
+        {showAddAppointments ? (
+          <AddAppointments />
+        ) : (
+          <Layout style={{ height: '100%', background: '#001529' }}>
+            <Sider trigger={null} collapsible collapsed={true}>
+              {users ? (
+                <Menu
+                  theme="dark"
+                  mode="inline"
+                  onClick={({ key }) => {
+                    if (key === 'signout') {
+                      navigate('/');
+                    } else if (key === 'services' || key === 'settings' || key === 'clients') {
+                      navigate(`./${key}`);
+                    } else if (key === 'dashboard') {
+                      navigate(
+                        `/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`,
+                      );
+                    } else if (key === 'profile') {
+                      // Предполагается, что id пользователя доступен в этом контексте
+                      navigate(`./profile/${users.id}`);
+                    } else {
+                      // Предполагается, что все остальные ключи являются ID сотрудников
+                      navigate(`./employees/${key}`);
+                    }
+                  }}>
+                  <Link
+                    to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
+                    <img
+                      src={LogoMini}
+                      style={{
+                        maxWidth: '80%',
+                        margin: '0 auto',
+                        display: 'flex',
+                        justifyContent: 'center',
+                      }}
+                      alt="AquaBook Logo"
+                    />
                   </Link>
-                </Menu.Item>
-              </Menu>
-            ) : (
-              <div>Loading...</div>
-            )}
-          </Sider>
-          <Layout className="ab-page">
-            <div className="ab-page__wrapper">
+                  <Menu.Item key="dashboard" icon=<CalendarOutlined />>
+                    <Link
+                      to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
+                      Календарь
+                    </Link>
+                  </Menu.Item>
+                  <SubMenu
+                    key="sub1"
+                    title={
+                      <span>
+                        <UserOutlined /> <span>Сотрудники</span>
+                      </span>
+                    }>
+                    {employees &&
+                      employees.map((employee) => (
+                        <Menu.Item key={employee.id}>
+                          <Link to={`employees/${employee.id}`}>{employee.first_name}</Link>
+                        </Menu.Item>
+                      ))}
+                  </SubMenu>
+                  <Menu.Item key="clients" icon=<TeamOutlined />>
+                    <Link to="clients">Клиенты</Link>
+                  </Menu.Item>
+                  <Menu.Item key="services" icon=<BarsOutlined />>
+                    <Link to="services">Услуги</Link>
+                  </Menu.Item>
+                  <Menu.Item key="settings" icon=<SettingOutlined />>
+                    <Link to="settings">Настройки</Link>
+                  </Menu.Item>
+                  {users && (
+                    <Menu.Item key="profile" icon={<IdcardOutlined />}>
+                      <Link to={`profile/${users.id}`}>Личный кабинет</Link>
+                    </Menu.Item>
+                  )}
+                  <Menu.Item key="signout" icon=<PoweroffOutlined /> danger>
+                    <Link onClick={handleLogout} to="/">
+                      Выход
+                    </Link>
+                  </Menu.Item>
+                </Menu>
+              ) : (
+                <div>Loading...</div>
+              )}
+            </Sider>
+            <Layout className={layoutClassName} style={{ background: '#001529' }}>
               <Content
+                className={wrapperClassName}
                 style={{
                   margin: '0 16px',
                 }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>{breadcrumbItems}</Breadcrumb>
+                <Header
+                  className="eb-calendar_title"
+                  style={{
+                    padding: 0,
+                  }}>
+                  {['/dashboard/services', '/dashboard/clients'].includes(location.pathname) && (
+                    <Dropdown menu={menuProps}>
+                      <Button>
+                        <Space>Оперции с Excel</Space>
+                      </Button>
+                    </Dropdown>
+                  )}
+                </Header>
+                <Breadcrumbs breadcrumbNameMap={breadcrumbNameMap} />
 
                 <Routes>
                   <Route path="/">
@@ -259,7 +315,7 @@ const Dashboard = () => {
                       />
                     </Route>
                     <Route path="clients" element={<Clients />} />
-                    <Route path=":datetable" element={<CalendarDay />} />
+                    <Route path="calendar" element={<CalendarDay />} />
                     <Route path="services" element={<ServicesManagement />} />
                     <Route path="settings/">
                       <Route index element={<Settings />} />
@@ -277,45 +333,20 @@ const Dashboard = () => {
                       <Route path="employees" element={<Company />} />
                     </Route>
 
-                    <Route path="profile/">
+                    <Route path="profile/:id">
                       <Route index element={<PersonalInfoDashboard />} />
                       <Route path="edit" element={<PersonalEdit />} />
                     </Route>
                   </Route>
                 </Routes>
               </Content>
-            </div>
-            {/* <Header
-              style={{
-                padding: 0,
-                background: colorBgContainer,
-              }}>
-              <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                  fontSize: '16px',
-                  width: 64,
-                  height: 64,
-                }}
-              />
-              {['/dashboard/services', '/dashboard/clients'].includes(location.pathname) && (
-                <Dropdown menu={menuProps}>
-                  <Button>
-                    <Space>Оперции с Excel</Space>
-                  </Button>
-                </Dropdown>
+              {showSider && (
+                <Sider className="eb-calendar-page__aside" style={{ maxWidth: '375px' }}>
+                  <CalendarNavigator />
+                </Sider>
               )}
-            </Header> */}
 
-            {showSider && (
-              <Sider width={212} style={{ background: '#001529' }}>
-                <CalendarNavigator />
-              </Sider>
-            )}
-
-            {/* <Footer
+              {/* <Footer
               style={{
                 textAlign: 'center',
                 background: '#001529',
@@ -323,8 +354,9 @@ const Dashboard = () => {
               }}>
               AQUALORD ©2023 Created by Authweb
             </Footer> */}
+            </Layout>
           </Layout>
-        </Layout>
+        )}
       </CalendarProvider>
     </ConfigProvider>
   );

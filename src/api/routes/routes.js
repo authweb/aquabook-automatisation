@@ -18,6 +18,8 @@ const deleteCarInfo = require('../deleteCarInfo');
 //Клиенты - сотрудники
 const employees = require('../employees');
 const employee = require('../employeeId');
+const EditProfile = require('../editProfile');
+const profile = require('../profileId');
 const clients = require('../clients');
 const addClients = require('../addClients');
 
@@ -42,6 +44,7 @@ router.post('/services', addServices);
 router.post('/service-categories', addServicesCategories);
 router.post('/clients', addClients);
 router.post('/appointments', addAppointments);
+router.put('/profile/:id', EditProfile);
 
 //Получение записей из таблицы базы данных
 router.get('/employees/:id', employee);
@@ -51,6 +54,7 @@ router.get('/services', getServices);
 router.get('/services/:id', getServiceId);
 router.get('/service-categories', getServicesCategories);
 router.get('/appointments', getAppointments);
+router.get('/profile/:id', profile);
 
 //Удаление записей из таблицы базы данных
 router.delete('/deletecarinfo', deleteCarInfo);

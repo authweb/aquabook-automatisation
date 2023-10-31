@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Form, Input, Select, DatePicker, TimePicker } from 'antd';
 import InputMask from 'react-input-mask';
+import dayjs from 'dayjs';
 
 const ModalForm = ({
   visible,
@@ -23,6 +24,7 @@ const ModalForm = ({
   notes,
   setNotes,
 }) => {
+  const format = 'HH:mm';
   return (
     <Modal visible={visible} onCancel={onCancel} onOk={onOk}>
       <Form
@@ -63,12 +65,13 @@ const ModalForm = ({
           </Select>
         </Form.Item>
         <Form.Item label="Дата">
-          <DatePicker value={date} onChange={(value) => setDate(value)} />
+          <DatePicker defaultValue={dayjs()} value={date} onChange={(value) => setDate(value)} />
         </Form.Item>
         <Form.Item label="Время записи">
           <TimePicker.RangePicker
-            format="HH:mm"
-            minuteStep={15}
+            defaultValue={[dayjs().startOf('hour'), dayjs().endOf('hour')]} // текущий час
+            format={format}
+            minuteStep={10}
             value={timeRange}
             onChange={(value) => setTimeRange(value)}
           />

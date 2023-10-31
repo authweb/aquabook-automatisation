@@ -30,10 +30,13 @@ router.post('/register', async (req, res) => {
       [userId, first_name, last_name, phone, email],
     );
 
-    await db.execute(
-      'INSERT INTO clients (id, first_name, last_name, phone, email ) VALUES (?, ?, ?, ?, ?)',
-      [userId, first_name, last_name, phone, email],
-    );
+    const roleId = 1;
+    await db.execute('INSERT INTO user_roles (user_id, role_id) VALUES (?, ?)', [userId, roleId]);
+
+    // await db.execute(
+    //   'INSERT INTO clients (id, first_name, last_name, phone, email ) VALUES (?, ?, ?, ?, ?)',
+    //   [userId, first_name, last_name, phone, email],
+    // );
 
     res.status(201).json({ message: 'User registered' });
   } catch (error) {

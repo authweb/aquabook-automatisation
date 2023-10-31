@@ -61,7 +61,7 @@ const AuthPage = () => {
       if (isLoginMode) {
         const { token, id, first_name, last_name, phone, email } = responseData.user;
         login({ token, id, first_name, last_name, phone, email });
-        navigate(`/dashboard/profile`);
+        navigate(`/dashboard/profile/${id}`);
       } else {
         navigate('/');
       }

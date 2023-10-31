@@ -1,10 +1,201 @@
 @import './globalscss/variables';
+
+.show-bottom-enter-active {
+  transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+  transition-property: transform, opacity;
+}
+.show-bottom-leave-active {
+  transition: 0.2s cubic-bezier(0.32, 0, 0.67, 0);
+  transition-property: transform, opacity;
+}
+
+// .show-bottom-enter,
+// .show-bottom-leave-to {
+//   opacity: 0;
+//   transform: translateY(30%);
+// }
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Анимация исчезновения */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Календарь */
+
+.eb-calendar {
+  --calendar-safe-offest-top: env(safe-area-inset-top, 0px);
+  --calendar-title-height: 4.5rem;
+  --calendar-header-height: calc(3rem + var(--calendar-safe-offest-top));
+  --calendar-cell-width: 8rem;
+  --calendar-padding: 0px;
+
+  display: grid;
+  grid-template-columns: $calendar-time-width calc(100% - $calendar-time-width);
+  grid-template-rows:
+    var(--calendar-title-height) var(--calendar-header-height) $calendar-column-height
+    2rem 2rem;
+  touch-action: pan-x pan-y;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  user-drag: none;
+  padding: 0 var(--calendar-padding);
+  @media (min-width: 692px) {
+    & {
+      --calendar-title-height: 5.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    & {
+      --calendar-padding: 2rem;
+      position: relative;
+    }
+  }
+  &__colheader_back {
+    grid-row: 2;
+    grid-column: 2;
+    overflow: hidden;
+    position: sticky !important;
+    top: 0;
+    z-index: 2;
+  }
+  &__info,
+  &_title {
+    display: flex;
+    align-items: center;
+    background-color: $bg-color;
+  }
+  &_title {
+    grid-column: 1/-1;
+    grid-row: 1;
+    padding: $header-padding-top $header-padding-horizontal
+      clamp(1px, calc($header-padding-bottom - $calendar-safe-offest-top), $header-padding-bottom);
+    position: relative;
+    z-index: 5;
+    @media (min-width: 1024px) {
+      & {
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 3;
+      }
+    }
+  }
+  &-page {
+    max-width: 100%;
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    @media (min-width: 1024px) {
+      & {
+        display: flex;
+        padding-right: 375px;
+        height: 100vh;
+        overflow: hidden;
+      }
+    }
+    &__aside {
+      @media (min-width: 1024px) {
+        color: $white-color;
+        padding: 1.5rem 2rem 1rem;
+        max-width: 375px !important;
+        min-width: 375px !important;
+        width: 375px !important;
+        overflow: auto;
+        position: fixed !important;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 5;
+      }
+    }
+    &__calendar {
+      min-height: calc(100vh - 4rem);
+      @media (min-width: 1024px) {
+        & {
+          width: 100% !important;
+          height: 100vh;
+          overflow-y: auto;
+          scroll-behavior: smooth;
+        }
+      }
+    }
+  }
+}
+
+/* Стили для классов */
+.show-bottom-enter-active,
+.show-bottom-enter {
+  animation: fadeIn 0.3s forwards;
+}
+
+.show-bottom-leave-active,
+.show-bottom-leave-to {
+  animation: fadeOut 0.3s forwards;
+}
+
+.ab-button.theme-ghost.color-default {
+  color: $black-color;
+}
+
+.ab-button.theme-ghost.color-default,
+.ab-page-headline__back {
+  background: $button-e-color;
+  box-shadow: 0 0 0 1px $button-e-color inset;
+  color: $white-color;
+  &:hover {
+    background: $button-e-color-hover;
+  }
+}
+
 .custom {
   &_layout {
     background: $bg-color;
     height: 100vh;
   }
 }
+
+.ab-button.theme-icon:focus .ab-button__content,
+.ab-button.theme-icon:hover .ab-button__content,
+.ab-button.theme-toggle:focus .ab-button__content,
+.ab-button.theme-toggle:hover .ab-button__content {
+  opacity: 0.9;
+}
+
+.ab-button.theme-circle.color-accent,
+.ab-button.theme-solid.color-accent {
+  background-color: #56af40;
+  color: #fff;
+}
+
+.ab-button.theme-circle,
+.ab-button.theme-circle > .ab-button__overlay,
+.ab-button.theme-ghost,
+.ab-button.theme-ghost > .ab-button__overlay,
+.ab-button.theme-outline,
+.ab-button.theme-solid:not(.color-google),
+.ab-button:not(.color-google) .ab-button__overlay {
+  border-radius: 0.9375rem;
+  @media (min-width: 1024px) {
+    & {
+      border-radius: 0.625rem;
+    }
+  }
+}
+
 .ab-avatar {
   display: inline-grid;
   vertical-align: middle;
@@ -238,19 +429,53 @@
     }
   }
 }
-.ab-button {
-  background: $button-e-color;
-  box-shadow: 0 0 0 1px $button-e-color inset;
-  color: $white-color;
+
+.ab-button.theme-icon .ab-button__overlay {
+  display: none;
+}
+
+.ab-button:not(.color-google) .ab-button__content {
+  font-size: 14px;
+  line-height: 1.125rem;
+}
+
+.ab-button:not([disabled]):hover > .ab-button__overlay {
+  opacity: 0.2;
+}
+
+.ab-button.theme-icon .ab-button__content,
+.ab-button.theme-toggle .ab-button__content {
+  opacity: 0.4;
+}
+
+.ab-button.theme-circle .ab-button__content_md,
+.ab-button.theme-icon .ab-button__content_md {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.aw-button__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: opacity 0.1s;
+}
+
+.aw-button__content-md {
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   line-height: 1rem;
-  border-radius: 0.625rem;
-  transition: background 0.2s ease-in-out;
-  &:hover {
-    background: $button-e-color-hover;
-  }
+}
+
+.aw-button__content-md {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  height: 100%;
   @media (min-width: 1024px) {
     & {
       padding-top: 0.75rem;
@@ -260,6 +485,66 @@
     }
   }
 }
+
+.ab-button {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  border-radius: 0.125rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: opacity 0.1s;
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    border-radius: 0.125rem;
+    opacity: 0;
+    background-color: currentColor;
+    transition: opacity 0.2s;
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+  &__text {
+    white-space: nowrap;
+  }
+}
+
+.ab-button {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 1rem;
+  border-radius: 0.625rem;
+  transition: background 0.2s ease-in-out;
+  @media (min-width: 1024px) {
+    & {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+    }
+  }
+}
+
+// .ab-button.theme-icon {
+//   padding: 0;
+//   min-width: 0;
+// }
+
+.ab-text-field .ab-button.theme-icon {
+  height: 100%;
+}
+
 .ab-page {
   &-menu {
     &-buttons {
@@ -358,6 +643,82 @@
       padding-top: 1.5rem;
     }
   }
+}
+
+.ab-flow {
+  display: inline-flex;
+  min-width: 0;
+
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc($flow-gap * -1);
+    margin-top: calc($flow-gap * -1);
+    min-width: 0;
+  }
+  &__child {
+    display: block;
+    min-width: 0;
+    padding-left: $flow-gap;
+    padding-top: $flow-gap;
+  }
+}
+
+.ab-switch-field {
+  position: relative;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+
+  &__element {
+    background-color: #fff;
+    color: #14171d;
+    border-width: 1px;
+    flex-shrink: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    vertical-align: middle;
+    width: 1.25rem;
+    height: 1.25rem;
+    box-shadow: none;
+    &:checked {
+      background-color: #56af40;
+      color: #fff;
+      border-color: inherit;
+      background-size: 100% 100%;
+    }
+  }
+  &__element {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+  &__label {
+    padding-top: 0.275rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  &__label {
+    padding-left: 0.5rem;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  &__label {
+    padding-left: 0.625rem;
+  }
+}
+.ab-switch-field.is-radio .ab-switch-field__element {
+  border-radius: 50%;
+}
+.ab-switch-field.is-radio .ab-switch-field__element:checked {
+  border-radius: 50%;
+}
+.ab-switch-field.is-radio .ab-switch-field__element:checked {
+  background-image: url('../assets/images/radio.svg');
+}
+
+.ab-switch-field {
+  display: flex;
 }
 
 .ab-island {
@@ -485,4 +846,31 @@
   background-color: $card-color;
   border-radius: 1.25rem;
   padding: $card-padding-y $card-padding-x;
+}
+
+.eb-model-edit {
+  padding-bottom: 1.5rem;
+  &__panel {
+    position: sticky;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 1rem;
+    border-radius: 0.625rem;
+    z-index: 10;
+  }
+  &__button {
+    white-space: nowrap;
+    flex: 1 1 0%;
+    margin-top: 0.5rem;
+    &--mobile {
+      flex: none;
+    }
+    @media (min-width: 692px) {
+      & {
+        margin-top: 1rem;
+        flex: none;
+      }
+    }
+  }
 }
