@@ -1,21 +1,21 @@
 // colors
-$primary-color: #182935;
-$secondary-color: #ff7a00;
+$primary-color: rgb(24, 41, 53);
+$secondary-color: rgb(255, 123, 0);
 $secondary-color-hover: rgba(255, 123, 0, 0.8);
-$bg-color: #001529;
-$card-color: #002950;
-$gray-color: #ece3e4;
-$gray-text-color: #8d8d8d;
-$black-color: #000000;
-$white-color: #ffffff;
-$logout-color: #ff5d1a;
-$logout-color-hover: #ff221a;
-$delete-color: #ff5d1a;
-$delete-color-hover: #ff221a;
-$update-color: #288d00;
-$update-color-hover: #35b900;
+$bg-color: rgb(0, 21, 41);
+$card-color: rgb(0, 42, 82);
+$gray-color: rgb(237, 227, 228);
+$gray-text-color: rgb(140, 140, 140);
+$black-color: rgb(0, 0, 0);
+$white-color: rgb(255, 255, 255);
+$logout-color: rgb(255, 94, 26);
+$logout-color-hover: rgb(255, 33, 26);
+$delete-color: rgb(255, 94, 26);
+$delete-color-hover: rgb(255, 33, 26);
+$update-color: rgb(40, 143, 0);
+$update-color-hover: rgb(52, 184, 0);
 $hr-color: rgb(0, 108, 209, 0.5);
-$button-e-color: #006cd180;
+$button-e-color: rgba(0, 108, 209, 0.502);
 $button-e-color-hover: rgba(0, 87, 168, 0.5);
 
 // fonts

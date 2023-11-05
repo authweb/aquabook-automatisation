@@ -8,7 +8,9 @@ const Breadcrumbs = ({ breadcrumbNameMap }) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
     return (
       <Breadcrumb.Item key={url}>
-        <Link to={url}>{breadcrumbNameMap[url]}</Link>
+        <Link to={url} style={{ color: '#fff' }}>
+          {breadcrumbNameMap[url]}
+        </Link>
       </Breadcrumb.Item>
     );
   });

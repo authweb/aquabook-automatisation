@@ -29,4 +29,5 @@ export { default as AddAppointments } from './Calendar/AddAppointments';
 
 export { default as Input } from './Common/FormComponents/Input';
 export { default as Radio } from './Common/FormComponents/Radio';
+export { default as Button } from './Common/FormComponents/Button';
 export { default as Breadcrumbs } from './Common/Breadcrumbs';

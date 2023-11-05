@@ -139,7 +139,7 @@ const PersonalEdit = () => {
           <div className="eb-model-edit">
             <div>
               <form className="grid grid-cols-1 gap-4 items-start" onSubmit={handleSubmit}>
-                <CardEdit general="Общая информация" switcher>
+                <CardEdit general="Общая информация" switcher cardEdit>
                   <div className="ab-info">
                     <div className="ab-info__label">
                       <span className="ab-description">Пол</span>

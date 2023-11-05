@@ -9,7 +9,7 @@ const CalendarNavigator = () => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const { selectedDate, setSelectedDate } = useContext(CalendarContext);
+  const { selectedDate, setSelectedDate, setRangeStart } = useContext(CalendarContext);
 
   const handleDateSelection = (date) => {
     const formattedDate = dayjs(date).format('YYYY-MM-DD');
@@ -30,6 +30,7 @@ const CalendarNavigator = () => {
         setSelectedDate(args.day);
         console.log('Updated selectedDate:', selectedDate);
         const today = searchParams.get('today');
+        setRangeStart(formattedDate); // добавьте эту строку
         navigate(`/dashboard/calendar?today=${today}&range_start=${formattedDate}`);
       }}
     />

@@ -54,53 +54,39 @@ const Dashboard = () => {
   const location = useLocation();
 
   const [showSider, setShowSider] = useState(false);
-  const [showAddAppointments, setShowAddAppointments] = useState('');
+  const [showAddAppointments, setShowAddAppointments] = useState(false);
   const { users, logout } = useAuth();
 
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
   const { employees, error } = useEmployeeData();
   const [stats, dispatch] = useReducer(reducer, initialState);
 
-  console.log('location.search:', location.search);
-  console.log('stats.today:', stats.today);
-  console.log('stats.rangeStart:', stats.rangeStart);
-
   useEffect(() => {
-    if (
-      location.pathname === '/dashboard/calendar/add' &&
-      location.search === `?today=${stats.today}&range_start=${stats.rangeStart}`
-    ) {
+    if (location.pathname === '/dashboard/calendar/add' && rangeStart) {
       setShowAddAppointments(true);
     } else {
       setShowAddAppointments(false);
     }
-  }, [location.pathname, location.search, stats.today, stats.rangeStart]);
-
-  console.log('Страница записи:', showAddAppointments);
-
-  //   useEffect(() => {
-  //     console.log('Stats:', stats);
-  //     if (stats.today && stats.rangeStart) {
-  //       // Добавьте эту проверку
-  //       navigate(`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`);
-  //     }
-  //   }, [stats, navigate]);
+    console.log('stats.today:', today);
+    console.log('stats.rangeStart:', rangeStart);
+    console.log('Страница записи:', location.search, showAddAppointments);
+  }, [location.pathname, location.search, rangeStart, showAddAppointments, today]);
 
   useEffect(() => {
     const newDate = dayjs().format('YYYY-MM-DD');
-    if (stats.rangeStart !== newDate) {
-      console.log('Setting dates:', newDate, stats.rangeStart);
+    if (rangeStart !== newDate) {
+      console.log('Setting dates:', newDate, rangeStart);
       dispatch({ type: 'SET_TODAY', payload: newDate });
       dispatch({ type: 'SET_RANGE_START', payload: newDate });
     }
-  }, [dispatch, stats.rangeStart]);
+  }, [dispatch, rangeStart]);
 
-  const pathSnippets = (location.pathname + location.search).split('/').filter((i) => i);
+  //   const pathSnippets = (location.pathname + location.search).split('/').filter((i) => i);
 
   const handleLogout = () => {
     logout();
   };
-  let { id } = useParams();
+  //   let { id } = useParams();
 
   //   const currentUser = users.find((user) => user.id === id);
 
