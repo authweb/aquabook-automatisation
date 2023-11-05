@@ -18,7 +18,7 @@ Before running the application, ensure that you have the following software inst
 To clone the repository, open your terminal and run the following command:
 
 ```bash
-git clone git@github.com:authweb/react-aqualord.git
+git clone git@github.com:authweb/aquabook-automatisation.git
 ```
 
 ### Install Dependencies
@@ -26,7 +26,7 @@ git clone git@github.com:authweb/react-aqualord.git
 Navigate to the project directory and install the dependencies using npm:
 
 ```bash
-cd react-aqualord
+cd aquabook-automatisation
 npm install
 ```
 
