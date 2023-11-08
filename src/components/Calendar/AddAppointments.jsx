@@ -1,67 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderDashboard from '../Common/HeaderDashboard';
 import CardEdit from '../Common/CardEdit';
 import { Layout } from 'antd';
-const { Sider } = Layout;
-const AddAppointments = ({
-  visible,
-  onCancel,
-  onOk,
-  clientName,
-  setClientName,
-  email,
-  setEmail,
-  phone,
-  setPhone,
-  service,
-  setService,
-  categories,
-  services,
-  date,
-  setDate,
-  timeRange,
-  setTimeRange,
-  notes,
-  setNotes,
-}) => {
+import Aside from '../Common/Aside';
+const { Sider, Select } = Layout;
+const AddAppointments = ({ service, setService, categories, services }) => {
+  const [activeButton, setActiveButton] = useState(null);
+  const [isAsideOpen, setIsAsideOpen] = useState(false);
+
+  const openAside = (asideName) => {
+    setActiveButton(asideName);
+    setIsAsideOpen(true);
+  };
+
+  const closeAside = () => {
+    setActiveButton(null);
+    setIsAsideOpen(false);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // try {
-    //   // Собираем данные из состояния
-    //   const profileData = {
-    //     gender: currentValues.selectedValue,
-    //     first_name: currentValues.firstName,
-    //     last_name: currentValues.lastName,
-    //     email: currentValues.email,
-    //     phone: currentValues.phone,
-    //     position: currentValues.position,
-    //   };
-
-    //   // Отправляем данные на сервер
-    //   console.log(profileData);
-    //   const response = await axios.put(
-    //     `http://localhost:3001/api/profile/${users?.id}`,
-    //     profileData,
-    //   );
-
-    //   // Обновляем информацию профиля пользователя
-    //   updateProfileInfo(profileData);
-
-    //   console.log('Profile updated successfully:', response.data);
-    // } catch (error) {
-    //   console.error('Error updating profile:', error);
-    // }
   };
+
   return (
     <div className="ab-page">
       <HeaderDashboard showBack title="Новая запись" containerSmall />
       <div className="ab-page__content">
         <div className="container-small">
-          <form className="grid grid-cols-1 gap-8 items-start" onSubmit={handleSubmit}>
-            <CardEdit general="Услуга" cardCalendar addService="Добавить услугу"></CardEdit>
-            <CardEdit general="Клиент" cardClient addClient="Создать нового"></CardEdit>
-          </form>
+          <div className="grid grid-cols-1 gap-8 items-start">
+            <CardEdit
+              title="Услуга"
+              setActiveButton={setActiveButton}
+              cardCalendar
+              ButtonName="Добавить услугу"
+              onButtonClick={() => openAside('service')}></CardEdit>
+            <CardEdit
+              title="Клиент"
+              setActiveButton={setActiveButton}
+              cardClient
+              ButtonName="Создать нового"
+              onButtonClick={() => openAside('client')}></CardEdit>
+          </div>
+          {activeButton === 'service' && (
+            <Aside title="Добавить услугу" closeAside={closeAside} isAsideOpen={isAsideOpen} />
+          )}
+          {activeButton === 'client' && (
+            <Aside title="Добавить клиента" closeAside={closeAside} isAsideOpen={isAsideOpen} />
+          )}
         </div>
       </div>
       <Sider className="eb-page-aside__aside" style={{ maxWidth: '375px' }}>

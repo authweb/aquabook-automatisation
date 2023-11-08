@@ -9,6 +9,230 @@
   transition-property: transform, opacity;
 }
 
+.ab-modal {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  padding: 0 !important;
+  margin: 0;
+  max-width: 100%;
+  &__dialog {
+    position: relative;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba($bg-color, 1);
+    color: rgba($white-color, 1);
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  &__header {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+    padding-top: var(--header-padding-top);
+    padding-left: 1.5rem;
+    padding-left: var(--header-padding-horizontal);
+    padding-right: 1.5rem;
+    padding-right: var(--header-padding-horizontal);
+    min-height: calc(env(safe-area-inset-top, 0px) + 4rem);
+    min-height: var(--header-height);
+  }
+  &__title {
+    margin: 0;
+    text-align: left;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    line-height: 1.25;
+    font-family: $font-family;
+    font-weight: 500;
+  }
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  &__close {
+    width: 3rem;
+    height: 3rem;
+    top: calc(env(safe-area-inset-top, 0) + 0.75rem);
+    right: 1.5rem;
+    right: var(--header-padding-horizontal);
+  }
+  &__content {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+    max-width: 100%;
+    &--buttons {
+      padding-bottom: 4rem;
+    }
+  }
+  &__content {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+    &--buttons {
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 7rem);
+    }
+  }
+}
+
+.ab-modal__subtitle,
+.ab-modal__title {
+  padding-right: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ab-modal[class*='is-overlay-aside'] .ab-modal__dialog {
+  width: 100%;
+}
+
+.ab-modal__back,
+.ab-modal__close {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  line-height: 40px - 16px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+@media (min-width: 692px) {
+  .ab-modal[class*='is-overlay-aside'] {
+    background-color: rgba(20, 23, 29, 0.4);
+    background-color: rgba($black-color, 0.4);
+    color: #fff;
+    color: rgba(var(--c-on-overlay-rgb), var(--text-opacity, 1));
+    overflow: hidden;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__container {
+    align-items: stretch;
+    justify-content: flex-end;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: env(safe-area-inset-top, 0);
+    bottom: env(safe-area-inset-bottom, 0);
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__dialog {
+    max-height: 100vh;
+    max-height: var(--viewport-height, 100vh);
+  }
+  .ab-modal.is-overlay-aside .ab-modal__dialog {
+    width: 320px;
+  }
+  .ab-modal.is-overlay-aside .ab-modal__dialog {
+    width: 375px;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__dialog {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    overflow: auto;
+    max-height: 100vh;
+    max-height: var(--viewport-height, 100vh);
+  }
+  .ab-modal__header {
+    padding-top: 1.5rem;
+    min-height: auto;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__header {
+    padding-top: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__title {
+    font-size: 1rem;
+    line-height: 1.125;
+    font-weight: 700;
+  }
+  .ab-modal__close {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: calc(env(safe-area-inset-top, 0) + 4rem);
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__close {
+    top: 0;
+    right: 2rem;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__body {
+    flex-grow: 1;
+  }
+  .ab-modal:not(.is-aside):not([class*='is-overlay-aside']) .ab-modal__content,
+  .ab-modal__content--buttons {
+    padding: 2rem;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__content--buttons {
+    padding-bottom: 4rem;
+  }
+  .ab-modal[class*='is-overlay-aside'] .ab-modal__content--buttons {
+    padding-bottom: 7rem;
+  }
+}
+
+.modal-transition-aside-enter-active,
+.modal-transition-overlay-aside-enter-active,
+.modal-transition-overlay-aside-large-enter-active,
+.modal-transition-overlay-aside-medium-enter-active {
+  transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modal-transition-aside-enter,
+.modal-transition-aside-leave-to,
+.modal-transition-overlay-aside-enter,
+.modal-transition-overlay-aside-large-enter,
+.modal-transition-overlay-aside-large-leave-to,
+.modal-transition-overlay-aside-leave-to,
+.modal-transition-overlay-aside-medium-enter,
+.modal-transition-overlay-aside-medium-leave-to {
+  transform: translateX(100%);
+}
+
+.modal-transition-aside-leave-active,
+.modal-transition-overlay-aside-large-leave-active,
+.modal-transition-overlay-aside-leave-active,
+.modal-transition-overlay-aside-medium-leave-active {
+  transition: transform 0.25s;
+}
+
+@media (min-width: 692px) {
+  .modal-transition-overlay-aside-enter-active,
+  .modal-transition-overlay-aside-large-enter-active,
+  .modal-transition-overlay-aside-medium-enter-active {
+    transition: opacity 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .modal-transition-overlay-aside-enter,
+  .modal-transition-overlay-aside-large-enter,
+  .modal-transition-overlay-aside-large-leave-to,
+  .modal-transition-overlay-aside-leave-to,
+  .modal-transition-overlay-aside-medium-enter,
+  .modal-transition-overlay-aside-medium-leave-to {
+    opacity: 0;
+    transform: none;
+  }
+  .modal-transition-overlay-aside-large-leave-active,
+  .modal-transition-overlay-aside-leave-active,
+  .modal-transition-overlay-aside-medium-leave-active {
+    transition: opacity 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+}
+
 // .show-bottom-enter,
 // .show-bottom-leave-to {
 //   opacity: 0;
@@ -610,14 +834,19 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
   transition: opacity 0.1s;
 }
 
-.ab-button__content-md {
+.ab-button__content_md {
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   line-height: 1rem;
 }
 
-.ab-button__content-md {
+.ab-button:not(.color-google) .ab-button__content {
+  font-size: 14px;
+  line-height: 1.125rem;
+}
+
+.ab-button__content_md {
   padding-top: 1rem;
   padding-bottom: 1rem;
   min-width: 3rem;

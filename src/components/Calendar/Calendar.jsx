@@ -235,7 +235,7 @@ const CalendarDay = ({ todayParam, paramRangeStart }) => {
           navigate(`${location.pathname}/add${location.search}`);
         }}
       />
-      <ModalForm
+      {/* <ModalForm
         title="Запись"
         visible={isModalVisible}
         onCancel={handleCancel}
@@ -257,7 +257,7 @@ const CalendarDay = ({ todayParam, paramRangeStart }) => {
         setTimeRange={setTimeRange}
         notes={notes}
         setNotes={setNotes}
-      />
+      /> */}
     </>
   );
 };

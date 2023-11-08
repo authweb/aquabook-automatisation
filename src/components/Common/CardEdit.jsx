@@ -2,28 +2,49 @@ import React from 'react';
 import { useAuth } from '../../contexts/AuthContexts';
 import { CheckOutlined, CloseOutlined, PlusOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import { Switch } from 'antd';
+import Aside from './Aside';
 
 const CardEdit = ({
   general,
+  title, //Название карточки
   switcher,
   children,
-  cardCalendar,
+  cardCalendar, //карточка Добавления услуги
   cardEdit,
-  cardClient,
-  addService,
-  addClient,
+  cardClient, // карточка Добавления клиента
+  ButtonName,
+  activeButton,
+  setActiveButton,
+  onButtonClick,
+  // карточки с календарем нету, она в другом месте, так как находиться должна не здесь
 }) => {
   const { users, setUsers } = useAuth();
+  let asideContent;
+  // eslint-disable-next-line default-case
+  switch (activeButton) {
+    case 'addService':
+      asideContent = <Aside title="Добавить услугу" />;
+      break;
+    case 'addClient':
+      asideContent = <Aside title="Добавить клиента" />;
+      break;
+    case 'calendar':
+      asideContent = <Aside title="Дата и время" />;
+      break;
+  }
   return (
     <>
       {cardCalendar && (
         <div className="ab-card eb-services-island">
-          <h4 className="ab-sub-headline">{general}</h4>
-          <button className="ab-button w-full mt-4 eb-button-dashed ab-button_md color-accent theme-outline">
+          <h4 className="ab-sub-headline">{title}</h4>
+          <button
+            onClick={() => onButtonClick('addService')}
+            type=" button"
+            className="ab-button w-full mt-4 eb-button-dashed ab-button_md color-accent theme-outline">
             <span className="ab-button__overlay"></span>
             <span className="ab-button__content ab-button__content_md">
               <PlusOutlined style={{ color: '#ff7a00' }} />
-              <span className="ab-button__text ml-1">{addService}</span>
+              <span className="ab-button__text ml-1">{ButtonName}</span>
             </span>
           </button>
         </div>
@@ -31,9 +52,12 @@ const CardEdit = ({
       {cardClient && (
         <div className="ab-card">
           <div className="flex mb-4">
-            <h4 className="ab-sub-headline mr-auto">{general}</h4>
-            <button type="button" className="link-uppercase ml-4 link">
-              {addClient}
+            <h4 className="ab-sub-headline mr-auto">{title}</h4>
+            <button
+              onClick={() => onButtonClick('addClient')}
+              type="button"
+              className="link-uppercase ml-4 link">
+              {ButtonName}
             </button>
           </div>
           <div>

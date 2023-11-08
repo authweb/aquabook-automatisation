@@ -14,6 +14,7 @@ const Input = ({
   iconGroup,
   iconOne,
   iconTwo,
+  colsSpan,
 }) => {
   const [isFilled, setIsFilled] = useState(false);
 
@@ -24,7 +25,7 @@ const Input = ({
   return (
     <label
       htmlFor={id}
-      className={`flex ab-text-field is-text ${isFilled ? 'is-filled' : ''} has-label`}>
+      className={`flex ${colsSpan} ab-text-field is-text ${isFilled ? 'is-filled' : ''} has-label`}>
       <div className="relative w-full">
         <input
           type={type}

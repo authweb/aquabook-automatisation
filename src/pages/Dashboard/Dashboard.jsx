@@ -56,6 +56,9 @@ const Dashboard = () => {
   const [showSider, setShowSider] = useState(false);
   const [showAddAppointments, setShowAddAppointments] = useState(false);
   const { users, logout } = useAuth();
+  const [categories, setCategories] = useState([]);
+  const [services, setServices] = useState({});
+  const [service, setService] = useState('');
 
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
   const { employees, error } = useEmployeeData();
@@ -187,7 +190,12 @@ const Dashboard = () => {
       locale={ruRU}>
       <CalendarProvider>
         {showAddAppointments ? (
-          <AddAppointments />
+          <AddAppointments
+            service={service}
+            setService={setService}
+            categories={categories}
+            services={services}
+          />
         ) : (
           <Layout style={{ height: '100%', background: '#001529' }}>
             <Sider trigger={null} collapsible collapsed={true}>

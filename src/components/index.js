@@ -31,3 +31,4 @@ export { default as Input } from './Common/FormComponents/Input';
 export { default as Radio } from './Common/FormComponents/Radio';
 export { default as Button } from './Common/FormComponents/Button';
 export { default as Breadcrumbs } from './Common/Breadcrumbs';
+export { default as Aside } from './Common/Aside';

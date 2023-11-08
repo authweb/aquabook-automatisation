@@ -1,34 +1,124 @@
 @import './globalscss/variables';
 
-.homepage {
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
+.eb-auth-layout {
+  min-height: 100vh;
+  min-height: var(--viewport-height, 100vh);
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 1024px) {
+    & {
+      background: url('../assets/images/bglogin.svg') 50% / cover fixed no-repeat;
+    }
   }
-
-  p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
+  &__header {
+    background-color: rgba(var(--c-on-mono-900-rgb), 1);
+    background-color: rgba(var(--c-on-mono-900-rgb), var(--text-opacity, 1));
+    color: rgba(var(--c-mono-900-rgb), 1);
+    color: rgba(var(--c-mono-900-rgb), var(--bg-opacity, 1));
+    display: flex;
+    align-items: center;
+    padding: calc(1rem + env(safe-area-inset-top, 0px)) 1.25rem 1rem;
+    height: calc(4.5rem + env(safe-area-inset-top, 0px));
   }
-
-  button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #0069d9;
+  &__logo {
+    margin-right: 1rem;
+  }
+  &__container {
+    padding: 1.25rem 0 2.5rem;
+    max-width: 100%;
+    @media (min-width: 1024px) {
+      & {
+        padding: 1.25rem;
+        width: 29.5rem;
+        margin: auto;
+      }
     }
   }
 }
-.navigator_default_main {
-  margin-bottom: 20px;
+
+.ab-title {
+  font-size: 1.875rem;
+  line-height: 1.2;
+}
+
+.eb-button {
+  display: inline-flex;
+  vertical-align: middle;
+  flex-shrink: 0;
+  min-width: 2.5rem;
+  min-width: var(--btn-size, 2.5rem);
+  min-height: 2.5rem;
+  min-height: var(--btn-size, 2.5rem);
+  border-radius: 0.625rem;
+  border-radius: var(--btn-radius, 0.625rem);
+  padding: 0.25rem 0.5rem;
+  background: rgba(var(--btn-bg), 1);
+  background-image: linear-gradient(transparent, transparent);
+  color: rgba(var(--btn-fg), 1);
+  position: relative;
+  &__text {
+    flex: 1 1 auto;
+    align-self: center;
+    min-width: 0;
+    padding: 0 0.625rem;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}
+.eb-button--hover,
+.eb-button:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+}
+
+.btn-hp {
+  font-size: 15px;
+  &--link {
+    color: inherit;
+    border-color: transparent;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__content {
+    &--btn {
+      text-align: center;
+      transition-duration: 0.1s;
+      transition-property: background-color, color;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+  }
+}
+.btn-hp--primary.btn-hp--outline {
+  --border-opacity: 1;
+  border-color: rgba($secondary-color, 1);
+  border-color: rgba($secondary-color, var(--border-opacity, 1));
+  &:hover {
+    --border-opacity: 1;
+    border-color: rgba($secondary-color-hover, 0.8);
+    border-color: rgba($secondary-color-hover, var(--border-opacity, 0.8));
+  }
+}
+.btn-hp--primary.btn-hp--solid {
+  --border-opacity: 1;
+  border-color: rgba($secondary-color, 1);
+  border-color: rgba($secondary-color, var(--border-opacity, 1));
+  --bg-opacity: 1;
+  background-color: rgba($secondary-color, 1);
+  background-color: rgba($secondary-color, var(--border-opacity, 1));
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  &:hover {
+    --border-opacity: 1;
+    border-color: rgba($secondary-color-hover, 0.8);
+    border-color: rgba($secondary-color-hover, var(--border-opacity, 0.8));
+    --bg-opacity: 1;
+    background-color: rgba($secondary-color-hover, 0.8);
+    background-color: rgba($secondary-color-hover, var(--border-opacity, 0.8));
+  }
+}
+
+.btn-hp--solid {
+  border-color: transparent;
 }
