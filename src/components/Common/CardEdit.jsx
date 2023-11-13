@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContexts';
-import { CheckOutlined, CloseOutlined, PlusOutlined, UserSwitchOutlined } from '@ant-design/icons';
+import { CheckOutlined, CloseOutlined, PlusOutlined } from '@ant-design/icons';
+import { ReactComponent as ServiceIcon } from '../../assets/images/service.svg';
+import { ReactComponent as UserSvg } from '../../assets/images/tag-user.svg';
+import dayjs from 'dayjs';
 import { Switch } from 'antd';
 import Aside from './Aside';
+import Select from './FormComponents/Select';
 
 const CardEdit = ({
   general,
@@ -14,11 +18,33 @@ const CardEdit = ({
   cardClient, // карточка Добавления клиента
   ButtonName,
   activeButton,
-  setActiveButton,
+  selectedServices,
+  serviceEmployeeMap,
   onButtonClick,
-  // карточки с календарем нету, она в другом месте, так как находиться должна не здесь
 }) => {
   const { users, setUsers } = useAuth();
+  const [clients, setClients] = useState([]);
+  const [selectedClient, setSelectedClient] = useState(null);
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/clients');
+        const data = await response.json();
+        setClients(data.clients);
+      } catch (error) {
+        console.error('Error fetching clients:', error);
+      }
+    };
+
+    fetchClients();
+  }, []);
+
+  const handleSelectClient = (client) => {
+    setSelectedClient(client);
+    console.log('Выбран клиент:', client);
+  };
+
   let asideContent;
   // eslint-disable-next-line default-case
   switch (activeButton) {
@@ -37,6 +63,52 @@ const CardEdit = ({
       {cardCalendar && (
         <div className="ab-card eb-services-island">
           <h4 className="ab-sub-headline">{title}</h4>
+          {selectedServices.map((service, index) => {
+            console.log(`Услуга - ${index}: `, service);
+            const employeeForService = serviceEmployeeMap.get(service.id);
+            console.log(`Сотрудник для услуги ${index}: `, employeeForService?.first_name);
+            console.log('Выбранные услуги: ', selectedServices);
+            console.log('Карта сотрудников для услуг: ', serviceEmployeeMap);
+            return (
+              <div key={index} className="eb-services-island__item cursor-pointer">
+                <div className="eb-services-island__service">
+                  <div className="flex items-center w-full w-max-full">
+                    <div
+                      className="eb-island-icon mr-4 flex-shrink-0 rounded-lg"
+                      style={{ width: '50px', height: '50px' }}>
+                      <ServiceIcon className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text" />
+                    </div>
+                    <div className="flex-grow pr-4 overflow-hidden">
+                      {service.name}
+                      <div className="flex items-center flex-wrap gap-x-4 gap-y-2 text-xs mt-1">
+                        <div className="whitespace-no-wrap">
+                          {service.startTime} - {service.endTime}
+                        </div>
+                        <div className="opacity-50 whitespace-no-wrap">{service.duration} мин.</div>
+                        <div>
+                          <div className="eb-user-avatar eb-user-avatar--single-row">
+                            {/* <span
+                            className="ab-avatar eb-user-avatar__userpic"
+                            style={{
+                              '--ui-avatar-size': '16px',
+                              '--ui-avatar-font-size': '0.44rem',
+                            }}></span> */}
+                            <span className="eb-user-avatar__title">
+                              {employeeForService?.first_name || 'Не выбран'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <strong className="whitespace-no-wrap">{service.price_from} ₽</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
           <button
             onClick={() => onButtonClick('addService')}
             type=" button"
@@ -60,27 +132,30 @@ const CardEdit = ({
               {ButtonName}
             </button>
           </div>
-          <div>
-            <div className="ab-select eb-select-white-prefix" placeholder="Не выбран (Анонимный)">
-              <div className="ab-select__input-wrap">
-                <label htmlFor="input-56" className="flex flex-1 ab-text-field is-text has-icon">
-                  <div className="ab-text-field__prefix">
-                    <UserSwitchOutlined width={30} height={30} className="ml-3" />
-                  </div>
-                  <div className="relative w-full">
-                    <input
-                      type="text"
-                      id="input-56"
-                      autoComplete="off"
-                      placeholder="Не выбран (Анонимный)"
-                      className="ab-text-field__element p-3"
-                    />
-                    <span className="ab-text-field__icon"></span>
-                  </div>
-                </label>
-              </div>
-            </div>
-          </div>
+          <Select
+            options={clients}
+            renderOption={(client) => (
+              <>
+                <span className="block whitespace-normal ml-3">
+                  {client.first_name} {client.last_name}
+                  <span className="block text-xs text-mono-400">{client.phone}</span>
+                </span>
+              </>
+            )}
+            getDisplayValue={(client) => client.first_name}
+            filterFunction={(client, searchTerm) =>
+              client.first_name.toLowerCase().includes(searchTerm.toLowerCase())
+            }
+            onSelect={handleSelectClient}
+            prefixSvg={
+              <UserSvg
+                className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text"
+                style={{ width: '30px', height: '30px' }}
+              />
+            }
+            inputTitle={selectedClient ? 'Клиент' : 'Не выбран (Анонимный)'}
+            id="input-56"
+          />
         </div>
       )}
       {cardEdit && (

@@ -21,16 +21,16 @@
 }
 
 :root {
-  --c-brand: #fff;
-  --c-brand-rgb: 255, 255, 255;
-  --c-brand-tuned: #fff;
-  --c-brand-tuned-rgb: 255, 255, 255;
+  --c-brand: #1e1e1e;
+  --c-brand-rgb: 30, 30, 30;
+  --c-brand-tuned: #1e1e1e;
+  --c-brand-tuned-rgb: 30, 30, 30;
   --c-accent: #ff7b00;
   --c-accent-rgb: 255, 123, 0;
   --c-success: #288f00;
   --c-success-rgb: 40, 143, 0;
-  --c-info: #1d6ec5;
-  --c-info-rgb: 29, 110, 197;
+  --c-info: #4a7fe4;
+  --c-info-rgb: 74, 127, 228;
   --c-warning: #fc8800;
   --c-warning-rgb: 252, 136, 0;
   --c-error: #e9555b;
@@ -43,32 +43,32 @@
   --c-link-rgb: 255, 123, 0;
   --c-mono-0: #000;
   --c-mono-0-rgb: 0, 0, 0;
-  --c-mono-50: #0a0c0f;
-  --c-mono-50-rgb: 10, 12, 15;
-  --c-mono-100: #14171d;
-  --c-mono-100-rgb: 20, 23, 29;
-  --c-mono-200: #2f3236;
-  --c-mono-200-rgb: 47, 50, 54;
-  --c-mono-300: #595d62;
-  --c-mono-300-rgb: 89, 93, 98;
-  --c-mono-400: #838587;
-  --c-mono-400-rgb: 131, 133, 135;
-  --c-mono-500: #aaaeb0;
-  --c-mono-500-rgb: 170, 174, 176;
-  --c-mono-600: #c1c4c7;
-  --c-mono-600-rgb: 193, 196, 199;
-  --c-mono-700: #d7dbde;
-  --c-mono-700-rgb: 215, 219, 222;
-  --c-mono-800: #e7eaed;
-  --c-mono-800-rgb: 231, 234, 237;
-  --c-mono-900: #f3f5f7;
-  --c-mono-900-rgb: 243, 245, 247;
-  --c-mono-1000: #fff;
-  --c-mono-1000-rgb: 255, 255, 255;
+  --c-mono-50: #fff;
+  --c-mono-50-rgb: 255, 255, 255;
+  --c-mono-100: #f1f1fb;
+  --c-mono-100-rgb: 241, 241, 251;
+  --c-mono-200: #313236;
+  --c-mono-200-rgb: 49, 50, 54;
+  --c-mono-300: #9a9a9a;
+  --c-mono-300-rgb: 154, 154, 154;
+  --c-mono-400: #9a9a9a;
+  --c-mono-400-rgb: 154, 154, 154;
+  --c-mono-500: #9a9a9a;
+  --c-mono-500-rgb: 154, 154, 154;
+  --c-mono-600: #9a9a9a;
+  --c-mono-600-rgb: 154, 154, 154;
+  --c-mono-700: #9a9a9a;
+  --c-mono-700-rgb: 154, 154, 154;
+  --c-mono-800: #383838;
+  --c-mono-800-rgb: 56, 56, 56;
+  --c-mono-900: #1e1e1e;
+  --c-mono-900-rgb: 30, 30, 30;
+  --c-mono-1000: #1e1e1e;
+  --c-mono-1000-rgb: 30, 30, 30;
   --c-notify: #ffc230;
   --c-notify-rgb: 255, 194, 48;
-  --c-on-brand: #383868;
-  --c-on-brand-rgb: 56, 56, 104;
+  --c-on-brand: #fff;
+  --c-on-brand-rgb: 255, 255, 255;
   --c-on-accent: #fff;
   --c-on-accent-rgb: 255, 255, 255;
   --c-on-success: #fff;
@@ -79,32 +79,32 @@
   --c-on-warning-rgb: 51, 51, 51;
   --c-on-error: #fff;
   --c-on-error-rgb: 255, 255, 255;
-  --c-on-surface: #14171d;
-  --c-on-surface-rgb: 20, 23, 29;
+  --c-on-surface: #fff;
+  --c-on-surface-rgb: 255, 255, 255;
   --c-on-overlay: #fff;
   --c-on-overlay-rgb: 255, 255, 255;
   --c-on-link: #fff;
   --c-on-link-rgb: 255, 255, 255;
   --c-on-mono-0: #fff;
   --c-on-mono-0-rgb: 255, 255, 255;
-  --c-on-mono-50: #fff;
-  --c-on-mono-50-rgb: 255, 255, 255;
-  --c-on-mono-100: #fff;
-  --c-on-mono-100-rgb: 255, 255, 255;
+  --c-on-mono-50: #161616;
+  --c-on-mono-50-rgb: 22, 22, 22;
+  --c-on-mono-100: #161616;
+  --c-on-mono-100-rgb: 22, 22, 22;
   --c-on-mono-200: #fff;
   --c-on-mono-200-rgb: 255, 255, 255;
   --c-on-mono-300: #fff;
   --c-on-mono-300-rgb: 255, 255, 255;
-  --c-on-mono-400: #fff;
-  --c-on-mono-400-rgb: 255, 255, 255;
-  --c-on-mono-500: #fff;
-  --c-on-mono-500-rgb: 255, 255, 255;
-  --c-on-mono-600: #333;
-  --c-on-mono-600-rgb: 51, 51, 51;
-  --c-on-mono-700: #333;
-  --c-on-mono-700-rgb: 51, 51, 51;
-  --c-on-mono-800: #333;
-  --c-on-mono-800-rgb: 51, 51, 51;
+  --c-on-mono-400: #9a9a9a;
+  --c-on-mono-400-rgb: 154, 154, 154;
+  --c-on-mono-500: #161616;
+  --c-on-mono-500-rgb: 22, 22, 22;
+  --c-on-mono-600: #161616;
+  --c-on-mono-600-rgb: 22, 22, 22;
+  --c-on-mono-700: #313236;
+  --c-on-mono-700-rgb: 49, 50, 54;
+  --c-on-mono-800: #fff;
+  --c-on-mono-800-rgb: 255, 255, 255;
   --c-on-mono-900: #001529;
   --c-on-mono-900-rgb: 0, 21, 41;
   --c-on-mono-1000: #333;
@@ -281,6 +281,22 @@ a {
 a:not([class]):hover {
   color: $secondary-color-hover;
 }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -435,6 +451,11 @@ p {
   &-col {
     flex-direction: column;
   }
+  &-shrink {
+    &-0 {
+      flex-shrink: 0;
+    }
+  }
 }
 .justify-end {
   justify-content: flex-end;
@@ -455,9 +476,23 @@ p {
   grid-gap: 1rem;
   gap: 1rem;
 }
+.gap-6 {
+  grid-gap: 1.5rem;
+  gap: 1.5rem;
+}
 .gap-8 {
   grid-gap: 2rem;
   gap: 2rem;
+}
+
+.gap-y-2 {
+  grid-row-gap: 0.5rem;
+  row-gap: 0.5rem;
+}
+.gap-x-4 {
+  grid-column-gap: 1rem;
+  -moz-column-gap: 1rem;
+  column-gap: 1rem;
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -486,6 +521,10 @@ p {
   line-height: 1;
 }
 
+.transition-200 {
+  transition: transform 0.2s;
+}
+
 .leading-relaxed {
   line-height: 1.625;
 }
@@ -502,9 +541,15 @@ p {
 .inline-block {
   display: inline-block;
 }
+.block {
+  display: block;
+}
 
 .rounded-lg {
   border-radius: 0.375rem;
+}
+.rounded-md {
+  border-radius: 0.25rem;
 }
 .w-full {
   width: 100%;
@@ -515,6 +560,10 @@ p {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .overflow-hidden {
@@ -697,6 +746,13 @@ p {
   padding-bottom: 1.25rem;
 }
 
+.pl-0 {
+  padding-left: 0;
+}
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
 .px-0 {
   padding-left: 0;
   padding-right: 0;
@@ -772,6 +828,9 @@ p {
 }
 .whitespace-no-wrap {
   white-space: nowrap;
+}
+.whitespace-normal {
+  white-space: normal;
 }
 
 .text-center {

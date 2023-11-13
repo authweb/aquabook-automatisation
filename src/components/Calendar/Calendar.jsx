@@ -9,10 +9,11 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 import '../../scss/CalendarStyles.scss';
 
-const CalendarDay = ({ todayParam, paramRangeStart }) => {
+const CalendarDay = ({}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { selectedDate, setSelectedDate } = useContext(CalendarContext);
+  const { setSelectedEmployeeId } = useContext(CalendarContext);
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
 
   const [events, setEvents] = useState([]);
@@ -209,14 +210,6 @@ const CalendarDay = ({ todayParam, paramRangeStart }) => {
     }
   };
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
   return (
     <>
       {/* Остальной код календаря */}
@@ -227,37 +220,20 @@ const CalendarDay = ({ todayParam, paramRangeStart }) => {
             ? selectedDate.format('YYYY-MM-DD')
             : dayjs(selectedDate).format('YYYY-MM-DD')
         }
-        events={events} // ensure this is correctly reflecting the updated state
+        events={events}
         {...config}
         onTimeRangeSelected={(args) => {
           console.log(args);
-          setEmployee(args.resource); // Remembering the selected employee
-          navigate(`${location.pathname}/add${location.search}`);
+          setSelectedEmployeeId(args.resource);
+          const selectedStart = dayjs(args.start.value);
+          const selectedEnd = dayjs(args.end.value);
+          navigate(
+            `${location.pathname}/add${location.search}&start=${selectedStart.format(
+              'YYYY-MM-DDTHH:mm:ss',
+            )}&end=${selectedEnd.format('YYYY-MM-DDTHH:mm:ss')}`,
+          );
         }}
       />
-      {/* <ModalForm
-        title="Запись"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        onOk={handleOk}
-        // Передайте необходимые значения и функции обратного вызова в ModalForm
-        clientName={clientName}
-        setClientName={setClientName}
-        email={email}
-        setEmail={setEmail}
-        phone={phone}
-        setPhone={setPhone}
-        service={service}
-        setService={setService}
-        categories={categories}
-        services={services}
-        date={date}
-        setDate={setDate}
-        timeRange={timeRange}
-        setTimeRange={setTimeRange}
-        notes={notes}
-        setNotes={setNotes}
-      /> */}
     </>
   );
 };

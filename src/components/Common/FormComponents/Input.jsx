@@ -17,15 +17,29 @@ const Input = ({
   colsSpan,
 }) => {
   const [isFilled, setIsFilled] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
   const handleBlur = (event) => {
     setIsFilled(event.target.value !== '');
   };
 
+  const isValueFilled = value !== '';
+
   return (
     <label
       htmlFor={id}
-      className={`flex ${colsSpan} ab-text-field is-text ${isFilled ? 'is-filled' : ''} has-label`}>
+      className={`flex ${colsSpan} ab-text-field is-text ${
+        isFocused || isValueFilled ? 'is-filled' : ''
+      } has-label`}>
       <div className="relative w-full">
         <input
           type={type}

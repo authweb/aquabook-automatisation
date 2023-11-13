@@ -2,6 +2,7 @@ import React from 'react';
 import { CaretLeftOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContexts';
+import Button from './FormComponents/Button';
 
 const HeaderDashboard = ({ showBack, title, titleProfile, buttons, to, containerSmall }) => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const HeaderDashboard = ({ showBack, title, titleProfile, buttons, to, container
                   <div className="ab-flow__child">
                     {to && (
                       <Link to={to} className="ab-button ab-button_md color-default theme-ghost">
-                        <span className="ab-button__content">
+                        <span className="ab-button__content ab-button__content_md">
                           <span className="ab-button__text">{buttons}</span>
                         </span>
                       </Link>

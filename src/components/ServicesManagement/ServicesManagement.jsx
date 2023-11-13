@@ -55,7 +55,6 @@ const ServicesManagement = () => {
 
   return (
     <>
-      <HeaderDashboard title="Попробовать поменять Collapse на Табы" />
       <Tabs type="card" tabPosition="left">
         {categories.map((category) => (
           <TabPane tab={category.name} key={category.id}>
