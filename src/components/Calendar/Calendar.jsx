@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { DayPilot, DayPilotCalendar } from 'daypilot-pro-react';
 import axios from 'axios';
 import dayjs from 'dayjs';
@@ -8,27 +8,22 @@ import useDateHandler from '../../hooks/useDateHandler';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 import '../../scss/CalendarStyles.scss';
+import { AddAppointment } from './AddAppointments';
 
-const CalendarDay = ({}) => {
+const CalendarDay = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { selectedDate, setSelectedDate } = useContext(CalendarContext);
-  const { setSelectedEmployeeId } = useContext(CalendarContext);
+  const { selectedDate, setSelectedEmployeeId } = useContext(CalendarContext);
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
 
   const [events, setEvents] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [clientName, setClientName] = useState('');
-  const [clientsId] = useState('');
-  const [employee, setEmployee] = useState(null);
-  const [service, setService] = useState('');
   const [date, setDate] = useState(dayjs());
   const [timeRange, setTimeRange] = useState([dayjs().startOf('hour'), dayjs().endOf('hour')]);
   const [notes, setNotes] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [last_name] = useState('');
-
+  const [last_name, setLastName] = useState('');
+  const [totalCost, settotalCost] = useState('');
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState({});
 
@@ -73,9 +68,11 @@ const CalendarDay = ({}) => {
         const appointments = appointmentsResponse.data.appointments.map((appointment) => ({
           start: appointment.start,
           end: appointment.end,
+          selectedServices: appointment.selectedServices,
+          serviceEmployeeMap: appointment.serviceEmployeeMap,
           text: appointment.text,
-          resource: appointment.resource,
           clients_id: appointment.clients_id,
+          totalCost: appointment.totalCost,
         }));
 
         setCategories(servicesCategories);
@@ -119,100 +116,111 @@ const CalendarDay = ({}) => {
     timeRangeSelectedHandling: 'Enabled',
   });
 
-  const addAppointment = async (newEvent) => {
-    try {
-      const response = await axios.post('http://localhost:3001/api/appointments', newEvent);
-      console.log('Server response', response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   const addAppointment = async (newEvent) => {
+  //     try {
+  //       const response = await axios.post('http://localhost:3001/api/appointments', newEvent);
+  //       console.log('Server response', response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-  const addClient = async (clientData) => {
-    try {
-      const response = await axios.post('http://localhost:3001/api/clients', clientData);
-      return response.data.id;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   const addClient = async (clientData) => {
+  //     try {
+  //       const response = await axios.post('http://localhost:3001/api/clients', clientData);
+  //       setClientsId(response.data.id);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-  const handleOk = async () => {
-    console.log('handleOk is called');
-    const now = dayjs();
-    const defaultStart = now
-      .add(new Date().getHours(), 'hour')
-      .add(new Date().getMinutes(), 'minute');
-    const defaultEnd = defaultStart.add(2, 'hour');
+  //   const handleOk = async () => {
+  //     console.log('handleOk is called');
+  //     const now = dayjs();
+  //     const defaultStart = now
+  //       .add(new Date().getHours(), 'hour')
+  //       .add(new Date().getMinutes(), 'minute');
+  //     const defaultEnd = defaultStart.add(2, 'hour');
 
-    let start;
-    let end;
+  //     let start;
+  //     let end;
 
-    if (
-      date &&
-      date.isValid() &&
-      timeRange[0] &&
-      timeRange[0].isValid() &&
-      timeRange[1] &&
-      timeRange[1].isValid()
-    ) {
-      start = date.format('YYYY-MM-DD') + ' ' + timeRange[0].format('HH:mm:ss');
-      end = date.format('YYYY-MM-DD') + ' ' + timeRange[1].format('HH:mm:ss');
-    } else {
-      start = defaultStart.format('YYYY-MM-DD HH:mm:ss');
-      end = defaultEnd.format('YYYY-MM-DD HH:mm:ss');
-    }
+  //     if (
+  //       date &&
+  //       date.isValid() &&
+  //       timeRange[0] &&
+  //       timeRange[0].isValid() &&
+  //       timeRange[1] &&
+  //       timeRange[1].isValid()
+  //     ) {
+  //       start = date.format('YYYY-MM-DD') + ' ' + timeRange[0].format('HH:mm:ss');
+  //       end = date.format('YYYY-MM-DD') + ' ' + timeRange[1].format('HH:mm:ss');
+  //     } else {
+  //       start = defaultStart.format('YYYY-MM-DD HH:mm:ss');
+  //       end = defaultEnd.format('YYYY-MM-DD HH:mm:ss');
+  //     }
 
-    const newEvent = {
-      id: DayPilot.guid(),
-      start: start,
-      end: end,
-      clientName: clientName,
-      service: service,
-      phone: phone,
-      email: email,
-      resource: employee,
-      clients_id: clientsId,
-    };
+  //     const newEvent = {
+  //       id: DayPilot.guid(),
+  //       start: start,
+  //       end: end,
+  //       clientName: clientName,
+  //       selectedServices: service,
+  //       serviceEmployeeMap: employee,
+  //       email: email,
+  //       clients_id: clientsId,
+  //       totalCost: totalCost,
+  //     };
 
-    newEvent.text = `${newEvent.clientName} ${newEvent.service} ${newEvent.phone} ${newEvent.email}`;
+  //     newEvent.text = `${newEvent.clientName} ${newEvent.selectedServices} ${newEvent.phone} ${newEvent.email} ${newEvent.totalCost}`;
 
-    setEvents((prevEvents) => {
-      const updatedEvents = [...prevEvents, newEvent];
-      return updatedEvents;
-    });
+  //     setEvents((prevEvents) => {
+  //       const updatedEvents = [...prevEvents, newEvent];
+  //       return updatedEvents;
+  //     });
 
-    setClientName('');
-    setService('');
-    setDate(null);
-    setTimeRange([null, null]);
-    setNotes('');
-    setIsModalVisible(false);
+  //     setClientName('');
+  //     setService('');
+  //     setDate(null);
+  //     setTimeRange([null, null]);
+  //     setNotes('');
+  //     setIsModalVisible(false);
 
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/api/clients?phone=${phone}&email=${email}`,
-      );
-      if (response.data.length > 0) {
-        newEvent.clients_id = response.data[0].id;
-        await addAppointment(newEvent);
-      } else {
-        newEvent.clients_id = await addClient({
-          first_name: clientName,
-          last_name: last_name,
-          phone: phone,
-          email: email,
-        });
-        await addAppointment(newEvent);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  //     try {
+  //       const response = await axios.get(
+  //         `http://localhost:3001/api/clients?phone=${phone}&email=${email}`,
+  //       );
+  //       if (response.data.length > 0) {
+  //         setClientsId(response.data[0].id);
+  //         await addAppointment(newEvent);
+  //       } else {
+  //         await addClient({
+  //           first_name: clientName,
+  //           last_name: last_name,
+  //           phone: phone,
+  //           email: email,
+  //         });
+  //         await addAppointment({ ...newEvent, clients_id: clientsId });
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  const handleTimeRangeSelected = (args) => {
+    console.log(args);
+    setSelectedEmployeeId(args.resource);
+    const selectedStart = dayjs(args.start.value);
+    const selectedEnd = dayjs(args.end.value);
+    navigate(
+      `${location.pathname}/add${location.search}&start=${selectedStart.format(
+        'YYYY-MM-DDTHH:mm:ss',
+      )}&end=${selectedEnd.format('YYYY-MM-DDTHH:mm:ss')}`,
+    );
   };
 
   return (
     <>
-      {/* Остальной код календаря */}
       <DayPilotCalendar
         className="eb-calendar__columns"
         startDate={
@@ -222,18 +230,9 @@ const CalendarDay = ({}) => {
         }
         events={events}
         {...config}
-        onTimeRangeSelected={(args) => {
-          console.log(args);
-          setSelectedEmployeeId(args.resource);
-          const selectedStart = dayjs(args.start.value);
-          const selectedEnd = dayjs(args.end.value);
-          navigate(
-            `${location.pathname}/add${location.search}&start=${selectedStart.format(
-              'YYYY-MM-DDTHH:mm:ss',
-            )}&end=${selectedEnd.format('YYYY-MM-DDTHH:mm:ss')}`,
-          );
-        }}
+        onTimeRangeSelected={handleTimeRangeSelected}
       />
+      {/* <AddAppointments /> */}
     </>
   );
 };

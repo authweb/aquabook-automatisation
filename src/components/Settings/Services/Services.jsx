@@ -64,10 +64,6 @@ const Services = () => {
   ];
   console.log(services);
 
-  if (!categories || !services) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <HeaderDashboard showBack title="Услуги" buttons="Создать услугу" to="add" />

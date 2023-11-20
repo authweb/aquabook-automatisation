@@ -10,21 +10,21 @@ import Select from './FormComponents/Select';
 
 const CardEdit = ({
   general,
-  title, //Название карточки
+  title,
   switcher,
   children,
-  cardCalendar, //карточка Добавления услуги
+  cardCalendar,
   cardEdit,
-  cardClient, // карточка Добавления клиента
+  cardClient,
   ButtonName,
   activeButton,
+  onClientSelect,
   selectedServices,
   serviceEmployeeMap,
   onButtonClick,
 }) => {
   const { users, setUsers } = useAuth();
   const [clients, setClients] = useState([]);
-  const [selectedClient, setSelectedClient] = useState(null);
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -41,36 +41,24 @@ const CardEdit = ({
   }, []);
 
   const handleSelectClient = (client) => {
-    setSelectedClient(client);
+    onClientSelect(client);
     console.log('Выбран клиент:', client);
   };
 
-  let asideContent;
-  // eslint-disable-next-line default-case
-  switch (activeButton) {
-    case 'addService':
-      asideContent = <Aside title="Добавить услугу" />;
-      break;
-    case 'addClient':
-      asideContent = <Aside title="Добавить клиента" />;
-      break;
-    case 'calendar':
-      asideContent = <Aside title="Дата и время" />;
-      break;
-  }
   return (
     <>
       {cardCalendar && (
         <div className="ab-card eb-services-island">
           <h4 className="ab-sub-headline">{title}</h4>
-          {selectedServices.map((service, index) => {
-            console.log(`Услуга - ${index}: `, service);
+          {selectedServices.map((service) => {
+            console.log(`Услуга - ${service.id}: `, service);
             const employeeForService = serviceEmployeeMap.get(service.id);
-            console.log(`Сотрудник для услуги ${index}: `, employeeForService?.first_name);
+            console.log(`Сотрудник для услуги ${service.id}: `, employeeForService?.first_name);
             console.log('Выбранные услуги: ', selectedServices);
             console.log('Карта сотрудников для услуг: ', serviceEmployeeMap);
+
             return (
-              <div key={index} className="eb-services-island__item cursor-pointer">
+              <div key={service.id} className="eb-services-island__item cursor-pointer">
                 <div className="eb-services-island__service">
                   <div className="flex items-center w-full w-max-full">
                     <div
@@ -87,12 +75,6 @@ const CardEdit = ({
                         <div className="opacity-50 whitespace-no-wrap">{service.duration} мин.</div>
                         <div>
                           <div className="eb-user-avatar eb-user-avatar--single-row">
-                            {/* <span
-                            className="ab-avatar eb-user-avatar__userpic"
-                            style={{
-                              '--ui-avatar-size': '16px',
-                              '--ui-avatar-font-size': '0.44rem',
-                            }}></span> */}
                             <span className="eb-user-avatar__title">
                               {employeeForService?.first_name || 'Не выбран'}
                             </span>
@@ -108,10 +90,9 @@ const CardEdit = ({
               </div>
             );
           })}
-
           <button
             onClick={() => onButtonClick('addService')}
-            type=" button"
+            type="button"
             className="ab-button w-full mt-4 eb-button-dashed ab-button_md color-accent theme-outline">
             <span className="ab-button__overlay"></span>
             <span className="ab-button__content ab-button__content_md">
@@ -153,7 +134,7 @@ const CardEdit = ({
                 style={{ width: '30px', height: '30px' }}
               />
             }
-            inputTitle={selectedClient ? 'Клиент' : 'Не выбран (Анонимный)'}
+            inputTitle={onClientSelect ? 'Клиент' : 'Не выбран (Анонимный)'}
             id="input-56"
           />
         </div>
@@ -164,9 +145,6 @@ const CardEdit = ({
             <div className="ab-island__title-wrap">
               <h3 className="ab_headline ab-island__title">{general}</h3>
             </div>
-            {/* <div className="ab-island__description">
-            <div className="ab-description">Повелитель</div>
-          </div> */}
             <div className="ab-island__arrow-wrap">
               <div className="whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs">
                 {switcher && (
@@ -185,6 +163,13 @@ const CardEdit = ({
             </div>
           </div>
         </section>
+      )}
+      {activeButton && (
+        <Aside
+          title={`Добавить ${activeButton === 'addService' ? 'услугу' : 'клиента'}`}
+          closeAside={() => onButtonClick(activeButton)}
+          isAsideOpen={true} // Открываем Aside при активной кнопке
+        />
       )}
     </>
   );

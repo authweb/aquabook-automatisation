@@ -37,12 +37,7 @@ const ServicePage = () => {
                     <div
                       className="aw-island-icon rounded-lg"
                       style={{ width: '60px', height: '60px' }}>
-                      <img
-                        src={imageUser}
-                        alt="image user"
-                        className="rounded-lg"
-                        //   style={{ width: '60px', height: '60px' }}
-                      />
+                      <img src={imageUser} alt="image user" className="rounded-lg" />
                     </div>
                   </div>
                   <div className="ab-island__title-wrap">

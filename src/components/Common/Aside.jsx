@@ -6,14 +6,24 @@ import Input from './FormComponents/Input';
 import { ReactComponent as ServiceSvg } from '../../assets/images/service.svg';
 import { ReactComponent as EmployeeSvg } from '../../assets/images/employee.svg';
 import { CalendarContext } from '../../contexts/CalendarContexts';
+import { NumberInput } from '..';
 
-const Aside = ({ title, closeAside, isAsideOpen, onAddService, onSelectEmployeeForService }) => {
+const Aside = ({
+  title,
+  closeAside,
+  isAsideOpen,
+  action,
+  done,
+  onAddService, // Функция добавления услуги
+  onSelectEmployeeForService, // Функция выбора сотрудника для услуги
+}) => {
   const asideRef = useRef();
   const { selectedEmployeeId } = useContext(CalendarContext);
   const [services, setServices] = useState([]);
   const [employees, setEmployees] = useState([]);
+  const [clients, setClients] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [selectedEmployee, setSelectedEmployee] = useState({});
   const [tempIdForSelectedService, setTempIdForSelectedService] = useState(null);
   const [initialValues, setInitialValues] = useState('');
   const [currentValues, setCurrentValues] = useState('');
@@ -59,6 +69,21 @@ const Aside = ({ title, closeAside, isAsideOpen, onAddService, onSelectEmployeeF
   }, []);
 
   useEffect(() => {
+    // Функция для загрузки данных сотрудников
+    const fetchClients = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/clients');
+        const data = await response.json();
+        setClients(data.clients);
+      } catch (error) {
+        console.error('Error fetching clients:', error);
+      }
+    };
+
+    fetchClients();
+  }, []);
+
+  useEffect(() => {
     const employeeData = employees.find((employee) => employee.id === selectedEmployeeId);
     setSelectedEmployee(employeeData);
     console.log(employeeData);
@@ -70,31 +95,95 @@ const Aside = ({ title, closeAside, isAsideOpen, onAddService, onSelectEmployeeF
       priceFrom: services?.price_from || '',
       priceTo: services?.price_to || '',
       duration: services?.duration || '',
+      firstName: clients?.first_name || '',
+      lastName: clients?.last_name || '',
+      phone: clients?.phone || '',
+      email: clients?.email || '',
     });
     setCurrentValues({
       name: services?.name || '',
       priceFrom: services?.price_from || '',
       priceTo: services?.price_to || '',
       duration: services?.duration || '',
+      firstName: clients?.first_name || '',
+      lastName: clients?.last_name || '',
+      phone: clients?.phone || '',
+      email: clients?.email || '',
     });
-  }, [services]);
+  }, [services, clients]);
 
   const handleServiceSelect = (service) => {
     const tempId = generateTempId();
     setTempIdForSelectedService(tempId);
     setSelectedService(service);
+
+    setSelectedEmployee((prevSelectedEmployees) => ({
+      ...prevSelectedEmployees,
+      [tempId]: null, // Инициализируйте сотрудника как null для текущей услуги
+    }));
   };
 
-  const handleSelectEmployee = (employee) => {
-    if (selectedService && tempIdForSelectedService) {
-      onSelectEmployeeForService(tempIdForSelectedService, employee);
+  const handleSelectEmployee = (tempId, employee) => {
+    console.log('handleSelectEmployee: tempId =', tempId);
+    console.log('handleSelectEmployee: employee =', employee);
+    setSelectedEmployee((prevSelectedEmployees) => ({
+      ...prevSelectedEmployees,
+      [tempId]: employee, // Свяжите выбранного сотрудника с текущей услугой по tempId
+    }));
+    onSelectEmployeeForService(tempIdForSelectedService, employee); // Вызываем функцию onSelectEmployeeForService из AddAppointments
+  };
+
+  const handleCreateClient = async () => {
+    const newClient = {
+      first_name: currentValues.firstName,
+      last_name: currentValues.lastName,
+      phone: currentValues.phone,
+      email: currentValues.email,
+    };
+
+    try {
+      const response = await fetch('http://localhost:3001/api/clients', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newClient),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Успешно добавлен клиент:', result);
+
+      // Обновляем состояние клиентов, если нужно
+      setClients((prevClients) => [...prevClients, result.newClient]);
+
+      // Закрыть боковую панель и сбросить форму
+      setCurrentValues('');
+      closeAside();
+    } catch (error) {
+      console.error('Возникла проблема с добавлением клиента:', error);
+    }
+  };
+
+  const handleSubmit = () => {
+    if (action === 'createClient') {
+      handleCreateClient();
+    } else if (action === 'addService') {
+      handleAddService();
     }
   };
 
   const handleAddService = () => {
     if (selectedService && tempIdForSelectedService) {
       console.log(`handleAddServiceClick: generated tempId = ${tempIdForSelectedService}`);
-      onAddService(selectedService, tempIdForSelectedService);
+      onAddService(
+        selectedService,
+        tempIdForSelectedService,
+        selectedEmployee[tempIdForSelectedService],
+      ); // Вызываем функцию onAddService из AddAppointments
       closeAside();
       console.log('tempId', tempIdForSelectedService);
       //   console.log('onAddService', onAddService(currentValues, tempId));
@@ -143,116 +232,162 @@ const Aside = ({ title, closeAside, isAsideOpen, onAddService, onSelectEmployeeF
           </div>
           <div className="ab-modal__body">
             <div className="ab-modal__content ab-modal__content--buttons">
-              <div className="grid grid-cols-1 gap-6 items-start">
+              {action === 'addService' && (
                 <div className="grid grid-cols-1 gap-6 items-start">
+                  <div className="grid grid-cols-1 gap-6 items-start">
+                    <Select
+                      options={services}
+                      renderOption={(service) => (
+                        <>
+                          <span className="block whitespace-normal ml-3">
+                            {service.name}
+                            <span className="block text-xs text-mono-400">
+                              {service.duration} мин. • {service.price_from} ₽
+                            </span>
+                          </span>
+                        </>
+                      )}
+                      getDisplayValue={(service) => service.name}
+                      filterFunction={(service, searchTerm) =>
+                        service.name.toLowerCase().includes(searchTerm.toLowerCase())
+                      }
+                      prefixSvg={
+                        <ServiceSvg
+                          className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text"
+                          style={{ width: '30px', height: '30px' }}
+                        />
+                      }
+                      onSelect={(service) => {
+                        console.log('Выбрана услуга:', service);
+                        handleServiceSelect(service);
+                        setCurrentValues({
+                          name: service.name,
+                          priceFrom: service.price_from,
+                          priceTo: service.price_to,
+                          duration: service.duration,
+                        });
+                      }}
+                      onChange={(service) =>
+                        setCurrentValues({ ...currentValues, name: service.target.value })
+                      }
+                      description={
+                        <>
+                          Для создания и редактирования услуг перейдите в раздел «
+                          <Link to="settings/services">Услуги</Link>».
+                        </>
+                      }
+                      inputTitle="Услуга"
+                    />
+                  </div>
+                  {selectedService && (
+                    <>
+                      <Input
+                        type="tel"
+                        name="priceFrom"
+                        autoComplete="priceFrom"
+                        value={currentValues.priceFrom}
+                        onChange={(e) =>
+                          setCurrentValues({ ...currentValues, priceFrom: e.target.value })
+                        }
+                        prefix="Цена"
+                        id="input-45"
+                      />
+                      <Input
+                        type="text"
+                        name="duration"
+                        autoComplete="duration"
+                        value={currentValues.duration}
+                        onChange={(e) =>
+                          setCurrentValues({ ...currentValues, duration: e.target.value })
+                        }
+                        prefix="Длительность"
+                        id="input-46"
+                      />
+                    </>
+                  )}
                   <Select
-                    options={services}
-                    renderOption={(service) => (
+                    options={employees}
+                    renderOption={(employee) => (
                       <>
                         <span className="block whitespace-normal ml-3">
-                          {service.name}
-                          <span className="block text-xs text-mono-400">
-                            {service.duration} мин. • {service.price_from} ₽
-                          </span>
+                          {employee.first_name}
+                          <span className="block text-xs text-mono-400">{employee.position}</span>
                         </span>
                       </>
                     )}
-                    getDisplayValue={(service) => service.name}
-                    filterFunction={(service, searchTerm) =>
-                      service.name.toLowerCase().includes(searchTerm.toLowerCase())
-                    }
                     prefixSvg={
-                      <ServiceSvg
+                      <EmployeeSvg
                         className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text"
                         style={{ width: '30px', height: '30px' }}
                       />
                     }
-                    onSelect={(service) => {
-                      console.log('Выбрана услуга:', service);
-                      handleServiceSelect(service);
-                      setCurrentValues({
-                        name: service.name,
-                        priceFrom: service.price_from,
-                        priceTo: service.price_to,
-                        duration: service.duration,
-                      });
+                    getDisplayValue={(employee) => employee.first_name}
+                    filterFunction={(employee, searchTerm) =>
+                      employee.first_name.toLowerCase().includes(searchTerm.toLowerCase())
+                    }
+                    selectedValue={selectedEmployee}
+                    onSelect={(employee) => {
+                      setSelectedEmployee(employee);
+                      handleSelectEmployee(tempIdForSelectedService, employee);
+                      // handleSelectEmployee(tempId, employee); а оно вызывается здесь
                     }}
-                    onChange={(service) =>
-                      setCurrentValues({ ...currentValues, name: service.target.value })
-                    }
-                    description={
-                      <>
-                        Для создания и редактирования услуг перейдите в раздел «
-                        <Link to="settings/services">Услуги</Link>».
-                      </>
-                    }
-                    inputTitle="Услуга"
+                    inputTitle="Сотрудник"
                   />
                 </div>
-                {selectedService && (
-                  <>
+              )}
+              {action === 'createClient' && (
+                <div className="grid grid-cols-1 gap-4 items-start">
+                  <div className="grid grid-cols-1 gap-4 items-start">
                     <Input
-                      type="tel"
-                      name="priceFrom"
-                      autoComplete="priceFrom"
-                      value={currentValues.priceFrom}
+                      type="text"
+                      name="firstName"
+                      autoComplete="firstName"
+                      prefix="Имя"
+                      value={currentValues.firstName}
                       onChange={(e) =>
-                        setCurrentValues({ ...currentValues, priceFrom: e.target.value })
+                        setCurrentValues({ ...currentValues, firstName: e.target.value })
                       }
-                      prefix="Цена"
-                      id="input-45"
                     />
                     <Input
                       type="text"
-                      name="duration"
-                      autoComplete="duration"
-                      value={currentValues.duration}
+                      name="lastName"
+                      autoComplete="lastName"
+                      prefix="Фамилия"
+                      value={currentValues.lastName}
                       onChange={(e) =>
-                        setCurrentValues({ ...currentValues, duration: e.target.value })
+                        setCurrentValues({ ...currentValues, lastName: e.target.value })
                       }
-                      prefix="Длительность"
-                      id="input-46"
                     />
-                  </>
-                )}
-                <Select
-                  options={employees}
-                  renderOption={(employee) => (
-                    <>
-                      <span className="block whitespace-normal ml-3">
-                        {employee.first_name}
-                        <span className="block text-xs text-mono-400">{employee.position}</span>
-                      </span>
-                    </>
-                  )}
-                  prefixSvg={
-                    <EmployeeSvg
-                      className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text"
-                      style={{ width: '30px', height: '30px' }}
+                    <NumberInput
+                      name="phone"
+                      autoComplete="phone"
+                      prefix="Телефон"
+                      id="input-55"
+                      value={currentValues.phone}
+                      onChange={(e) =>
+                        setCurrentValues({ ...currentValues, phone: e.target.value })
+                      }
                     />
-                  }
-                  getDisplayValue={(employee) => employee.first_name}
-                  filterFunction={(employee, searchTerm) =>
-                    employee.first_name.toLowerCase().includes(searchTerm.toLowerCase())
-                  }
-                  selectedValue={selectedEmployee}
-                  onSelect={(employee) => {
-                    const tempId = tempIdForSelectedService;
-                    console.log(`Select onSelect: tempId = ${tempId}`);
-                    setSelectedEmployee(employee);
-                    handleSelectEmployee(tempId, employee);
-                    // handleSelectEmployee(tempId, employee); а оно вызывается здесь
-                  }}
-                  inputTitle="Сотрудник"
-                />
-              </div>
+                    <Input
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      prefix="Email"
+                      value={currentValues.email}
+                      onChange={(e) =>
+                        setCurrentValues({ ...currentValues, email: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div className="ab-modal__buttons ab-button-group">
             <div className="ab-modal-buttons ab-modal-buttons--desktop">
               <button
                 type="button"
-                onClick={handleAddService}
+                onClick={handleSubmit}
                 className="eb-button ab-modal-buttons__button eb-button--custom-icon eb-button--color-accent flex-grow"
                 style={{
                   '--btn-bg': 'var(--c-success-rgb)',
@@ -261,7 +396,7 @@ const Aside = ({ title, closeAside, isAsideOpen, onAddService, onSelectEmployeeF
                   '--btn-radius': '0.625rem',
                   '--btn-icon-bg': '0.15',
                 }}>
-                <span className="eb-button__text">Добавить</span>
+                <span className="eb-button__text">{done}</span>
               </button>
             </div>
           </div>

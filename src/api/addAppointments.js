@@ -3,33 +3,41 @@ const router = express.Router();
 const db = require('../config/dbConnect');
 
 router.post('/appointments', async (req, res) => {
-  const { start, end, text, resource, phone, email, clientName } = req.body;
+  const { start, end, text, clients_id, selectedServices, serviceEmployeeMap, totalCost } =
+    req.body;
+
+  const errors = [];
+
+  if (start === undefined) {
+    errors.push('start is missing');
+  }
+
+  if (end === undefined) {
+    errors.push('end is missing');
+  }
+
+  if (text === undefined) {
+    errors.push('text is missing');
+  }
+
+  if (typeof totalCost !== 'number') {
+    errors.push('totalCost should be a number');
+  }
+
+  if (typeof clients_id !== 'number') {
+    errors.push('clients_id should be a number');
+  }
+
+  if (errors.length > 0) {
+    // Если есть ошибки, отправьте их в ответе
+    return res.status(400).json({ errors });
+  }
 
   try {
-    // Проверяем, существует ли уже клиент
-    const [clients] = await db.execute('SELECT * FROM clients WHERE email = ? OR phone = ?', [
-      email,
-      phone,
-    ]);
-
-    let clients_id;
-
-    if (clients.length > 0) {
-      // Клиент уже существует
-      clients_id = clients[0].id;
-    } else {
-      // Клиента не существует, добавляем нового клиента
-      const [result] = await db.execute(
-        'INSERT INTO clients (first_name, phone, email) VALUES (?, ?, ?)',
-        [clientName, phone, email],
-      );
-      clients_id = result.insertId;
-    }
-
-    // Добавляем новую запись
+    // Добавляем новую запись с новыми столбцами
     const [appointmentResult] = await db.execute(
-      'INSERT INTO appointments (clients_id, start, end, text, resource) VALUES (?, ?, ?, ?, ?)',
-      [clients_id, start, end, text, resource],
+      'INSERT INTO appointments (start, end, selectedServices, serviceEmployeeMap, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [start, end, selectedServices, serviceEmployeeMap, text, clients_id, totalCost],
     );
 
     if (appointmentResult.affectedRows === 0) {
@@ -39,7 +47,16 @@ router.post('/appointments', async (req, res) => {
     const appointmentId = appointmentResult.insertId;
     res.status(201).json({
       message: 'Appointment created successfully',
-      appointment: { id: appointmentId, clients_id, start, end, text, resource },
+      appointment: {
+        id: appointmentId,
+        start,
+        end,
+        selectedServices,
+        serviceEmployeeMap,
+        text,
+        clients_id,
+        totalCost,
+      },
     });
   } catch (error) {
     console.error(error);

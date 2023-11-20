@@ -6,21 +6,28 @@ const db = require('../config/dbConnect');
 router.get('/appointments', async (_, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM appointments');
-    if (rows.length === 0) {
-      return res.status(404).json({ message: 'No appointments found' });
+    const appointments = rows.map((appointment) => ({
+      id: appointment.id,
+      start: moment(appointment.start).format('YYYY-MM-DD HH:mm:ss'),
+      end: moment(appointment.end).format('YYYY-MM-DD HH:mm:ss'),
+      selectedServices: appointment.selectedServices,
+      serviceEmployeeMap: appointment.serviceEmployeeMap,
+      text: appointment.text,
+      clients_id: appointment.clients_id,
+      totalCost: appointment.totalCost,
+    }));
+
+    if (appointments.length === 0) {
+      // Если нет записей, вернем пустой массив
+      return res.json({
+        message: 'No appointments found',
+        appointments: [],
+      });
     }
 
-    const appointments = rows;
     res.json({
       message: 'Appointments fetched successfully',
-      appointments: appointments.map((appointment) => ({
-        id: appointment.id,
-        start: moment(appointment.start).format('YYYY-MM-DD HH:mm:ss'),
-        end: moment(appointment.end).format('YYYY-MM-DD HH:mm:ss'),
-        text: appointment.text,
-        resource: appointment.resource,
-        clients_id: appointment.clients_id,
-      })),
+      appointments,
     });
   } catch (error) {
     console.error(error);

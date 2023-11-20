@@ -3,12 +3,21 @@ import HeaderDashboard from '../Common/HeaderDashboard';
 import CardEdit from '../Common/CardEdit';
 import { useLocation } from 'react-router-dom';
 import dayjs from 'dayjs';
+import axios from 'axios';
 import { Layout, Tag } from 'antd';
 import Aside from '../Common/Aside';
 import { ReactComponent as TimeIcon } from '../../assets/images/time-icon.svg';
 import TextArea from '../Common/FormComponents/TextArea';
 
-const AddAppointments = ({ service, setService, categories, services, serviceId }) => {
+const AddAppointments = ({
+  service,
+  setService,
+  categories,
+  setCategories,
+  services,
+  setServices,
+  onAddAppointment,
+}) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const endString = queryParams.get('end');
@@ -20,25 +29,30 @@ const AddAppointments = ({ service, setService, categories, services, serviceId 
     dayjs(queryParams.get('start'), 'YYYY-MM-DDTHH:mm:ss'),
   );
   const formattedStart = initialStartDate.format('dd, DD MMM YYYY HH:mm');
-
-  const formattedEnd = endDate.format('dd, DD MMM YYYY HH:mm');
+  const formattedStartForDatabase = initialStartDate.format('YYYY-MM-DD HH:mm:ss');
+  const formattedEndDatabase = endDate.format('YYYY-MM-DD HH:mm:ss');
   const [activeButton, setActiveButton] = useState(null);
   const [isAsideOpen, setIsAsideOpen] = useState(false);
   const [selectedServices, setSelectedServices] = useState([]);
   const [serviceEmployeeMap, setServiceEmployeeMap] = useState(new Map());
+  const [selectedClient, setSelectedClient] = useState(null);
+
   const [tempIdMap, setTempIdMap] = useState(new Map());
   const [serviceIdCounter, setServiceIdCounter] = useState(0);
-  const [currentValues, setCurrentValues] = useState('');
+  const [currentValues, setCurrentValues] = useState({ cost: 0 });
+
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     const totalCost = selectedServices.reduce(
-      (total, service) => total + Number(service.priceFrom),
+      (total, service) => total + Number(service.price_from),
       0,
     );
 
     setCurrentValues({ cost: totalCost });
   }, [selectedServices]);
 
+  // Функция для добавления услуги
   const addService = (service, tempId) => {
     const newServiceId = serviceIdCounter;
     setServiceIdCounter((prevId) => prevId + 1);
@@ -46,11 +60,10 @@ const AddAppointments = ({ service, setService, categories, services, serviceId 
     const endTime = dayjs(startDate).add(service.duration, 'minute');
     const serviceWithTimeAndId = {
       ...service,
-      id: newServiceId,
+      id: tempId,
       startTime: startDate.format('HH:mm'),
       endTime: endTime.format('HH:mm'),
     };
-    console.log(`addService: tempId = ${tempId}, newServiceId = ${newServiceId}`);
     setTempIdMap((prevMap) => {
       const tempIdMap = new Map(prevMap);
       tempIdMap.set(tempId, newServiceId);
@@ -58,20 +71,72 @@ const AddAppointments = ({ service, setService, categories, services, serviceId 
     });
     setSelectedServices((prevServices) => [...prevServices, serviceWithTimeAndId]);
     setStartDate(endTime);
-    console.log('newServiceId: ', newServiceId);
-
-    // handleSelectEmployeeForService(newServiceId, employee);
   };
 
-  const handleSelectEmployeeForService = (tempId, employee) => {
-    setServiceEmployeeMap((prev) => {
-      console.log(`handleSelectEmployeeForService: received tempId = ${tempId}`);
-      const originalServiceId = tempIdMap.get(tempId);
-      console.log('originalServiceId: ', originalServiceId);
-      const updatedMap = new Map(prev);
-      updatedMap.set(originalServiceId, employee);
-      console.log(updatedMap); // Логирование обновленной карты
+  const addAppointment = async () => {
+    // Проверяем, что все необходимые данные выбраны и корректны
+    if (!selectedClient || !selectedClient.id || currentValues.cost <= 0) {
+      const errorMessages = [];
+      if (!selectedClient || !selectedClient.id) {
+        errorMessages.push('Необходимо выбрать клиента.');
+      }
+      if (currentValues.cost <= 0) {
+        errorMessages.push('Общая стоимость должна быть больше нуля.');
+      }
+      setErrors(errorMessages);
+      return;
+    }
 
+    // Формирование текста для поля text
+    const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name}, телефон: ${selectedClient.phone}`;
+    const servicesInfo = selectedServices.map((service) => service.name).join(', ');
+    const appointmentText = `${clientInfo}, услуги: ${servicesInfo}`;
+
+    try {
+      const newEvent = {
+        start: formattedStartForDatabase,
+        end: formattedEndDatabase,
+        selectedServices: selectedServices.map((service) => ({
+          id: service.id,
+          name: service.name,
+        })),
+        serviceEmployeeMap: Object.fromEntries(serviceEmployeeMap),
+        text: appointmentText, // Здесь используется сформированный текст
+        totalCost: currentValues.cost,
+        clients_id: selectedClient.id,
+      };
+
+      const response = await axios.post('http://localhost:3001/api/appointments', newEvent);
+
+      // Проверка на наличие ошибок в ответе сервера
+      if (response.data.errors) {
+        setErrors(response.data.errors);
+      } else {
+        console.log('Server response', response.data);
+        setErrors([]); // Очистка ошибок после успешного запроса
+        // Дополнительные действия после успешного создания записи
+      }
+    } catch (error) {
+      // Обработка ошибок запроса
+      if (error.response) {
+        // Ошибка ответа сервера
+        setErrors(error.response.data.errors || [error.response.data.message]);
+      } else if (error.request) {
+        // Запрос был отправлен, но не было ответа
+        setErrors(['No response was received']);
+      } else {
+        // Ошибка при настройке запроса
+        setErrors(['Error setting up request']);
+      }
+      console.error('Error', error.message);
+    }
+  };
+
+  // Функция для выбора сотрудника для услуги
+  const handleSelectEmployeeForService = (newServiceId, employee) => {
+    setServiceEmployeeMap((prev) => {
+      const updatedMap = new Map(prev);
+      updatedMap.set(newServiceId, employee);
       return updatedMap;
     });
   };
@@ -80,8 +145,8 @@ const AddAppointments = ({ service, setService, categories, services, serviceId 
     console.log('Обновленный tempIdMap:', tempIdMap);
   }, [tempIdMap]);
 
-  const openAside = (asideName) => {
-    setActiveButton(asideName);
+  const openAside = (asideName, action) => {
+    setActiveButton({ name: asideName, action: action });
     setIsAsideOpen(true);
   };
 
@@ -105,25 +170,35 @@ const AddAppointments = ({ service, setService, categories, services, serviceId 
                 selectedServices={selectedServices}
                 ButtonName="Добавить услугу"
                 serviceEmployeeMap={serviceEmployeeMap}
-                onButtonClick={() => openAside('service')}></CardEdit>
+                onButtonClick={() => openAside('service', 'addService')}></CardEdit>
               <CardEdit
                 title="Клиент"
                 setActiveButton={setActiveButton}
                 cardClient
+                selectedClient={selectedClient}
+                onClientSelect={setSelectedClient}
                 ButtonName="Создать нового"
-                onButtonClick={() => openAside('client')}></CardEdit>
+                onButtonClick={() => openAside('client', 'createClient')}></CardEdit>
             </div>
-            {activeButton === 'service' && (
+            {activeButton && activeButton.name === 'service' && (
               <Aside
                 title="Добавить услугу"
                 closeAside={closeAside}
                 isAsideOpen={isAsideOpen}
-                onAddService={addService}
-                onSelectEmployeeForService={handleSelectEmployeeForService}
+                action={activeButton.action}
+                onAddService={addService} // Передаем функцию addService в Aside
+                onSelectEmployeeForService={handleSelectEmployeeForService} // Передаем функцию handleSelectEmployeeForService в Aside
+                done="Добавить"
               />
             )}
-            {activeButton === 'client' && (
-              <Aside title="Добавить клиента" closeAside={closeAside} isAsideOpen={isAsideOpen} />
+            {activeButton && activeButton.name === 'client' && (
+              <Aside
+                title="Добавить клиента"
+                action={activeButton.action}
+                closeAside={closeAside}
+                isAsideOpen={isAsideOpen}
+                done="Создать клиента"
+              />
             )}
           </div>
         </div>
@@ -183,7 +258,8 @@ const AddAppointments = ({ service, setService, categories, services, serviceId 
                       '--btn-size': '3.5rem',
                       '--btn-radius': '0.625rem',
                       '--btn-icon-bg': '0.15',
-                    }}>
+                    }}
+                    onClick={addAppointment}>
                     <span className="eb-button__text">Создать запись</span>
                   </button>
                 </div>

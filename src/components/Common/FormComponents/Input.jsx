@@ -21,7 +21,7 @@ const Input = ({
   const [inputValue, setInputValue] = useState('');
 
   const handleFocus = () => {
-    setIsFocused(true);
+    setIsFocused(false);
   };
 
   const handleChange = (event) => {
@@ -44,15 +44,16 @@ const Input = ({
         <input
           type={type}
           name={name}
-          value={value}
           autoComplete={autoComplete}
           placeholder={placeholder}
           create-placeholder={createPlaceholder}
           required={required}
           className="ab-text-field__element p-3"
           id={id}
+          value={value}
           onChange={onChange}
           onBlur={handleBlur}
+          onFocus={handleFocus}
         />
         <div className="ab-text-field__label ab-text-field__label">{prefix}</div>
         {iconGroup && (
