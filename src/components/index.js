@@ -26,6 +26,7 @@ export { default as DashboardMain } from './Dashboard/Dashboard';
 export { default as ServicesManagement } from './ServicesManagement/ServicesManagement';
 export { default as ModalForm } from './Calendar/ModalForm';
 export { default as AddAppointments } from './Calendar/AddAppointments';
+export { default as AppointmentDetails } from './Calendar/AppointmentDetails';
 
 export { default as Input } from './Common/FormComponents/Input';
 export { default as NumberInput } from './Common/FormComponents/NumberInput';

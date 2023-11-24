@@ -1,21 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const moment = require('moment');
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+
 const db = require('../config/dbConnect');
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault('Asia/Krasnoyarsk');
 
 router.get('/appointments', async (_, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM appointments');
-    const appointments = rows.map((appointment) => ({
-      id: appointment.id,
-      start: moment(appointment.start).format('YYYY-MM-DD HH:mm:ss'),
-      end: moment(appointment.end).format('YYYY-MM-DD HH:mm:ss'),
-      selectedServices: appointment.selectedServices,
-      serviceEmployeeMap: appointment.serviceEmployeeMap,
-      text: appointment.text,
-      clients_id: appointment.clients_id,
-      totalCost: appointment.totalCost,
-    }));
+    const appointments = rows.map((appointment) => {
+      // Логируем исходные значения даты и времени
+      //   console.log('Original start:', appointment.start);
+      //   console.log('Original end:', appointment.end);
+
+      // Преобразуем исходные значения в часовой пояс 'Asia/Krasnoyarsk' и форматируем
+      const startInKrasnoyarsk = dayjs(appointment.start)
+        .tz('Asia/Krasnoyarsk')
+        .format('YYYY-MM-DD HH:mm:ss');
+      const endInKrasnoyarsk = dayjs(appointment.end)
+        .tz('Asia/Krasnoyarsk')
+        .format('YYYY-MM-DD HH:mm:ss');
+
+      // Логируем преобразованные значения
+      //   console.log('Converted start:', startInKrasnoyarsk);
+      //   console.log('Converted end:', endInKrasnoyarsk);
+
+      return {
+        id: appointment.id,
+        start: startInKrasnoyarsk,
+        end: endInKrasnoyarsk,
+        selectedServices: appointment.selectedServices,
+        serviceEmployeeMap: appointment.serviceEmployeeMap,
+        text: appointment.text,
+        clients_id: appointment.clients_id,
+        totalCost: appointment.totalCost,
+      };
+    });
 
     if (appointments.length === 0) {
       // Если нет записей, вернем пустой массив

@@ -8,12 +8,8 @@ import '../../scss/profile.scss';
 const PersonalInfo = () => {
   const { users, carInfo } = useAuth();
 
-  const { client_id, car_number, car_make, car_model, car_type } = carInfo || {
+  const { client_id } = carInfo || {
     client_id: null,
-    car_number: null,
-    car_make: null,
-    car_model: null,
-    car_type: null,
   };
 
   return (
@@ -31,11 +27,6 @@ const PersonalInfo = () => {
             </div>
           </div>
         </div>
-
-        {/* carInfo.car_number,
-                carInfo.car_make,
-                carInfo.car_model,
-                carInfo.car_type, */}
         <div className="personalProfile-section">
           {carInfo && client_id ? (
             <div className="personalProfile carInfo">

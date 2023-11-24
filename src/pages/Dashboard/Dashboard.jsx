@@ -26,6 +26,7 @@ import { CalendarProvider } from '../../contexts/CalendarContexts';
 
 import {
   AddAppointments,
+  AppointmentDetails,
   CalendarNavigator,
   CalendarDay,
   Clients,
@@ -63,6 +64,9 @@ const Dashboard = () => {
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
   const { employees, error } = useEmployeeData();
   const [stats, dispatch] = useReducer(reducer, initialState);
+
+  const match = location.pathname.match(/\/dashboard\/appointments\/(\d+)/);
+  const isAppointmentDetailsPage = match !== null;
 
   useEffect(() => {
     if (location.pathname === '/dashboard/calendar/add' && rangeStart) {
@@ -189,14 +193,18 @@ const Dashboard = () => {
       }}
       locale={ruRU}>
       <CalendarProvider>
-        {showAddAppointments ? (
+        {showAddAppointments && (
           <AddAppointments
             service={service}
             setService={setService}
             categories={categories}
             services={services}
           />
-        ) : (
+        )}
+
+        {isAppointmentDetailsPage && <AppointmentDetails />}
+
+        {!showAddAppointments && !isAppointmentDetailsPage && (
           <Layout style={{ height: '100%', background: '#001529' }}>
             <Sider trigger={null} collapsible collapsed={true}>
               {users ? (
@@ -301,6 +309,7 @@ const Dashboard = () => {
                 <Routes>
                   <Route path="/">
                     <Route index element={<DashboardMain />} />
+                    <Route path="appointments/:eventId" element={<AppointmentDetails />} />
                     <Route path="employees/">
                       <Route index element={<Employees />} />
                       <Route

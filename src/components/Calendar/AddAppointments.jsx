@@ -29,13 +29,12 @@ const AddAppointments = ({
     dayjs(queryParams.get('start'), 'YYYY-MM-DDTHH:mm:ss'),
   );
   const formattedStart = initialStartDate.format('dd, DD MMM YYYY HH:mm');
-  const formattedStartForDatabase = initialStartDate.format('YYYY-MM-DD HH:mm:ss');
-  const formattedEndDatabase = endDate.format('YYYY-MM-DD HH:mm:ss');
   const [activeButton, setActiveButton] = useState(null);
   const [isAsideOpen, setIsAsideOpen] = useState(false);
   const [selectedServices, setSelectedServices] = useState([]);
   const [serviceEmployeeMap, setServiceEmployeeMap] = useState(new Map());
   const [selectedClient, setSelectedClient] = useState(null);
+  const [endAppointmentTime, setEndAppointmentTime] = useState(startDate);
 
   const [tempIdMap, setTempIdMap] = useState(new Map());
   const [serviceIdCounter, setServiceIdCounter] = useState(0);
@@ -57,20 +56,23 @@ const AddAppointments = ({
     const newServiceId = serviceIdCounter;
     setServiceIdCounter((prevId) => prevId + 1);
     console.log(tempId);
-    const endTime = dayjs(startDate).add(service.duration, 'minute');
+    const serviceEndTime = dayjs(endAppointmentTime).add(service.duration, 'minute');
     const serviceWithTimeAndId = {
       ...service,
       id: tempId,
       startTime: startDate.format('HH:mm'),
-      endTime: endTime.format('HH:mm'),
+      endTime: serviceEndTime.format('HH:mm'),
     };
+
     setTempIdMap((prevMap) => {
       const tempIdMap = new Map(prevMap);
       tempIdMap.set(tempId, newServiceId);
       return tempIdMap;
     });
     setSelectedServices((prevServices) => [...prevServices, serviceWithTimeAndId]);
-    setStartDate(endTime);
+    if (serviceEndTime.isAfter(endAppointmentTime)) {
+      setEndAppointmentTime(serviceEndTime);
+    }
   };
 
   const addAppointment = async () => {
@@ -86,25 +88,31 @@ const AddAppointments = ({
       setErrors(errorMessages);
       return;
     }
-
     // Формирование текста для поля text
-    const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name}, телефон: ${selectedClient.phone}`;
+    const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name} ${selectedClient.phone}`;
     const servicesInfo = selectedServices.map((service) => service.name).join(', ');
-    const appointmentText = `${clientInfo}, услуги: ${servicesInfo}`;
+    const serviceEmployeeMapStr = Array.from(serviceEmployeeMap.entries())
+      .map(([, employee]) => `${employee.first_name}`)
+      .join(', ');
+
+    const appointmentText = `${clientInfo}, ${servicesInfo}`;
 
     try {
       const newEvent = {
-        start: formattedStartForDatabase,
-        end: formattedEndDatabase,
-        selectedServices: selectedServices.map((service) => ({
-          id: service.id,
-          name: service.name,
-        })),
-        serviceEmployeeMap: Object.fromEntries(serviceEmployeeMap),
+        start: startDate.format('YYYY-MM-DD HH:mm:ss'),
+        end: endAppointmentTime.format('YYYY-MM-DD HH:mm:ss'),
+        selectedServices: servicesInfo,
+        serviceEmployeeMap: serviceEmployeeMapStr,
         text: appointmentText, // Здесь используется сформированный текст
         totalCost: currentValues.cost,
         clients_id: selectedClient.id,
       };
+
+      console.log('Отправляемое время начала:', startDate.format('YYYY-MM-DD HH:mm:ss'));
+      console.log(
+        'Отправляемое время окончания:',
+        endAppointmentTime.format('YYYY-MM-DD HH:mm:ss'),
+      );
 
       const response = await axios.post('http://localhost:3001/api/appointments', newEvent);
 
