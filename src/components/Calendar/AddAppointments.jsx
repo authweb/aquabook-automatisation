@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HeaderDashboard from '../Common/HeaderDashboard';
 import CardEdit from '../Common/CardEdit';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import { Layout, Tag } from 'antd';
@@ -19,6 +19,7 @@ const AddAppointments = ({
   onAddAppointment,
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const endString = queryParams.get('end');
   const [startDate, setStartDate] = useState(
@@ -121,6 +122,7 @@ const AddAppointments = ({
         setErrors(response.data.errors);
       } else {
         console.log('Server response', response.data);
+        navigate(-1);
         setErrors([]); // Очистка ошибок после успешного запроса
         // Дополнительные действия после успешного создания записи
       }

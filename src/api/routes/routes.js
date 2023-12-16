@@ -9,6 +9,8 @@ const userRegister = require('../userRegister');
 const userAppointments = require('../userAppointments');
 const userNewAppointment = require('../userNewAppointment');
 const getAppointments = require('../getAppointments');
+const getAppointmentId = require('../getAppointmentId');
+const addAppointmentIsPay = require('../addAppointmentIsPay');
 const addAppointments = require('../addAppointments');
 
 //Информация о машине
@@ -45,6 +47,7 @@ router.post('/services', addServices);
 router.post('/service-categories', addServicesCategories);
 router.post('/clients', addClients);
 router.post('/appointments', addAppointments);
+router.post('/appointments/:id/pay', addAppointmentIsPay);
 router.put('/profile/:id', EditProfile);
 
 //Получение записей из таблицы базы данных
@@ -56,6 +59,7 @@ router.get('/services', getServices);
 router.get('/services/:id', getServiceId);
 router.get('/service-categories', getServicesCategories);
 router.get('/appointments', getAppointments);
+router.get('/appointments/:id', getAppointmentId);
 router.get('/profile/:id', profile);
 
 //Удаление записей из таблицы базы данных

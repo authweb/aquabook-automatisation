@@ -15,21 +15,12 @@ router.get('/appointments', async (_, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM appointments');
     const appointments = rows.map((appointment) => {
-      // Логируем исходные значения даты и времени
-      //   console.log('Original start:', appointment.start);
-      //   console.log('Original end:', appointment.end);
-
-      // Преобразуем исходные значения в часовой пояс 'Asia/Krasnoyarsk' и форматируем
       const startInKrasnoyarsk = dayjs(appointment.start)
         .tz('Asia/Krasnoyarsk')
         .format('YYYY-MM-DD HH:mm:ss');
       const endInKrasnoyarsk = dayjs(appointment.end)
         .tz('Asia/Krasnoyarsk')
         .format('YYYY-MM-DD HH:mm:ss');
-
-      // Логируем преобразованные значения
-      //   console.log('Converted start:', startInKrasnoyarsk);
-      //   console.log('Converted end:', endInKrasnoyarsk);
 
       return {
         id: appointment.id,

@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 
+import dayjs from 'dayjs';
+
 import { ReactComponent as TimeIcon } from '../../assets/images/time-icon.svg';
 import { Tag } from 'antd';
 import TextArea from '../Common/FormComponents/TextArea';
@@ -14,33 +16,97 @@ import Aside from '../Common/Aside';
 
 const AppointmentDetails = () => {
   const { currentEventId } = useContext(CalendarContext);
-  const [eventData, setEventData] = useState(null);
+  const [appointment, setAppointment] = useState(null);
+  const [client, setClient] = useState(null);
+  const [isPaid, setIsPaid] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingAppointment, setIsLoadingAppointment] = useState(true); // Загрузка данных о встрече
+  const [isLoadingClient, setIsLoadingClient] = useState(true); // Загрузка данных о клиенте
 
   useEffect(() => {
     const fetchEventData = async () => {
+      if (!currentEventId) return; // Не выполняем запрос, если нет ID
+      setIsLoadingAppointment(true);
       try {
-        const response = await axios.get(
-          `http://localhost:3001/api/appointments/${currentEventId}`,
-        );
-        setEventData(response.data);
+        const response = await axios.get(`http://localhost:3001/api/appointments/${currentEventId}`);
+        setAppointment(response.data.appointment);
+        setIsPaid(response.data.appointment.is_paid);
       } catch (error) {
         console.error('Ошибка при получении данных события:', error);
-        // здесь должна быть обработка ошибок
+      } finally {
+        setIsLoadingAppointment(false);
       }
     };
 
-    if (currentEventId) {
-      fetchEventData();
-    }
+    fetchEventData();
   }, [currentEventId]);
+
+  useEffect(() => {
+    const fetchClientData = async () => {
+      if (!appointment?.clients_id) {
+        setIsLoadingClient(false);
+        return; // Не выполняем запрос, если нет ID клиента
+      }
+      setIsLoadingClient(true);
+      try {
+        const response = await axios.get(`http://localhost:3001/api/clients/${appointment.clients_id}`);
+        setClient(response.data.client);
+      } catch (error) {
+        console.error('Ошибка при получении данных клиента:', error);
+      } finally {
+        setIsLoadingClient(false);
+      }
+    };
+
+    fetchClientData();
+  }, [appointment]);
 
   useEffect(() => {
     document.title = `AquaBook - Запись #${currentEventId}`;
   }, [currentEventId]);
 
-  if (!eventData) {
-    return <div style={{ color: '#fff' }}>Загрузка деталей события...</div>;
+  useEffect(() => {
+    if (appointment && appointment.clients_id) {
+      const fetchClientData = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:3001/api/clients/${appointment.clients_id}`,
+          );
+          setClient(response.data.client); // Устанавливаем данные клиента в состояние
+        } catch (error) {
+          console.error('Ошибка при получении данных клиента:', error);
+          // Обработка ошибок
+        }
+      };
+
+      fetchClientData();
+    }
+  }, [appointment]);
+
+  if (isLoadingAppointment || isLoadingClient) {
+    return <div style={{ color: '#fff' }}>Загрузка...</div>;
   }
+
+  if (!appointment || !client) {
+    return <div style={{ color: '#fff' }}>Данные не найдены.</div>;
+  }
+
+  const { start, end, selectedServices, serviceEmployeeMap, text, clients_id, totalCost } =
+    appointment;
+
+  const formattedStart = dayjs(start).format('HH:mm');
+  const formattedStartDate = dayjs(start).format('dd, DD MMM YYYY HH:mm');
+  const formattedEnd = dayjs(end).format('HH:mm');
+
+  const handlePayment = async () => {
+    try {
+      const response = await axios.post(`http://localhost:3001/api/appointments/${currentEventId}/pay`);
+      alert(response.data.message);
+      setIsPaid(true); // Обновление состояния статуса оплаты
+    } catch (error) {
+      console.error('Ошибка при оплате:', error);
+    }
+  };
 
   return (
     <>
@@ -70,23 +136,32 @@ const AppointmentDetails = () => {
                         <ServiceIcon className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text" />
                       </div>
                       <div className="flex-grow pr-4 overflow-hidden">
-                        Service
+                        {selectedServices}
                         <div className="flex items-center flex-wrap gap-x-4 gap-y-2 text-xs mt-1">
-                          <div className="whitespace-no-wrap">11:30 - 12:00</div>
+                          <div className="whitespace-no-wrap">
+                            {formattedStart} - {formattedEnd}
+                          </div>
                           <div className="opacity-50 whitespace-no-wrap">30 мин.</div>
                           <div>
                             <div className="eb-user-avatar eb-user-avatar--single-row">
-                              <span className="eb-user-avatar__title">Валерий</span>
+                              <span className="eb-user-avatar__title">{serviceEmployeeMap}</span>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div className="flex-shrink-0">
-                        <strong className="whitespace-no-wrap">5000 ₽</strong>
+                        <strong className="whitespace-no-wrap">{totalCost} ₽</strong>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="ab-card">
+                <UserSvg
+                  className="ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text"
+                  style={{ width: '30px', height: '30px' }}
+                />
+                {client.first_name + ' ' + client.last_name + ' ' + client.phone}
               </div>
             </div>
           </div>
@@ -99,7 +174,7 @@ const AppointmentDetails = () => {
               <h3 className="ab-headline">Итого</h3>
               <dl className="eb-booking-invoice__list">
                 <dt>Сумма к оплате</dt>
-                <dd>0 ₽</dd>
+                <dd>{totalCost} ₽</dd>
               </dl>
             </div>
             <div className="eb-booking-comlete mb-6">
@@ -110,7 +185,7 @@ const AppointmentDetails = () => {
                   <TimeIcon />
                 </span>
                 <div className="-mt-2">
-                  {/* <button className="ab-sub-headline">{formattedStart}</button> */}
+                  <button className="ab-sub-headline">{formattedStartDate}</button>
                 </div>
                 <span className="ab-chip-select inline-flex text-left">
                   <button className="focus-outline">
@@ -128,9 +203,7 @@ const AppointmentDetails = () => {
               </div>
             </div>
             <div>
-              <div className="lg:mb-auto grid grid-cols-1 gap-6 items-start">
-                <TextArea name="comment" prefix="Комментарий" id="input-55" />
-              </div>
+              <div className="lg:mb-auto grid grid-cols-1 gap-6 items-start">{text}</div>
             </div>
           </div>
         </div>
@@ -138,19 +211,19 @@ const AppointmentDetails = () => {
           <div className="ab-model-edit">
             <div className="ab-model-edit__panel">
               <div className="ab-modal-buttons ab-modal-buttons--desktop">
-                <button
-                  className="eb-button ab-modal-buttons__button eb-button--color-accent w-full"
-                  style={{
-                    '--btn-bg': 'var(--c-success-rgb)',
-                    '--btn-fg': 'var(--c-on-accent-rgb)',
-                    '--btn-size': '3.5rem',
-                    '--btn-radius': '0.625rem',
-                    '--btn-icon-bg': '0.15',
-                  }}
-                  // onClick={addAppointment}
-                >
-                  <span className="eb-button__text">Оплата</span>
-                </button>
+              <button
+                className="eb-button ab-modal-buttons__button eb-button--color-accent w-full"
+                style={{
+                  '--btn-bg': 'var(--c-success-rgb)',
+                  '--btn-fg': 'var(--c-on-accent-rgb)',
+                  '--btn-size': '3.5rem',
+                  '--btn-radius': '0.625rem',
+                  '--btn-icon-bg': '0.15',
+                }}
+                onClick={handlePayment}
+              >
+                <span className="eb-button__text">{isPaid ? 'Оплачено' : 'Оплата'}</span>
+              </button>
               </div>
             </div>
           </div>
