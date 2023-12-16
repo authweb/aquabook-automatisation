@@ -12,7 +12,7 @@ import { AppointmentDetails } from '../';
 const CalendarDay = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { selectedDate, setSelectedEmployeeId } = useContext(CalendarContext);
+  const { selectedDate, setSelectedEmployeeId, setCurrentEventId } = useContext(CalendarContext);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
 
@@ -108,6 +108,7 @@ const CalendarDay = () => {
 
   const handleEventClick = (args) => {
     const eventId = args.e.data.id;
+    setCurrentEventId(eventId); // Установка eventId в контекст
     navigate(`/dashboard/appointments/${eventId}`);
   };
 

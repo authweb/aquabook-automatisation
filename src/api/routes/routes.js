@@ -21,6 +21,7 @@ const employee = require('../employeeId');
 const EditProfile = require('../editProfile');
 const profile = require('../profileId');
 const clients = require('../clients');
+const clientId = require('../clientId');
 const addClients = require('../addClients');
 
 //Категории услуг - услуги
@@ -50,6 +51,7 @@ router.put('/profile/:id', EditProfile);
 router.get('/employees/:id', employee);
 router.get('/employees', employees);
 router.get('/clients', clients);
+router.get('/clients/:id', clientId);
 router.get('/services', getServices);
 router.get('/services/:id', getServiceId);
 router.get('/service-categories', getServicesCategories);

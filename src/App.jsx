@@ -32,12 +32,16 @@ const App = () => {
   const [_, setUsers] = useState(null);
   const isHomePage = location.pathname === '/';
   const classNameMain = isHomePage ? 'flex flex-col min-h-screen' : '';
+  const appointmentDetailsRegex = /\/dashboard\/calendar\/appointments\/\d+/;
+  const isAppointmentDetailsPage = appointmentDetailsRegex.test(location.pathname);
   const className = (() => {
     if (location.pathname === '/') {
       return 'overflow-hidden relative flex flex-col video-block-app flex-grow link-white font-montserrat';
     } else if (location.pathname.includes('/dashboard/calendar/add')) {
       return 'eb-page-aside';
-    } else if (location.pathname === '/login') {
+    } else if (isAppointmentDetailsPage) {
+      return 'eb-appointments-details-page';
+    }else if (location.pathname === '/login') {
       return 'eb-auth-layout';
     } else if (location.pathname === '/register') {
       return 'eb-register-page eb-register-page--has-image';

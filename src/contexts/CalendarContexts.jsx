@@ -8,6 +8,8 @@ export const CalendarProvider = ({ children }) => {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [rangeStart, setRangeStart] = useState(currentDate);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState('');
+  const [currentEventId, setCurrentEventId] = useState(null);
+
   console.log('"Id" Сотрудника:', selectedEmployeeId);
   return (
     <CalendarContext.Provider
@@ -18,6 +20,8 @@ export const CalendarProvider = ({ children }) => {
         setRangeStart,
         selectedEmployeeId,
         setSelectedEmployeeId,
+        currentEventId, // Добавлено в контекст
+        setCurrentEventId, // Добавлено в контекст
       }}>
       {children}
     </CalendarContext.Provider>
