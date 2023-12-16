@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 21 2023 г., 02:18
+-- Время создания: Дек 16 2023 г., 13:51
 -- Версия сервера: 5.7.24
 -- Версия PHP: 8.1.0
 
@@ -31,23 +31,22 @@ CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
-  `text` varchar(255) NOT NULL,
-  `resource` int(11) NOT NULL,
-  `clients_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `selectedServices` text,
+  `serviceEmployeeMap` text,
+  `text` text,
+  `clients_id` int(11) DEFAULT NULL,
+  `totalCost` decimal(10,2) DEFAULT NULL,
+  `is_paid` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `start`, `end`, `text`, `resource`, `clients_id`) VALUES
-(30, '2023-11-02 11:43:00', '2023-11-02 13:43:00', 'dsfdfs Мойка кузова +7 983 335 07 07 fdsf@mail.ru', 22, 47),
-(31, '2023-11-02 12:07:00', '2023-11-02 14:07:00', 'sefe Мойка кузова +7 234 234 23 42 fsdf@mail.ru', 22, 87),
-(35, '2023-11-02 14:19:53', '2023-11-02 15:19:55', 'fgdfgdfg Отбойник кузова с пеной +7 435 353 45 34 fgdf@mail.ru', 22, 68),
-(36, '2023-11-02 16:00:00', '2023-11-02 17:00:59', 'dfsdfdf Отбойник кузова с пеной +7 324 234 23 44 fds@mail.ru', 22, 92),
-(37, '2023-11-02 12:00:00', '2023-11-02 12:59:59', 'dsfdsf Двухфазная мойка кузова +7 324 234 23 44 dfds@mail.ru', 23, 77),
-(38, '2023-11-02 12:00:00', '2023-11-02 12:59:59', '   ', 23, 88),
-(39, '2023-11-02 12:00:00', '2023-11-02 12:30:00', '   ', 23, 88);
+INSERT INTO `appointments` (`id`, `start`, `end`, `selectedServices`, `serviceEmployeeMap`, `text`, `clients_id`, `totalCost`, `is_paid`) VALUES
+(1, '2023-12-16 11:15:00', '2023-12-16 11:45:00', 'Мойка кузова', 'Валерий', 'Евгений Сергеев +7 999 333 44 55, Мойка кузова', 13, '450.00', 1),
+(2, '2023-12-16 12:00:00', '2023-12-16 12:30:00', 'Мойка кузова', 'Евгений', 'Валерий Гололобов +79333014156, Мойка кузова', 18, '450.00', 0),
+(3, '2023-12-16 12:15:00', '2023-12-16 12:45:00', 'Мойка кузова', 'Валерий', 'Юрий  +7 923 355-20-02, Мойка кузова', 17, '450.00', 1);
 
 -- --------------------------------------------------------
 
@@ -373,8 +372,7 @@ INSERT INTO `user_roles` (`id`, `user_id`, `role_id`) VALUES
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `clients_id` (`clients_id`) USING BTREE,
-  ADD KEY `resource` (`resource`) USING BTREE;
+  ADD KEY `clients_id` (`clients_id`);
 
 --
 -- Индексы таблицы `car_info`
@@ -459,7 +457,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT для таблицы `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `car_info`
@@ -535,8 +533,7 @@ ALTER TABLE `user_roles`
 -- Ограничения внешнего ключа таблицы `appointments`
 --
 ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`clients_id`) REFERENCES `clients` (`id`),
-  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`resource`) REFERENCES `employees` (`id`);
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`clients_id`) REFERENCES `clients` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `car_info`
