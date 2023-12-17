@@ -39,7 +39,7 @@ import {
   ServicesManagement,
   Breadcrumbs,
 } from '../../components';
-import { Company, Services, ServicePage } from '../../components/Settings';
+import { Company, Services, ServicePage, ServiceAdd } from '../../components/Settings';
 
 import LogoMini from '../../assets/images/logomini.svg';
 import '../../scss/dashboard.scss';
@@ -329,6 +329,7 @@ const Dashboard = () => {
                           path=":id"
                           element={<ServicePage onServiceData={handleServiceData} />}
                         />
+                        <Route path='add' element={<ServiceAdd />} />
                       </Route>
 
                       <Route path="general" element={<Company />} />

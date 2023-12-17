@@ -10,26 +10,29 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if user exists
+    // Проверка существования пользователя
     const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
     if (rows.length === 0) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      console.log(`Неудачная попытка входа: пользователь с email ${email} не найден`);
+      return res.status(401).json({ message: 'Неверный email или пароль' });
     }
 
-    // Compare passwords
+    // Сравнение паролей
     const user = rows[0];
     const match = await bcr.compare(password, user.password);
     if (!match) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      console.log(`Неудачная попытка входа: неверный пароль для email ${email}`);
+      return res.status(401).json({ message: 'Неверный email или пароль' });
     }
 
-    // Create a token
+    // Создание токена
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    console.log(user); // Выводим данные пользователя в консоль
+    console.log(`Пользователь вошел в систему: ${user.email}`); // Вывод информации о входе пользователя
 
+    // Отправка ответа
     res.json({
-      message: 'Login successful',
+      message: 'Вход выполнен успешно',
       user: {
         id: user.id,
         first_name: user.first_name,
@@ -38,12 +41,13 @@ router.post('/login', async (req, res) => {
         email: user.email,
         password: user.password,
       },
-      token: token, // Включаем токен в ответ
+      token: token,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Ошибка сервера:', error);
+    res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
+
 
 module.exports = router;
