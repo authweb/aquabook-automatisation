@@ -21,6 +21,11 @@ router.get('/employees/:id', async (req, res) => {
         email: employee.email,
         phone: employee.phone,
         access: employee.access,
+        user_id: employee.user_id,
+        gender: employee.gender,
+        description: employee.description,
+        position: employee.position,
+        is_bookable: employee.is_bookable,
       },
     });
   } catch (error) {

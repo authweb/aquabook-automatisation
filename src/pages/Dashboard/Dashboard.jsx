@@ -1,8 +1,15 @@
-import React, { useState, useEffect, useReducer } from 'react';
-import { useNavigate, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useReducer } from "react";
+import {
+  useNavigate,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 
-import { initialState, reducer } from '../../reducers/reduser';
-import dayjs from 'dayjs';
+import { initialState, reducer } from "../../reducers/reduser";
+import dayjs from "dayjs";
 import {
   UserOutlined,
   SettingOutlined,
@@ -11,18 +18,26 @@ import {
   BarsOutlined,
   PoweroffOutlined,
   CalendarOutlined,
-} from '@ant-design/icons';
-import { ConfigProvider, Layout, Menu, theme, Button, Space, Dropdown } from 'antd';
-import SubMenu from 'antd/es/menu/SubMenu';
+} from "@ant-design/icons";
+import {
+  ConfigProvider,
+  Layout,
+  Menu,
+  theme,
+  Button,
+  Space,
+  Dropdown,
+} from "antd";
+import SubMenu from "antd/es/menu/SubMenu";
 
-import useEmployeeData from '../../hooks/useEmployeeData';
-import useDateHandler from '../../hooks/useDateHandler';
+import useEmployeeData from "../../hooks/useEmployeeData";
+import useDateHandler from "../../hooks/useDateHandler";
 
-import ruRU from 'antd/lib/locale/ru_RU';
+import ruRU from "antd/lib/locale/ru_RU";
 
-import { useAuth } from '../../contexts/AuthContexts';
-import { handleFileUpload, handleDownload } from '../../contexts/excelHandlers';
-import { CalendarProvider } from '../../contexts/CalendarContexts';
+import { useAuth } from "../../contexts/AuthContexts";
+import { handleFileUpload, handleDownload } from "../../contexts/excelHandlers";
+import { CalendarProvider } from "../../contexts/CalendarContexts";
 
 import {
   AddAppointments,
@@ -38,11 +53,16 @@ import {
   Employees,
   ServicesManagement,
   Breadcrumbs,
-} from '../../components';
-import { Company, Services, ServicePage, ServiceAdd } from '../../components/Settings';
+} from "../../components";
+import {
+  Company,
+  Services,
+  ServicePage,
+  ServiceAdd,
+} from "../../components/Settings";
 
-import LogoMini from '../../assets/images/logomini.svg';
-import '../../scss/dashboard.scss';
+import LogoMini from "../../assets/images/logomini.svg";
+import "../../scss/dashboard.scss";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -59,7 +79,7 @@ const Dashboard = () => {
   const { users, logout } = useAuth();
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState({});
-  const [service, setService] = useState('');
+  const [service, setService] = useState("");
 
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
   const { employees, error } = useEmployeeData();
@@ -69,22 +89,28 @@ const Dashboard = () => {
   const isAppointmentDetailsPage = match !== null;
 
   useEffect(() => {
-    if (location.pathname === '/dashboard/calendar/add' && rangeStart) {
+    if (location.pathname === "/dashboard/calendar/add" && rangeStart) {
       setShowAddAppointments(true);
     } else {
       setShowAddAppointments(false);
     }
-    console.log('stats.today:', today);
-    console.log('stats.rangeStart:', rangeStart);
-    console.log('Страница записи:', location.search, showAddAppointments);
-  }, [location.pathname, location.search, rangeStart, showAddAppointments, today]);
+    console.log("stats.today:", today);
+    console.log("stats.rangeStart:", rangeStart);
+    console.log("Страница записи:", location.search, showAddAppointments);
+  }, [
+    location.pathname,
+    location.search,
+    rangeStart,
+    showAddAppointments,
+    today,
+  ]);
 
   useEffect(() => {
-    const newDate = dayjs().format('YYYY-MM-DD');
+    const newDate = dayjs().format("YYYY-MM-DD");
     if (rangeStart !== newDate) {
-      console.log('Setting dates:', newDate, rangeStart);
-      dispatch({ type: 'SET_TODAY', payload: newDate });
-      dispatch({ type: 'SET_RANGE_START', payload: newDate });
+      console.log("Setting dates:", newDate, rangeStart);
+      dispatch({ type: "SET_TODAY", payload: newDate });
+      dispatch({ type: "SET_RANGE_START", payload: newDate });
     }
   }, [dispatch, rangeStart]);
 
@@ -99,46 +125,48 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Определение классов для layout и wrapper
-    let newLayoutClassName = 'ab-page'; // значение по умолчанию
-    let newWrapperClassName = 'ab-page__wrapper'; // значение по умолчанию
+    let newLayoutClassName = "ab-page"; // значение по умолчанию
+    let newWrapperClassName = "ab-page__wrapper"; // значение по умолчанию
 
-    console.log('today:', today);
-    console.log('rangeStart:', rangeStart);
+    console.log("today:", today);
+    console.log("rangeStart:", rangeStart);
 
-    const isValidToday = today ? dayjs(today, 'YYYY-MM-DD').isValid() : false;
-    const isValidRangeStart = rangeStart ? dayjs(rangeStart, 'YYYY-MM-DD').isValid() : false;
+    const isValidToday = today ? dayjs(today, "YYYY-MM-DD").isValid() : false;
+    const isValidRangeStart = rangeStart
+      ? dayjs(rangeStart, "YYYY-MM-DD").isValid()
+      : false;
 
     console.log(isValidToday, isValidRangeStart);
 
     const isDateParamsValid = isValidToday && isValidRangeStart;
 
-    console.log('location.search:', location.search);
+    console.log("location.search:", location.search);
 
     console.log(location.pathname, location.search, isDateParamsValid);
 
-    if (location.pathname === '/dashboard' || isDateParamsValid) {
-      newLayoutClassName = 'eb-calendar-page'; // изменить класс, если маршрут соответствует
-      newWrapperClassName = 'eb-calendar eb-calendar-page__calendar'; // изменить класс, если маршрут соответствует
+    if (location.pathname === "/dashboard" || isDateParamsValid) {
+      newLayoutClassName = "eb-calendar-page"; // изменить класс, если маршрут соответствует
+      newWrapperClassName = "eb-calendar eb-calendar-page__calendar"; // изменить класс, если маршрут соответствует
     }
 
     setLayoutClassName(newLayoutClassName);
     setWrapperClassName(newWrapperClassName);
 
-    setShowSider(location.pathname === '/dashboard' || isDateParamsValid);
+    setShowSider(location.pathname === "/dashboard" || isDateParamsValid);
   }, [location.pathname, location.search, rangeStart, today]); // Обратите внимание, что теперь зависимость включает location.search
 
   // Предполагается, что у вас есть соответствующие состояния для хранения className:
-  const [layoutClassName, setLayoutClassName] = useState('ab-page');
-  const [wrapperClassName, setWrapperClassName] = useState('ab-page__wrapper');
+  const [layoutClassName, setLayoutClassName] = useState("ab-page");
+  const [wrapperClassName, setWrapperClassName] = useState("ab-page__wrapper");
 
   const [breadcrumbNameMap, setBreadcrumbNameMap] = useState({
-    '/dashboard': 'Панель управления',
-    '/dashboard/employees': 'Сотрудники',
-    '/dashboard/:datetable': 'Расписание',
-    '/dashboard/services': 'Услуги',
-    '/dashboard/profile': 'Профиль',
-    '/dashboard/settings': 'Настройки',
-    '/dashboard/clients': 'Клиенты',
+    "/dashboard": "Панель управления",
+    "/dashboard/employees": "Сотрудники",
+    "/dashboard/:datetable": "Расписание",
+    "/dashboard/services": "Услуги",
+    "/dashboard/profile": "Профиль",
+    "/dashboard/settings": "Настройки",
+    "/dashboard/clients": "Клиенты",
   });
 
   const handleEmployeeData = (employee) => {
@@ -155,20 +183,20 @@ const Dashboard = () => {
     }));
   };
   const handleMenuClick = (e) => {
-    if (e.key === '1') {
+    if (e.key === "1") {
       handleDownload();
-    } else if (e.key === '2') {
+    } else if (e.key === "2") {
       handleFileUpload();
     }
   };
   const items = [
     {
-      label: 'Выгрузить в Excel',
-      key: '1',
+      label: "Выгрузить в Excel",
+      key: "1",
     },
     {
-      label: 'Загрузить в Excel',
-      key: '2',
+      label: "Загрузить в Excel",
+      key: "2",
     },
   ];
   const menuProps = {
@@ -180,15 +208,15 @@ const Dashboard = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorBgContainer: '#001529',
-          colorText: '#ffffff',
-          colorTextPlaceholder: '#ffffff',
-          colorLink: '#ffffff',
+          colorBgContainer: "#001529",
+          colorText: "#ffffff",
+          colorTextPlaceholder: "#ffffff",
+          colorLink: "#ffffff",
           fontFamily: `'Montserrat', 
 				sans-serif`,
-          colorBgElevated: '#002950',
-          boxShadow: 'none',
-          colorIcon: '#ffffff',
+          colorBgElevated: "#002950",
+          boxShadow: "none",
+          colorIcon: "#ffffff",
         },
       }}
       locale={ruRU}>
@@ -205,22 +233,26 @@ const Dashboard = () => {
         {isAppointmentDetailsPage && <AppointmentDetails />}
 
         {!showAddAppointments && !isAppointmentDetailsPage && (
-          <Layout style={{ height: '100%', background: '#001529' }}>
+          <Layout style={{ height: "100%", background: "#001529" }}>
             <Sider trigger={null} collapsible collapsed={true}>
               {users ? (
                 <Menu
                   theme="dark"
                   mode="inline"
                   onClick={({ key }) => {
-                    if (key === 'signout') {
-                      navigate('/');
-                    } else if (key === 'services' || key === 'settings' || key === 'clients') {
+                    if (key === "signout") {
+                      navigate("/");
+                    } else if (
+                      key === "services" ||
+                      key === "settings" ||
+                      key === "clients"
+                    ) {
                       navigate(`./${key}`);
-                    } else if (key === 'dashboard') {
+                    } else if (key === "dashboard") {
                       navigate(
-                        `/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`,
+                        `/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`
                       );
-                    } else if (key === 'profile') {
+                    } else if (key === "profile") {
                       // Предполагается, что id пользователя доступен в этом контексте
                       navigate(`./profile/${users.id}`);
                     } else {
@@ -233,10 +265,10 @@ const Dashboard = () => {
                     <img
                       src={LogoMini}
                       style={{
-                        maxWidth: '80%',
-                        margin: '0 auto',
-                        display: 'flex',
-                        justifyContent: 'center',
+                        maxWidth: "80%",
+                        margin: "0 auto",
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                       alt="AquaBook Logo"
                     />
@@ -257,7 +289,9 @@ const Dashboard = () => {
                     {employees &&
                       employees.map((employee) => (
                         <Menu.Item key={employee.id}>
-                          <Link to={`employees/${employee.id}`}>{employee.first_name}</Link>
+                          <Link to={`employees/${employee.id}`}>
+                            {employee.first_name}
+                          </Link>
                         </Menu.Item>
                       ))}
                   </SubMenu>
@@ -285,18 +319,22 @@ const Dashboard = () => {
                 <div>Loading...</div>
               )}
             </Sider>
-            <Layout className={layoutClassName} style={{ background: '#001529' }}>
+            <Layout
+              className={layoutClassName}
+              style={{ background: "#001529" }}>
               <Content
                 className={wrapperClassName}
                 style={{
-                  margin: '0 16px',
+                  margin: "0 16px",
                 }}>
                 <Header
                   className="eb-calendar_title"
                   style={{
                     padding: 0,
                   }}>
-                  {['/dashboard/services', '/dashboard/clients'].includes(location.pathname) && (
+                  {["/dashboard/services", "/dashboard/clients"].includes(
+                    location.pathname
+                  ) && (
                     <Dropdown menu={menuProps}>
                       <Button>
                         <Space>Оперции с Excel</Space>
@@ -309,12 +347,19 @@ const Dashboard = () => {
                 <Routes>
                   <Route path="/">
                     <Route index element={<DashboardMain />} />
-                    <Route path="appointments/:eventId" element={<AppointmentDetails />} />
+                    <Route
+                      path="appointments/:eventId"
+                      element={<AppointmentDetails />}
+                    />
                     <Route path="employees/">
                       <Route index element={<Employees />} />
                       <Route
                         path=":id"
-                        element={<EmployeesPersona onEmployeeData={handleEmployeeData} />}
+                        element={
+                          <EmployeesPersona
+                            onEmployeeData={handleEmployeeData}
+                          />
+                        }
                       />
                     </Route>
                     <Route path="clients" element={<Clients />} />
@@ -327,9 +372,11 @@ const Dashboard = () => {
                         <Route index element={<Services />} />
                         <Route
                           path=":id"
-                          element={<ServicePage onServiceData={handleServiceData} />}
+                          element={
+                            <ServicePage onServiceData={handleServiceData} />
+                          }
                         />
-                        <Route path='add' element={<ServiceAdd />} />
+                        <Route path="add" element={<ServiceAdd />} />
                       </Route>
 
                       <Route path="general" element={<Company />} />
@@ -345,7 +392,9 @@ const Dashboard = () => {
                 </Routes>
               </Content>
               {showSider && (
-                <Sider className="eb-calendar-page__aside" style={{ maxWidth: '375px' }}>
+                <Sider
+                  className="eb-calendar-page__aside"
+                  style={{ maxWidth: "375px" }}>
                   <CalendarNavigator />
                 </Sider>
               )}

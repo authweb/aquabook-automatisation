@@ -14,6 +14,7 @@ router.put('/profile/:id', async (req, res) => {
     description = null,
     position,
     user_role_id = '1',
+    is_bookable,
   } = req.body;
 
   const user_id = id;
@@ -28,6 +29,7 @@ router.put('/profile/:id', async (req, res) => {
   if (position === undefined) missingFields.push('position');
   if (user_role_id === undefined) missingFields.push('user_role_id');
   if (user_id === undefined) missingFields.push('user_id');
+  if (is_bookable === undefined) missingFields.push('is_bookable');
 
   if (missingFields.length > 0) {
     console.log('Missing or undefined fields:', missingFields.join(', ')); // Логирование отсутствующих полей
@@ -36,21 +38,21 @@ router.put('/profile/:id', async (req, res) => {
 
   console.log(
     'SQL Query:',
-    'UPDATE users SET first_name = ?, last_name = ?, phone = ?, email = ?, user_role_id = ?, gender = ?, description = ?, position = ? WHERE id = ?',
-    [first_name, last_name, phone, email, user_role_id, gender, description, position, id],
+    'UPDATE users SET first_name = ?, last_name = ?, phone = ?, email = ?, user_role_id = ?, gender = ?, description = ?, position = ?, is_bookable = ? WHERE id = ? ',
+    [first_name, last_name, phone, email, user_role_id, gender, description, position, is_bookable, id],
   );
 
   try {
     // Обновление записи в таблице users
     const [userResult] = await db.execute(
-      'UPDATE users SET first_name = ?, last_name = ?, phone = ?, email = ?, user_role_id = ?, gender = ?, description = ?, position = ? WHERE id = ?',
-      [first_name, last_name, phone, email, user_role_id, gender, description, position, id],
+      'UPDATE users SET first_name = ?, last_name = ?, phone = ?, email = ?, user_role_id = ?, gender = ?, description = ?, position = ?, is_bookable = ? WHERE id = ?',
+      [first_name, last_name, phone, email, user_role_id, gender, description, position, is_bookable, id], 
     );
 
-    // Обновление записи в таблице employees
+    // Обновление записи в таблице employees (если это необходимо)
     const [employeeResult] = await db.execute(
-      'UPDATE employees SET first_name = ?, last_name = ?, phone = ?, email = ?, user_id = ?, gender = ?, description = ?, position = ? WHERE user_id = ?',
-      [first_name, last_name, phone, email, user_id, gender, description, position, id],
+      'UPDATE employees SET first_name = ?, last_name = ?, phone = ?, email = ?, user_id = ?, gender = ?, description = ?, position = ?, is_bookable = ? WHERE user_id = ?',
+      [first_name, last_name, phone, email, id, gender, description, position, is_bookable, id], 
     );
 
     if (userResult.affectedRows === 0 && employeeResult.affectedRows === 0) {

@@ -542,7 +542,7 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
 
 .ab-button-nav__toggler,
 .ab-button-nav__toggler > span {
-  color: $gray-color;
+  color: $gray-text-color;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -556,7 +556,7 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
   line-height: 1.5rem;
   position: relative;
   transition: border-color 0.2s;
-  background-color: $primary-color;
+  background-color: $bg-color;
   &__element {
     width: 100%;
     border-radius: 0.125rem;
@@ -565,9 +565,9 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
     white-space: nowrap;
     display: block;
     background-color: #fff;
-    background-color: $primary-color;
+    background-color: $bg-color;
     color: #14171d;
-    color: $gray-color;
+    color: $gray-text-color;
     line-height: 1.5;
     filter: none;
   }
@@ -785,7 +785,7 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
 .ab-select {
   position: relative;
   &__dropdown {
-    background-color: rgba($primary-color, 1);
+    background-color: rgba($bg-color, 1);
     color: rgba($white-color, 1);
     border-radius: 0.25rem;
     visibility: visible;
@@ -801,7 +801,7 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
     z-index: 120;
     @media (min-width: 692px) {
       & {
-        background-color: rgba($primary-color, 1);
+        background-color: rgba($bg-color, 1);
         color: rgba($white-color, 1);
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
         overflow: auto;
@@ -861,7 +861,7 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
 }
 
 .eb-island-icon {
-  background-color: rgba($primary-color, 1);
+  background-color: rgba($bg-color, 1);
   color: rgba(var(--c-on-mono-900-rgb), 1);
   display: grid;
   flex-shrink: 0;
@@ -890,7 +890,7 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
 }
 
 .eb-select-white-prefix .ab-text-field__prefix {
-  background-color: rgba($primary-color, 1);
+  background-color: rgba($bg-color, 1);
   color: rgba($white-color, 1);
 }
 

@@ -1,5 +1,4 @@
 export { default as HomePage } from './HomePage/HomePage';
-export { default as AuthPage } from './AuthPage/AuthPage';
 export { default as Login } from './AuthPage/Login';
 export { default as Register } from './AuthPage/Register';
 export { default as Appointment } from './AppointmentPage/AppointmentPage';

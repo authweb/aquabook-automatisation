@@ -1,22 +1,22 @@
 // colors
-$primary-color: rgb(24, 41, 53);
-$secondary-color: rgb(255, 123, 0);
-$secondary-color-hover: rgb(211, 102, 0);
-$bg-color: rgb(0, 21, 41);
-$card-color: rgb(0, 42, 82);
-$gray-color: rgb(237, 227, 228);
-$gray-text-color: rgb(140, 140, 140);
-$black-color: rgb(0, 0, 0);
-$white-color: rgb(255, 255, 255);
-$logout-color: rgb(255, 94, 26);
-$logout-color-hover: rgb(255, 33, 26);
-$delete-color: rgb(255, 94, 26);
-$delete-color-hover: rgb(255, 33, 26);
-$update-color: rgb(40, 143, 0);
-$update-color-hover: rgb(52, 184, 0);
-$hr-color: rgb(0, 108, 209, 0.5);
-$button-e-color: rgba(0, 108, 209, 0.502);
-$button-e-color-hover: rgba(0, 87, 168, 0.5);
+$primary-color: rgb(255, 122, 0);  // Яркий оранжевый для акцентов
+$secondary-color: rgb(128, 71, 20); // Тёмно-оранжевый для дополнительных акцентов
+$secondary-color-hover: rgb(192, 96, 10); // Более тёмный оттенок оранжевого для состояния наведения
+$bg-color: rgb(0, 21, 41);  // Основной фон, тёмно-синий
+$card-color: rgb(24, 41, 53); // Темнее серого для фона карточек
+$gray-color: rgb(117, 123, 130); // Средний серый для неактивных элементов или подписей
+$gray-text-color: rgb(236, 227, 228); // Бледно-розовый для текста на тёмном фоне
+$black-color: rgb(42, 42, 42); // Тёмно-серый для максимального контраста
+$white-color: rgb(255, 255, 255); // Белый для текста и ключевых элементов
+$logout-color: rgb(233, 85, 91); // Красный для кнопок выхода или предупреждений
+$logout-color-hover: rgb(200, 66, 66); // Тёмный красный для состояния наведения
+$delete-color: rgb(233, 85, 91); // Красный для удаления
+$delete-color-hover: rgb(200, 66, 66); // Тёмный красный для состояния наведения
+$update-color: rgb(183, 235, 143); // Светло-зеленый для обновлений или подтверждений
+$update-color-hover: rgb(28, 175, 129); // Тёмно-зелёный для состояния наведения
+$hr-color: rgba(236, 227, 228, 0.1); // Светлый разделитель на тёмном фоне
+$button-e-color: rgba(255, 122, 0, 0.7); // Менее прозрачный акцентный оранжевый для кнопок
+$button-e-color-hover: rgba(192, 96, 10, 0.7); // Менее прозрачный тёмно-оранжевый при наведении
 
 // fonts
 $font-family: 'Montserrat', sans-serif;

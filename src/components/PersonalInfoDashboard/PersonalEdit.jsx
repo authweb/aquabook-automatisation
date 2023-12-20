@@ -1,43 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
-import { HeaderDashboard, CardEdit, Input, Radio } from '../';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
+import { HeaderDashboard, CardEdit, Input, Radio } from "../";
 
-import axios from 'axios';
+import axios from "axios";
 
-import { CloseOutlined, CaretDownOutlined } from '@ant-design/icons';
-import { useAuth } from '../../contexts/AuthContexts';
+import { CloseOutlined, CaretDownOutlined } from "@ant-design/icons";
+import { useAuth } from "../../contexts/AuthContexts";
 
 const PersonalEdit = () => {
+  const navigate = useNavigate();
+
   const { users, setUsers, updateProfileInfo } = useAuth();
 
-  const [selectedValue, setSelectedValue] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [position, setPosition] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [position, setPosition] = useState("");
 
   const [isChanged, setIsChanged] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const [initialValues, setInitialValues] = useState('');
-  const [currentValues, setCurrentValues] = useState('');
+  const [initialValues, setInitialValues] = useState("");
+  const [currentValues, setCurrentValues] = useState("");
+
+  const [isBookable, setIsBookable] = useState(true);
 
   useEffect(() => {
     async function fetchUserData() {
       try {
         if (users?.id) {
-          const response = await axios.get(`http://localhost:3001/api/profile/${users?.id}`);
+          const response = await axios.get(
+            `http://localhost:3001/api/profile/${users?.id}`
+          );
           console.log(
             `URL: http://localhost:3001/api/profile/${users?.id}`,
             response.status,
-            response.statusText,
+            response.statusText
           ); // Проверьте статус и текст ответа
           if (response.status !== 200) {
-            console.error('Server error:', response.statusText);
+            console.error("Server error:", response.statusText);
             return;
           }
           const data = response.data;
+          setIsBookable(data.is_bookable === 1);
           setInitialValues({
             firstName: data.first_name,
             lastName: data.last_name,
@@ -45,10 +53,11 @@ const PersonalEdit = () => {
             email: data.email,
             phone: data.phone,
             position: data.position,
+            is_bookable: data.is_bookable === 1,
           });
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     }
 
@@ -56,21 +65,24 @@ const PersonalEdit = () => {
   }, [users?.id]);
 
   useEffect(() => {
+    setIsBookable(users?.is_bookable === 1);
     setInitialValues({
-      firstName: users?.first_name || '',
-      lastName: users?.last_name || '',
-      selectedValue: users?.gender || '',
-      email: users?.email || '',
-      phone: users?.phone || '',
-      position: users?.position || '',
+      firstName: users?.first_name || "",
+      lastName: users?.last_name || "",
+      selectedValue: users?.gender || "",
+      email: users?.email || "",
+      phone: users?.phone || "",
+      position: users?.position || "",
+      is_bookable: users?.is_bookable === 1,
     });
     setCurrentValues({
-      firstName: users?.first_name || '',
-      lastName: users?.last_name || '',
-      selectedValue: users?.gender || '',
-      email: users?.email || '',
-      phone: users?.phone || '',
-      position: users?.position || '',
+      firstName: users?.first_name || "",
+      lastName: users?.last_name || "",
+      selectedValue: users?.gender || "",
+      email: users?.email || "",
+      phone: users?.phone || "",
+      position: users?.position || "",
+      is_bookable: users?.is_bookable === 1,
     });
   }, [users]);
 
@@ -83,7 +95,7 @@ const PersonalEdit = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect triggered');
+    console.log("useEffect triggered");
     let changed = false;
     let filled = true;
     for (let key in initialValues) {
@@ -97,8 +109,8 @@ const PersonalEdit = () => {
     setIsChanged(changed);
     setIsFilled(filled);
 
-    console.log('isChanged:', isChanged);
-    console.log('isFilled:', isFilled);
+    console.log("isChanged:", isChanged);
+    console.log("isFilled:", isFilled);
   }, [initialValues, currentValues]);
 
   const handleSubmit = async (event) => {
@@ -113,22 +125,35 @@ const PersonalEdit = () => {
         email: currentValues.email,
         phone: currentValues.phone,
         position: currentValues.position,
+        is_bookable: currentValues.is_bookable ? 1 : 0,
       };
 
       // Отправляем данные на сервер
       console.log(profileData);
       const response = await axios.put(
         `http://localhost:3001/api/profile/${users?.id}`,
-        profileData,
+        profileData
       );
 
       // Обновляем информацию профиля пользователя
       updateProfileInfo(profileData);
 
-      console.log('Profile updated successfully:', response.data);
+      console.log("Profile updated successfully:", response.data);
     } catch (error) {
-      console.error('Error updating profile:', error);
+      console.error("Error updating profile:", error);
     }
+  };
+
+  const handleToggleBookable = (checked) => {
+    setIsBookable(checked);
+    setCurrentValues((prevValues) => ({
+      ...prevValues,
+      is_bookable: checked, // Обновляем значение в currentValues
+    }));
+  };
+
+  const handleCancel = () => {
+    navigate(-1);
   };
 
   return (
@@ -138,8 +163,16 @@ const PersonalEdit = () => {
         <div className="container-small">
           <div className="eb-model-edit">
             <div>
-              <form className="grid grid-cols-1 gap-4 items-start" onSubmit={handleSubmit}>
-                <CardEdit general="Общая информация" switcher cardEdit>
+              <form
+                className="grid grid-cols-1 gap-4 items-start"
+                onSubmit={handleSubmit}>
+                <CardEdit
+                  general="Общая информация"
+                  switcher={{
+                    checked: isBookable,
+                    onChange: handleToggleBookable,
+                  }}
+                  cardEdit>
                   <div className="ab-info">
                     <div className="ab-info__label">
                       <span className="ab-description">Пол</span>
@@ -152,7 +185,7 @@ const PersonalEdit = () => {
                           id="input-31"
                           value={currentValues.selectedValue}
                           prefix="Мужской"
-                          checked={selectedValue === 'male'}
+                          checked={selectedValue === "male"}
                           onChange={handleChange}
                         />
                         <Radio
@@ -161,7 +194,7 @@ const PersonalEdit = () => {
                           id="input-32"
                           value={currentValues.selectedValue}
                           prefix="Женский"
-                          checked={selectedValue === 'famale'}
+                          checked={selectedValue === "famale"}
                           onChange={handleChange}
                         />
                       </span>
@@ -234,11 +267,11 @@ const PersonalEdit = () => {
                 <CardEdit />
                 <CardEdit />
                 <div
-                  className={classNames('eb-model-edit__panel', {
-                    'show-bottom-enter-active show-bottom-enter': isChanged,
-                    'show-bottom-leave-active show-bottom-leave-to': !isChanged,
+                  className={classNames("eb-model-edit__panel", {
+                    "show-bottom-enter-active show-bottom-enter": isChanged,
+                    "show-bottom-leave-active show-bottom-leave-to": !isChanged,
                   })}
-                  style={isChanged ? {} : { display: 'none' }}>
+                  style={isChanged ? {} : { display: "none" }}>
                   <button
                     type="button"
                     className="ab-button eb-model-edit__button eb-model-edit__button--mobile md:hidden ab-button_md color-default theme-ghost"></button>
@@ -252,6 +285,7 @@ const PersonalEdit = () => {
                   </button>
                   <button
                     type="button"
+                    onClick={handleCancel}
                     className="ab-button eb-model-edit__button hidden md:block ml-4 ab-button_md color-default theme-ghost">
                     <span className="ab-button__overlay"></span>
                     <span className="ab-button__content ab-button__content_md">

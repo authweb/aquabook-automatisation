@@ -23,6 +23,7 @@ router.get('/employees', async (req, res) => {
         gender: employee.gender,
         description: employee.description,
         position: employee.position,
+        is_bookable: employee.is_bookable,
       })),
     });
   } catch (error) {

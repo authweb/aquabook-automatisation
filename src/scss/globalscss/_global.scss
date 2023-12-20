@@ -21,28 +21,28 @@
 }
 
 :root {
-  --c-brand: #1e1e1e;
-  --c-brand-rgb: 30, 30, 30;
-  --c-brand-tuned: #1e1e1e;
-  --c-brand-tuned-rgb: 30, 30, 30;
-  --c-accent: #ff7b00;
-  --c-accent-rgb: 255, 123, 0;
-  --c-success: #288f00;
-  --c-success-rgb: 40, 143, 0;
-  --c-info: #4a7fe4;
-  --c-info-rgb: 74, 127, 228;
-  --c-warning: #fc8800;
-  --c-warning-rgb: 252, 136, 0;
-  --c-error: #e9555b;
+  --c-brand: rgb(0, 21, 41);       // Тёмно-синий, основной фон
+  --c-brand-rgb: 0, 21, 41;
+  --c-brand-tuned: rgb(24, 41, 53); // Темнее серого для фона карточек
+  --c-brand-tuned-rgb: 24, 41, 53;
+  --c-accent: rgb(255, 122, 0);     // Яркий оранжевый для акцентов
+  --c-accent-rgb: 255, 122, 0;
+  --c-success: rgb(183, 235, 143);  // Светло-зелёный для обновлений или подтверждений
+  --c-success-rgb: 183, 235, 143;
+  --c-info: rgb(104, 111, 119);     // Серый для информационных элементов, ранее был для карточек
+  --c-info-rgb: 104, 111, 119;
+  --c-warning: rgb(233, 85, 91);    // Красный для предупреждений
+  --c-warning-rgb: 233, 85, 91;
+  --c-error: rgb(233, 85, 91);      // Красный, используется для ошибок
   --c-error-rgb: 233, 85, 91;
-  --c-surface: #fff;
-  --c-surface-rgb: 255, 255, 255;
-  --c-overlay: #14171d;
-  --c-overlay-rgb: 20, 23, 29;
-  --c-link: #ff7b00;
-  --c-link-rgb: 255, 123, 0;
-  --c-mono-0: #000;
-  --c-mono-0-rgb: 0, 0, 0;
+  --c-surface: rgb(24, 41, 53);     // Темнее серого для поверхностей
+  --c-surface-rgb: 24, 41, 53;
+  --c-overlay: rgb(0, 31, 50);      // Еще более темный синий для оверлеев
+  --c-overlay-rgb: 0, 31, 50;
+  --c-link: rgb(255, 122, 0);       // Использовать тот же цвет, что и для акцента
+  --c-link-rgb: 255, 122, 0;
+  --c-mono-0: rgb(255, 255, 255);   // Белый для текста на темном фоне
+  --c-mono-0-rgb: 255, 255, 255;
   --c-mono-50: #fff;
   --c-mono-50-rgb: 255, 255, 255;
   --c-mono-100: #f1f1fb;
@@ -65,25 +65,24 @@
   --c-mono-900-rgb: 30, 30, 30;
   --c-mono-1000: #1e1e1e;
   --c-mono-1000-rgb: 30, 30, 30;
-  --c-notify: #ffc230;
-  --c-notify-rgb: 255, 194, 48;
-  --c-on-brand: #fff;
+  --c-notify-rgb: 255, 184, 0;
+  --c-on-brand: rgb(255, 255, 255);  // Белый текст на брендовом цвете
   --c-on-brand-rgb: 255, 255, 255;
-  --c-on-accent: #fff;
-  --c-on-accent-rgb: 255, 255, 255;
-  --c-on-success: #fff;
+  --c-on-accent: rgb(0, 0, 0);       // Черный текст на акцентном цвете
+  --c-on-accent-rgb: 0, 0, 0;
+  --c-on-success: rgb(255, 255, 255);
   --c-on-success-rgb: 255, 255, 255;
-  --c-on-info: #fff;
+  --c-on-info: rgb(255, 255, 255);
   --c-on-info-rgb: 255, 255, 255;
-  --c-on-warning: #333;
-  --c-on-warning-rgb: 51, 51, 51;
-  --c-on-error: #fff;
+  --c-on-warning: rgb(0, 0, 0);
+  --c-on-warning-rgb: 0, 0, 0;
+  --c-on-error: rgb(255, 255, 255);
   --c-on-error-rgb: 255, 255, 255;
-  --c-on-surface: #fff;
+  --c-on-surface: rgb(255, 255, 255);
   --c-on-surface-rgb: 255, 255, 255;
-  --c-on-overlay: #fff;
+  --c-on-overlay: rgb(255, 255, 255);
   --c-on-overlay-rgb: 255, 255, 255;
-  --c-on-link: #fff;
+  --c-on-link: rgb(255, 255, 255);
   --c-on-link-rgb: 255, 255, 255;
   --c-on-mono-0: #fff;
   --c-on-mono-0-rgb: 255, 255, 255;
@@ -112,6 +111,7 @@
   --c-on-notify: #463100;
   --c-on-notify-rgb: 70, 49, 0;
 }
+
 
 *,
 ::after,
@@ -265,7 +265,7 @@ input {
 
 .link,
 a {
-  color: $secondary-color;
+  color: $primary-color;
 }
 
 a {

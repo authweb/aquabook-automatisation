@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import { ReactComponent as RegisterUser } from '../../assets/images/register.svg';
 import { ReactComponent as LoginUser } from '../../assets/images/login.svg';
-import { Input } from '../../components';
+import { Input, NumberInput } from '../../components';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ const Register = () => {
               value={formState.last_name}
               onChange={inputChangeHandler}
             />
-            <Input
+            <NumberInput
               colsSpan="col-span-2"
               type="tel"
               name="phone"

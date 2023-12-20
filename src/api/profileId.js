@@ -23,6 +23,7 @@ router.get('/profile/:id', async (req, res) => {
         gender: users.gender,
         description: users.description,
         position: users.position,
+        is_bookable: users.is_bookable,
       },
     });
   } catch (error) {
