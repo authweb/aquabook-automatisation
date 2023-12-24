@@ -15,6 +15,7 @@ const CardEdit = ({
   children,
   cardCalendar,
   cardEdit,
+  cardForm,
   cardClient,
   ButtonName,
   activeButton,
@@ -175,6 +176,26 @@ const CardEdit = ({
               </div>
             </div>
           </div>
+        </section>
+      )}
+      {cardForm && (
+        <section className="ab-card">
+          <div className="ab-card__header ab-card__header--offset">
+            <h3 className="ab_-sub-headline ab-card__title">{general}</h3>
+          </div>
+          {switcher && (
+            <div className="ab-island__arrow-wrap">
+              <div className="whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs">
+                <Switch
+                  checkedChildren={<CheckOutlined />}
+                  unCheckedChildren={<CloseOutlined />}
+                  checked={switcher.checked}
+                  onChange={switcher.onChange}
+                />
+              </div>
+            </div>
+          )}
+          <div className="grid grid-cols-1 gap-4 items-start">{children}</div>
         </section>
       )}
       {activeButton && (

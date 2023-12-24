@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
-import { HeaderDashboard, CardEdit, Input, Radio } from "../";
+import { HeaderDashboard, CardEdit, Input, Radio, NumberInput } from "../";
 
 import axios from "axios";
 
@@ -228,7 +228,7 @@ const PersonalEdit = () => {
                     prefix="Email"
                     onChange={handleChange}
                   />
-                  <Input
+                  <NumberInput
                     type="tel"
                     name="phone"
                     autoComplete="tel"

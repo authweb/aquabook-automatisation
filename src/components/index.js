@@ -31,6 +31,8 @@ export { default as AppointmentDetails } from './Calendar/AppointmentDetails';
 export { default as Input } from './Common/FormComponents/Input';
 export { default as NumberInput } from './Common/FormComponents/NumberInput';
 export { default as TextArea } from './Common/FormComponents/TextArea';
+export { default as Switcher } from './Common/FormComponents/Switcher';
+export { default as Select } from './Common/FormComponents/Select';
 export { default as Radio } from './Common/FormComponents/Radio';
 export { default as Button } from './Common/FormComponents/Button';
 export { default as Breadcrumbs } from './Common/Breadcrumbs';

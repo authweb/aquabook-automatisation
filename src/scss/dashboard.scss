@@ -1114,7 +1114,20 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
 }
 
 .ab-switch-field {
+  position: relative;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.ab-switch-field {
   display: flex;
+}
+.ab-switch-field.is-switcher {
+  display: flex;
+  align-items: center;
+}
+.ab-switch-field.is-switcher {
+  align-items: center;
 }
 
 .ab-island {
@@ -1242,6 +1255,15 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
   background-color: $card-color;
   border-radius: 1.25rem;
   padding: $card-padding-y $card-padding-x;
+  &__header {
+    display: flex;
+    &--offset {
+      margin-bottom: 0.5rem;
+    }
+    &--offset {
+      margin-bottom: 0.75rem;
+    }
+  }
 }
 
 .ab-modal[class*='is-overlay-aside'] .ab-modal__container {
@@ -1472,6 +1494,10 @@ html[data-dark='true'] .eb-booking-invoice__decor:before {
     max-height: 100vh;
     max-height: var(--viewport-height, 100vh);
   }
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: $button-e-color; /* Замените этот цвет на тот, который вам нужен */
 }
 
 .eb-button {

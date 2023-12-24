@@ -67,9 +67,9 @@ const Select = ({
               className={`flex flex-1 ab-text-field is-text has-label has-icon ${
                 isFocused || selectedOption || searchTerm ? 'is-filled' : ''
               }`}>
-              <div className="ab-text-field__prefix">
+                {prefixSvg && (<div className="ab-text-field__prefix">
                 <div className="eb-island-icon ml-4 rounded-md">{prefixSvg}</div>
-              </div>
+              </div>)}
               <div className="relative w-full">
                 <input
                   type="text"
