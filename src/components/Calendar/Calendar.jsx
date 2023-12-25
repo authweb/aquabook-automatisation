@@ -22,7 +22,6 @@ const CalendarDay = () => {
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState({});
 
-  // Эффект для обработки изменения selectedDate
   useEffect(() => {
     const formattedDate =
       selectedDate instanceof dayjs
@@ -63,7 +62,7 @@ const CalendarDay = () => {
         setConfig((prevConfig) => ({
           ...prevConfig,
           columns: employeesResponse.data.employees.map((employee) => ({
-            name: employee.first_name, // или fullName если вы используете полное имя
+            name: employee.first_name,
             id: employee.id.toString(),
           })),
         }));
@@ -80,7 +79,6 @@ const CalendarDay = () => {
               // Получаем id сотрудника из карты, используя имя сотрудника из appt.serviceEmployeeMap
               const employeeId = employeeMap.get(appt.serviceEmployeeMap);
 
-              // Добавьте проверку, чтобы убедиться, что employeeId существует
               if (employeeId === undefined) {
                 console.error(`Employee ID for '${appt.serviceEmployeeMap}' not found.`);
                 return null; // Возвращаем null или подходящее значение, если id сотрудника не найден
@@ -95,7 +93,7 @@ const CalendarDay = () => {
                 backColor: '#someColor',
               };
             })
-            .filter((event) => event !== null), // Фильтруем события, чтобы удалить null значения
+            .filter((event) => event !== null),
         );
         console.log(appointmentsResponse);
       } catch (error) {
@@ -108,7 +106,7 @@ const CalendarDay = () => {
 
   const handleEventClick = (args) => {
     const eventId = args.e.data.id;
-    setCurrentEventId(eventId); // Установка eventId в контекст
+    setCurrentEventId(eventId); 
     navigate(`/dashboard/appointments/${eventId}`);
   };
 

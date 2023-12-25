@@ -36,4 +36,5 @@ export { default as Select } from './Common/FormComponents/Select';
 export { default as Radio } from './Common/FormComponents/Radio';
 export { default as Button } from './Common/FormComponents/Button';
 export { default as Breadcrumbs } from './Common/Breadcrumbs';
+export { default as MobileNavigation } from './Common/MobileMenu';
 export { default as Aside } from './Common/Aside';

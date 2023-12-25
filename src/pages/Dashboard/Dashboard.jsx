@@ -8,7 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-import { initialState, reducer } from "../../reducers/reduser";
+import { reducer, initialState } from "../../reducers/reduser";
 import dayjs from "dayjs";
 import {
   UserOutlined,
@@ -53,6 +53,7 @@ import {
   Employees,
   ServicesManagement,
   Breadcrumbs,
+  MobileNavigation,
 } from "../../components";
 import {
   Company,
@@ -84,6 +85,22 @@ const Dashboard = () => {
   const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
   const { employees, error } = useEmployeeData();
   const [stats, dispatch] = useReducer(reducer, initialState);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Обработчик изменения размера окна
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 768);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    // Вызываем функцию handleResize сразу, чтобы состояние isMobile было актуальным
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const match = location.pathname.match(/\/dashboard\/appointments\/(\d+)/);
   const isAppointmentDetailsPage = match !== null;
@@ -234,91 +251,94 @@ const Dashboard = () => {
 
         {!showAddAppointments && !isAppointmentDetailsPage && (
           <Layout style={{ height: "100%", background: "#001529" }}>
-            <Sider trigger={null} collapsible collapsed={true}>
-              {users ? (
-                <Menu
-                  theme="dark"
-                  mode="inline"
-                  onClick={({ key }) => {
-                    if (key === "signout") {
-                      navigate("/");
-                    } else if (
-                      key === "services" ||
-                      key === "settings" ||
-                      key === "clients"
-                    ) {
-                      navigate(`./${key}`);
-                    } else if (key === "dashboard") {
-                      navigate(
-                        `/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`
-                      );
-                    } else if (key === "profile") {
-                      // Предполагается, что id пользователя доступен в этом контексте
-                      navigate(`./profile/${users.id}`);
-                    } else {
-                      // Предполагается, что все остальные ключи являются ID сотрудников
-                      navigate(`./employees/${key}`);
-                    }
-                  }}>
-                  <Link
-                    to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
-                    <img
-                      src={LogoMini}
-                      style={{
-                        maxWidth: "80%",
-                        margin: "0 auto",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                      alt="AquaBook Logo"
-                    />
-                  </Link>
-                  <Menu.Item key="dashboard" icon=<CalendarOutlined />>
+            {!isMobile && (
+              <Sider trigger={null} collapsible collapsed={true}>
+                {users ? (
+                  <Menu
+                    theme="dark"
+                    mode="inline"
+                    onClick={({ key }) => {
+                      if (key === "signout") {
+                        navigate("/");
+                      } else if (
+                        key === "services" ||
+                        key === "settings" ||
+                        key === "clients"
+                      ) {
+                        navigate(`./${key}`);
+                      } else if (key === "dashboard") {
+                        navigate(
+                          `/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`
+                        );
+                      } else if (key === "profile") {
+                        // Предполагается, что id пользователя доступен в этом контексте
+                        navigate(`./profile/${users.id}`);
+                      } else {
+                        // Предполагается, что все остальные ключи являются ID сотрудников
+                        navigate(`./employees/${key}`);
+                      }
+                    }}>
                     <Link
                       to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
-                      Календарь
+                      <img
+                        src={LogoMini}
+                        style={{
+                          maxWidth: "80%",
+                          margin: "0 auto",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                        alt="AquaBook Logo"
+                      />
                     </Link>
-                  </Menu.Item>
-                  <SubMenu
-                    key="sub1"
-                    title={
-                      <span>
-                        <UserOutlined /> <span>Сотрудники</span>
-                      </span>
-                    }>
-                    {employees &&
-                      employees.map((employee) => (
-                        <Menu.Item key={employee.id}>
-                          <Link to={`employees/${employee.id}`}>
-                            {employee.first_name}
-                          </Link>
-                        </Menu.Item>
-                      ))}
-                  </SubMenu>
-                  <Menu.Item key="clients" icon=<TeamOutlined />>
-                    <Link to="clients">Клиенты</Link>
-                  </Menu.Item>
-                  <Menu.Item key="services" icon=<BarsOutlined />>
-                    <Link to="services">Услуги</Link>
-                  </Menu.Item>
-                  <Menu.Item key="settings" icon=<SettingOutlined />>
-                    <Link to="settings">Настройки</Link>
-                  </Menu.Item>
-                  {users && (
-                    <Menu.Item key="profile" icon={<IdcardOutlined />}>
-                      <Link to={`profile/${users.id}`}>Личный кабинет</Link>
+                    <Menu.Item key="dashboard" icon={<CalendarOutlined />}>
+                      <Link
+                        to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
+                        Календарь
+                      </Link>
                     </Menu.Item>
-                  )}
-                  <Menu.Item key="signout" icon=<PoweroffOutlined /> danger>
-                    <Link onClick={handleLogout} to="/">
-                      Выход
-                    </Link>
-                  </Menu.Item>
-                </Menu>
-              ) : (
-                <div>Loading...</div>
-              )}
-            </Sider>
+                    <SubMenu
+                      key="sub1"
+                      title={
+                        <span>
+                          <UserOutlined /> <span>Сотрудники</span>
+                        </span>
+                      }>
+                      {employees &&
+                        employees.map((employee) => (
+                          <Menu.Item key={employee.id}>
+                            <Link to={`employees/${employee.id}`}>
+                              {employee.first_name}
+                            </Link>
+                          </Menu.Item>
+                        ))}
+                    </SubMenu>
+                    <Menu.Item key="clients" icon=<TeamOutlined />>
+                      <Link to="clients">Клиенты</Link>
+                    </Menu.Item>
+                    <Menu.Item key="services" icon=<BarsOutlined />>
+                      <Link to="services">Услуги</Link>
+                    </Menu.Item>
+                    <Menu.Item key="settings" icon=<SettingOutlined />>
+                      <Link to="settings">Настройки</Link>
+                    </Menu.Item>
+                    {users && (
+                      <Menu.Item key="profile" icon={<IdcardOutlined />}>
+                        <Link to={`profile/${users.id}`}>Личный кабинет</Link>
+                      </Menu.Item>
+                    )}
+                    <Menu.Item key="signout" icon=<PoweroffOutlined /> danger>
+                      <Link onClick={handleLogout} to="/">
+                        Выход
+                      </Link>
+                    </Menu.Item>
+                  </Menu>
+                ) : (
+                  <div>Loading...</div>
+                )}
+              </Sider>
+            )}
+
             <Layout
               className={layoutClassName}
               style={{ background: "#001529" }}>
@@ -327,22 +347,26 @@ const Dashboard = () => {
                 style={{
                   margin: "0 16px",
                 }}>
-                <Header
-                  className="eb-calendar_title"
-                  style={{
-                    padding: 0,
-                  }}>
-                  {["/dashboard/services", "/dashboard/clients"].includes(
-                    location.pathname
-                  ) && (
-                    <Dropdown menu={menuProps}>
-                      <Button>
-                        <Space>Оперции с Excel</Space>
-                      </Button>
-                    </Dropdown>
-                  )}
-                </Header>
-                <Breadcrumbs breadcrumbNameMap={breadcrumbNameMap} />
+                {!isMobile && (
+                  <>
+                    <Header
+                      className="eb-calendar_title"
+                      style={{
+                        padding: 0,
+                      }}>
+                      {["/dashboard/services", "/dashboard/clients"].includes(
+                        location.pathname
+                      ) && (
+                        <Dropdown menu={menuProps}>
+                          <Button>
+                            <Space>Оперции с Excel</Space>
+                          </Button>
+                        </Dropdown>
+                      )}
+                    </Header>
+                    <Breadcrumbs breadcrumbNameMap={breadcrumbNameMap} />
+                  </>
+                )}
 
                 <Routes>
                   <Route path="/">
@@ -391,6 +415,7 @@ const Dashboard = () => {
                   </Route>
                 </Routes>
               </Content>
+
               {showSider && (
                 <Sider
                   className="eb-calendar-page__aside"
@@ -408,6 +433,7 @@ const Dashboard = () => {
               AQUALORD ©2023 Created by Authweb
             </Footer> */}
             </Layout>
+            {isMobile && <MobileNavigation stats={stats} />}
           </Layout>
         )}
       </CalendarProvider>

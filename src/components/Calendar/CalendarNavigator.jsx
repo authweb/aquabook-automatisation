@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DayPilotNavigator } from 'daypilot-pro-react';
 import { CalendarContext } from '../../contexts/CalendarContexts';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import dayjs from 'dayjs'; // убедитесь, что импортировали dayjs
+import dayjs from 'dayjs';
 import '../../scss/CalendarStyles.scss';
 
 const CalendarNavigator = () => {
@@ -30,7 +30,7 @@ const CalendarNavigator = () => {
         setSelectedDate(args.day);
         console.log('Updated selectedDate:', selectedDate);
         const today = searchParams.get('today');
-        setRangeStart(formattedDate); // добавьте эту строку
+        setRangeStart(formattedDate);
         navigate(`/dashboard/calendar?today=${today}&range_start=${formattedDate}`);
       }}
     />
