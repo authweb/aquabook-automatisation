@@ -1,49 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { Table } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Table, Input } from "antd";
 
 const columns = [
   {
-    title: 'ФИО',
-    dataIndex: 'name',
+    title: "ФИО",
+    dataIndex: "name",
     sorter: (a, b) => a.name.localeCompare(b.name),
-    width: '30%',
+    width: "30%",
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
-    width: '40%',
+    title: "Email",
+    dataIndex: "email",
+    width: "40%",
   },
   {
-    title: 'Телефон',
-    dataIndex: 'phone',
-    width: '40%',
+    title: "Телефон",
+    dataIndex: "phone",
+    width: "40%",
   },
 ];
 
 const Clients = () => {
-  const [data, setData] = useState([]); // создаем состояние для данных
+  const [data, setData] = useState([]); // данные клиентов
+  const [searchText, setSearchText] = useState(""); // поисковый запрос
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/clients') // замените на ваш URL
+    // Здесь предполагается, что ваш API поддерживает CORS
+    fetch("http://localhost:3001/api/clients")
       .then((response) => response.json())
       .then((data) => {
-        setData(
-          data.clients.map((client) => ({
-            // преобразуем данные в нужный формат
-            key: client.id,
-            name: `${client.first_name} ${client.last_name}`,
-            email: client.email, // замените на реальные данные, если они есть
-            phone: client.phone, // замените на реальные данные, если они есть
-          })),
-        );
+        const formattedData = data.clients.map((client) => ({
+          key: client.id,
+          name: `${client.first_name} ${client.last_name}`,
+          email: client.email,
+          phone: client.phone,
+        }));
+        setData(formattedData);
       });
   }, []);
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchText(value);
   };
+
+  const filteredData = data.filter(
+    (item) =>
+      item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.email.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.phone.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const onChange = (pagination, filters, sorter, extra) => {
+    console.log("params", pagination, filters, sorter, extra);
+  };
+
   return (
     <div>
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Input
+        placeholder="Введите ФИО, Email или Телефон"
+        onChange={handleSearch}
+        style={{ marginBottom: 16 }}
+      />
+      <Table columns={columns} dataSource={filteredData} onChange={onChange} />
     </div>
   );
 };

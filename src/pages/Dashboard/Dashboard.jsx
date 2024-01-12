@@ -5,7 +5,6 @@ import {
   Route,
   Link,
   useLocation,
-  useParams,
 } from "react-router-dom";
 
 import { reducer, initialState } from "../../reducers/reduser";
@@ -18,6 +17,7 @@ import {
   BarsOutlined,
   PoweroffOutlined,
   CalendarOutlined,
+  PieChartOutlined
 } from "@ant-design/icons";
 import {
   ConfigProvider,
@@ -54,6 +54,7 @@ import {
   ServicesManagement,
   Breadcrumbs,
   MobileNavigation,
+  Analytics,
 } from "../../components";
 import {
   Company,
@@ -75,7 +76,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [showSider, setShowSider] = useState(false);
   const [showAddAppointments, setShowAddAppointments] = useState(false);
   const { users, logout } = useAuth();
   const [categories, setCategories] = useState([]);
@@ -86,6 +86,7 @@ const Dashboard = () => {
   const { employees, error } = useEmployeeData();
   const [stats, dispatch] = useReducer(reducer, initialState);
 
+  const [showSider, setShowSider] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   // Обработчик изменения размера окна
@@ -184,6 +185,7 @@ const Dashboard = () => {
     "/dashboard/profile": "Профиль",
     "/dashboard/settings": "Настройки",
     "/dashboard/clients": "Клиенты",
+    "/dashboard/analytics": "Аналитика",
   });
 
   const handleEmployeeData = (employee) => {
@@ -263,7 +265,8 @@ const Dashboard = () => {
                       } else if (
                         key === "services" ||
                         key === "settings" ||
-                        key === "clients"
+                        key === "clients" ||
+                        key === 'analytics'
                       ) {
                         navigate(`./${key}`);
                       } else if (key === "dashboard") {
@@ -271,10 +274,8 @@ const Dashboard = () => {
                           `/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`
                         );
                       } else if (key === "profile") {
-                        // Предполагается, что id пользователя доступен в этом контексте
                         navigate(`./profile/${users.id}`);
                       } else {
-                        // Предполагается, что все остальные ключи являются ID сотрудников
                         navigate(`./employees/${key}`);
                       }
                     }}>
@@ -319,6 +320,9 @@ const Dashboard = () => {
                     <Menu.Item key="services" icon=<BarsOutlined />>
                       <Link to="services">Услуги</Link>
                     </Menu.Item>
+                    <Menu.Item key="analytics" icon={<PieChartOutlined />}>
+                      <Link to="analytics">Аналитика</Link>
+                    </Menu.Item>
                     <Menu.Item key="settings" icon=<SettingOutlined />>
                       <Link to="settings">Настройки</Link>
                     </Menu.Item>
@@ -347,26 +351,24 @@ const Dashboard = () => {
                 style={{
                   margin: "0 16px",
                 }}>
-                {!isMobile && (
-                  <>
-                    <Header
-                      className="eb-calendar_title"
-                      style={{
-                        padding: 0,
-                      }}>
-                      {["/dashboard/services", "/dashboard/clients"].includes(
-                        location.pathname
-                      ) && (
-                        <Dropdown menu={menuProps}>
-                          <Button>
-                            <Space>Оперции с Excel</Space>
-                          </Button>
-                        </Dropdown>
-                      )}
-                    </Header>
+                <Header
+                  className="eb-calendar_title"
+                  style={{
+                    padding: 0,
+                  }}>
+                  {["/dashboard/services", "/dashboard/clients"].includes(
+                    location.pathname
+                  ) && (
+                    <Dropdown menu={menuProps}>
+                      <Button>
+                        <Space>Оперции с Excel</Space>
+                      </Button>
+                    </Dropdown>
+                  )}
+                  {!isMobile && (
                     <Breadcrumbs breadcrumbNameMap={breadcrumbNameMap} />
-                  </>
-                )}
+                  )}
+                </Header>
 
                 <Routes>
                   <Route path="/">
@@ -388,6 +390,7 @@ const Dashboard = () => {
                     </Route>
                     <Route path="clients" element={<Clients />} />
                     <Route path="calendar" element={<CalendarDay />} />
+                    <Route path="analytics" element={<Analytics />} />
                     <Route path="services" element={<ServicesManagement />} />
                     <Route path="settings/">
                       <Route index element={<Settings />} />
@@ -416,7 +419,7 @@ const Dashboard = () => {
                 </Routes>
               </Content>
 
-              {showSider && (
+              {showSider && !isMobile && (
                 <Sider
                   className="eb-calendar-page__aside"
                   style={{ maxWidth: "375px" }}>

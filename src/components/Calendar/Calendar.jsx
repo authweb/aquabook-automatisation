@@ -69,19 +69,17 @@ const CalendarDay = () => {
         // Создаем карту соответствия имени сотрудника и его id
         const employeeMap = new Map();
         employeesResponse.data.employees.forEach((employee) => {
-          // Здесь используется простое имя, но если у сотрудников могут быть одинаковые имена, лучше использовать полное имя или другой уникальный идентификатор
           employeeMap.set(employee.first_name, employee.id);
         });
 
         setEvents(
           appointmentsResponse.data.appointments
             .map((appt) => {
-              // Получаем id сотрудника из карты, используя имя сотрудника из appt.serviceEmployeeMap
               const employeeId = employeeMap.get(appt.serviceEmployeeMap);
 
               if (employeeId === undefined) {
                 console.error(`Employee ID for '${appt.serviceEmployeeMap}' not found.`);
-                return null; // Возвращаем null или подходящее значение, если id сотрудника не найден
+                return null;
               }
 
               return {
@@ -117,7 +115,7 @@ const CalendarDay = () => {
     ),
     columns: [],
     heightSpec: 'BusinessHoursNoScroll',
-    theme: 'eb-calendar_',
+    theme: 'eb-calendar',
     businessBeginsHour: 9,
     businessEndsHour: 21,
     onEventClick: handleEventClick,

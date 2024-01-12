@@ -31,6 +31,7 @@ router.get('/appointments', async (_, res) => {
         text: appointment.text,
         clients_id: appointment.clients_id,
         totalCost: appointment.totalCost,
+        is_paid: appointment.is_paid,
       };
     });
 
