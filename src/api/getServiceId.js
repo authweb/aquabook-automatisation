@@ -22,7 +22,6 @@ router.get('/services/:id', async (req, res) => {
         price_to: service.price_to,
         tags: service.tags,
         duration: service.duration,
-        // и другие поля, если они есть
       },
     });
   } catch (error) {

@@ -13,7 +13,7 @@ Theme Designer Version: 2021.09.25.67272
   font-size: 13px;
 }
 .eb-calendar_event {
-  color: #ffffff;
+  color: var(--white-color);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -43,7 +43,7 @@ Theme Designer Version: 2021.09.25.67272
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--white-color);
   padding: 2px;
   padding-left: 6px;
   text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.2),
@@ -59,7 +59,7 @@ Theme Designer Version: 2021.09.25.67272
   top: 1px;
   bottom: 0px;
   margin: 0px;
-  color: #ffffff;
+  color: var(--white-color);
   background-color: #001529;
   background: -webkit-gradient(
     linear,
@@ -87,7 +87,7 @@ Theme Designer Version: 2021.09.25.67272
   right: 0px;
   border-right: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
 }
 .eb-calendar_colheader_inner {
@@ -100,7 +100,7 @@ Theme Designer Version: 2021.09.25.67272
   right: 0px;
   border-right: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
 }
 .eb-calendar_rowheader_inner {
@@ -113,7 +113,7 @@ Theme Designer Version: 2021.09.25.67272
   right: 0px;
   border-right: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
 }
 .eb-calendar_rowheader_minutes {
@@ -130,7 +130,7 @@ Theme Designer Version: 2021.09.25.67272
   right: 0px;
   border-right: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
 }
 .eb-calendar_cornerright_inner {
@@ -141,7 +141,7 @@ Theme Designer Version: 2021.09.25.67272
   right: 0px;
   border-right: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
 }
 .eb-calendar_rowheader_inner {
@@ -164,7 +164,7 @@ Theme Designer Version: 2021.09.25.67272
   padding: 10px;
   opacity: 0.9;
   filter: alpha(opacity=90);
-  color: #ffffff;
+  color: var(--white-color);
   background: #ffa216;
 }
 .eb-calendar_shadow_inner {
@@ -231,15 +231,15 @@ Theme Designer Version: 2021.09.25.67272
     linear,
     left top,
     left bottom,
-    from(#ffffff),
+    from(var(--white-color)),
     to(#eeeeee)
   );
-  background: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: -ms-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: -o-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: linear-gradient(top, #ffffff 0%, #eeeeee);
-  filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#ffffff", endColorStr="#eeeeee");
+  background: -webkit-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: -moz-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: -ms-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: -o-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="var(--white-color)", endColorStr="#eeeeee");
 }
 .eb-calendar_shadow_bottom {
   box-sizing: border-box;
@@ -250,15 +250,15 @@ Theme Designer Version: 2021.09.25.67272
     linear,
     left top,
     left bottom,
-    from(#ffffff),
+    from(var(--white-color)),
     to(#eeeeee)
   );
-  background: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: -ms-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: -o-linear-gradient(top, #ffffff 0%, #eeeeee);
-  background: linear-gradient(top, #ffffff 0%, #eeeeee);
-  filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#ffffff", endColorStr="#eeeeee");
+  background: -webkit-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: -moz-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: -ms-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: -o-linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  background: linear-gradient(top, var(--white-color) 0%, #eeeeee);
+  filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="var(--white-color)", endColorStr="#eeeeee");
 }
 .eb-calendar_crosshair_vertical,
 .eb-calendar_crosshair_horizontal,
@@ -303,7 +303,7 @@ Theme Designer Version: 2021.09.25.67272
 .eb-calendar__title,
 .eb-calendar__titleleft,
 .eb-calendar__titleright {
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
   background: -webkit-gradient(
     linear,
@@ -328,7 +328,7 @@ Theme Designer Version: 2021.09.25.67272
 }
 /* day headers */
 .eb-calendar__dayheader {
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
   text-align: center;
   font-size: 14px; // Настройте размер шрифта в соответствии с вашим дизайном
@@ -351,7 +351,7 @@ Theme Designer Version: 2021.09.25.67272
   }
 }
 .eb-calendar__cell {
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
   text-align: center;
   padding: 4px;
@@ -363,7 +363,7 @@ Theme Designer Version: 2021.09.25.67272
   padding: 0px;
 }
 .eb-calendar__weeknumber {
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
   text-align: center;
   padding: 4px;
@@ -371,7 +371,7 @@ Theme Designer Version: 2021.09.25.67272
   height: 40px; // Установите желаемую высоту
 }
 .eb-calendar__weekend {
-  color: #ffffff;
+  color: var(--white-color);
   background: #001529;
   text-align: center;
   padding: 0px;

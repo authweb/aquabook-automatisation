@@ -1,305 +1,339 @@
-@import './globalscss/variables';
-.headerUser {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  width: 100%;
-  min-height: 56px;
-  background-color: #f3f3f3;
-  border-radius: 20px;
+@import "./globalscss/variables";
 
-  margin-bottom: 10px;
-  &__box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &-icon,
-    &-space {
-      display: flex;
-      flex: 1;
-    }
-    &-icon {
-      font-size: $font-size-22;
-      margin-left: 15px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    &-title {
-      display: flex;
-      flex: 4;
-      justify-content: center;
-    }
-  }
+page {
+	&-substrate {
+		display: block;
+		background-color: var(--white-color);
+		padding: 20px 16px;
+		margin: 8px 8px 0;
+		border-radius: 24px;
+		&.substrate {
+			margin: 0;
+			padding: 16px 16px 20px;
+		}
+	}
+}
+
+.bg-none {
+	background-color: transparent !important;
+}
+.border-color {
+	border: 1px solid $black-color;
+	border-radius: 16px !important;
+}
+
+.full-width {
+	padding: 16px;
+	margin: 8px 0;
+}
+
+.cut-top {
+	margin-top: 0;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.headerUser {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	width: 100%;
+	min-height: 56px;
+	background-color: #f3f3f3;
+	border-radius: 20px;
+
+	margin-bottom: 10px;
+	&__box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&-icon,
+		&-space {
+			display: flex;
+			flex: 1;
+		}
+		&-icon {
+			font-size: $font-size-22;
+			margin-left: 15px;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		&-title {
+			display: flex;
+			flex: 4;
+			justify-content: center;
+		}
+	}
 }
 .personalProfile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 
-  .personalProfile-section {
-    background-color: #f3f3f3;
-    border-radius: 20px;
-    padding: 20px;
-    height: 100%;
-    margin-bottom: 10px;
-  }
-  .newAppointment {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 10px;
-    border: none;
-    font-family: $font-family;
-    font-size: $font-size-18;
-    border-width: 0;
-    border-style: none;
-    background-color: $secondary-color;
-    color: $white-color;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      background-color: $secondary-color-hover;
-      cursor: pointer;
-    }
-  }
-  .deleteCarInfo {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 10px;
-    margin-top: 10px;
-    border: none;
-    font-family: $font-family;
-    font-size: $font-size-18;
-    border-width: 0;
-    border-style: none;
-    background-color: $delete-color;
-    color: $white-color;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      background-color: $delete-color-hover;
-      cursor: pointer;
-    }
-  }
+	.personalProfile-section {
+		background-color: #f3f3f3;
+		border-radius: 20px;
+		padding: 20px;
+		height: 100%;
+		margin-bottom: 10px;
+	}
+	.newAppointment {
+		width: 100%;
+		padding: 15px 20px;
+		border-radius: 10px;
+		border: none;
+		font-family: $font-family;
+		font-size: $font-size-18;
+		border-width: 0;
+		border-style: none;
+		background-color: $secondary-color;
+		color: $white-color;
+		transition: all 0.2s ease-in-out;
+		&:hover {
+			background-color: $secondary-color-hover;
+			cursor: pointer;
+		}
+	}
+	.deleteCarInfo {
+		width: 100%;
+		padding: 15px 20px;
+		border-radius: 10px;
+		margin-top: 10px;
+		border: none;
+		font-family: $font-family;
+		font-size: $font-size-18;
+		border-width: 0;
+		border-style: none;
+		background-color: $delete-color;
+		color: $white-color;
+		transition: all 0.2s ease-in-out;
+		&:hover {
+			background-color: $delete-color-hover;
+			cursor: pointer;
+		}
+	}
 }
 .profile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; // Добавлено свойство для выравнивания по центру
-  height: 97.5vh;
-  .profile-section {
-    background-color: #f3f3f3;
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 10px;
-    &:last-child {
-      margin-top: auto;
-      margin-bottom: 0;
-      padding: 0;
-    }
-    .userAppointments {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      &__flex {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        &-icon {
-          color: $secondary-color;
-          font-size: $font-size-18;
-        }
-        &-h3 {
-          margin-left: 15px;
-          font-size: $font-size-18;
-          font-weight: $font-weight-medium;
-          color: $secondary-color;
-        }
-      }
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between; // Добавлено свойство для выравнивания по центру
+	height: 97.5vh;
+	.profile-section {
+		background-color: #f3f3f3;
+		border-radius: 20px;
+		padding: 20px;
+		margin-bottom: 10px;
+		&:last-child {
+			margin-top: auto;
+			margin-bottom: 0;
+			padding: 0;
+		}
+		.userAppointments {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			text-decoration: none;
+			&__flex {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				&-icon {
+					color: $secondary-color;
+					font-size: $font-size-18;
+				}
+				&-h3 {
+					margin-left: 15px;
+					font-size: $font-size-18;
+					font-weight: $font-weight-medium;
+					color: $secondary-color;
+				}
+			}
 
-      &-arrow {
-        color: $secondary-color;
-        font-size: $font-size-22;
-      }
-    }
-    .newAppointment {
-      width: 100%;
-      padding: 15px 20px;
-      border-radius: 10px;
-      border: none;
-      font-family: $font-family;
-      font-size: $font-size-18;
-      border-width: 0;
-      border-style: none;
-      background-color: $secondary-color;
-      color: $white-color;
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        background-color: $secondary-color-hover;
-        cursor: pointer;
-      }
-    }
-    .logout {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-family: $font-family;
-      padding-left: 0;
-      border-width: 0;
-      border-style: none;
-      color: $logout-color;
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        cursor: pointer;
-      }
-      &-icon {
-        font-size: $font-size-24;
-      }
-      &-label {
-        font-size: $font-size-18;
-        font-weight: $font-weight-medium;
-        margin-left: 10px;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
+			&-arrow {
+				color: $secondary-color;
+				font-size: $font-size-22;
+			}
+		}
+		.newAppointment {
+			width: 100%;
+			padding: 15px 20px;
+			border-radius: 10px;
+			border: none;
+			font-family: $font-family;
+			font-size: $font-size-18;
+			border-width: 0;
+			border-style: none;
+			background-color: $secondary-color;
+			color: $white-color;
+			transition: all 0.2s ease-in-out;
+			&:hover {
+				background-color: $secondary-color-hover;
+				cursor: pointer;
+			}
+		}
+		.logout {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			font-family: $font-family;
+			padding-left: 0;
+			border-width: 0;
+			border-style: none;
+			color: $logout-color;
+			transition: all 0.2s ease-in-out;
+			&:hover {
+				cursor: pointer;
+			}
+			&-icon {
+				font-size: $font-size-24;
+			}
+			&-label {
+				font-size: $font-size-18;
+				font-weight: $font-weight-medium;
+				margin-left: 10px;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
 }
 .carInfo {
-  &-h3 {
-    text-align: center;
-  }
-  &-p {
-    text-align: center;
-    &:nth-child(5) {
-      margin-bottom: 30px;
-    }
-  }
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  &__flex {
-    display: flex;
-    flex-direction: column;
-    &__inputcol {
-      margin-top: 10px;
-      &.updateCarInfo {
-        padding: 15px 10px;
-        border-radius: 10px;
-        margin-top: 10px;
-        border: none;
-        font-family: $font-family;
-        font-size: $font-size-18;
-        border-width: 0;
-        border-style: none;
-        background-color: $secondary-color;
-        color: $white-color;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          background-color: $secondary-color-hover;
-          cursor: pointer;
-        }
-      }
-      &.cancelCarInfo {
-        text-decoration: none;
-        padding: 10px 10px;
-        border-radius: 10px;
-        text-align: center;
-        margin-top: 10px;
-        border: none;
-        font-family: $font-family;
-        font-size: $font-size-18;
-        border-width: 0;
-        border-style: none;
-        background-color: $delete-color;
-        color: $white-color;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          background-color: $delete-color-hover;
-          cursor: pointer;
-        }
-      }
-      &-input {
-        width: 100%;
-        padding: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-size: 16px;
-        margin-top: 5px;
+	&-h3 {
+		text-align: center;
+	}
+	&-p {
+		text-align: center;
+		&:nth-child(5) {
+			margin-bottom: 30px;
+		}
+	}
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	&__flex {
+		display: flex;
+		flex-direction: column;
+		&__inputcol {
+			margin-top: 10px;
+			&.updateCarInfo {
+				padding: 15px 10px;
+				border-radius: 10px;
+				margin-top: 10px;
+				border: none;
+				font-family: $font-family;
+				font-size: $font-size-18;
+				border-width: 0;
+				border-style: none;
+				background-color: $secondary-color;
+				color: $white-color;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					background-color: $secondary-color-hover;
+					cursor: pointer;
+				}
+			}
+			&.cancelCarInfo {
+				text-decoration: none;
+				padding: 10px 10px;
+				border-radius: 10px;
+				text-align: center;
+				margin-top: 10px;
+				border: none;
+				font-family: $font-family;
+				font-size: $font-size-18;
+				border-width: 0;
+				border-style: none;
+				background-color: $delete-color;
+				color: $white-color;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					background-color: $delete-color-hover;
+					cursor: pointer;
+				}
+			}
+			&-input {
+				width: 100%;
+				padding: 10px 0;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				font-size: 16px;
+				margin-top: 5px;
 
-        &:focus {
-          outline: none;
-          border-color: #666;
-        }
-      }
-    }
-  }
+				&:focus {
+					outline: none;
+					border-color: #666;
+				}
+			}
+		}
+	}
 }
 
 .personalInfo {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  &__flex {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    &__pcol {
-      display: flex;
-      flex-direction: column;
-      &-p {
-        color: $gray-text-color;
-        margin: 0;
-        text-align: center;
-        font-size: $font-size-16;
-        &:first-child {
-          font-size: $font-size-18;
-          font-weight: 600;
-          margin-bottom: 5px;
-          color: $secondary-color;
-        }
-      }
-    }
-  }
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	&__flex {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		&__pcol {
+			display: flex;
+			flex-direction: column;
+			&-p {
+				color: $gray-text-color;
+				margin: 0;
+				text-align: center;
+				font-size: $font-size-16;
+				&:first-child {
+					font-size: $font-size-18;
+					font-weight: 600;
+					margin-bottom: 5px;
+					color: $secondary-color;
+				}
+			}
+		}
+	}
 }
 .profileInfo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-decoration: none;
 
-  &__flex {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex: auto;
-    justify-content: space-between;
+	&__flex {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex: auto;
+		justify-content: space-between;
 
-    &__pcol {
-      display: flex;
-      flex-direction: column;
-      &-p {
-        color: $gray-text-color;
-        margin: 0;
-        &:first-child {
-          font-size: $font-size-16;
-          font-weight: 600;
-          margin-bottom: 5px;
-          color: $secondary-color;
-        }
-      }
-    }
-    &-arrow {
-      display: flex;
-      flex-wrap: wrap;
-      font-size: $font-size-22;
-      color: $secondary-color;
-    }
-  }
+		&__pcol {
+			display: flex;
+			flex-direction: column;
+			&-p {
+				color: $gray-text-color;
+				margin: 0;
+				&:first-child {
+					font-size: $font-size-16;
+					font-weight: 600;
+					margin-bottom: 5px;
+					color: $secondary-color;
+				}
+			}
+		}
+		&-arrow {
+			display: flex;
+			flex-wrap: wrap;
+			font-size: $font-size-22;
+			color: $secondary-color;
+		}
+	}
 }

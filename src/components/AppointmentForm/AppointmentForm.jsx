@@ -1,70 +1,256 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
+import InputMask from "react-input-mask";
+import ServiceBasket from "../Common/FormComponents/ServiceBasket";
+import ServiceList from "../Common/FormComponents/ServiceList";
+import HeaderAddition from "../Common/HeaderAddition";
+import { HeaderUser } from "..";
+import HeaderBooking from "../HomePage/Header/HeaderBooking";
+import AppointmentClient from "./AppointmentClient";
 
-const AppointmentForm = () => {
-  // Здесь будем хранить состояние формы
-  const [formState, setFormState] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    date: '',
-    time: '',
-    car: '',
-    message: '',
-  });
+const AppointmentForm = ({}) => {
+	// Здесь будем хранить состояние формы
+	const [formState, setFormState] = useState({
+		name: "",
+		phone: "",
+		email: "",
+		employee: "",
+		car: "",
+		date: "",
+		time: "",
+		selectedServices: [],
+		message: "",
+		carNumber: "",
+	});
 
-  // Обработчик изменения полей формы
-  const handleInputChange = (e) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
+	// Здесь будем хранить текущий шаг формы
+	const [step, setStep] = useState(1);
+	const [categories, setCategories] = useState([]);
+	const [activeCategoryId, setActiveCategoryId] = useState(null);
+	// const [checkedState, setCheckedState] = useState({});
+	const [selectedServices, setSelectedServices] = useState([]);
+	const [isScrolling, setIsScrolling] = useState([]);
 
-  // Обработчик отправки формы
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formState);
-  };
+	useEffect(() => {
+		// Функция для загрузки данных
+		async function fetchData() {
+			try {
+				const categoriesResponse = await fetch(
+					"http://localhost:3306/api/service-categories",
+				);
+				const servicesResponse = await fetch(
+					"http://localhost:3306/api/services",
+				);
+				const categoriesData = await categoriesResponse.json();
+				const servicesData = await servicesResponse.json();
 
-  return (
-    <div className="appointment-form">
-      <form onSubmit={handleSubmit}>
-        <form>
-          <div className="form-group">
-            <label htmlFor="name">Имя:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone">Телефон:</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="service">Услуга:</label>
-            <select id="service" name="service" required>
-              <option value="">Выберите услугу</option>
-              <option value="1">Мойка кузова</option>
-              <option value="2">Мойка салона</option>
-              <option value="3">Полировка</option>
-              <option value="4">Химчистка</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="date">Дата:</label>
-            <input type="date" id="date" name="date" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="time">Время:</label>
-            <input type="time" id="time" name="time" required />
-          </div>
-          <button className="btn-form" type="submit">
-            Записаться
-          </button>
-        </form>
-      </form>
-    </div>
-  );
+				// Проверка, что ответ сервера содержит данные услуг в ожидаемом формате
+				if (
+					servicesData.services &&
+					typeof servicesData.services === "object"
+				) {
+					const servicesArray = Object.keys(servicesData.services).reduce(
+						(acc, key) => {
+							const servicesByCategory = servicesData.services[key].map(
+								service => ({
+									...service,
+									category_id: Number(key),
+								}),
+							);
+							return acc.concat(servicesByCategory);
+						},
+						[],
+					);
+
+					// Добавление услуг в соответствующие категории
+					const enrichedCategories = categoriesData.servicesCategories.map(
+						category => ({
+							...category,
+							services: servicesArray.filter(
+								service => service.category_id === category.id,
+							),
+						}),
+					);
+
+					setCategories(enrichedCategories);
+				} else {
+					console.error(
+						"Unexpected response structure from services API:",
+						servicesData,
+					);
+				}
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		}
+		fetchData();
+	}, []);
+
+	// useEffect(() => {
+	// 	if (!categories) return; // Early return if category is not defined
+
+	// 	const handleScroll = () => {
+	// 		if (!isScrolling) {
+	// 			const element = document.getElementById(`category-${categories.id}`);
+	// 			if (element) {
+	// 				const bounding = element.getBoundingClientRect();
+	// 				const halfScreenHeight = window.innerHeight / 2;
+	// 				if (
+	// 					bounding.top <= halfScreenHeight &&
+	// 					bounding.bottom >= halfScreenHeight
+	// 				) {
+	// 					setActiveCategoryId(categories.id);
+	// 				}
+	// 			}
+	// 		}
+	// 	};
+
+	// 	window.addEventListener("scroll", handleScroll);
+	// 	return () => {
+	// 		window.removeEventListener("scroll", handleScroll);
+	// 	};
+	// }, [categories.id, isScrolling]); // Use optional chaining to safely access id
+
+	const handleInputChange = useCallback(({ target: { name, value } }) => {
+		setFormState(prevState => ({ ...prevState, [name]: value }));
+	}, []);
+
+	// Функция для обработки выбора категории услуг
+	const handleCategorySelect = useCallback(id => {
+		setActiveCategoryId(id);
+		setIsScrolling(true);
+		const categoryElement = document.getElementById(`category-${id}`);
+		if (categoryElement) {
+			const offset = 100;
+			const elementPosition =
+				categoryElement.getBoundingClientRect().top +
+				window.pageYOffset -
+				offset;
+			window.scrollTo({ top: elementPosition, behavior: "smooth" });
+		} else {
+			console.log(`Element with id category-${id} not found`);
+		}
+		setTimeout(() => setIsScrolling(false), 1000);
+	}, []);
+
+	// Функция для выбора или отмены выбора услуги
+	const toggleService = useCallback(service => {
+		setSelectedServices(prevServices => {
+			const isServiceSelected = prevServices.some(s => s.id === service.id);
+			const updatedServices = isServiceSelected
+				? prevServices.filter(s => s.id !== service.id)
+				: [...prevServices, service];
+
+			// Обновляем состояние formState, чтобы отразить выбранные услуги
+			setFormState(prevState => ({
+				...prevState,
+				selectedServices: updatedServices,
+			}));
+
+			return updatedServices;
+		});
+	}, []);
+
+	useEffect(() => {
+		console.log("Selected services updated:", selectedServices);
+	}, [selectedServices]);
+
+	// Обработчик перехода на следующий шаг
+	const handleNextStep = () => {
+		// Передаем в selectedServices из formState
+		const formDataWithServices = {
+			...formState,
+			selectedServices: formState.selectedServices,
+		};
+		console.log("Объединяем данные", formDataWithServices);
+
+		if (step < 4) {
+			setStep(step + 1);
+		} else {
+			console.log("Форма успешно отправлена!");
+		}
+
+		console.log("Состояние формы после перехода:", formState);
+	};
+
+	// Обработчик перехода на предыдущий шаг
+	const handlePrevStep = () => {
+		setStep(step - 1);
+	};
+
+	// Обработчик отправки формы
+	const handleSubmit = e => {
+		e.preventDefault();
+		// Объединяем данные формы с выбранными услугами
+		const formDataWithServices = { ...formState, selectedServices };
+		console.log("Отправка формы", formDataWithServices);
+	};
+
+	const renderStep = () => {
+		switch (step) {
+			case 1:
+				return (
+					<>
+						<page-services-page>
+							<HeaderUser
+								showBack
+								title='AquaBook'
+								description='Краснодарская 40ж'
+								to='profile/'
+							/>
+							<HeaderAddition
+								categories={categories}
+								activeCategoryId={activeCategoryId}
+								handleCategorySelect={handleCategorySelect}
+								chipsSection
+								className='chips-wrapper sticky'
+							/>
+							<div className='content with-horizontal-tags'>
+								<ServiceList
+									categories={categories}
+									selectedServices={selectedServices}
+									toggleService={toggleService}
+								/>
+
+								{selectedServices.length > 0 && (
+									<ServiceBasket
+										selectedServices={selectedServices}
+										onNextStep={handleNextStep}
+									/>
+								)}
+							</div>
+						</page-services-page>
+					</>
+				);
+			case 2:
+				return (
+					<>
+						<page-create-record>
+							<page-header-wrapper>
+								<HeaderBooking
+									title='Ваш заказ'
+									handlePrevStep={handlePrevStep}
+									className='line-clamp'
+								/>
+							</page-header-wrapper>
+							<AppointmentClient
+								styleCss={{ paddingTop: 68 }}
+								selectedServices={formState.selectedServices}
+								onPrevStep={handlePrevStep}
+								onNextStep={handleNextStep}
+							/>
+						</page-create-record>
+					</>
+				);
+			case 3:
+				return <></>;
+			case 4:
+				return <></>;
+			default:
+				return null;
+		}
+	};
+
+	return <>{renderStep()}</>;
 };
 
 export default AppointmentForm;

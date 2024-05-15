@@ -1,0 +1,83 @@
+.page-modal .background-modal {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 10500;
+	opacity: 0;
+	will-change: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	transition: opacity 0.2s ease-in;
+}
+.page-modal .dirty,
+.page-modal .background-modal {
+	opacity: 0;
+}
+.page-modal .showed,
+.page-modal .background-modal {
+	opacity: 1;
+}
+
+.page-modal .showed,
+.page-modal .modal {
+	transform: translate(0);
+}
+.page-modal .dirty,
+.page-modal .modal {
+	transform: translateY(100%);
+}
+
+.page-modal {
+	display: block;
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	z-index: 11000;
+	overflow: hidden;
+	& .swipe-area {
+		height: 28px;
+		color: var(--white-color);
+		width: 100%;
+		text-align: center;
+		position: relative;
+
+		@media (min-width: 500px) {
+			display: none;
+		}
+		&.with-page-header {
+			height: 16px;
+		}
+	}
+}
+
+.page-modal ui-kit-header,
+.page-modal .window-header {
+	position: static;
+	padding-top: 0;
+}
+
+.page-modal .modal {
+	will-change: auto;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	z-index: 11000;
+	background-color: var(--white-color);
+	width: 100%;
+	transform: translateY(100%);
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	transition: transform 0.2s ease-in;
+	max-height: 90%;
+	overflow: auto;
+	@media (min-width: 500px) {
+		max-width: 392px;
+		left: 50%;
+		top: 50%;
+		bottom: auto;
+		border-radius: 8px;
+		transform: translate(-50%, -50%);
+		opacity: 1;
+		transition: opacity 0.2s ease-in;
+	}
+}

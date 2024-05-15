@@ -17,6 +17,16 @@ $update-color-hover: rgb(28, 175, 129); // Тёмно-зелёный для со
 $hr-color: rgba(236, 227, 228, 0.1); // Светлый разделитель на тёмном фоне
 $button-e-color: rgba(255, 122, 0, 0.7); // Менее прозрачный акцентный оранжевый для кнопок
 $button-e-color-hover: rgba(192, 96, 10, 0.7); // Менее прозрачный тёмно-оранжевый при наведении
+$light-orange-color: rgb(255, 179, 102);
+$dark-blue-color: rgb(0, 16, 31);
+$dark-blue-color-hover: rgb(0, 31, 61);
+$light-gray-color: rgb(200, 200, 200);
+$dark-gray-color: rgb(64, 64, 64);
+$medium-blue-color: rgb(36, 52, 69);
+$medium-blue-color-hover: rgb(28, 42, 57);
+$text-dark: rgb(33, 37, 41);
+$text-gray: rgb(108, 117, 125);
+$text-dark-blue: rgb(52, 58, 64);
 
 // fonts
 $font-family: 'Montserrat', sans-serif;
@@ -67,3 +77,8 @@ $calendar-header-height: calc(3rem + $calendar-safe-offest-top);
 $header-padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
 $header-padding-horizontal: 1.5rem;
 $header-padding-bottom: 1.5rem;
+
+$safe-area-top: 0px;
+$safe-area-bottom: 0px;
+$ion-safe-area-left: 0px;
+$ion-safe-area-right: 0px;

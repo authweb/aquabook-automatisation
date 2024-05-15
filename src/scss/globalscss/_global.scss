@@ -1,285 +1,334 @@
-@import './variables';
+@import "./variables";
 
 :root {
-  --header-padding-bottom: 0.5rem;
-  --header-padding-top: calc(env(safe-area-inset-top, 0px) + var(--header-padding-bottom, 0.5rem));
-  --header-padding-horizontal: var(--container-padding, 1.5rem);
-  --header-padding: var(--header-padding-top) var(--header-padding-horizontal)
-    var(--header-padding-bottom);
-  --header-height: calc(env(safe-area-inset-top, 0px) + 4rem);
-  @media (min-width: 1024px) {
-    & {
-      --header-padding-bottom: 1.5rem;
-      --header-padding-top: calc(
-        env(safe-area-inset-top, 0px) + var(--header-padding-bottom, 1.5rem)
-      );
-      --header-padding: var(--header-padding-top) var(--header-padding-horizontal)
-        var(--header-padding-bottom);
-      --header-height: calc(env(safe-area-inset-top, 0px) + 5.5rem);
-    }
-  }
+	--header-padding-bottom: 0.5rem;
+	--header-padding-top: calc(
+		env(safe-area-inset-top, 0px) + var(--header-padding-bottom, 0.5rem)
+	);
+	--header-padding-horizontal: var(--container-padding, 1.5rem);
+	--header-padding: var(--header-padding-top) var(--header-padding-horizontal)
+		var(--header-padding-bottom);
+	--header-height: calc(env(safe-area-inset-top, 0px) + 4rem);
+	@media (min-width: 1024px) {
+		& {
+			--header-padding-bottom: 1.5rem;
+			--header-padding-top: calc(
+				env(safe-area-inset-top, 0px) + var(--header-padding-bottom, 1.5rem)
+			);
+			--header-padding: var(--header-padding-top)
+				var(--header-padding-horizontal) var(--header-padding-bottom);
+			--header-height: calc(env(safe-area-inset-top, 0px) + 5.5rem);
+		}
+	}
 }
 
 :root {
-  --c-brand: rgb(0, 21, 41);       // Тёмно-синий, основной фон
-  --c-brand-rgb: 0, 21, 41;
-  --c-brand-tuned: rgb(24, 41, 53); // Темнее серого для фона карточек
-  --c-brand-tuned-rgb: 24, 41, 53;
-  --c-accent: rgb(255, 122, 0);     // Яркий оранжевый для акцентов
-  --c-accent-rgb: 255, 122, 0;
-  --c-success: rgb(183, 235, 143);  // Светло-зелёный для обновлений или подтверждений
-  --c-success-rgb: 183, 235, 143;
-  --c-info: rgb(104, 111, 119);     // Серый для информационных элементов, ранее был для карточек
-  --c-info-rgb: 104, 111, 119;
-  --c-warning: rgb(233, 85, 91);    // Красный для предупреждений
-  --c-warning-rgb: 233, 85, 91;
-  --c-error: rgb(233, 85, 91);      // Красный, используется для ошибок
-  --c-error-rgb: 233, 85, 91;
-  --c-surface: rgb(24, 41, 53);     // Темнее серого для поверхностей
-  --c-surface-rgb: 24, 41, 53;
-  --c-overlay: rgb(0, 31, 50);      // Еще более темный синий для оверлеев
-  --c-overlay-rgb: 0, 31, 50;
-  --c-link: rgb(255, 122, 0);       // Использовать тот же цвет, что и для акцента
-  --c-link-rgb: 255, 122, 0;
-  --c-mono-0: rgb(255, 255, 255);   // Белый для текста на темном фоне
-  --c-mono-0-rgb: 255, 255, 255;
-  --c-mono-50: #fff;
-  --c-mono-50-rgb: 255, 255, 255;
-  --c-mono-100: #f1f1fb;
-  --c-mono-100-rgb: 241, 241, 251;
-  --c-mono-200: #313236;
-  --c-mono-200-rgb: 49, 50, 54;
-  --c-mono-300: #9a9a9a;
-  --c-mono-300-rgb: 154, 154, 154;
-  --c-mono-400: #9a9a9a;
-  --c-mono-400-rgb: 154, 154, 154;
-  --c-mono-500: #9a9a9a;
-  --c-mono-500-rgb: 154, 154, 154;
-  --c-mono-600: #9a9a9a;
-  --c-mono-600-rgb: 154, 154, 154;
-  --c-mono-700: #9a9a9a;
-  --c-mono-700-rgb: 154, 154, 154;
-  --c-mono-800: #383838;
-  --c-mono-800-rgb: 56, 56, 56;
-  --c-mono-900: #1e1e1e;
-  --c-mono-900-rgb: 30, 30, 30;
-  --c-mono-1000: #1e1e1e;
-  --c-mono-1000-rgb: 30, 30, 30;
-  --c-notify-rgb: 255, 184, 0;
-  --c-on-brand: rgb(255, 255, 255);  // Белый текст на брендовом цвете
-  --c-on-brand-rgb: 255, 255, 255;
-  --c-on-accent: rgb(0, 0, 0);       // Черный текст на акцентном цвете
-  --c-on-accent-rgb: 0, 0, 0;
-  --c-on-success: rgb(255, 255, 255);
-  --c-on-success-rgb: 255, 255, 255;
-  --c-on-info: rgb(255, 255, 255);
-  --c-on-info-rgb: 255, 255, 255;
-  --c-on-warning: rgb(0, 0, 0);
-  --c-on-warning-rgb: 0, 0, 0;
-  --c-on-error: rgb(255, 255, 255);
-  --c-on-error-rgb: 255, 255, 255;
-  --c-on-surface: rgb(255, 255, 255);
-  --c-on-surface-rgb: 255, 255, 255;
-  --c-on-overlay: rgb(255, 255, 255);
-  --c-on-overlay-rgb: 255, 255, 255;
-  --c-on-link: rgb(255, 255, 255);
-  --c-on-link-rgb: 255, 255, 255;
-  --c-on-mono-0: #fff;
-  --c-on-mono-0-rgb: 255, 255, 255;
-  --c-on-mono-50: #161616;
-  --c-on-mono-50-rgb: 22, 22, 22;
-  --c-on-mono-100: #161616;
-  --c-on-mono-100-rgb: 22, 22, 22;
-  --c-on-mono-200: #fff;
-  --c-on-mono-200-rgb: 255, 255, 255;
-  --c-on-mono-300: #fff;
-  --c-on-mono-300-rgb: 255, 255, 255;
-  --c-on-mono-400: #9a9a9a;
-  --c-on-mono-400-rgb: 154, 154, 154;
-  --c-on-mono-500: #161616;
-  --c-on-mono-500-rgb: 22, 22, 22;
-  --c-on-mono-600: #161616;
-  --c-on-mono-600-rgb: 22, 22, 22;
-  --c-on-mono-700: #313236;
-  --c-on-mono-700-rgb: 49, 50, 54;
-  --c-on-mono-800: #fff;
-  --c-on-mono-800-rgb: 255, 255, 255;
-  --c-on-mono-900: #001529;
-  --c-on-mono-900-rgb: 0, 21, 41;
-  --c-on-mono-1000: #333;
-  --c-on-mono-1000-rgb: 51, 51, 51;
-  --c-on-notify: #463100;
-  --c-on-notify-rgb: 70, 49, 0;
-}
+	/* colors */
+	--primary-color: rgb(255, 122, 0); /* Яркий оранжевый для акцентов */
+	--secondary-color: rgb(
+		128,
+		71,
+		20
+	); /* Тёмно-оранжевый для дополнительных акцентов */
+	--secondary-color-hover: rgb(
+		192,
+		96,
+		10
+	); /* Более тёмный оттенок оранжевого для состояния наведения */
+	--bg-color: rgb(0, 21, 41); /* Основной фон, тёмно-синий */
+	--card-color: rgb(24, 41, 53); /* Темнее серого для фона карточек */
+	--gray-color: rgb(
+		117,
+		123,
+		130
+	); /* Средний серый для неактивных элементов или подписей */
+	--gray-text-color: rgb(
+		236,
+		227,
+		228
+	); /* Бледно-розовый для текста на тёмном фоне */
+	--black-color: rgb(42, 42, 42); /* Тёмно-серый для максимального контраста */
+	--white-color: rgb(255, 255, 255); /* Белый для текста и ключевых элементов */
+	--logout-color: rgb(
+		233,
+		85,
+		91
+	); /* Красный для кнопок выхода или предупреждений */
+	--logout-color-hover: rgb(
+		200,
+		66,
+		66
+	); /* Тёмный красный для состояния наведения */
+	--delete-color: rgb(233, 85, 91); /* Красный для удаления */
+	--delete-color-hover: rgb(
+		200,
+		66,
+		66
+	); /* Тёмный красный для состояния наведения */
+	--update-color: rgb(
+		183,
+		235,
+		143
+	); /* Светло-зеленый для обновлений или подтверждений */
+	--update-color-hover: rgb(
+		28,
+		175,
+		129
+	); /* Тёмно-зелёный для состояния наведения */
+	--hr-color: rgba(236, 227, 228, 0.1); /* Светлый разделитель на тёмном фоне */
+	--button-e-color: rgba(
+		255,
+		122,
+		0,
+		0.7
+	); /* Менее прозрачный акцентный оранжевый для кнопок */
+	--button-e-color-hover: rgba(
+		192,
+		96,
+		10,
+		0.7
+	); /* Менее прозрачный тёмно-оранжевый при наведении */
+	--light-orange-color: rgb(255, 179, 102);
+	--dark-blue-color: rgb(0, 16, 31);
+	--dark-blue-color-hover: rgb(0, 31, 61);
+	--light-gray-color: rgb(200, 200, 200);
+	--dark-gray-color: rgb(64, 64, 64);
+	--medium-blue-color: rgb(36, 52, 69);
+	--medium-blue-color-hover: rgb(28, 42, 57);
+	--text-dark: rgb(33, 37, 41);
+	--text-gray: rgb(108, 117, 125);
+	--text-dark-blue: rgb(52, 58, 64);
 
+	/* fonts */
+	--font-family: "Montserrat", sans-serif;
+	--font-size-14: 14px;
+	--font-size-16: 16px;
+	--font-size-18: 18px;
+	--font-size-20: 20px;
+	--font-size-22: 22px;
+	--font-size-24: 24px;
+	--font-size-26: 26px;
+	--font-size-28: 28px;
+	--font-size-30: 30px;
+	--font-size-32: 32px;
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 600;
+	--font-weight-bold: 700;
+	--line-height-14: 14px;
+	--line-height-16: 16px;
+	--line-height-18: 18px;
+	--line-height-20: 20px;
+	--line-height-22: 22px;
+	--line-height-24: 24px;
+	--line-height-26: 26px;
+	--line-height-28: 28px;
+	--line-height-30: 30px;
+	--line-height-32: 32px;
+
+	/* breakpoints */
+	--breakpoint-xs: 320px;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+
+	/* other variables */
+	--container-padding: 1.5rem;
+	--avatar-size: 2.625rem;
+	--island-icon-height: 2.625rem;
+	--island-icon-height-media: 60px;
+	--card-padding-y: 1.875rem;
+	--card-padding-x: 1.875rem;
+	--flow-min-gap: 0.25rem;
+	--flow-gap-scale: 4;
+	--flow-gap: calc(var(--flow-gap-scale) * var(--flow-min-gap));
+	--page-buttons-bottom: 5rem;
+	--calendar-cell-height: 24px;
+	--calendar-cell-width: 8rem;
+	--calendar-padding: 2rem;
+	--calendar-column-height: 1200px;
+	--calendar-hour-height: 96px;
+	--calendar-time-width: 3.5rem;
+	--calendar-safe-offest-top: env(safe-area-inset-top, 0px);
+	--calendar-title-height: 4.5rem;
+	--calendar-header-height: calc(3rem + var(--calendar-safe-offest-top));
+	--header-padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+	--header-padding-horizontal: 1.5rem;
+	--header-padding-bottom: 1.5rem;
+	--safe-area-top: 0px;
+	--safe-area-bottom: 0px;
+	--ion-safe-area-left: 0px;
+	--ion-safe-area-right: 0px;
+}
 
 *,
 ::after,
 ::before {
-  box-sizing: border-box;
-  border: 0 solid rgba(20, 23, 29, 0.1);
+	box-sizing: border-box;
+	border: 0 solid rgba(20, 23, 29, 0.1);
 }
 
 #__layout,
 #root,
 body,
 html {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  font-family: $font-family !important;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	font-family: $font-family !important;
 }
 
 #__layout,
 #__layout > *,
 #root body {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
 .ab-layout {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 body {
-  background-color: $bg-color;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	background-color: $bg-color;
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .container {
-  max-width: 1350px;
-  &-small {
-    max-width: 610px;
-  }
+	max-width: 1350px;
+	&-small {
+		max-width: 610px;
+	}
 }
 
 .container,
 .container-fluid,
 .container-small {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
 }
 
 .container-full .ab-card,
 .container-small .ab-card,
 .container .ab-card {
-  margin-left: calc($container-padding * -1);
-  margin-right: calc($container-padding * -1);
-  width: calc(100% + $container-padding * 2);
-  @media (min-width: 1024px) {
-    & {
-      margin-left: unset;
-      margin-right: unset;
-      width: 100%;
-    }
-  }
+	margin-left: calc($container-padding * -1);
+	margin-right: calc($container-padding * -1);
+	width: calc(100% + $container-padding * 2);
+	@media (min-width: 1024px) {
+		& {
+			margin-left: unset;
+			margin-right: unset;
+			width: 100%;
+		}
+	}
 }
 
 @media (min-width: 692px) {
-  .md\:hidden {
-    display: none;
-  }
+	.md\:hidden {
+		display: none;
+	}
 }
 
 @media (min-width: 850px) {
-  .md\:py-6 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-  .md\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-  .md\:mx-5 {
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-  .md\:mt-3 {
-    margin-top: 0.75rem;
-  }
-  .md\:text-xl {
-    font-size: 1.25rem;
-  }
-  .md\:flex {
-    display: flex;
-  }
-  .md\:w-1\/2 {
-    width: 50%;
-  }
-  .md\:mb-0 {
-    margin-bottom: 0;
-  }
-  .md\:order-last {
-    order: 9999;
-  }
-  .md\:order-none {
-    order: 0;
-  }
-  .md\:pr-12 {
-    padding-right: 3rem;
-  }
-  .md\:block {
-    display: block;
-  }
-  .text-h1 {
-    font-size: 2.5rem;
-  }
+	.md\:py-6 {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+	.md\:px-16 {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+	.md\:mx-5 {
+		margin-left: 1.25rem;
+		margin-right: 1.25rem;
+	}
+	.md\:mt-3 {
+		margin-top: 0.75rem;
+	}
+	.md\:text-xl {
+		font-size: 1.25rem;
+	}
+	.md\:flex {
+		display: flex;
+	}
+	.md\:w-1\/2 {
+		width: 50%;
+	}
+	.md\:mb-0 {
+		margin-bottom: 0;
+	}
+	.md\:order-last {
+		order: 9999;
+	}
+	.md\:order-none {
+		order: 0;
+	}
+	.md\:pr-12 {
+		padding-right: 3rem;
+	}
+	.md\:block {
+		display: block;
+	}
+	.text-h1 {
+		font-size: 2.5rem;
+	}
 }
 @media (min-width: 1100px) {
-  .lg\:flex {
-    display: flex;
-  }
-  .lg\:flex-1 {
-    flex: 1 1 0%;
-  }
-  .text-h1 {
-    font-size: 2.5rem;
-  }
+	.lg\:flex {
+		display: flex;
+	}
+	.lg\:flex-1 {
+		flex: 1 1 0%;
+	}
+	.text-h1 {
+		font-size: 2.5rem;
+	}
 }
 
 .text-mid {
-  font-size: 15px;
+	font-size: 15px;
 }
 .font-medium {
-  font-weight: 500;
+	font-weight: 500;
 }
 .font-bold {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 input {
-  color: $white-color;
+	color: $white-color;
 }
 
 .link-white a {
-  color: $white-color;
+	color: $white-color;
 }
 
 .link,
 a {
-  color: $primary-color;
+	color: $primary-color;
 }
 
 a {
-  color: inherit;
-  text-decoration: inherit;
+	color: inherit;
+	text-decoration: inherit;
 }
 
 a {
-  background-color: transparent;
+	background-color: transparent;
 }
 
 .link:hover,
 a:not([class]):hover {
-  color: $secondary-color-hover;
+	color: $secondary-color-hover;
 }
 
 button,
@@ -287,74 +336,74 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  font-size: 100%;
-  margin: 0;
+	font-family: inherit;
+	font-size: 100%;
+	margin: 0;
 }
 
 textarea {
-  overflow: auto;
-  resize: vertical;
+	overflow: auto;
+	resize: vertical;
 }
 
 button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  text-align: inherit;
-  padding: 0;
-  line-height: inherit;
-  color: inherit;
-  background-color: transparent;
-  background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	text-align: inherit;
+	padding: 0;
+	line-height: inherit;
+	color: inherit;
+	background-color: transparent;
+	background-image: none;
 }
 
 hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-  border-top-width: 1px;
-  margin: 1rem 0;
-  border-color: $hr-color;
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+	border-top-width: 1px;
+	margin: 1rem 0;
+	border-color: $hr-color;
 }
 
 h1 {
-  font-size: $font-size-22;
+	font-size: $font-size-22;
 }
 h2 {
-  font-size: $font-size-20;
+	font-size: $font-size-20;
 }
 h3 {
-  font-size: $font-size-18;
-  margin: 0;
+	font-size: $font-size-18;
+	margin: 0;
 }
 
 .video-block-app {
-  &__bg {
-    min-height: 380px;
-    height: 115vw;
-    @media (min-width: 850px) {
-      min-height: 100%;
-      height: 100%;
-    }
-  }
-  &__app {
-    position: relative;
-    padding: 8% 0;
-    @media (min-width: 850px) {
-      & {
-        padding-top: 12%;
-        padding-bottom: 12%;
-      }
-    }
-  }
+	&__bg {
+		min-height: 380px;
+		height: 115vw;
+		@media (min-width: 850px) {
+			min-height: 100%;
+			height: 100%;
+		}
+	}
+	&__app {
+		position: relative;
+		padding: 8% 0;
+		@media (min-width: 850px) {
+			& {
+				padding-top: 12%;
+				padding-bottom: 12%;
+			}
+		}
+	}
 }
 
 img,
 video {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 audio,
@@ -365,24 +414,24 @@ img,
 object,
 svg,
 video {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
 .object-cover {
-  -o-object-fit: cover;
-  object-fit: cover;
+	-o-object-fit: cover;
+	object-fit: cover;
 }
 .object-bottom {
-  -o-object-position: bottom;
-  object-position: bottom;
+	-o-object-position: bottom;
+	object-position: bottom;
 }
 
 img {
-  border-style: none;
+	border-style: none;
 }
 
 img {
-  border-style: solid;
+	border-style: solid;
 }
 
 h1,
@@ -391,10 +440,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  cursor: inherit;
+	font-weight: 400;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	cursor: inherit;
 }
 
 h1:first-child,
@@ -403,7 +452,7 @@ h3:first-child,
 h4:first-child,
 h5:first-child,
 h6:first-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 h1:first-child,
 h2:first-child,
@@ -411,7 +460,7 @@ h3:first-child,
 h4:first-child,
 h5:first-child,
 h6:first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 h1:last-child,
@@ -420,7 +469,7 @@ h3:last-child,
 h4:last-child,
 h5:last-child,
 h6:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 h1:last-child,
@@ -429,531 +478,540 @@ h3:last-child,
 h4:last-child,
 h5:last-child,
 h6:last-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 p {
-  font-size: $font-size-14;
+	font-size: $font-size-14;
+}
+
+.primary {
+	background-color: rgba($white-color, 1);
 }
 
 /*Flex Box*/
 .flex {
-  display: flex;
-  &-wrap {
-    flex-wrap: wrap;
-  }
-  &-grow {
-    flex-grow: 1;
-  }
-  &-1 {
-    flex: 1 1 0%;
-  }
-  &-col {
-    flex-direction: column;
-  }
-  &-shrink {
-    &-0 {
-      flex-shrink: 0;
-    }
-  }
+	display: flex;
+	&-wrap {
+		flex-wrap: wrap;
+	}
+	&-grow {
+		flex-grow: 1;
+	}
+	&-1 {
+		flex: 1 1 0%;
+	}
+	&-col {
+		flex-direction: column;
+	}
+	&-shrink {
+		&-0 {
+			flex-shrink: 0;
+		}
+	}
 }
 .justify-end {
-  justify-content: flex-end;
+	justify-content: flex-end;
 }
 .justify-center {
-  justify-content: center;
+	justify-content: center;
 }
 .justify-space {
-  justify-content: space-between;
+	justify-content: space-between;
 }
 /*/Flex Box*/
 
 /*Grid*/
 .grid {
-  display: grid;
+	display: grid;
 }
 .gap-4 {
-  grid-gap: 1rem;
-  gap: 1rem;
+	grid-gap: 1rem;
+	gap: 1rem;
 }
 .gap-6 {
-  grid-gap: 1.5rem;
-  gap: 1.5rem;
+	grid-gap: 1.5rem;
+	gap: 1.5rem;
 }
 .gap-8 {
-  grid-gap: 2rem;
-  gap: 2rem;
+	grid-gap: 2rem;
+	gap: 2rem;
 }
 
 .gap-y-2 {
-  grid-row-gap: 0.5rem;
-  row-gap: 0.5rem;
+	grid-row-gap: 0.5rem;
+	row-gap: 0.5rem;
 }
 .gap-x-4 {
-  grid-column-gap: 1rem;
-  -moz-column-gap: 1rem;
-  column-gap: 1rem;
+	grid-column-gap: 1rem;
+	-moz-column-gap: 1rem;
+	column-gap: 1rem;
 }
 .grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+	grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 .grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .col-span-2 {
-  grid-column: span 2 / span 2;
+	grid-column: span 2 / span 2;
 }
 /*/Grid*/
 
 .max-w-full {
-  max-width: 100%;
+	max-width: 100%;
 }
 .relative {
-  position: relative;
+	position: relative;
 }
 .absolute {
-  position: absolute;
+	position: absolute;
 }
 .whitespace-no-wrap {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 .leading-none {
-  line-height: 1;
+	line-height: 1;
 }
 
 .transition-200 {
-  transition: transform 0.2s;
+	transition: transform 0.2s;
 }
 
 .leading-relaxed {
-  line-height: 1.625;
+	line-height: 1.625;
 }
 .text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
+	font-size: 0.75rem;
+	line-height: 1rem;
 }
 
 .text-accent {
-  color: $white-color;
-  color: rgba($white-color, 1);
+	color: $white-color;
+	color: rgba($white-color, 1);
 }
 
 .inline-block {
-  display: inline-block;
+	display: inline-block;
 }
 .block {
-  display: block;
+	display: block;
 }
 
 .rounded-lg {
-  border-radius: 0.375rem;
+	border-radius: 0.375rem;
 }
 .rounded-md {
-  border-radius: 0.25rem;
+	border-radius: 0.25rem;
 }
 .w-full {
-  width: 100%;
+	width: 100%;
 }
 .h-full {
-  height: 100%;
+	height: 100%;
 }
 
 .min-h-screen {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 .opacity-50 {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .overflow-hidden {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 .color-light {
-  color: $white-color;
+	color: $white-color;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 .w-10 {
-  width: 2.5rem;
+	width: 2.5rem;
 }
 
 .mt-1 {
-  margin-top: 0.25rem;
+	margin-top: 0.25rem;
 }
 .mt-2 {
-  margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 .mt-3 {
-  margin-top: 0.75rem;
+	margin-top: 0.75rem;
 }
 .mt-4 {
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 .mt-5 {
-  margin-top: 1.25rem;
+	margin-top: 1.25rem;
 }
 .mt-6 {
-  margin-top: 1.5rem;
+	margin-top: 1.5rem;
 }
 .mt-7 {
-  margin-top: 1.75rem;
+	margin-top: 1.75rem;
 }
 .mt-8 {
-  margin-top: 2rem;
+	margin-top: 2rem;
 }
 
 .mb-1 {
-  margin-bottom: 0.25rem;
+	margin-bottom: 0.25rem;
 }
 .mb-2 {
-  margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 .mb-3 {
-  margin-bottom: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 .mb-4 {
-  margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 .mb-5 {
-  margin-bottom: 1.25rem;
+	margin-bottom: 1.25rem;
 }
 .mb-6 {
-  margin-bottom: 1.5rem;
+	margin-bottom: 1.5rem;
 }
 
 .ml-1 {
-  margin-left: 0.25rem;
+	margin-left: 0.25rem;
 }
 .ml-2 {
-  margin-left: 0.5rem;
+	margin-left: 0.5rem;
 }
 .ml-3 {
-  margin-left: 0.75rem;
+	margin-left: 0.75rem;
 }
 .ml-4 {
-  margin-left: 1rem;
+	margin-left: 1rem;
 }
 .ml-5 {
-  margin-left: 1.25rem;
+	margin-left: 1.25rem;
 }
 .ml-6 {
-  margin-left: 1.5rem;
+	margin-left: 1.5rem;
 }
 
 .mr-1 {
-  margin-right: 0.25rem;
+	margin-right: 0.25rem;
 }
 .mr-2 {
-  margin-right: 0.5rem;
+	margin-right: 0.5rem;
 }
 .mr-3 {
-  margin-right: 0.75rem;
+	margin-right: 0.75rem;
 }
 .mr-4 {
-  margin-right: 1rem;
+	margin-right: 1rem;
 }
 .mr-5 {
-  margin-right: 1.25rem;
+	margin-right: 1.25rem;
 }
 .mr-6 {
-  margin-right: 1.5rem;
+	margin-right: 1.5rem;
 }
 
 .mr-auto {
-  margin-right: auto;
+	margin-right: auto;
 }
 .ml-auto {
-  margin-left: auto;
+	margin-left: auto;
 }
 .mb-auto {
-  margin-bottom: auto;
+	margin-bottom: auto;
 }
 .mt-auto {
-  margin-top: auto;
+	margin-top: auto;
 }
 
 .my-0 {
-  margin-top: 0;
-  margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 .my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
 }
 .my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 .my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 .my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 .-mx-2 {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+	margin-left: -0.5rem;
+	margin-right: -0.5rem;
 }
 .mx-0 {
-  margin-left: 0;
-  margin-right: 0;
+	margin-left: 0;
+	margin-right: 0;
 }
 .mx-1 {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
 }
 .mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
 }
 .mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
 }
 .mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .py-0 {
-  padding-top: 0;
-  padding-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 .py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
 }
 .py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 }
 .py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
 }
 .py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 .py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
 }
 
 .pl-0 {
-  padding-left: 0;
+	padding-left: 0;
 }
 .pl-1 {
-  padding-left: 0.25rem;
+	padding-left: 0.25rem;
 }
 
 .px-0 {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 .px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
 }
 .px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 .px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
 }
 .px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 .px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
 }
 .px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
 }
 .px-7 {
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
+	padding-left: 1.75rem;
+	padding-right: 1.75rem;
 }
 .px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
 }
 
 .p-1 {
-  padding: 0.25rem;
+	padding: 0.25rem;
 }
 .p-2 {
-  padding: 0.5rem;
+	padding: 0.5rem;
 }
 .p-3 {
-  padding: 0.75rem;
+	padding: 0.75rem;
 }
 .pt-4 {
-  padding-top: 1rem;
+	padding-top: 1rem;
 }
 .pt-5 {
-  padding-top: 1.25rem;
+	padding-top: 1.25rem;
 }
 .pt-6 {
-  padding-top: 1.5rem;
+	padding-top: 1.5rem;
 }
 
 .border-2 {
-  border-width: 2px;
+	border-width: 2px;
 }
 .rounded-10 {
-  border-radius: 10px;
+	border-radius: 10px;
 }
 
 .items-start {
-  align-items: flex-start;
+	align-items: flex-start;
 }
 .items-center {
-  align-items: center;
+	align-items: center;
 }
 
 .align-middle {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 .whitespace-no-wrap {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 .whitespace-normal {
-  white-space: normal;
+	white-space: normal;
 }
 
 .text-center {
-  text-align: center;
+	text-align: center;
 }
 
 .link-uppercase {
-  font-size: 0.75rem;
-  line-height: 1rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 0.1em;
 }
 
 .font-montserrat {
-  font-family: $font-family;
+	font-family: $font-family;
 }
 
 .text-primary {
-  color: $primary-color;
+	color: $primary-color;
 }
 
 .text-secondary {
-  color: $secondary-color;
+	color: $secondary-color;
 }
 
 .text-gray {
-  color: $gray-color;
+	color: $gray-color;
 }
 
 .text-black {
-  color: $black-color;
+	color: $black-color;
 }
 
 .text-white {
-  color: $white-color;
+	color: $white-color;
 }
 
 .ant-switch-checked {
-  background-color: $secondary-color !important;
-  color: #fff; /* Цвет для состояния checked */
+	background-color: $secondary-color !important;
+	color: #fff; /* Цвет для состояния checked */
 }
 
 .ant-switch:not(.ant-switch-checked) {
-  background-color: #e9555b !important;
-  color: #fff; /* Цвет для состояния unchecked */
+	background-color: #e9555b !important;
+	color: #fff; /* Цвет для состояния unchecked */
 }
 
 .bg-color {
-  background-color: $bg-color;
+	background-color: $bg-color;
 }
 
 .bg-success {
-  background-color: $secondary-color;
-  color: #fff;
+	background-color: $secondary-color;
+	color: #fff;
 }
 
 .bg-error {
-  background-color: #e9555b;
-  color: #fff;
+	background-color: #e9555b;
+	color: #fff;
 }
 
 .bg-primary {
-  background-color: $primary-color;
+	background-color: $primary-color;
 }
 
 .bg-secondary {
-  background-color: $secondary-color;
+	background-color: $secondary-color;
 }
 
 .bg-gray {
-  background-color: $gray-color;
+	background-color: $gray-color;
 }
 
 .bg-black {
-  background-color: $black-color;
+	background-color: $black-color;
 }
 
 .bg-white {
-  background-color: $white-color;
+	background-color: $white-color;
 }
 
 .ant-btn-primary {
-  box-shadow: none;
+	box-shadow: none;
 }
 .eb-calendar-page__aside .ant-layout-sider-children {
-  height: unset;
+	height: unset;
 }
 
 .btn {
-  display: inline-block;
-  border: none;
-  outline: none;
-  font-family: $font-family;
-  font-size: $font-size-16;
-  font-weight: $font-weight-medium;
-  color: $white-color;
-  background-color: $primary-color;
-  border-radius: 25px;
-  padding: 10px 30px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+	display: inline-block;
+	border: none;
+	outline: none;
+	font-family: $font-family;
+	font-size: $font-size-16;
+	font-weight: $font-weight-medium;
+	color: $white-color;
+	background-color: $primary-color;
+	border-radius: 25px;
+	padding: 10px 30px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
 
-  &:hover {
-    background-color: darken($primary-color, 10%);
-  }
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
 }
 
 .btn-form {
-  display: inline-block;
-  border: none;
-  outline: none;
-  font-family: $font-family;
-  font-size: $font-size-16;
-  font-weight: $font-weight-medium;
-  color: $white-color;
-  background-color: $primary-color;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+	display: inline-block;
+	border: none;
+	outline: none;
+	font-family: $font-family;
+	font-size: $font-size-16;
+	font-weight: $font-weight-medium;
+	color: $white-color;
+	background-color: $primary-color;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
 
-  &:hover {
-    background-color: darken($primary-color, 10%);
-  }
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
+}
+
+.sized {
+	width: 1em;
+	height: 1em;
 }

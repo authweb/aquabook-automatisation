@@ -1,68 +1,77 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const [users, setUsers] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [users, setUsers] = useState(null);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    const userToken = localStorage.getItem('userToken');
-    const userData = localStorage.getItem('userData');
+	useEffect(() => {
+		const userToken = localStorage.getItem("userToken");
+		const userData = localStorage.getItem("userData");
 
-    if (userToken) {
-      setUsers(JSON.parse(userData));
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, []);
+		if (userToken) {
+			setUsers(JSON.parse(userData));
+			setIsAuthenticated(true);
+		} else {
+			setIsAuthenticated(false);
+		}
+	}, []);
 
-  const login = (userData) => {
-    localStorage.setItem('userToken', userData.token);
-    localStorage.setItem('userData', JSON.stringify(userData));
-    setUsers(userData);
-    setIsAuthenticated(true);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`;
-    console.log('Users data from AuthContext:', userData);
-  };
+	const login = (userData, role) => {
+		localStorage.setItem("userToken", userData.token);
+		localStorage.setItem("userData", JSON.stringify({ ...userData, role }));
+		setUsers({ ...userData, role });
+		setIsAuthenticated(true);
+		axios.defaults.headers.common["Authorization"] = `Bearer ${userData.token}`;
+		console.log("Users data from AuthContext:", userData);
+	};
 
-  const logout = () => {
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('userData');
-    delete axios.defaults.headers.common['Authorization'];
-    setUsers(null);
-    setIsAuthenticated(false);
-    navigate('/');
-  };
+	const hasRole = requiredRole => {
+		if (!users) {
+			return false;
+		}
 
-  const updateProfileInfo = (newProfileData) => {
-    const updatedUserData = {
-      ...users,
-      ...newProfileData,
-    };
-    localStorage.setItem('userData', JSON.stringify(updatedUserData));
-    setUsers(updatedUserData);
-    console.log('Profile updated in context:', updatedUserData);
-  };
+		return users.role === requiredRole;
+	};
 
-  return (
-    <AuthContext.Provider
-      value={{
-        users,
-        isAuthenticated,
-        login,
-        logout,
-        updateProfileInfo,
-      }}>
-      {children}
-    </AuthContext.Provider>
-  );
+	const logout = () => {
+		localStorage.removeItem("userToken");
+		localStorage.removeItem("userData");
+		delete axios.defaults.headers.common["Authorization"];
+		setUsers(null);
+		setIsAuthenticated(false);
+		navigate("/");
+	};
+
+	const updateProfileInfo = newProfileData => {
+		const updatedUserData = {
+			...users,
+			...newProfileData,
+		};
+		localStorage.setItem("userData", JSON.stringify(updatedUserData));
+		setUsers(updatedUserData);
+		console.log("Profile updated in context:", updatedUserData);
+	};
+
+	return (
+		<AuthContext.Provider
+			value={{
+				users,
+				isAuthenticated,
+				login,
+				logout,
+				updateProfileInfo,
+				hasRole,
+			}}>
+			{children}
+		</AuthContext.Provider>
+	);
 };
 
 export default AuthProvider;
