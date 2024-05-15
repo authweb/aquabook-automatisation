@@ -1,4 +1,4 @@
-export { default as AppointmentForm } from "./AppointmentForm/AppointmentForm";
+export { default as AppointmentForm } from "./Client/AppointmentForm/AppointmentForm";
 // export { default as AppointmentClient } from "./AppointmentForm/AppointmentClient";
 
 export { default as Header } from "./HomePage/Header/Header";

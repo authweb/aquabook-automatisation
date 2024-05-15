@@ -1,5 +1,5 @@
 import React from "react";
-import ServiceCard from "../Common/FormComponents/ServiceCard";
+import ServiceCard from "../../Common/FormComponents/ServiceCard";
 
 const ContentService = ({
 	category,

@@ -200,6 +200,18 @@ body {
 	box-sizing: border-box;
 }
 
+.loader {
+	width: 100%;
+	height: 100%;
+}
+
+.label {
+	font-style: normal;
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-size-16);
+	line-height: var(--font-height-16);
+}
+
 .container {
 	max-width: 1350px;
 	&-small {

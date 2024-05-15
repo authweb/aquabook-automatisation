@@ -1,5 +1,5 @@
 import React from "react";
-import ContentService from "../../AppointmentForm/ContentService";
+import ContentService from "../../Client/AppointmentForm/ContentService";
 
 const ServiceList = ({
 	categories,

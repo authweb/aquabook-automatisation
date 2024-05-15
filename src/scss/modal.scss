@@ -81,3 +81,222 @@
 		transition: opacity 0.2s ease-in;
 	}
 }
+
+page-loader {
+	display: block;
+}
+
+page-scrollable-time-intervals {
+	display: block;
+}
+
+ui-kit-calendar .week-name,
+ui-kit-calendar ui-kit-calendar-day {
+	padding: 0 4px;
+	width: 40px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+ui-kit-calendar .calendar-days-container,
+ui-kit-calendar .calendar-week-names-container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: calc((100% - 280px) / 7);
+	gap: calc((100% - 280px) / 7);
+}
+
+ui-kit-calendar {
+	& .calendar-header {
+		height: 48px;
+		align-items: center;
+		display: flex;
+		padding-left: 16px;
+		justify-content: space-between;
+	}
+	& .calendar-body {
+		padding: 12px 0;
+		overflow: hidden;
+	}
+	& .calendar-week-names-container {
+		margin-bottom: 16px;
+		padding: 0 12px;
+	}
+	& .week-name {
+		color: var(--gray-color);
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+	}
+	& .week-name {
+		margin: 0 auto;
+	}
+	& .calendar-week-names-container {
+		margin-bottom: 16px;
+		padding: 0 12px;
+	}
+	& .calendar-body-slider {
+		display: flex;
+		flex-direction: column;
+	}
+	& .days-slider {
+		display: flex;
+		width: 300%;
+		overflow: hidden;
+	}
+	& .calendar-days-container {
+		row-gap: 12px;
+		padding: 0 12px;
+		height: fit-content;
+	}
+	& .calendar-day-number {
+		cursor: pointer;
+		width: 32px;
+		height: 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+		position: relative;
+	}
+}
+
+ui-kit-calendar *ui-kit-calendar-month {
+	-webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
+}
+
+ui-kit-calendar-month {
+	display: block;
+	width: fit-content;
+	& .calendar-month {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 32px;
+		padding: 10px 12px;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+		color: var(--black-color);
+		&-name {
+			margin-right: 8px;
+		}
+	}
+}
+
+.label {
+	margin-left: 16px;
+	margin-bottom: 8px;
+	color: var(--dark-gray-color);
+}
+
+.times {
+	height: 100%;
+	animation: appear 0.5s linear;
+	&-container {
+		box-sizing: content-box;
+		padding-top: 16px;
+		height: 282px;
+		max-height: 282px;
+		min-height: 282px;
+		overflow-y: auto;
+	}
+}
+
+ui-kit-horizontal-scrollable {
+	display: block;
+	width: 100%;
+	max-width: 600px;
+	padding-left: 16px;
+	overflow-x: scroll;
+	overflow-x: scroll !important;
+	transform: translateZ(0);
+	scrollbar-color: rgba(0, 0, 0, 0) transparent;
+	scrollbar-width: thin;
+	transition: scrollbar-color 0.2s ease-out;
+	transition: all 0.2s;
+	& .flex-container {
+		display: flex;
+		gap: 8px;
+		width: max-content;
+		min-width: max-content;
+		max-width: 100%;
+	}
+}
+
+ui-kit-chips {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	display: block;
+	padding: 10px;
+	border-radius: 100px;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 48px;
+	text-align: center;
+	max-width: 275px;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-transform: translate3d(0, 0, 0);
+	color: var(--black-color);
+	background-color: var(--light-gray-color);
+	border-color: var(--light-gray-color);
+	border-width: 1px;
+	border-style: solid;
+	transition-property: background-color, background-image, color, border-color,
+		opacity, box-shadow, border-radius;
+	transition-duration: 0.2s;
+	&:hover:not(.active) {
+		background-color: var(--gray-text-color);
+	}
+}
+
+.time-interval {
+	margin-right: 8px;
+	margin-bottom: 18px;
+}
+
+.select-time-button {
+	position: initial;
+	display: block;
+	width: 568px;
+	max-width: calc(100% - 32px);
+	margin: 0 auto 24px;
+}
+
+ui-kit-arrows {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	& .arrow {
+		cursor: pointer;
+		padding: 16px;
+		color: var(--black-color);
+		&.disabled {
+			color: var(--gray-color);
+			cursor: not-allowed;
+		}
+	}
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

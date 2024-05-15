@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import InputMask from "react-input-mask";
-import ServiceBasket from "../Common/FormComponents/ServiceBasket";
-import ServiceList from "../Common/FormComponents/ServiceList";
-import HeaderAddition from "../Common/HeaderAddition";
-import { HeaderUser } from "..";
-import HeaderBooking from "../HomePage/Header/HeaderBooking";
+import ServiceBasket from "../../Common/FormComponents/ServiceBasket";
+import ServiceList from "../../Common/FormComponents/ServiceList";
+import HeaderAddition from "../../Common/HeaderAddition";
+import { HeaderUser } from "../..";
+import HeaderBooking from "../../HomePage/Header/HeaderBooking";
 import AppointmentClient from "./AppointmentClient";
 
 const AppointmentForm = ({}) => {

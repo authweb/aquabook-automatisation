@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ProfileButton from "../Common/FormComponents/ProfileButton";
-import ServiceItem from "../Common/ServiceItem";
-import useServiceCalculations from "../../hooks/useServiceCalculations";
-import HeaderBooking from "../HomePage/Header/HeaderBooking";
+import ProfileButton from "../../Common/FormComponents/ProfileButton";
+import ServiceItem from "../../Common/ServiceItem";
+import useServiceCalculations from "../../../hooks/useServiceCalculations";
+import HeaderBooking from "../../HomePage/Header/HeaderBooking";
 
-import "../../scss/modal.scss";
+import "../../../scss/modal.scss";
+import DatePicker from "../Calendar/DatePicker";
 
 const AppointmentClient = ({
 	styleCss,
@@ -18,7 +19,10 @@ const AppointmentClient = ({
 		setShowModal(true);
 	};
 
-	const closeModal = () => {
+	const closeModal = e => {
+		if (e.target === e.currentTarget) {
+			setShowModal(false);
+		}
 		setShowModal(false);
 	};
 
@@ -76,7 +80,7 @@ const AppointmentClient = ({
 					<div
 						className={`page-modal ${modalClasses}`}
 						style={{ height: "100%" }}>
-						<div className='background-modal'></div>
+						<div className='background-modal' onClick={closeModal}></div>
 						<div className='modal'>
 							<div className='window-header'>
 								<div className='swipe-area with-page-header'>
@@ -90,7 +94,7 @@ const AppointmentClient = ({
 							<div className='modal-body'>
 								<router-outlet></router-outlet>
 								<app-select-time>
-									<p className='label'></p>
+									<DatePicker />
 								</app-select-time>
 							</div>
 						</div>
