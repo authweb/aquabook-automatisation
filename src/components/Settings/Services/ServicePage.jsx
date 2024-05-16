@@ -12,7 +12,7 @@ const ServicePage = () => {
 
 	useEffect(() => {
 		if (id) {
-			fetch(`http://localhost:3306/api/services/${id}`)
+			fetch(`http://aqua-book:3306/api/services/${id}`)
 				.then(response => response.json())
 				.then(data => {
 					setService(data.service);

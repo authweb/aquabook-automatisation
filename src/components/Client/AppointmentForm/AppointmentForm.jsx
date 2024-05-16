@@ -35,10 +35,10 @@ const AppointmentForm = ({}) => {
 		async function fetchData() {
 			try {
 				const categoriesResponse = await fetch(
-					"http://localhost:3306/api/service-categories",
+					"http://aqua-book:3306/api/service-categories",
 				);
 				const servicesResponse = await fetch(
-					"http://localhost:3306/api/services",
+					"http://aqua-book:3306/api/services",
 				);
 				const categoriesData = await categoriesResponse.json();
 				const servicesData = await servicesResponse.json();
@@ -84,31 +84,6 @@ const AppointmentForm = ({}) => {
 		}
 		fetchData();
 	}, []);
-
-	// useEffect(() => {
-	// 	if (!categories) return; // Early return if category is not defined
-
-	// 	const handleScroll = () => {
-	// 		if (!isScrolling) {
-	// 			const element = document.getElementById(`category-${categories.id}`);
-	// 			if (element) {
-	// 				const bounding = element.getBoundingClientRect();
-	// 				const halfScreenHeight = window.innerHeight / 2;
-	// 				if (
-	// 					bounding.top <= halfScreenHeight &&
-	// 					bounding.bottom >= halfScreenHeight
-	// 				) {
-	// 					setActiveCategoryId(categories.id);
-	// 				}
-	// 			}
-	// 		}
-	// 	};
-
-	// 	window.addEventListener("scroll", handleScroll);
-	// 	return () => {
-	// 		window.removeEventListener("scroll", handleScroll);
-	// 	};
-	// }, [categories.id, isScrolling]); // Use optional chaining to safely access id
 
 	const handleInputChange = useCallback(({ target: { name, value } }) => {
 		setFormState(prevState => ({ ...prevState, [name]: value }));

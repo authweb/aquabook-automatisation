@@ -56,10 +56,10 @@ const CalendarDay = () => {
 					categoriesResponse,
 					servicesResponse,
 				] = await Promise.all([
-					axios.get("http://localhost:3306/api/appointments"),
-					axios.get("http://localhost:3306/api/employees"),
-					axios.get("http://localhost:3306/api/service-categories"),
-					axios.get("http://localhost:3306/api/services"),
+					axios.get("http://aqua-book:3306/api/appointments"),
+					axios.get("http://aqua-book:3306/api/employees"),
+					axios.get("http://aqua-book:3306/api/service-categories"),
+					axios.get("http://aqua-book:3306/api/services"),
 				]);
 
 				const { servicesCategories } = categoriesResponse.data;
@@ -88,7 +88,7 @@ const CalendarDay = () => {
 
 							if (employeeId === undefined) {
 								console.error(
-									`Employee ID for '${appt.serviceEmployeeMap}' not found.`
+									`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
 								);
 								return null;
 							}
@@ -102,7 +102,7 @@ const CalendarDay = () => {
 								backColor: "#someColor",
 							};
 						})
-						.filter(event => event !== null)
+						.filter(event => event !== null),
 				);
 				console.log(appointmentsResponse);
 			} catch (error) {
@@ -153,13 +153,13 @@ const CalendarDay = () => {
 		navigate(
 			`${location.pathname}/add${location.search}&start=${
 				selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
-			}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`
+			}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`,
 		);
 	};
 	return (
 		<>
 			<DayPilotCalendar
-				className="eb-calendar__columns"
+				className='eb-calendar__columns'
 				startDate={config.startDate}
 				events={events}
 				{...config}

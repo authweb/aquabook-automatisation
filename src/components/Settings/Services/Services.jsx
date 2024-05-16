@@ -19,10 +19,10 @@ const Services = () => {
 	useEffect(() => {
 		const fetchServices = async () => {
 			const categoriesResponse = await axios.get(
-				"http://localhost:3306/api/service-categories",
+				"http://aqua-book:3306/api/service-categories",
 			);
 			const servicesResponse = await axios.get(
-				"http://localhost:3306/api/services",
+				"http://aqua-book:3306/api/services",
 			);
 
 			setCategories(categoriesResponse.data.servicesCategories);

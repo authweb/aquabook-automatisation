@@ -16,21 +16,21 @@ textarea {
 	justify-content: space-between;
 }
 
-.background {
+page-services-page .background {
 	position: fixed;
 	max-width: 600px;
 	width: 100%;
 	min-height: 130px;
 	bottom: 0;
-	background-color: $white-color;
+	background-color: var(--white-color);
 }
 
 .button {
 	font-family: inherit;
 	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
 	position: relative;
 	cursor: pointer;
 	-webkit-user-select: none;
@@ -47,11 +47,11 @@ textarea {
 	&.type-primary {
 		background-color: var(--primary-color);
 		border: 1px solid var(--primary-color);
-		color: $white-color;
+		color: var(--white-color);
 		@media (hover), (min-width: 0) {
 			&:hover {
-				color: $white-color;
-				box-shadow: 0 1px 2px $bg-color;
+				color: var(--white-color);
+				box-shadow: 0 1px 2px var(--bg-color);
 				background-color: var(--primary-color);
 				border: 1px solid var(--primary-color);
 			}
@@ -69,12 +69,12 @@ textarea {
 		align-items: center;
 		margin-left: 8px;
 		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
+		font-weight: var(--font-weight-regular);
+		font-size: var(--font-size-16);
+		line-height: var(--line-height-24);
 		border-radius: 50%;
 		color: var(--primary-color);
-		background-color: $white-color;
+		background-color: var(--white-color);
 		&:not(:empty) {
 			width: 24px;
 			height: 24px;
@@ -108,7 +108,7 @@ textarea {
 	&-basket-info &-selection-icon {
 		width: 24px;
 		height: 24px;
-		color: $gray-color;
+		color: var(--gray-color);
 	}
 	&-basket {
 		z-index: 200;
@@ -139,10 +139,10 @@ textarea {
 		}
 		&-info &-total-time {
 			font-style: normal;
-			font-weight: 400;
-			font-size: 12px;
-			line-height: 16px;
-			color: $gray-color;
+			font-weight: var(--font-weight-regular);
+			font-size: var(--font-size-12);
+			line-height: var(--line-height-16);
+			color: var(--gray-color);
 		}
 		&-info &-right-part {
 			display: flex;
@@ -202,11 +202,11 @@ section {
 		width: 24px;
 		height: 24px;
 		display: flex;
-		background-color: $white-color;
-		border: 1px solid $gray-color;
+		background-color: var(--white-color);
+		border: 1px solid var(--gray-color);
 		&.checked {
 			background-color: var(--primary-color);
-			border: 1px solid $secondary-color;
+			border: 1px solid var(--secondary-color);
 		}
 	}
 	&__input {
@@ -217,7 +217,7 @@ section {
 	&-checkmark {
 		position: absolute;
 		inset: 0;
-		color: $white-color;
+		color: var(--white-color);
 		display: none;
 		margin: auto;
 		width: 100%;
@@ -238,7 +238,7 @@ ui-kit-svg-icon svg {
 
 .chips {
 	&-wrapper {
-		border-top: 2px solid $gray-color;
+		border-top: 2px solid var(--gray-color);
 		flex-shrink: 0;
 		padding-top: 16px;
 	}
@@ -250,9 +250,9 @@ ui-kit-svg-icon svg {
 	}
 	&-button {
 		font-style: normal;
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
+		font-weight: var(--font-weight-medium);
+		font-size: var(--font-size-14);
+		line-height: var(--line-height-18);
 		display: block;
 		padding: 10px;
 		border-radius: 100px;
@@ -267,9 +267,9 @@ ui-kit-svg-icon svg {
 		-webkit-user-select: none;
 		user-select: none;
 		-webkit-transform: translate3d(0, 0, 0);
-		color: $gray-text-color;
-		background-color: $gray-color;
-		border-color: $gray-color;
+		color: var(--gray-text-color);
+		background-color: var(--gray-color);
+		border-color: var(--gray-color);
 		border-width: 1px;
 		border-style: solid;
 		transition-property: background-color, background-image, color, border-color,
@@ -277,7 +277,7 @@ ui-kit-svg-icon svg {
 		transition-duration: 0.2s;
 		&.active {
 			// margin-bottom: 40px;
-			color: $white-color;
+			color: var(--white-color);
 			background-color: var(--primary-color);
 			border-color: var(--primary-color);
 		}
@@ -342,6 +342,15 @@ page {
 		&-group {
 			display: block;
 			margin-top: 24px;
+			& .label {
+				margin-left: 0;
+				margin-bottom: 12px;
+				color: var(--black-color);
+				font-style: normal;
+				font-weight: var(--font-weight-bold);
+				font-size: var(--font-size-20);
+				line-height: var(--line-height-24);
+			}
 		}
 		&-card.service-card {
 			margin-bottom: 12px;
@@ -412,9 +421,9 @@ ui-kit-horizontal-scrollable {
 
 .appointment-page {
 	h1 {
-		font-size: 36px;
+		font-size: var(--font-size-36);
 		font-weight: bold;
-		color: var(--c-mono-0);
+		color: var(--white-color);
 	}
 
 	&-form {
@@ -434,8 +443,8 @@ ui-kit-horizontal-scrollable {
 
 				label {
 					display: block;
-					font-size: 16px;
-					font-weight: bold;
+					font-size: var(--font-size-16);
+					font-weight: var(--font-weight-bold);
 					margin-bottom: 10px;
 				}
 
@@ -445,7 +454,7 @@ ui-kit-horizontal-scrollable {
 					padding: 10px;
 					border-radius: 5px;
 					border: 1px solid #ccc;
-					font-size: 16px;
+					font-size: var(--font-size-16);
 					color: var(--black-color);
 
 					&:focus {
@@ -459,10 +468,10 @@ ui-kit-horizontal-scrollable {
 			display: inline-block;
 			border: none;
 			outline: none;
-			font-family: $font-family;
-			font-size: $font-size-16;
-			font-weight: $font-weight-medium;
-			color: $white-color;
+			font-weight: var(--font-weight-medium);
+			font-size: var(--font-size-16);
+			font-family: var(--font-family);
+			color: var(--white-color);
 			background-color: var(--primary-color);
 			border-radius: 5px;
 			padding: 10px 20px;
@@ -477,10 +486,10 @@ ui-kit-horizontal-scrollable {
 			width: 90%;
 			padding: 10px;
 			margin-bottom: 10px;
-			font-family: $font-family;
-			font-size: $font-size-16;
-			font-weight: $font-weight-medium;
-			color: $white-color;
+			font-family: var(--font-family);
+			font-weight: var(--font-weight-medium);
+			font-size: var(--font-size-16);
+			color: var(--white-color);
 			background-color: var(--primary-color);
 			border: none;
 			border-radius: 5px;
@@ -546,14 +555,6 @@ ui-kit-simple-cell .left-part:is(:empty) {
 	align-items: center;
 	padding-top: 8px;
 }
-.label {
-	margin-bottom: 12px;
-	color: $black-color;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 20px;
-	line-height: 24px;
-}
 
 .center-part:not(:empty) {
 	flex: 1 1 0;
@@ -568,9 +569,9 @@ ui-kit-simple-cell .left-part:is(:empty) {
 }
 .title-block__title {
 	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
 	overflow: hidden;
 	display: inline;
 	color: $text-dark;
@@ -587,9 +588,9 @@ ui-kit-simple-cell .left-part:is(:empty) {
 	}
 	&__seance-lenght {
 		font-style: normal;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 20px;
+		font-weight: var(--font-weight-regular);
+		font-size: var(--font-size-14);
+		line-height: var(--line-height-20);
 	}
 	.divider {
 		white-space: pre;
@@ -602,9 +603,9 @@ ui-kit-simple-cell .left-part:is(:empty) {
 	}
 	&__description {
 		font-style: normal;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 20px;
+		font-weight: var(--font-weight-regular);
+		font-size: var(--font-size-14);
+		line-height: var(--line-height-20);
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -618,9 +619,9 @@ ui-kit-simple-cell .left-part:is(:empty) {
 	}
 	&__more {
 		font-style: normal;
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
+		font-weight: var(--font-weight-medium);
+		font-size: var(--font-size-14);
+		line-height: var(--line-height-20);
 		margin-left: auto;
 		text-decoration: underline;
 	}
@@ -667,9 +668,9 @@ page-horizontal-line {
 
 .price {
 	font-style: normal;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 20px;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-20);
 }
 .price {
 	color: var(--black-color);
@@ -678,7 +679,7 @@ page-horizontal-line {
 .time {
 	color: var(--dark-green-color);
 	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
 }

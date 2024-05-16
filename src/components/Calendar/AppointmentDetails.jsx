@@ -29,7 +29,7 @@ const AppointmentDetails = () => {
 			setIsLoadingAppointment(true);
 			try {
 				const response = await axios.get(
-					`http://localhost:3306/api/appointments/${currentEventId}`,
+					`http://aqua-book:3306/api/appointments/${currentEventId}`,
 				);
 				setAppointment(response.data.appointment);
 				setIsPaid(response.data.appointment.is_paid);
@@ -52,7 +52,7 @@ const AppointmentDetails = () => {
 			setIsLoadingClient(true);
 			try {
 				const response = await axios.get(
-					`http://localhost:3306/api/clients/${appointment.clients_id}`,
+					`http://aqua-book:3306/api/clients/${appointment.clients_id}`,
 				);
 				setClient(response.data.client);
 			} catch (error) {
@@ -74,7 +74,7 @@ const AppointmentDetails = () => {
 			const fetchClientData = async () => {
 				try {
 					const response = await axios.get(
-						`http://localhost:3306/api/clients/${appointment.clients_id}`,
+						`http://aqua-book:3306/api/clients/${appointment.clients_id}`,
 					);
 					setClient(response.data.client); // Устанавливаем данные клиента в состояние
 				} catch (error) {
@@ -112,7 +112,7 @@ const AppointmentDetails = () => {
 	const handlePayment = async () => {
 		try {
 			const response = await axios.post(
-				`http://localhost:3306/api/appointments/${currentEventId}/pay`,
+				`http://aqua-book:3306/api/appointments/${currentEventId}/pay`,
 			);
 			alert(response.data.message);
 			setIsPaid(true); // Обновление состояния статуса оплаты
