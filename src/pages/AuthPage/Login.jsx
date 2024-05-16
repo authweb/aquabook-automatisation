@@ -19,7 +19,7 @@ const Login = () => {
 		setIsLoading(true); // Активировать индикатор загрузки
 
 		try {
-			const response = await axios.post("/api/login", {
+			const response = await axios.post("http://aqua-book:3306/api/login", {
 				email: formState.email,
 				password: formState.password,
 			});
@@ -63,8 +63,8 @@ const Login = () => {
 						to='/register'
 						className='eb-button ml-2 eb-button--color-surface'
 						style={{
-							"--btn-bg": "var(--c-accent-rgb)",
-							"--btn-fg": "var(--c-surface-rgb)",
+							"--btn-bg": "var(--button-e-color)",
+							"--btn-fg": "var(--button-e-color-hover)",
 							"--btn-size": "2.5rem",
 							"--btn-radius": "0.625rem",
 							"--btn-icon-bg": "0",

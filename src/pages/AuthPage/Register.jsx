@@ -22,7 +22,7 @@ const Register = () => {
 		setIsLoading(true); // Активировать индикатор загрузки
 
 		try {
-			const response = await axios.post("/api/register", {
+			const response = await axios.post("http://aqua-book:3306/api/register", {
 				first_name: formState.first_name,
 				last_name: formState.last_name,
 				phone: formState.phone,
@@ -113,8 +113,8 @@ const Register = () => {
 						className='eb-button mt-2 w-full col-span-2 eb-button--custom-icon eb-button--color-accent'
 						type='submit'
 						style={{
-							"--btn-bg": "var(--c-success-rgb)",
-							"--btn-fg": "var(--c-on-accent-rgb)",
+							"--btn-bg": "var(--button-e-color)",
+							"--btn-fg": "var(--button-e-color-hover)",
 							"--btn-size": "3.5rem",
 							"--btn-radius": "0.625rem",
 							"--btn-icon-bg": "0.15",

@@ -180,7 +180,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	font-family: $font-family !important;
+	font-family: var(--font-family) !important;
 }
 
 #__layout,
@@ -320,16 +320,16 @@ body {
 }
 
 input {
-	color: $white-color;
+	color: var(--white-color);
 }
 
 .link-white a {
-	color: $white-color;
+	color: var(--white-color);
 }
 
 .link,
 a {
-	color: $primary-color;
+	color: var(--primary-color);
 }
 
 a {
@@ -343,7 +343,7 @@ a {
 
 .link:hover,
 a:not([class]):hover {
-	color: $secondary-color-hover;
+	color: var(--secondary-color)-hover;
 }
 
 button,
@@ -501,7 +501,7 @@ p {
 }
 
 .primary {
-	background-color: rgba($white-color, 1);
+	background-color: rgba(var(--white-color), 1);
 }
 
 /*Flex Box*/
@@ -602,8 +602,8 @@ p {
 }
 
 .text-accent {
-	color: $white-color;
-	color: rgba($white-color, 1);
+	color: var(--white-color);
+	color: rgba(var(--white-color), 1);
 }
 
 .inline-block {
@@ -639,7 +639,7 @@ p {
 }
 
 .color-light {
-	color: $white-color;
+	color: var(--white-color);
 }
 
 .cursor-pointer {
@@ -914,31 +914,31 @@ p {
 }
 
 .font-montserrat {
-	font-family: $font-family;
+	font-family: var(--font-family);
 }
 
 .text-primary {
-	color: $primary-color;
+	color: var(--primary-color);
 }
 
 .text-secondary {
-	color: $secondary-color;
+	color: var(--secondary-color);
 }
 
 .text-gray {
-	color: $gray-color;
+	color: var(--gray-color);
 }
 
 .text-black {
-	color: $black-color;
+	color: var(--black-color);
 }
 
 .text-white {
-	color: $white-color;
+	color: var(--white-color);
 }
 
 .ant-switch-checked {
-	background-color: $secondary-color !important;
+	background-color: var(--secondary-color) !important;
 	color: #fff; /* Цвет для состояния checked */
 }
 
@@ -952,7 +952,7 @@ p {
 }
 
 .bg-success {
-	background-color: $secondary-color;
+	background-color: var(--secondary-color);
 	color: #fff;
 }
 
@@ -962,23 +962,23 @@ p {
 }
 
 .bg-primary {
-	background-color: $primary-color;
+	background-color: var(--primary-color);
 }
 
 .bg-secondary {
-	background-color: $secondary-color;
+	background-color: var(--secondary-color);
 }
 
 .bg-gray {
-	background-color: $gray-color;
+	background-color: var(--gray-color);
 }
 
 .bg-black {
-	background-color: $black-color;
+	background-color: var(--black-color);
 }
 
 .bg-white {
-	background-color: $white-color;
+	background-color: var(--white-color);
 }
 
 .ant-btn-primary {
@@ -992,18 +992,18 @@ p {
 	display: inline-block;
 	border: none;
 	outline: none;
-	font-family: $font-family;
+	font-family: var(--font-family);
 	font-size: $font-size-16;
 	font-weight: $font-weight-medium;
-	color: $white-color;
-	background-color: $primary-color;
+	color: var(--white-color);
+	background-color: var(--primary-color);
 	border-radius: 25px;
 	padding: 10px 30px;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 
 	&:hover {
-		background-color: darken($primary-color, 10%);
+		background-color: darken(var(--primary-color), 10%);
 	}
 }
 
@@ -1011,18 +1011,18 @@ p {
 	display: inline-block;
 	border: none;
 	outline: none;
-	font-family: $font-family;
+	font-family: var(--font-family);
 	font-size: $font-size-16;
 	font-weight: $font-weight-medium;
-	color: $white-color;
-	background-color: $primary-color;
+	color: var(--white-color);
+	background-color: var(--primary-color);
 	border-radius: 5px;
 	padding: 10px 20px;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 
 	&:hover {
-		background-color: darken($primary-color, 10%);
+		background-color: darken(var(--primary-color), 10%);
 	}
 }
 

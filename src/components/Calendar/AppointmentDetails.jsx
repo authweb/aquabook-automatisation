@@ -29,7 +29,7 @@ const AppointmentDetails = () => {
 			setIsLoadingAppointment(true);
 			try {
 				const response = await axios.get(
-					`http://aqua-book:80/api/appointments/${currentEventId}`,
+					`http://aqua-book:3306/api/appointments/${currentEventId}`,
 				);
 				setAppointment(response.data.appointment);
 				setIsPaid(response.data.appointment.is_paid);
