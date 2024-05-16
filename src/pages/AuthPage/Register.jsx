@@ -22,7 +22,7 @@ const Register = () => {
 		setIsLoading(true); // Активировать индикатор загрузки
 
 		try {
-			const response = await axios.post("http//aqua-book:3306/api/register", {
+			const response = await axios.post("/api/register", {
 				first_name: formState.first_name,
 				last_name: formState.last_name,
 				phone: formState.phone,

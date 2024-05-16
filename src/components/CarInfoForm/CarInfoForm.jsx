@@ -19,7 +19,7 @@ const CarInfoForm = () => {
 		try {
 			// Отправляем данные на сервер
 			const response = await axios.post(
-				"http://localhost:3306/api/updatecarinfo",
+				"http://aqua-book:80/api/updatecarinfo",
 				{
 					clients_id: clients.id,
 					car_number: carNumber,
