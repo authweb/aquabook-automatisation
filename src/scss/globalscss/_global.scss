@@ -22,6 +22,20 @@
 	}
 }
 
+@media (min-width: 1024px) {
+	:root {
+		--wrapper-padding: 40px;
+	}
+}
+:root {
+	--navbar-height: 4.375rem;
+}
+@media (min-width: 1024px) {
+	:root {
+		--navbar-height: 6.5rem;
+	}
+}
+
 :root {
 	/* colors */
 	--primary-color: rgb(255, 122, 0);
@@ -66,6 +80,7 @@
 	--highlight-color: rgb(255, 255, 0);
 	--highlight-color-hover: rgb(204, 204, 0);
 	/* colors none-rgb */
+
 	--primary-color-none-rgb: 255, 122, 0;
 	--secondary-color-none-rgb: 128, 71, 20;
 	--secondary-color-hover-none-rgb: 192, 96, 10;
@@ -172,6 +187,11 @@
 	--safe-area-bottom: 0px;
 	--ion-safe-area-left: 0px;
 	--ion-safe-area-right: 0px;
+	--wrapper-padding: 20px;
+	--wrapper-width: 83rem;
+	--wrapper-width-xs: 42rem;
+	--wrapper-width-sm: 69.375rem;
+	--wrapper-width-lg: 89.5rem;
 }
 
 *,
@@ -204,7 +224,7 @@ html {
 }
 
 body {
-	background-color: $bg-color;
+	background-color: var(--white-color);
 	width: 100%;
 	height: 100vh;
 	margin: 0;
@@ -958,8 +978,10 @@ p {
 	width: auto;
 }
 
-.sm\:w-auto {
-	width: auto;
+@media (min-width: 640px) {
+	.sm\:w-auto {
+		width: auto;
+	}
 }
 
 .gap-1 {
@@ -1033,6 +1055,146 @@ p {
 /* Особый случай: без gap */
 .gap-0 {
 	gap: 0;
+}
+
+.pt-10 {
+	padding-top: 2.5rem;
+}
+.pb-24 {
+	padding-bottom: 6rem;
+}
+
+.pt-4 {
+	padding-top: 1rem; /* 16px если базовый шрифт 16px */
+}
+.pb-12 {
+	padding-bottom: 3rem; /* 48px если базовый шрифт 16px */
+}
+.pt-16 {
+	padding-top: 4rem; /* 64px если базовый шрифт 16px */
+}
+.pb-48 {
+	padding-bottom: 12rem; /* 192px если базовый шрифт 16px */
+}
+
+.pt-2 {
+	padding-top: 0.5rem; /* 8px если базовый шрифт 16px */
+}
+.pb-6 {
+	padding-bottom: 1.5rem; /* 24px если базовый шрифт 16px */
+}
+.pt-3 {
+	padding-top: 0.75rem; /* 12px если базовый шрифт 16px */
+}
+.pb-8 {
+	padding-bottom: 2rem; /* 32px если базовый шрифт 16px */
+}
+.pt-5 {
+	padding-top: 1.25rem; /* 20px если базовый шрифт 16px */
+}
+.pb-10 {
+	padding-bottom: 2.5rem; /* 40px если базовый шрифт 16px */
+}
+.pt-7 {
+	padding-top: 1.75rem; /* 28px если базовый шрифт 16px */
+}
+.pb-14 {
+	padding-bottom: 3.5rem; /* 56px если базовый шрифт 16px */
+}
+.pt-11 {
+	padding-top: 2.75rem; /* 44px если базовый шрифт 16px */
+}
+.pb-20 {
+	padding-bottom: 5rem; /* 80px если базовый шрифт 16px */
+}
+.pt-13 {
+	padding-top: 3.25rem; /* 52px если базовый шрифт 16px */
+}
+.pb-28 {
+	padding-bottom: 7rem; /* 112px если базовый шрифт 16px */
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-weight: 700;
+	text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+	.h1 {
+		font-size: 4rem;
+		line-height: 1.1;
+	}
+}
+@media (min-width: 640px) {
+	.h1 {
+		font-size: 2.5rem;
+		line-height: 1.2;
+	}
+}
+
+.h1 {
+	font-size: 2.25rem;
+	line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+	.md\:mx-auto {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.md\:max-w-full {
+		max-width: 100%;
+	}
+	.md\:w-\[50rem\] {
+		width: 50rem;
+	}
+	.md\:pb-32 {
+		padding-bottom: 8rem;
+	}
+	.md\:pt-20 {
+		padding-top: 5rem;
+	}
+	.md\:pt-8 {
+		padding-top: 2rem; /* 32px если базовый шрифт 16px */
+	}
+	.md\:pb-16 {
+		padding-bottom: 4rem; /* 64px если базовый шрифт 16px */
+	}
+	.md\:pt-24 {
+		padding-top: 6rem; /* 96px если базовый шрифт 16px */
+	}
+	.md\:pb-40 {
+		padding-bottom: 10rem; /* 160px если базовый шрифт 16px */
+	}
+	.md\:pt-18 {
+		padding-top: 4.5rem; /* 72px если базовый шрифт 16px */
+	}
+	.md\:pb-36 {
+		padding-bottom: 9rem; /* 144px если базовый шрифт 16px */
+	}
+	.md\:pt-22 {
+		padding-top: 5.5rem; /* 88px если базовый шрифт 16px */
+	}
+	.md\:pb-44 {
+		padding-bottom: 11rem; /* 176px если базовый шрифт 16px */
+	}
+	.md\:pt-26 {
+		padding-top: 6.5rem; /* 104px если базовый шрифт 16px */
+	}
+	.md\:pb-52 {
+		padding-bottom: 13rem; /* 208px если базовый шрифт 16px */
+	}
+	.md\:pt-30 {
+		padding-top: 7.5rem; /* 120px если базовый шрифт 16px */
+	}
+	.md\:pb-60 {
+		padding-bottom: 15rem; /* 240px если базовый шрифт 16px */
+	}
 }
 
 .border-2 {
@@ -1187,4 +1349,110 @@ p {
 .sized {
 	width: 1em;
 	height: 1em;
+}
+
+.base-button {
+	align-items: center;
+	display: inline-flex;
+	font-size: 1rem;
+	font-weight: var(--font-weight-medium);
+	line-height: 1;
+	max-width: 100%;
+	transition-duration: 0.2s;
+	transition-property: background-color, color;
+	&--bg {
+		justify-content: center;
+	}
+	&--primary {
+		--tw-bg-opacity: 1;
+		background-color: rgb(128 71 20 / var(--tw-bg-opacity));
+		--tw-text-opacity: 1;
+		color: rgb(255 255 255 / var(--tw-text-opacity));
+		&:hover {
+			--tw-bg-opacity: 1;
+			background-color: rgb(192 96 10 / var(--tw-bg-opacity));
+		}
+	}
+	&--outline {
+		box-shadow: inset 0 0 0 1px currentColor;
+		transition-property: background-color, color, box-shadow;
+		&-secondary {
+			--tw-text-opacity: 1;
+			color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+		}
+		&-primary {
+			--tw-text-opacity: 1;
+			color: rgb(128 71 20 / var(--tw-text-opacity));
+			&:hover {
+				--tw-text-opacity: 1;
+				color: rgb(192 96 10 / var(--tw-text-opacity));
+			}
+		}
+	}
+	&--inverted {
+		background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+		color: rgb(0 16 31 / var(--tw-text-opacity)) !important;
+	}
+	&__text {
+		align-items: center;
+		display: flex;
+		flex-grow: 1;
+		text-align: start;
+		&--center {
+			justify-content: center;
+			text-align: center;
+		}
+	}
+}
+
+.base-button--inverted,
+.base-button--mono:active {
+	--tw-bg-opacity: 1;
+	--tw-text-opacity: 1;
+}
+
+.base-button--xs.base-button--bg {
+	border-radius: 0.5rem;
+	min-height: 2.5rem;
+	min-width: 2.5rem;
+}
+
+.base-button--md.base-button--bg {
+	border-radius: 0.625rem;
+	min-height: 3rem;
+	min-width: 3rem;
+}
+
+.base-button--xs.base-button--bg .base-button__text {
+	padding: 0.5rem 1.5rem;
+}
+
+.base-button--md.base-button--bg .base-button__text {
+	padding: 0.75rem 1.5rem;
+}
+
+.base-button--lg.base-button--bg {
+	border-radius: 0.625rem;
+	min-height: 3.5rem;
+	min-width: 3.5rem;
+}
+
+.base-button--lg.base-button--bg .base-button__text {
+	padding: 1rem 1.5rem;
+}
+
+.base-button--inverted:hover {
+	background-color: rgb(192 96 10 / var(--tw-bg-opacity));
+}
+
+.base-button--text-inverted:hover {
+	--tw-text-opacity: 1;
+	color: rgb(192 96 10 / var(--tw-text-opacity));
+}
+
+.base-button--inverted:active,
+.base-button--inverted:hover {
+	--tw-bg-opacity: 1;
+	--tw-text-opacity: 1;
+	color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
 }

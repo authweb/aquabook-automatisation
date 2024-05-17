@@ -1,41 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../../../scss/homepage.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../../scss/homepage.scss";
 
-import Dashboard from '../../../assets/images/dashboard.svg';
+import Dashboard from "../../../assets/images/dashboard.svg";
 
 const Main = () => {
-  return (
-    <div className="container md:flex items-center relative">
-      <div className="w-full mb-6 md:mb-0 md:w-1/2 md:order-last video-block-app__app">
-        <img src={Dashboard} alt="dashboard" />
-      </div>
-      <div className="w-full md:w-1/2 md:pr-12 flex flex-col md:block color-light">
-        <h1 className="font-montserrat text-h1">Автоматизируй работу автомойки</h1>
-        <p className="mt-8 md:mt-3 md:text-xl font-light leading-relaxed order-last md:order-none">
-          Мы предоставляем профессиональные услуги по чистке автомобилей. Наши услуги включают в
-          себя экстерьер и интерьер очистка, детализация и многое другое. Запишитесь на прием прямо
-          сейчас и наши специалисты почистят ваш автомобиль.
-        </p>
-        <div className="flex -mx-2 md:mt-5 flex-wrap">
-          <div className="px-2 flex-1 mt-5">
-            <Link to="/register" className="btn-hp block w-full">
-              <span className="btn-hp__content btn-hp__content--btn rounded-10 border-2 flex items-center justify-center whitespace-no-wrap w-full py-5 px-8 min-w-200 btn-hp--primary btn-hp--solid">
-                <span>Регистрация</span>
-              </span>
-            </Link>
-          </div>
-          <div className="px-2 flex-1 mt-5">
-            <Link to="/features" className="btn-hp block w-full">
-              <span className="btn-hp__content btn-hp__content--btn rounded-10 border-2 flex items-center justify-center whitespace-no-wrap w-full py-5 px-8 min-w-200 btn-hp--primary btn-hp--outline">
-                <span>Функции</span>
-              </span>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<>
+			<main className='main'>
+				<div className='inverted top-block'>
+					<div className='wrapper wrapper--large pt-10 pb-24 md:pt-20 md:pb-32'>
+						<div className='flex flex-col items-center text-center'>
+							<div className='base-headlines flex flex-col gap-5 items-center text-center top-block__animation-heading'>
+								<h1 className='base-headlines__headline h1 text-white md:w-[50rem] md:max-w-full md:mx-auto'>
+									Онлайн-запись и CRM для записи клиентов на автомойку
+								</h1>
+								<p className='base-headlines__description text-gray-300 md:w-[50rem] md:max-w-full md:mx-auto'>
+									Откройте для себя веб-приложение для онлайн-записи,
+									CRM-инструмент для управления бизнесом.
+								</p>
+								<div className='flex gap-5 items-center flex-wrap mt-3 w-full sm:w-auto'>
+									<Link
+										to='/register'
+										className='w-full sm:w-auto base-button base-button--primary base-button--lg base-button--bg'>
+										<span className='base-button__text base-button__text--center'>
+											Начать регистрацию
+										</span>
+									</Link>
+									<Link
+										to='/more-detail'
+										className='w-full sm:w-auto base-button base-button--outline-primary base-button--lg base-button--bg base-button--outline'>
+										<span className='base-button__text base-button__text--center'>
+											Подробнее
+										</span>
+									</Link>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className='calendar-iframe calendar-iframe--black'>
+					<div className='wrapper wrapper--small relative'>
+						<img
+							className='calendar-iframe__iframe bg-white border-black'
+							src={Dashboard}
+							alt='dashboard'
+						/>
+					</div>
+				</div>
+			</main>
+		</>
+	);
 };
 
 export default Main;

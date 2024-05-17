@@ -37,9 +37,7 @@ const getClassName = location => {
 		location.pathname,
 	);
 
-	if (isHomePage) {
-		return "overflow-hidden relative flex flex-col video-block-app flex-grow link-white font-montserrat";
-	} else if (
+	if (
 		location.pathname.includes("/dashboard/calendar/add") ||
 		isAppointmentDetailsPage
 	) {
@@ -73,28 +71,26 @@ const App = () => {
 
 	return (
 		<div id='__layout'>
-			<div className={classNameMain}>
-				<div className={className}>
-					<AuthProvider>
-						<UserContext.Provider value={{ users, setUsers }}>
-							<Routes>
-								<Route path='/' element={<HomePage />} />
-								<Route path='/login' element={<Login />} />
-								<Route path='/register' element={<Register />} />
-								<Route path='booking/*'>
-									<Route index element={<Appointment />} />
-									<Route path='profile/*'>
-										<Route index element={<Profile />} />
-										<Route path='login' element={<LoginToProfile />} />
-									</Route>
+			<div className={className}>
+				<AuthProvider>
+					<UserContext.Provider value={{ users, setUsers }}>
+						<Routes>
+							<Route path='/' element={<HomePage />} />
+							<Route path='/login' element={<Login />} />
+							<Route path='/register' element={<Register />} />
+							<Route path='booking/*'>
+								<Route index element={<Appointment />} />
+								<Route path='profile/*'>
+									<Route index element={<Profile />} />
+									<Route path='login' element={<LoginToProfile />} />
 								</Route>
+							</Route>
 
-								<Route path='dashboard/*' element={<Dashboard />} />
-								<Route path='*' element={<div>404 Not Found</div>} />
-							</Routes>
-						</UserContext.Provider>
-					</AuthProvider>
-				</div>
+							<Route path='dashboard/*' element={<Dashboard />} />
+							<Route path='*' element={<div>404 Not Found</div>} />
+						</Routes>
+					</UserContext.Provider>
+				</AuthProvider>
 			</div>
 		</div>
 	);
