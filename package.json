@@ -50,7 +50,7 @@
     "build": "react-app-rewired build && cp build/index.html build/404.html",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "proxy": "http://aqua-book:3306",
+    "proxy": "http://aqua-book:3306/api/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
