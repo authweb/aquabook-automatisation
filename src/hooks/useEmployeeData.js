@@ -5,7 +5,7 @@ const useEmployeeData = () => {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		fetch("http://aqua-book.ru:4000/api/employees")
+		fetch("http://api.aqua-book.ru/api/employees")
 			.then(response => {
 				if (!response.ok) {
 					throw new Error("Network response was not ok " + response.statusText);

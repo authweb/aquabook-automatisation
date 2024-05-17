@@ -30,7 +30,7 @@ const CardEdit = ({
 	useEffect(() => {
 		const fetchClients = async () => {
 			try {
-				const response = await fetch("http://aqua-book.ru:4000/api/clients");
+				const response = await fetch("http://api.aqua-book.ru/api/clients");
 				const data = await response.json();
 				setClients(data.clients);
 			} catch (error) {

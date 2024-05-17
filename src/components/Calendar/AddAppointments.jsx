@@ -127,7 +127,7 @@ const AddAppointments = ({
 			);
 
 			const response = await axios.post(
-				"http://aqua-book.ru:4000/api/appointments",
+				"http://api.aqua-book.ru/api/appointments",
 				newEvent,
 			);
 

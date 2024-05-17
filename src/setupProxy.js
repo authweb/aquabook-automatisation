@@ -4,7 +4,7 @@ module.exports = function (app) {
 	app.use(
 		"/api",
 		createProxyMiddleware({
-			target: "http://aqua-book.ru:4000",
+			target: "http://api.aqua-book.ru",
 			changeOrigin: true,
 			onProxyReq: (proxyReq, req) => {
 				if (!req.body || !Object.keys(req.body).length) {
