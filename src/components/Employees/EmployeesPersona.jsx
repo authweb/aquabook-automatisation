@@ -14,7 +14,7 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 
 	useEffect(() => {
 		if (id) {
-			fetch(`http://aqua-book:3306/api/employees/${id}`)
+			fetch(`http://aqua-book.ru:3306/api/employees/${id}`)
 				.then(response => response.json())
 				.then(data => {
 					setEmployee(data.employee);

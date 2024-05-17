@@ -13,10 +13,10 @@ const ServicesManagement = () => {
 	useEffect(() => {
 		const fetchCategoriesAndServices = async () => {
 			const categoriesResponse = await axios.get(
-				"http://aqua-book:3306/api/service-categories",
+				"http://aqua-book.ru:3306/api/service-categories",
 			);
 			const servicesResponse = await axios.get(
-				"http://aqua-book:3306/api/services",
+				"http://aqua-book.ru:3306/api/services",
 			);
 
 			setCategories(categoriesResponse.data.servicesCategories);
