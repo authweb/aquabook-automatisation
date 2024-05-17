@@ -25,67 +25,59 @@ const Header = () => {
 		logout();
 	};
 	return (
-		<header className="relative">
-			<div className="p-4 md:py-6 md:px-16 flex items-center justify-center">
-				<div className="flex items-center logo-pos flex-1">
+		<header className='the-header--sticky the-header'>
+			<div className='the-header__navbar the-header__navbar--black'>
+				<div className='the-header__navbar-side the-header__navbar-side--left sm:w-auto w-12'>
 					<Link
-						to="/"
-						className=" font-comfort sm:text-xl whitespace-no-wrap relative align-middle py-4 pr-4">
-						<Logo />
+						to='/'
+						className='router-link-active router-link-exact-active the-header__root-link'>
+						<Logo className='the-header__logo' />
 					</Link>
 				</div>
-				<nav className="hidden lg:flex flex-grow justify-center">
-					<Link
-						to="/"
-						className="px-2 mx-2 md:mx-5 font-bold hover:text-l_green text-mid">
+				<div className='the-header__desktop-items'>
+					<Link to='/' className='the-header__desktop-item'>
 						Главная
 					</Link>
-					<Link
-						to="/features"
-						className="px-2 mx-2 md:mx-5 font-bold hover:text-l_green text-mid">
+					<Link to='/features' className='the-header__desktop-item'>
 						Функции
 					</Link>
-				</nav>
-				<div className="lg:flex-1 flex items-center justify-end">
-					<div className="flex -mx-2 hidden lg-flex">
-						{isAuthenticated && (
-							<>
-								<div className="px-2">
+				</div>
+				<div className='the-header__navbar-side the-header__navbar-side--right'>
+					<div className='the-header__navbar-buttons'>
+						<div className='flex gap-5 items-center'>
+							{isAuthenticated && (
+								<>
 									<Link
 										to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}
-										className="btn-hp block w-full">
-										<span className="btn-hp__content btn-hp__content--btn rounded-10 border-2 flex items-center justify-center whitespace-no-wrap w-full py-4 px-6 btn-hp--link btn-hp--solid">
-											<span>Панель управления</span>
+										className='the-header__root-link w-full sm:w-auto base-button base-button--inverted base-button--xs base-button--bg'>
+										<span className='base-button__text base-button__text--center'>
+											Панель управления
 										</span>
 									</Link>
-								</div>
-								<div className="px-2">
-									<Link className="btn-hp block w-full" onClick={handleLogout}>
-										<span className="btn-hp__content btn-hp__content--btn rounded-10 border-2 flex items-center justify-center whitespace-no-wrap w-full py-4 px-6 btn-hp--primary btn-hp--outline">
-											<span>Выход</span>
+									<Link
+										className='the-header__root-link mx-auto sm:mx-0 base-button base-button--text-inverted base-button--xs'
+										onClick={handleLogout}>
+										<span className='base-button__text'>Выход </span>
+									</Link>
+								</>
+							)}
+							{!isAuthenticated && (
+								<>
+									<Link
+										to='/register'
+										className='the-header__root-link w-full sm:w-auto base-button base-button--inverted base-button--xs base-button--bg'>
+										<span className='base-button__text base-button__text--center'>
+											Регистрация
 										</span>
 									</Link>
-								</div>
-							</>
-						)}
-						{!isAuthenticated && (
-							<>
-								<div className="px-2">
-									<Link to="/login" className="btn-hp block w-full">
-										<span className="btn-hp__content btn-hp__content--btn rounded-10 border-2 flex items-center justify-center whitespace-no-wrap w-full py-4 px-6 btn-hp--link btn-hp--solid">
-											<span>Вход</span>
-										</span>
+									<Link
+										to='/login'
+										className='the-header__root-link mx-auto sm:mx-0 base-button base-button--text-inverted base-button--xs'>
+										<span className='base-button__text'>Вход </span>
 									</Link>
-								</div>
-								<div className="px-2">
-									<Link to="/register" className="btn-hp block w-full">
-										<span className="btn-hp__content btn-hp__content--btn rounded-10 border-2 flex items-center justify-center whitespace-no-wrap w-full py-4 px-6 btn-hp--primary btn-hp--outline">
-											<span>Регистрация</span>
-										</span>
-									</Link>
-								</div>
-							</>
-						)}
+								</>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>

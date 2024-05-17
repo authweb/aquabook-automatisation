@@ -812,7 +812,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 .ab-select {
 	position: relative;
 	&__dropdown {
-		background-color: rgba(var(--card-color-none-rgb), 1);
+		background-color: rgba(var(--bg-color-none-rgb), 1);
 		color: rgba(var(--white-color-none-rgb), 1);
 		border-radius: 0.25rem;
 		visibility: visible;
@@ -828,7 +828,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		z-index: 120;
 		@media (min-width: 692px) {
 			& {
-				background-color: rgba(var(--card-color-none-rgb), 1);
+				background-color: rgba(var(--bg-color-none-rgb), 1);
 				color: rgba(var(--white-color-none-rgb), 1);
 				box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 				overflow: auto;
@@ -1409,7 +1409,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		position: fixed;
 		width: 100%;
 		background-color: #fff;
-		background-color: rgba($bg-color, 1);
+		background-color: rgba(var(--card-color-none-rgb), 1);
 		color: #14171d;
 		color: rgba(var(--c-on-surface-rgb), var(--text-opacity, 1));
 		bottom: env(safe-area-inset-bottom, 0);
@@ -1432,8 +1432,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
-		background-color: rgba($bg-color, 1);
-		color: rgba($white-color, 1);
+		background-color: rgba(var(--card-color-none-rgb), 1);
+		color: rgba(var(--white-color-none-rgb), 1);
 	}
 	&__header {
 		display: flex;
