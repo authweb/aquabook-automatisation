@@ -114,7 +114,7 @@ const Register = () => {
 						type='submit'
 						style={{
 							"--btn-bg": "var(--button-e-color)",
-							"--btn-fg": "var(--button-e-color-hover)",
+							"--btn-fg": "var(--white-color)",
 							"--btn-size": "3.5rem",
 							"--btn-radius": "0.625rem",
 							"--btn-icon-bg": "0.15",

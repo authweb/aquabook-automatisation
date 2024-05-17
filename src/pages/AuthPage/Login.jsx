@@ -64,7 +64,7 @@ const Login = () => {
 						className='eb-button ml-2 eb-button--color-surface'
 						style={{
 							"--btn-bg": "var(--button-e-color)",
-							"--btn-fg": "var(--button-e-color-hover)",
+							"--btn-fg": "var(--white-color)",
 							"--btn-size": "2.5rem",
 							"--btn-radius": "0.625rem",
 							"--btn-icon-bg": "0",
@@ -106,8 +106,8 @@ const Login = () => {
 					<button
 						className='eb-button mt-2 w-full eb-button--custom-icon eb-button--color-accent'
 						style={{
-							"--btn-bg": "var(--c-success-rgb)",
-							"--btn-fg": "var(--c-on-accent-rgb)",
+							"--btn-bg": "var(--button-e-color)",
+							"--btn-fg": "var(--white-color)",
 							"--btn-size": "3.5rem",
 							"--btn-radius": "0.625rem",
 							"--btn-icon-bg": "0.15",

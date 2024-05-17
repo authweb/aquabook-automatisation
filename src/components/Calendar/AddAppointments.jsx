@@ -281,8 +281,8 @@ const AddAppointments = ({
 									<button
 										className='eb-button ab-modal-buttons__button eb-button--color-accent w-full'
 										style={{
-											"--btn-bg": "var(--c-success-rgb)",
-											"--btn-fg": "var(--c-on-accent-rgb)",
+											"--btn-bg": "var(--success-color)",
+											"--btn-fg": "var(--white-color)",
 											"--btn-size": "3.5rem",
 											"--btn-radius": "0.625rem",
 											"--btn-icon-bg": "0.15",
