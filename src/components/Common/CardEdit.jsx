@@ -159,7 +159,7 @@ const CardEdit = ({
 						<div className='eb-booking-invoice'>
 							<h3 className='ab-headline'>Сумма к оплате</h3>
 							<dl className='eb-booking-invoice__list'>
-								<dt>Сумма к оплате</dt>
+								<dt>Итого:</dt>
 								<dd>{currentValues} ₽</dd>
 							</dl>
 						</div>
