@@ -11,17 +11,9 @@ import TextArea from "../../Common/FormComponents/TextArea";
 const ServiceAdd = () => {
 	const navigate = useNavigate();
 	const [isChanged, setIsChanged] = useState(false);
-	const [isFilled, setIsFilled] = useState(false);
 
 	const [selectedCategoryId, setSelectedCategory] = useState(null);
 	const [categories, setCategories] = useState([]);
-	const [categoryID, setCategoryID] = useState("");
-	const [name, setName] = useState("");
-	const [description, setDescription] = useState("");
-	const [priceFrom, setPriceFrom] = useState("");
-	const [priceTo, setPriceTo] = useState("");
-	const [tags, setTags] = useState("");
-	const [duration, setDuration] = useState("");
 
 	const [initialValues, setInitialValues] = useState("");
 	const [formState, setFormState] = useState({

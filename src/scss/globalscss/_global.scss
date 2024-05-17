@@ -1003,7 +1003,7 @@ p {
 	transition: all 0.3s ease-in-out;
 
 	&:hover {
-		background-color: darken(var(--primary-color), 10%);
+		background-color: var(--primary-color), 10%;
 	}
 }
 
@@ -1022,7 +1022,7 @@ p {
 	transition: all 0.3s ease-in-out;
 
 	&:hover {
-		background-color: darken(var(--primary-color), 10%);
+		background-color: var(--primary-color), 10%;
 	}
 }
 
