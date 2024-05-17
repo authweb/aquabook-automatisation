@@ -19,7 +19,7 @@ const Login = () => {
 		setIsLoading(true); // Активировать индикатор загрузки
 
 		try {
-			const response = await axios.post("http://aqua-book:3306/api/login", {
+			const response = await axios.post("http://aqua-book.ru:3306/api/login", {
 				email: formState.email,
 				password: formState.password,
 			});
