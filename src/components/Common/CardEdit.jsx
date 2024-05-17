@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { Switch } from "antd";
 import Aside from "./Aside";
 import Select from "./FormComponents/Select";
+import TextArea from "./FormComponents/TextArea";
 
 const CardEdit = ({
 	general,
@@ -17,6 +18,8 @@ const CardEdit = ({
 	cardEdit,
 	cardForm,
 	cardClient,
+	cardInvoice,
+	currentValues,
 	ButtonName,
 	activeButton,
 	onClientSelect,
@@ -150,6 +153,24 @@ const CardEdit = ({
 					/>
 				</div>
 			)}
+			{cardInvoice && (
+				<div className='ab-invoice ab-card'>
+					<div className='grid grid-cols-1 gap-4 items-start'>
+						<div className='eb-booking-invoice'>
+							<h3 className='ab-headline'>Сумма к оплате</h3>
+							<dl className='eb-booking-invoice__list'>
+								<dt>Сумма к оплате</dt>
+								<dd>{currentValues} ₽</dd>
+							</dl>
+						</div>
+						<div>
+							<div className='lg:mb-auto grid grid-cols-1 gap-6 items-start'>
+								<TextArea name='comment' prefix='Комментарий' id='input-55' />
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 			{cardEdit && (
 				<section className='ab-card ab-island'>
 					<div role='button' className='ab-island__heading'>
@@ -178,6 +199,7 @@ const CardEdit = ({
 					</div>
 				</section>
 			)}
+
 			{cardForm && (
 				<section className='ab-card'>
 					<div className='ab-card__header ab-card__header--offset'>

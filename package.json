@@ -44,7 +44,6 @@
     "xlsx": "^0.18.5",
     "yarn": "^1.22.21"
   },
-
   "scripts": {
     "dev:start": "react-app-rewired start",
     "dev:server": "nodemon src/api/index.js",
@@ -80,6 +79,7 @@
     "concurrently": "^8.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "crypto-browserify": "^3.12.0",
+    "customize-cra": "^1.0.0",
     "html-webpack-plugin": "^5.5.1",
     "http-proxy-middleware": "^2.0.6",
     "https-browserify": "^1.0.0",

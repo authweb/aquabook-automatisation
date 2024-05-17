@@ -149,6 +149,14 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 /* Календарь */
 
 .ab {
+	&-invoice {
+		display: block;
+		@media (min-width: 1024px) {
+			& {
+				display: none !important;
+			}
+		}
+	}
 	&-model {
 		&-edit {
 			&__panel {
@@ -204,6 +212,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 
 			&__aside {
+				display: none;
 				@media (min-width: 1024px) {
 					& {
 						background-color: var(--card-color);
@@ -803,8 +812,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 .ab-select {
 	position: relative;
 	&__dropdown {
-		background-color: rgba($bg-color, 1);
-		color: rgba($white-color, 1);
+		background-color: rgba(var(--card-color-none-rgb), 1);
+		color: rgba(var(--white-color-none-rgb), 1);
 		border-radius: 0.25rem;
 		visibility: visible;
 		pointer-events: all;
@@ -815,12 +824,12 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		bottom: 0.5rem;
 		left: 0.5rem;
 		bottom: auto;
-		max-height: calc(100% - 1rem);
+		max-height: calc(100vh - 1rem);
 		z-index: 120;
 		@media (min-width: 692px) {
 			& {
-				background-color: rgba($bg-color, 1);
-				color: rgba($white-color, 1);
+				background-color: rgba(var(--card-color-none-rgb), 1);
+				color: rgba(var(--white-color-none-rgb), 1);
 				box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 				overflow: auto;
 				overscroll-behavior: contain;
@@ -845,10 +854,17 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 
 .ab-dropdown--desktop,
 .ab-select__dropdown {
-	box-shadow: 0 20px 40px rgba(var(--c-overlay-rgb), 0.1);
+	box-shadow: 0 20px 40px rgba(var(--black-color-none-rgb), 0.1);
 	border-radius: 10px;
 	min-width: 250px;
-	border: 1px solid var(--c-mono-900);
+	border: 1px solid var(--gray-color);
+	margin: 0px;
+	transform: translate(0px, 40px);
+	@media (min-width: 692px) {
+		& {
+			transform: translate(0px);
+		}
+	}
 }
 
 .ab-dropdown-button {
@@ -1016,6 +1032,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		}
 	}
 	&__content {
+		flex-grow: 1;
 		padding-top: 1rem;
 		padding-bottom: 5rem;
 		min-height: 360px;
@@ -1269,7 +1286,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	display: block;
 	min-width: 100%;
 	color: $white-color;
-	background-color: $card-color;
+	background-color: var(--card-color);
 	border-radius: 1.25rem;
 	padding: $card-padding-y $card-padding-x;
 	&__header {

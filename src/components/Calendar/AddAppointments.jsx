@@ -207,6 +207,31 @@ const AddAppointments = ({
 								onButtonClick={() =>
 									openAside("client", "createClient")
 								}></CardEdit>
+							<CardEdit cardInvoice currentValues={currentValues.cost} />
+							{selectedServices.length > 0 && (
+								<div className='ab-invoice eb-page-aside__buttons'>
+									<div className='ab-model-edit'>
+										<div className='ab-model-edit__panel'>
+											<div className='ab-modal-buttons ab-modal-buttons--desktop'>
+												<button
+													className='eb-button ab-modal-buttons__button eb-button--color-accent w-full'
+													style={{
+														"--btn-bg": "var(--success-color)",
+														"--btn-fg": "var(--white-color)",
+														"--btn-size": "3.5rem",
+														"--btn-radius": "0.625rem",
+														"--btn-icon-bg": "0.15",
+													}}
+													onClick={addAppointment}>
+													<span className='eb-button__text'>
+														Создать запись
+													</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							)}
 						</div>
 						{activeButton && activeButton.name === "service" && (
 							<Aside
@@ -295,7 +320,6 @@ const AddAppointments = ({
 						</div>
 					</div>
 				)}
-
 				{/* <CalendarNavigator /> */}
 			</div>
 		</>
