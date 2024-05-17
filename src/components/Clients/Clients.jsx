@@ -26,7 +26,7 @@ const Clients = () => {
 
 	useEffect(() => {
 		// Здесь предполагается, что ваш API поддерживает CORS
-		fetch("http://aqua-book.ru:3306/api/clients")
+		fetch("http://aqua-book.ru:4000/api/clients")
 			.then(response => response.json())
 			.then(data => {
 				const formattedData = data.clients.map(client => ({

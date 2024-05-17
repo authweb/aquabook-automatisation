@@ -38,7 +38,7 @@ const Analytics = () => {
 		try {
 			// Убедитесь, что ваш API поддерживает эти параметры или настройте их в соответствии с вашим API
 			const response = await fetch(
-				`http://aqua-book.ru:3306/api/appointments?month=${
+				`http://aqua-book.ru:4000/api/appointments?month=${
 					month + 1
 				}&year=${year}`,
 			);

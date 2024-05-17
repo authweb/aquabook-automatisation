@@ -56,10 +56,10 @@ const CalendarDay = () => {
 					categoriesResponse,
 					servicesResponse,
 				] = await Promise.all([
-					axios.get("http://aqua-book.ru:3306/api/appointments"),
-					axios.get("http://aqua-book.ru:3306/api/employees"),
-					axios.get("http://aqua-book.ru:3306/api/service-categories"),
-					axios.get("http://aqua-book.ru:3306/api/services"),
+					axios.get("http://aqua-book.ru:4000/api/appointments"),
+					axios.get("http://aqua-book.ru:4000/api/employees"),
+					axios.get("http://aqua-book.ru:4000/api/service-categories"),
+					axios.get("http://aqua-book.ru:4000/api/services"),
 				]);
 
 				const { servicesCategories } = categoriesResponse.data;

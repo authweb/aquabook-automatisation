@@ -9,7 +9,7 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 		const fetchData = async () => {
 			try {
 				const response = await fetch(
-					`http://aqua-book.ru:3306/api/appointments?month=${
+					`http://aqua-book.ru:4000/api/appointments?month=${
 						currentMonth + 1
 					}&year=${currentYear}`,
 				);
