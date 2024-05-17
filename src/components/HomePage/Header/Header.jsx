@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import react, { useState, useReducer, useEffect } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { initialState, reducer } from "../../../reducers/reduser";
@@ -12,6 +12,7 @@ const Header = () => {
 	const { user, isAuthenticated, logout } = useAuth();
 	const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
 	const [stats, dispatch] = useReducer(reducer, initialState);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	useEffect(() => {
 		const newDate = dayjs().format("YYYY-MM-DD");
@@ -23,6 +24,10 @@ const Header = () => {
 	}, [dispatch, rangeStart]);
 	const handleLogout = () => {
 		logout();
+	};
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
 	};
 	return (
 		<header className='the-header--sticky the-header'>
@@ -79,8 +84,79 @@ const Header = () => {
 							)}
 						</div>
 					</div>
+					<button
+						className={`the-burger-button ml-6 ${
+							isMenuOpen ? "the-header__menu--opened" : ""
+						}`}
+						aria-label='Переключить меню'
+						onClick={toggleMenu}>
+						<svg width='24' height='24' viewBox='0 0 100 100'>
+							<path
+								class='the-burger-button__line the-burger-button__line-1'
+								d='M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058'></path>
+							<path
+								class='the-burger-button__line the-burger-button__line-2'
+								d='M 20,50 H 80'></path>
+							<path
+								class='the-burger-button__line the-burger-button__line-3'
+								d='M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942'></path>
+						</svg>
+					</button>
 				</div>
 			</div>
+			<nav
+				className={`the-header__menu ${
+					isMenuOpen ? "the-header__menu--opened" : ""
+				}`}>
+				{isAuthenticated && (
+					<>
+						<Link
+							to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}
+							className='mt-5 base-button base-button--primary base-button--md base-button--bg'>
+							<span className='base-button__text base-button__text--center'>
+								Панель управления
+							</span>
+						</Link>
+						<Link
+							className='base-button base-button--outline-secondary base-button--md base-button--bg base-button--outline'
+							onClick={handleLogout}>
+							<span className='base-button__text base-button__text--center'>
+								Выход{" "}
+							</span>
+						</Link>
+					</>
+				)}
+				{!isAuthenticated && (
+					<>
+						<Link
+							to='/register'
+							className='mt-5 base-button base-button--primary base-button--md base-button--bg'>
+							<span className='base-button__text base-button__text--center'>
+								Регистрация
+							</span>
+						</Link>
+						<Link
+							to='/login'
+							className='base-button base-button--outline-secondary base-button--md base-button--bg base-button--outline'>
+							<span className='base-button__text base-button__text--center'>
+								Вход{" "}
+							</span>
+						</Link>
+					</>
+				)}
+				<div className='lg:block grid gap-4 mb-4 lg:mb-0'>
+					<div className='lg:mb-0 mb-3'>
+						<Link to='/' className='the-header__mobile-item'>
+							Главная
+						</Link>
+					</div>
+					<div className='lg:mb-0 mb-3'>
+						<Link to='/features' className='the-header__mobile-item'>
+							Функции
+						</Link>
+					</div>
+				</div>
+			</nav>
 		</header>
 	);
 };
