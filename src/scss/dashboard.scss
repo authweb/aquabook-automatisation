@@ -1288,16 +1288,15 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-bottom-bar {
-	--icon-color: rgba(var(--c-on-surface-rgb), 0.5);
-	--icon-color-active: var(--c-accent, currentColor);
+	--icon-color: rgba(var(--gray-color-none-rgb), 0.7);
+	--icon-color-active: var(--success-color);
 	background-color: #fff;
-	background-color: rgba(var(--c-surface-rgb), var(--bg-opacity, 1));
+	background-color: rgba(var(--card-color-none-rgb), var(--bg-opacity, 1));
 	color: #14171d;
-	color: rgba(var(--c-on-surface-rgb), var(--text-opacity, 1));
+	color: rgba(var(--gray-color-none-rgb), var(--text-opacity, 1));
 	display: flex;
 	padding-bottom: env(safe-area-inset-bottom, 0);
-	box-shadow: 0 -2px 2px rgba(20, 23, 29, 0.1);
-	box-shadow: 0 -2px 2px rgba(var(--c-mono-100-rgb, 50, 50, 50), 0.1);
+	box-shadow: none;
 	position: fixed;
 	bottom: 0;
 	min-height: 4rem;

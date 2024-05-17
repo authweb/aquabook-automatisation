@@ -24,70 +24,24 @@
 
 :root {
 	/* colors */
-	--primary-color: rgb(255, 122, 0); /* Яркий оранжевый для акцентов */
-	--secondary-color: rgb(
-		128,
-		71,
-		20
-	); /* Тёмно-оранжевый для дополнительных акцентов */
-	--secondary-color-hover: rgb(
-		192,
-		96,
-		10
-	); /* Более тёмный оттенок оранжевого для состояния наведения */
-	--bg-color: rgb(0, 21, 41); /* Основной фон, тёмно-синий */
-	--card-color: rgb(24, 41, 53); /* Темнее серого для фона карточек */
-	--gray-color: rgb(
-		117,
-		123,
-		130
-	); /* Средний серый для неактивных элементов или подписей */
-	--gray-text-color: rgb(
-		236,
-		227,
-		228
-	); /* Бледно-розовый для текста на тёмном фоне */
-	--black-color: rgb(42, 42, 42); /* Тёмно-серый для максимального контраста */
-	--white-color: rgb(255, 255, 255); /* Белый для текста и ключевых элементов */
-	--logout-color: rgb(
-		233,
-		85,
-		91
-	); /* Красный для кнопок выхода или предупреждений */
-	--logout-color-hover: rgb(
-		200,
-		66,
-		66
-	); /* Тёмный красный для состояния наведения */
-	--delete-color: rgb(233, 85, 91); /* Красный для удаления */
-	--delete-color-hover: rgb(
-		200,
-		66,
-		66
-	); /* Тёмный красный для состояния наведения */
-	--update-color: rgb(
-		183,
-		235,
-		143
-	); /* Светло-зеленый для обновлений или подтверждений */
-	--update-color-hover: rgb(
-		28,
-		175,
-		129
-	); /* Тёмно-зелёный для состояния наведения */
-	--hr-color: rgba(236, 227, 228, 0.1); /* Светлый разделитель на тёмном фоне */
-	--button-e-color: rgba(
-		255,
-		122,
-		0,
-		0.7
-	); /* Менее прозрачный акцентный оранжевый для кнопок */
-	--button-e-color-hover: rgba(
-		192,
-		96,
-		10,
-		0.7
-	); /* Менее прозрачный тёмно-оранжевый при наведении */
+	--primary-color: rgb(255, 122, 0);
+	--secondary-color: rgb(128, 71, 20);
+	--secondary-color-hover: rgb(192, 96, 10);
+	--bg-color: rgb(0, 21, 41);
+	--card-color: rgb(24, 41, 53);
+	--gray-color: rgb(117, 123, 130);
+	--gray-text-color: rgb(236, 227, 228);
+	--black-color: rgb(42, 42, 42);
+	--white-color: rgb(255, 255, 255);
+	--logout-color: rgb(233, 85, 91);
+	--logout-color-hover: rgb(200, 66, 66);
+	--delete-color: rgb(233, 85, 91);
+	--delete-color-hover: rgb(200, 66, 66);
+	--update-color: rgb(183, 235, 143);
+	--update-color-hover: rgb(28, 175, 129);
+	--hr-color: rgb(236, 227, 228);
+	--button-e-color: rgb(255, 122, 0);
+	--button-e-color-hover: rgb(192, 96, 10);
 	--light-orange-color: rgb(255, 179, 102);
 	--dark-blue-color: rgb(0, 16, 31);
 	--dark-blue-color-hover: rgb(0, 31, 61);
@@ -99,50 +53,58 @@
 	--text-gray: rgb(108, 117, 125);
 	--text-dark-blue: rgb(52, 58, 64);
 	/* UI/UX colors */
-	--info-color: rgb(23, 162, 184); /* Голубой для информационных сообщений */
-	--info-color-hover: rgb(
-		17,
-		140,
-		159
-	); /* Темный голубой для наведения на информационные сообщения */
-	--success-color: rgb(
-		40,
-		167,
-		69
-	); /* Зеленый для успешных действий или подтверждений */
-	--success-color-hover: rgb(
-		33,
-		136,
-		56
-	); /* Темно-зеленый для наведения на успешные действия */
-	--warning-color: rgb(255, 193, 7); /* Желтый для предупреждающих сообщений */
-	--warning-color-hover: rgb(
-		218,
-		165,
-		32
-	); /* Темно-желтый для наведения на предупреждения */
-	--danger-color: rgb(
-		220,
-		53,
-		69
-	); /* Ярко-красный для ошибок и критических действий */
-	--danger-color-hover: rgb(
-		181,
-		44,
-		57
-	); /* Темный красный для наведения на критические действия */
-	--link-color: rgb(0, 123, 255); /* Синий для ссылок */
-	--link-color-hover: rgb(0, 86, 179); /* Темно-синий для наведения на ссылки */
-	--highlight-color: rgb(
-		255,
-		255,
-		0
-	); /* Ярко-желтый для выделения текста или элементов */
-	--highlight-color-hover: rgb(
-		204,
-		204,
-		0
-	); /* Золотистый для наведения на выделения */
+	--info-color: rgb(23, 162, 184);
+	--info-color-hover: rgb(17, 140, 159);
+	--success-color: rgb(40, 167, 69);
+	--success-color-hover: rgb(33, 136, 56);
+	--warning-color: rgb(255, 193, 7);
+	--warning-color-hover: rgb(218, 165, 32);
+	--danger-color: rgb(220, 53, 69);
+	--danger-color-hover: rgb(181, 44, 57);
+	--link-color: rgb(0, 123, 255);
+	--link-color-hover: rgb(0, 86, 179);
+	--highlight-color: rgb(255, 255, 0);
+	--highlight-color-hover: rgb(204, 204, 0);
+	/* colors none-rgb */
+	--primary-color-none-rgb: 255, 122, 0;
+	--secondary-color-none-rgb: 128, 71, 20;
+	--secondary-color-hover-none-rgb: 192, 96, 10;
+	--bg-color-none-rgb: 0, 21, 41;
+	--card-color-none-rgb: 24, 41, 53;
+	--gray-color-none-rgb: 117, 123, 130;
+	--gray-text-color-none-rgb: 236, 227, 228;
+	--black-color-none-rgb: 42, 42, 42;
+	--white-color-none-rgb: 255, 255, 255;
+	--logout-color-none-rgb: 233, 85, 91;
+	--logout-color-hover-none-rgb: 200, 66, 66;
+	--delete-color-none-rgb: 233, 85, 91;
+	--delete-color-hover-none-rgb: 200, 66, 66;
+	--update-color-none-rgb: 183, 235, 143;
+	--update-color-hover-none-rgb: 28, 175, 129;
+	--button-e-color-none-rgb: 255, 122, 0;
+	--button-e-color-hover-none-rgb: 192, 96, 10;
+	--light-orange-color-none-rgb: 255, 179, 102;
+	--dark-blue-color-none-rgb: 0, 16, 31;
+	--dark-blue-color-hover-none-rgb: 0, 31, 61;
+	--light-gray-color-none-rgb: 200, 200, 200;
+	--dark-gray-color-none-rgb: 64, 64, 64;
+	--medium-blue-color-none-rgb: 36, 52, 69;
+	--medium-blue-color-hover-none-rgb: 28, 42, 57;
+	--text-dark-none-rgb: 33, 37, 41;
+	--text-gray-none-rgb: 108, 117, 125;
+	--text-dark-blue-none-rgb: 52, 58, 64;
+	--info-color-none-rgb: 23, 162, 184;
+	--info-color-hover-none-rgb: 17, 140, 159;
+	--success-color-none-rgb: 40, 167, 69;
+	--success-color-hover-none-rgb: 33, 136, 56;
+	--warning-color-none-rgb: 255, 193, 7;
+	--warning-color-hover-none-rgb: 218, 165, 32;
+	--danger-color-none-rgb: 220, 53, 69;
+	--danger-color-hover-none-rgb: 181, 44, 57;
+	--link-color-none-rgb: 0, 123, 255;
+	--link-color-hover-none-rgb: 0, 86, 179;
+	--highlight-color-none-rgb: 255, 255, 0;
+	--highlight-color-hover-none-rgb: 204, 204, 0;
 
 	/* fonts */
 	--font-family: "Montserrat", sans-serif;
