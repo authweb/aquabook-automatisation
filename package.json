@@ -2,7 +2,7 @@
   "name": "aquabook-automatisation",
   "version": "0.1.2",
   "private": false,
-  "proxy": "http://api.aqua-book.ru",
+  "proxy": "https://api.aqua-book.ru",
   "dependencies": {
     "@daypilot/daypilot-lite-react": "^3.15.0",
     "@testing-library/jest-dom": "^5.16.5",

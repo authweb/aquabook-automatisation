@@ -33,10 +33,10 @@ const PersonalEdit = () => {
 			try {
 				if (users?.id) {
 					const response = await axios.get(
-						`http://api.aqua-book.ru/api/profile/${users?.id}`,
+						`https://api.aqua-book.ru/api/profile/${users?.id}`,
 					);
 					console.log(
-						`URL: http://api.aqua-book.ru/api/profile/${users?.id}`,
+						`URL: https://api.aqua-book.ru/api/profile/${users?.id}`,
 						response.status,
 						response.statusText,
 					); // Проверьте статус и текст ответа
@@ -131,7 +131,7 @@ const PersonalEdit = () => {
 			// Отправляем данные на сервер
 			console.log(profileData);
 			const response = await axios.put(
-				`http://api.aqua-book.ru/api/profile/${users?.id}`,
+				`https://api.aqua-book.ru/api/profile/${users?.id}`,
 				profileData,
 			);
 
