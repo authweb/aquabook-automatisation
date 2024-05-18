@@ -126,12 +126,12 @@ const Register = () => {
 								className='ab-icon ab-icon--size-text ab-icon--animated'>
 								<path
 									d='M2.4 12c0-.66.54-1.2 1.2-1.2h15.6a1.2 1.2 0 0 1 0 2.4H3.6A1.2 1.2 0 0 1 2.4 12Z'
-									class='svg-arrow-line'></path>
+									className='svg-arrow-line'></path>
 								<path
-									fill-rule='evenodd'
+									fillRule='evenodd'
 									d='M14.12 4.84a1.2 1.2 0 1 0-1.55 1.85l6.3 5.28-6.3 5.3a1.2 1.2 0 1 0 1.54 1.82l7.36-6.16c.3-.24.45-.6.45-.96a1.2 1.2 0 0 0-.46-.95l-7.35-6.18Z'
-									clip-rule='evenodd'
-									class='svg-arrow-chevron'></path>
+									clipRule='evenodd'
+									className='svg-arrow-chevron'></path>
 							</svg>
 						</span>
 					</button>
