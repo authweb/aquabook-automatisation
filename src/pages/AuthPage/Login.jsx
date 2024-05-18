@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContexts";
-import { Input } from "../../components";
+import { Header, Input } from "../../components";
 
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Register } from "../../assets/images/register.svg";
@@ -19,7 +19,7 @@ const Login = () => {
 		setIsLoading(true); // Активировать индикатор загрузки
 
 		try {
-			const response = await axios.post("http://api.aqua-book.ru/api/login", {
+			const response = await axios.post("https://api.aqua-book.ru/api/login", {
 				email: formState.email,
 				password: formState.password,
 			});
@@ -49,37 +49,12 @@ const Login = () => {
 
 	return (
 		<>
-			<div className='eb-auth-layout__header'>
-				<div className='eb-auth-layout__logo'>
-					<Link to='/'>
-						<Logo />
-					</Link>
-				</div>
-				<div className='flex items-center ml-auto'>
-					<span className='ab-description hidden lg:block mr-2'>
-						У вас нет аккаунта?
-					</span>
-					<Link
-						to='/register'
-						className='eb-button ml-2 eb-button--color-surface'
-						style={{
-							"--btn-bg": "var(--button-e-color)",
-							"--btn-fg": "var(--white-color)",
-							"--btn-size": "2.5rem",
-							"--btn-radius": "0.625rem",
-							"--btn-icon-bg": "0",
-						}}>
-						<span className='eb-button__text eb-button__text--padding'>
-							<Register
-								width={17}
-								height={17}
-								className='ab-icon icon sprite-buttons text-accent mr-1'
-							/>
-							Регистрация
-						</span>
-					</Link>
-				</div>
-			</div>
+			<Header
+				buttonLoginRegister='Регистрация'
+				titleLoginRegister='У вас нет аккаунта?'
+				svg={<Register />}
+				to='/register'
+			/>
 			<div className='eb-auth-layout__container'>
 				<form className='ab-card relative' onSubmit={submitHandler}>
 					<h2 className='ab-title flex'>

@@ -4,7 +4,7 @@ import axios from "axios";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as RegisterUser } from "../../assets/images/register.svg";
 import { ReactComponent as LoginUser } from "../../assets/images/login.svg";
-import { Input, NumberInput } from "../../components";
+import { Header, Input, NumberInput } from "../../components";
 
 const Register = () => {
 	const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Register = () => {
 
 		try {
 			const response = await axios.post(
-				"http://api.aqua-book.ru/api/register",
+				"https://api.aqua-book.ru/api/register",
 				{
 					first_name: formState.first_name,
 					last_name: formState.last_name,
@@ -55,13 +55,12 @@ const Register = () => {
 
 	return (
 		<>
-			<div className='eb-auth-layout__header'>
-				<div className='eb-auth-layout__logo'>
-					<Link to='/'>
-						<Logo />
-					</Link>
-				</div>
-			</div>
+			<Header
+				buttonLoginRegister='Войти'
+				titleLoginRegister='У вас есть аккаунт?'
+				svg={<LoginUser />}
+				to='/login'
+			/>
 			<div className='eb-auth-layout__container'>
 				<form className='ab-card relative' onSubmit={submitHandler}>
 					<h2 className='ab-title flex'>

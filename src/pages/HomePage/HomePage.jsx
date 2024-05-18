@@ -6,7 +6,7 @@ import Banner from "../../assets/images/banner.svg";
 const HomePage = () => {
 	return (
 		<>
-			<Header />
+			<Header desktopItems />
 			<Main />
 		</>
 	);

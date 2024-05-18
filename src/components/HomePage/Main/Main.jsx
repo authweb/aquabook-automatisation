@@ -48,6 +48,14 @@ const Main = () => {
 						/>
 					</div>
 				</div>
+				<section>
+					<div className='wrapper'>
+						<div className='base-headlines flex flex-col gap-5 items-center text-center'>
+							<h2 className='base-headlines__headline h2 md:w-[50rem] md:max-w-full md:mx-auto'></h2>
+							<p className='text-gray-600 md:w-[50rem] md-max-w-full md:mx-auto base-headlines__description'></p>
+						</div>
+					</div>
+				</section>
 			</main>
 		</>
 	);
