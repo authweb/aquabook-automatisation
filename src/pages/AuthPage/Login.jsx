@@ -8,6 +8,8 @@ import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Register } from "../../assets/images/register.svg";
 import { ReactComponent as LoginUser } from "../../assets/images/login.svg";
 
+import "../../scss/logreg.scss";
+
 const Login = () => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false); // состояние загрузки

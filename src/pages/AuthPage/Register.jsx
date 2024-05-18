@@ -124,7 +124,7 @@ const Register = () => {
 						<span className='eb-button__text'>Регистрация</span>
 					</button>
 				</form>
-				<div className='ab-card mt-5'>
+				<div className='ab-card mt-2'>
 					<h2 className='ab-title flex'>
 						<LoginUser className='ab-icon icon sprite-buttons mr-2 lg:mr-4 mt-1 flex-shrink-0 text-accent ab-icon--size-text' />{" "}
 						У вас уже есть аккаунт?

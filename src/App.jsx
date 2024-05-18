@@ -85,7 +85,6 @@ const App = () => {
 									<Route path='login' element={<LoginToProfile />} />
 								</Route>
 							</Route>
-
 							<Route path='dashboard/*' element={<Dashboard />} />
 							<Route path='*' element={<div>404 Not Found</div>} />
 						</Routes>
