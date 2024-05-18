@@ -13,6 +13,7 @@ import "../../scss/logreg.scss";
 const Login = () => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false); // состояние загрузки
+	const [error, setError] = useState(false);
 	const { login } = useContext(AuthContext);
 	const [formState, setFormState] = useState({ email: "", password: "" });
 
@@ -26,19 +27,20 @@ const Login = () => {
 				password: formState.password,
 			});
 
-			const responseData = response.data;
-			if (response.status !== 200 && response.status !== 201) {
-				throw new Error(responseData.message);
-			}
-
 			// Успешный вход
 			const { token, id, first_name, last_name, phone, email } =
-				responseData.user;
+				response.data.user;
 			login({ token, id, first_name, last_name, phone, email });
+
 			navigate(`/dashboard/profile/${id}`);
-		} catch (error) {
-			console.error(error);
-			setIsLoading(false); // Отключить индикатор загрузки при ошибке
+		} catch (err) {
+			console.error(err.response || err.message);
+			setError(
+				err.response?.data?.message ||
+					"Произошла ошибка при авторизации. Пожалуйста, попробуйте ещё раз.",
+			);
+			setFormState(prevState => ({ ...prevState, password: "" })); // Очистить поле пароля
+			setIsLoading(false); // Выключить индикатор загрузки при ошибке
 		}
 	};
 
