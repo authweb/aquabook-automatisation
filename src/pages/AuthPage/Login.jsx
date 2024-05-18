@@ -58,7 +58,9 @@ const Login = () => {
 				to='/register'
 			/>
 			<div className='eb-auth-layout__container'>
-				<form className='ab-card relative' onSubmit={submitHandler}>
+				<form
+					className='ab-card ab-card__logreg relative'
+					onSubmit={submitHandler}>
 					<h2 className='ab-title flex'>
 						<LoginUser className='ab-icon icon sprite-buttons mr-2 lg:mr-4 mt-1 flex-shrink-0 text-accent ab-icon--size-text' />
 						Вход
@@ -81,16 +83,26 @@ const Login = () => {
 						/>
 					</div>
 					<button
-						className='eb-button mt-2 w-full eb-button--custom-icon eb-button--color-accent'
-						style={{
-							"--btn-bg": "var(--button-e-color)",
-							"--btn-fg": "var(--white-color)",
-							"--btn-size": "3.5rem",
-							"--btn-radius": "0.625rem",
-							"--btn-icon-bg": "0.15",
-						}}
+						className='ab-button mt-2 w-full ab-button--size-lg ab-button--theme-solid ab-button--color-accent ab-button--with-text ab-button--icon-highlighted ab-animated-icon-parent ab-button--color-accent'
 						type='submit'>
-						<span className='eb-button__text'>Войти в систему</span>
+						<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
+						<span className='ab-button__text'>Войти в систему</span>
+						<span className='ab-button__icon-wrapper ab-button__icon-wrapper--right ab-button__icon-wrapper--highlighted'>
+							<svg
+								aria-hidden='true'
+								viewBox='0 0 24 24'
+								xmlns='http://www.w3.org/2000/svg'
+								className='ab-icon ab-icon--size-text ab-icon--animated'>
+								<path
+									d='M2.4 12c0-.66.54-1.2 1.2-1.2h15.6a1.2 1.2 0 0 1 0 2.4H3.6A1.2 1.2 0 0 1 2.4 12Z'
+									class='svg-arrow-line'></path>
+								<path
+									fill-rule='evenodd'
+									d='M14.12 4.84a1.2 1.2 0 1 0-1.55 1.85l6.3 5.28-6.3 5.3a1.2 1.2 0 1 0 1.54 1.82l7.36-6.16c.3-.24.45-.6.45-.96a1.2 1.2 0 0 0-.46-.95l-7.35-6.18Z'
+									clip-rule='evenodd'
+									class='svg-arrow-chevron'></path>
+							</svg>
+						</span>
 					</button>
 				</form>
 			</div>

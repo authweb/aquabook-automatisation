@@ -85,17 +85,15 @@ const Services = () => {
 				to='add'
 			/>
 			<div className='ab-page__content'>
-				<div className='container pt-6'>
+				<div className='pt-6'>
 					<div className='flex flex-wrap items-center'>
 						<div className='mb-4 mr-4 max-w-full'>
 							<div className='ab-slider ab-button-nav ab-button-nav__wrapper'>
 								<span className='ab-slider__scroller'>
-									<a
-										href='#'
-										className='ab-button-nav__toggler ab-button-nav__toggler_active'>
+									<a className='ab-button-nav__toggler ab-button-nav__toggler_active'>
 										<span tabIndex={-1}>Активные</span>
 									</a>
-									<a href='#' className='ab-button-nav__toggler'>
+									<a className='ab-button-nav__toggler'>
 										<span tabIndex={-1}>Все</span>
 									</a>
 								</span>

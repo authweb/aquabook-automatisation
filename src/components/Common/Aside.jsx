@@ -422,15 +422,10 @@ const Aside = ({
 							<button
 								type='button'
 								onClick={handleSubmit}
-								className='eb-button ab-modal-buttons__button eb-button--custom-icon eb-button--color-accent flex-grow'
-								style={{
-									"--btn-bg": "var(--success-color)",
-									"--btn-fg": "var(--white-color)",
-									"--btn-size": "3.5rem",
-									"--btn-radius": "0.625rem",
-									"--btn-icon-bg": "0.15",
-								}}>
-								<span className='eb-button__text'>{done}</span>
+								className='ab-button mt-2 w-full ab-button--size-lg ab-button--theme-solid ab-button--color-accent ab-button--with-text ab-button--icon-highlighted ab-animated-icon-parent ab-button--color-accent'>
+								<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
+								<span className='ab-button__text'>{done}</span>
+								<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
 							</button>
 						</div>
 					</div>

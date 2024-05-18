@@ -59,7 +59,7 @@ const ServicesManagement = () => {
 
 	return (
 		<>
-			<Tabs type='card' tabPosition='left'>
+			<Tabs className="flex flex-col" type='card' tabPosition='left'>
 				{categories.map(category => (
 					<TabPane tab={category.name} key={category.id}>
 						{services[category.id] && (

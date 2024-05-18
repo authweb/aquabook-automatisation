@@ -348,9 +348,10 @@ const Dashboard = () => {
 							style={{ background: "#001529" }}>
 							<Content
 								className={wrapperClassName}
-								style={{
-									margin: "0 16px",
-								}}>
+								// style={{
+								// 	margin: "0 16px",
+								// }}
+							>
 								<Header
 									className='eb-calendar_title'
 									style={{
