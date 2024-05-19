@@ -265,7 +265,7 @@ const PersonalEdit = () => {
 										autoComplete='description'
 										value={currentValues.description}
 										id='textarea-40'
-										prefix='description'
+										prefix='Описание'
 										onChange={handleChange}
 									/>
 									<div className='ab-select'>
