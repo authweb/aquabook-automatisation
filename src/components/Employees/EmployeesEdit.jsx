@@ -15,10 +15,10 @@ import axios from "axios";
 import { CloseOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { useAuth } from "../../contexts/AuthContexts";
 
-const PersonalEdit = () => {
+const EmployeesEdit = () => {
 	const navigate = useNavigate();
 
-	const { users, setUsers, updateProfileInfo } = useAuth();
+	const { employee, setEmployee, updateEmployeeInfo } = useAuth();
 
 	const [isChanged, setIsChanged] = useState(false);
 	const [isFilled, setIsFilled] = useState(false);
@@ -29,14 +29,14 @@ const PersonalEdit = () => {
 	const [isBookable, setIsBookable] = useState(true);
 
 	useEffect(() => {
-		async function fetchUserData() {
+		async function fetchEmployeeData() {
 			try {
-				if (users?.id) {
+				if (employee?.id) {
 					const response = await axios.get(
-						`https://api.aqua-book.ru/api/profile/${users?.id}`,
+						`https://api.aqua-book.ru/api/employees/${employee?.id}`,
 					);
 					console.log(
-						`URL: https://api.aqua-book.ru/api/profile/${users?.id}`,
+						`URL: https://api.aqua-book.ru/api/employees/${employee?.id}`,
 						response.status,
 						response.statusText,
 					); // Проверьте статус и текст ответа
@@ -63,34 +63,34 @@ const PersonalEdit = () => {
 			}
 		}
 
-		fetchUserData();
-	}, [users?.id]);
+		fetchEmployeeData();
+	}, [employee?.id]);
 
 	useEffect(() => {
-		setIsBookable(users?.is_bookable);
+		setIsBookable(employee?.is_bookable);
 		setInitialValues({
-			firstName: users?.first_name || "",
-			lastName: users?.last_name || "",
-			selectedValue: users?.gender || "",
-			email: users?.email || "",
-			access: users?.access || "employee",
-			phone: users?.phone || "",
-			position: users?.position || "",
-			description: users?.description || "",
-			is_bookable: users?.is_bookable,
+			firstName: employee?.first_name || "",
+			lastName: employee?.last_name || "",
+			selectedValue: employee?.gender || "",
+			email: employee?.email || "",
+			access: employee?.access || "employee",
+			phone: employee?.phone || "",
+			position: employee?.position || "",
+			description: employee?.description || "",
+			is_bookable: employee?.is_bookable,
 		});
 		setCurrentValues({
-			firstName: users?.first_name || "",
-			lastName: users?.last_name || "",
-			selectedValue: users?.gender || "",
-			email: users?.email || "",
-			access: users?.access || "employee",
-			phone: users?.phone || "",
-			position: users?.position || "",
-			description: users?.description || "",
-			is_bookable: users?.is_bookable,
+			firstName: employee?.first_name || "",
+			lastName: employee?.last_name || "",
+			selectedValue: employee?.gender || "",
+			email: employee?.email || "",
+			access: employee?.access || "employee",
+			phone: employee?.phone || "",
+			position: employee?.position || "",
+			description: employee?.description || "",
+			is_bookable: employee?.is_bookable,
 		});
-	}, [users]);
+	}, [employee]);
 
 	const handleChange = event => {
 		const { name, value } = event.target;
@@ -131,31 +131,31 @@ const PersonalEdit = () => {
 
 		try {
 			// Собираем данные из состояния
-			const profileData = {
+			const employeeData = {
 				gender: currentValues.selectedValue,
 				first_name: currentValues.firstName,
 				last_name: currentValues.lastName,
 				email: currentValues.email,
-				access: currentValues.access,
 				phone: currentValues.phone,
+				access: currentValues.access,
 				position: currentValues.position,
 				description: currentValues.description,
 				is_bookable: currentValues.is_bookable,
 			};
 
 			// Отправляем данные на сервер
-			console.log("Profile updated in context:", profileData);
+			console.log("employee updated in context:", employeeData);
 			const response = await axios.put(
-				`https://api.aqua-book.ru/api/profile/${users?.id}`,
-				profileData,
+				`https://api.aqua-book.ru/api/employees/${employee?.id}`,
+				employeeData,
 			);
 
 			// Обновляем информацию профиля пользователя
-			updateProfileInfo(profileData);
+			updateEmployeeInfo(employeeData);
 
-			console.log("Profile updated successfully:", response.data);
+			console.log("employee updated successfully:", response.data);
 		} catch (error) {
-			console.error("Error updating profile:", error);
+			console.error("Error updating employee:", error);
 		}
 	};
 
@@ -174,7 +174,7 @@ const PersonalEdit = () => {
 
 	return (
 		<>
-			<HeaderDashboard showBack titleProfile containerSmall />
+			<HeaderDashboard showBack titleemployee containerSmall />
 			<div className='ab-page__content'>
 				<div className='container-small'>
 					<div className='eb-model-edit'>
@@ -320,4 +320,4 @@ const PersonalEdit = () => {
 	);
 };
 
-export default PersonalEdit;
+export default EmployeesEdit;

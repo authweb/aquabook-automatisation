@@ -45,12 +45,13 @@ import {
 	CalendarNavigator,
 	CalendarDay,
 	Clients,
+	Employees,
+	EmployeesEdit,
 	EmployeesPersona,
 	PersonalInfoDashboard,
 	PersonalEdit,
 	Settings,
 	DashboardMain,
-	Employees,
 	ServicesManagement,
 	Breadcrumbs,
 	MobileNavigation,
@@ -380,14 +381,17 @@ const Dashboard = () => {
 										/>
 										<Route path='employees/'>
 											<Route index element={<Employees />} />
-											<Route
-												path=':id'
-												element={
-													<EmployeesPersona
-														onEmployeeData={handleEmployeeData}
-													/>
-												}
-											/>
+											<Route path=':id'>
+												<Route
+													index
+													element={
+														<EmployeesPersona
+															onEmployeeData={handleEmployeeData}
+														/>
+													}
+												/>
+												<Route path='edit' element={<EmployeesEdit />} />
+											</Route>
 										</Route>
 										<Route path='clients' element={<Clients />} />
 										<Route path='calendar' element={<CalendarDay />} />
@@ -404,12 +408,20 @@ const Dashboard = () => {
 														<ServicePage onServiceData={handleServiceData} />
 													}
 												/>
+
 												<Route path='add' element={<ServiceAdd />} />
 											</Route>
 
 											<Route path='general' element={<Company />} />
 											<Route path='service-record' element={<Company />} />
-											<Route path='employees' element={<Company />} />
+											<Route path='employees'>
+												<Route index element={<Employees />} />
+												<Route
+													path='employees/:id'
+													element={<EmployeesPersona />}
+												/>
+												<Route path='edit' element={<EmployeesEdit />} />
+											</Route>
 										</Route>
 
 										<Route path='profile/:id'>

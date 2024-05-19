@@ -7,6 +7,7 @@ export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
 	const [users, setUsers] = useState(null);
+	const [employee, setEmployee] = useState(null);
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	const navigate = useNavigate();
@@ -58,6 +59,15 @@ const AuthProvider = ({ children }) => {
 		setUsers(updatedUserData);
 		console.log("Profile updated in context:", updatedUserData);
 	};
+	const updateEmployeeInfo = newEmployeeData => {
+		const updateEmployee = {
+			...employee,
+			...newEmployeeData,
+		};
+		localStorage.setItem("employeeData", JSON.stringify(updateEmployee));
+		setEmployee(updateEmployee);
+		console.log("employee updated in context:", updateEmployee);
+	};
 
 	return (
 		<AuthContext.Provider
@@ -67,6 +77,7 @@ const AuthProvider = ({ children }) => {
 				login,
 				logout,
 				updateProfileInfo,
+				updateEmployeeInfo,
 				hasRole,
 			}}>
 			{children}

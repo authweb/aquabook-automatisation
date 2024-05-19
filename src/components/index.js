@@ -19,6 +19,7 @@ export { default as PersonalEdit } from "./PersonalInfoDashboard/PersonalEdit";
 
 export { default as Employees } from "./Employees/Employees";
 export { default as EmployeesPersona } from "./Employees/EmployeesPersona";
+export { default as EmployeesEdit } from "./Employees/EmployeesEdit";
 
 export { default as ChangePassword } from "./SettingsPersonalInfo/ChangePassword";
 export { default as ChangeEmail } from "./SettingsPersonalInfo/ChangeEmail";
