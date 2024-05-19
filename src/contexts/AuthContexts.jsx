@@ -24,12 +24,38 @@ const AuthProvider = ({ children }) => {
 		}
 	}, []);
 
-	const login = (userData, role) => {
+	const updateEmployeeInfo = updatedInfo => {
+		setEmployee(prevEmployee => ({
+			...prevEmployee,
+			...updatedInfo,
+		}));
+	};
+
+	const setEmployeeData = employeeData => {
+		setEmployee(employeeData);
+	};
+
+	const login = async (userData, role) => {
 		localStorage.setItem("userToken", userData.token);
 		localStorage.setItem("userData", JSON.stringify({ ...userData, role }));
 		setUsers({ ...userData, role });
 		setIsAuthenticated(true);
 		axios.defaults.headers.common["Authorization"] = `Bearer ${userData.token}`;
+
+		// Fetch employee data after login
+		try {
+			const response = await axios.get(
+				`https://api.aqua-book.ru/api/employees/${userData.employeeId}`,
+			);
+			if (response.status === 200) {
+				setEmployee(response.data);
+			} else {
+				console.error("Error fetching employee data:", response.statusText);
+			}
+		} catch (error) {
+			console.error("Error fetching employee data:", error);
+		}
+
 		console.log("Users data from AuthContext:", userData);
 	};
 
@@ -59,19 +85,11 @@ const AuthProvider = ({ children }) => {
 		setUsers(updatedUserData);
 		console.log("Profile updated in context:", updatedUserData);
 	};
-	const updateEmployeeInfo = newEmployeeData => {
-		const updateEmployee = {
-			...employee,
-			...newEmployeeData,
-		};
-		localStorage.setItem("employeeData", JSON.stringify(updateEmployee));
-		setEmployee(updateEmployee);
-		console.log("employee updated in context:", updateEmployee);
-	};
 
 	return (
 		<AuthContext.Provider
 			value={{
+				employee,
 				users,
 				isAuthenticated,
 				login,

@@ -17,34 +17,28 @@ import { useAuth } from "../../contexts/AuthContexts";
 
 const EmployeesEdit = () => {
 	const navigate = useNavigate();
-
-	const { employee, setEmployee, updateEmployeeInfo } = useAuth();
+	const { employee, setEmployeeData, updateEmployeeInfo } = useAuth();
 
 	const [isChanged, setIsChanged] = useState(false);
 	const [isFilled, setIsFilled] = useState(false);
-
-	const [initialValues, setInitialValues] = useState("");
-	const [currentValues, setCurrentValues] = useState("");
-
+	const [initialValues, setInitialValues] = useState({});
+	const [currentValues, setCurrentValues] = useState({});
 	const [isBookable, setIsBookable] = useState(true);
 
 	useEffect(() => {
 		async function fetchEmployeeData() {
 			try {
-				if (employee?.id) {
+				if (employee && employee.id) {
+					// Добавляем проверку наличия employee и его id
 					const response = await axios.get(
-						`https://api.aqua-book.ru/api/employees/${employee?.id}`,
+						`https://api.aqua-book.ru/api/employees/${employee.id}`,
 					);
-					console.log(
-						`URL: https://api.aqua-book.ru/api/employees/${employee?.id}`,
-						response.status,
-						response.statusText,
-					); // Проверьте статус и текст ответа
 					if (response.status !== 200) {
 						console.error("Server error:", response.statusText);
 						return;
 					}
 					const data = response.data;
+					setEmployeeData(data);
 					setIsBookable(data.is_bookable);
 					setInitialValues({
 						firstName: data.first_name,
@@ -57,47 +51,35 @@ const EmployeesEdit = () => {
 						description: data.description,
 						is_bookable: data.is_bookable,
 					});
+					setCurrentValues({
+						firstName: data.first_name,
+						lastName: data.last_name,
+						selectedValue: data.gender,
+						email: data.email,
+						access: data.access,
+						phone: data.phone,
+						position: data.position,
+						description: data.description,
+						is_bookable: data.is_bookable,
+					});
+				} else {
+					console.error("Employee ID is undefined or employee is not defined");
 				}
 			} catch (error) {
-				console.error("Error fetching user data:", error);
+				console.error("Error fetching employee data:", error);
 			}
 		}
 
 		fetchEmployeeData();
-	}, [employee?.id]);
+	}, [employee, setEmployeeData]);
 
-	useEffect(() => {
-		setIsBookable(employee?.is_bookable);
-		setInitialValues({
-			firstName: employee?.first_name || "",
-			lastName: employee?.last_name || "",
-			selectedValue: employee?.gender || "",
-			email: employee?.email || "",
-			access: employee?.access || "employee",
-			phone: employee?.phone || "",
-			position: employee?.position || "",
-			description: employee?.description || "",
-			is_bookable: employee?.is_bookable,
-		});
-		setCurrentValues({
-			firstName: employee?.first_name || "",
-			lastName: employee?.last_name || "",
-			selectedValue: employee?.gender || "",
-			email: employee?.email || "",
-			access: employee?.access || "employee",
-			phone: employee?.phone || "",
-			position: employee?.position || "",
-			description: employee?.description || "",
-			is_bookable: employee?.is_bookable,
-		});
-	}, [employee]);
-
+	// Handle changes in form fields
 	const handleChange = event => {
 		const { name, value } = event.target;
 		if (name === "gender") {
 			setCurrentValues(prevValues => ({
 				...prevValues,
-				selectedValue: value, // Установка выбранного значения пола
+				selectedValue: value,
 			}));
 		} else {
 			setCurrentValues(prevValues => ({
@@ -107,8 +89,8 @@ const EmployeesEdit = () => {
 		}
 	};
 
+	// Monitor changes in form values
 	useEffect(() => {
-		console.log("useEffect triggered");
 		let changed = false;
 		let filled = true;
 		for (let key in initialValues) {
@@ -121,16 +103,12 @@ const EmployeesEdit = () => {
 		}
 		setIsChanged(changed);
 		setIsFilled(filled);
+	}, [initialValues, currentValues]);
 
-		console.log("isChanged:", isChanged);
-		console.log("isFilled:", isFilled);
-	}, [initialValues, currentValues, isChanged, isFilled]);
-
+	// Handle form submission
 	const handleSubmit = async event => {
 		event.preventDefault();
-
 		try {
-			// Собираем данные из состояния
 			const employeeData = {
 				gender: currentValues.selectedValue,
 				first_name: currentValues.firstName,
@@ -143,24 +121,25 @@ const EmployeesEdit = () => {
 				is_bookable: currentValues.is_bookable,
 			};
 
-			// Отправляем данные на сервер
-			console.log("employee updated in context:", employeeData);
+			if (!employee?.id) {
+				console.error("Employee ID is undefined");
+				return;
+			}
+
 			const response = await axios.put(
-				`https://api.aqua-book.ru/api/employees/${employee?.id}`,
+				`https://api.aqua-book.ru/api/employees/${employee.id}`,
 				employeeData,
 			);
 
-			// Обновляем информацию профиля пользователя
 			updateEmployeeInfo(employeeData);
-
-			console.log("employee updated successfully:", response.data);
+			console.log("Employee updated successfully:", response.data);
 		} catch (error) {
 			console.error("Error updating employee:", error);
 		}
 	};
 
-	const handleToggleBookable = async checked => {
-		console.log("Toggle Bookable:", checked);
+	// Handle bookable toggle
+	const handleToggleBookable = checked => {
 		setIsBookable(checked ? 1 : 0);
 		setCurrentValues(prevValues => ({
 			...prevValues,
@@ -168,13 +147,14 @@ const EmployeesEdit = () => {
 		}));
 	};
 
+	// Handle cancel action
 	const handleCancel = () => {
 		navigate(-1);
 	};
 
 	return (
 		<>
-			<HeaderDashboard showBack titleemployee containerSmall />
+			<HeaderDashboard showBack titleEmployee />
 			<div className='ab-page__content'>
 				<div className='container-small'>
 					<div className='eb-model-edit'>
@@ -217,7 +197,7 @@ const EmployeesEdit = () => {
 										name='firstName'
 										autoComplete='firstName'
 										value={currentValues.firstName}
-										required='required'
+										required
 										id='input-35'
 										prefix='Имя'
 										onChange={handleChange}
@@ -245,7 +225,7 @@ const EmployeesEdit = () => {
 										name='phone'
 										autoComplete='tel'
 										value={currentValues.phone}
-										required='required'
+										required
 										id='input-38'
 										prefix='Телефон'
 										onChange={handleChange}
