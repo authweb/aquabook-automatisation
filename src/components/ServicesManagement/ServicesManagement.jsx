@@ -13,10 +13,10 @@ const ServicesManagement = () => {
 	useEffect(() => {
 		const fetchCategoriesAndServices = async () => {
 			const categoriesResponse = await axios.get(
-				"http://api.aqua-book.ru/api/service-categories",
+				"https://api.aqua-book.ru/api/service-categories",
 			);
 			const servicesResponse = await axios.get(
-				"http://api.aqua-book.ru/api/services",
+				"https://api.aqua-book.ru/api/services",
 			);
 
 			setCategories(categoriesResponse.data.servicesCategories);
@@ -59,7 +59,7 @@ const ServicesManagement = () => {
 
 	return (
 		<>
-			<Tabs className="flex flex-col" type='card' tabPosition='left'>
+			<Tabs className='flex flex-col' type='card' tabPosition='left'>
 				{categories.map(category => (
 					<TabPane tab={category.name} key={category.id}>
 						{services[category.id] && (
