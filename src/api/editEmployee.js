@@ -63,9 +63,8 @@ router.put("/employees/:id", async (req, res) => {
 		} else if (is_bookable === 1) {
 			// Обновить или добавить запись в таблице employees
 			await db.execute(
-				"INSERT INTO employees (user_id, first_name, last_name, phone, email, gender, description, position, is_bookable) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE first_name = VALUES(first_name), last_name = VALUES(last_name), phone = VALUES(phone), email = VALUES(email), gender = VALUES(gender), description = VALUES(description), position = VALUES(position), is_bookable = VALUES(is_bookable)",
+				"UPDATE employees SET first_name = ?, last_name = ?, phone = ?, email = ?, gender = ?, description = ?, position = ?, is_bookable = ? WHERE user_id = ?",
 				[
-					id,
 					first_name,
 					last_name,
 					phone,
@@ -74,15 +73,16 @@ router.put("/employees/:id", async (req, res) => {
 					description,
 					position,
 					is_bookable,
+					id,
 				],
 			);
 		}
 
 		if (userResult.affectedRows === 0) {
-			return res.status(404).json({ message: "User not found" });
+			return res.status(404).json({ message: "Employee not found" });
 		}
 
-		res.json({ message: "User profile updated successfully" });
+		res.json({ message: "Employee profile updated successfully" });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: "Internal server error" });
