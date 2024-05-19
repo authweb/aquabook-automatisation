@@ -33,7 +33,7 @@ const CardEdit = ({
 	useEffect(() => {
 		const fetchClients = async () => {
 			try {
-				const response = await fetch("http://api.aqua-book.ru/api/clients");
+				const response = await fetch("https://api.aqua-book.ru/api/clients");
 				const data = await response.json();
 				setClients(data.clients);
 			} catch (error) {
@@ -183,7 +183,7 @@ const CardEdit = ({
 									<Switch
 										checkedChildren={<CheckOutlined />}
 										unCheckedChildren={<CloseOutlined />}
-										checked={switcher.checked}
+										checked={switcher.checked ? 1 : 0}
 										onChange={switcher.onChange}
 									/>
 								)}
