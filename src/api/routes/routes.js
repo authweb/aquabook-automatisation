@@ -50,7 +50,7 @@ router.post("/clients", addClients);
 router.post("/appointments", addAppointments);
 router.post("/appointments/:id/pay", addAppointmentIsPay);
 router.put("/profile/:id", EditProfile);
-router.put("/employees/:id", EditProfile);
+router.put("/employees/:id", EditEmployee);
 
 //Получение записей из таблицы базы данных
 router.get("/employees/:id", employee);
