@@ -56,6 +56,19 @@ router.put("/employees/:id", async (req, res) => {
 			],
 		);
 
+		console.log("SQL query parameters:", [
+			first_name,
+			last_name,
+			phone,
+			email,
+			user_role_id,
+			gender,
+			description,
+			position,
+			is_bookable,
+			id,
+		]);
+
 		// Действия в зависимости от состояния поля is_bookable
 		if (is_bookable === 0) {
 			// Удаление из таблицы employees

@@ -379,7 +379,7 @@ const Dashboard = () => {
 											path='appointments/:eventId'
 											element={<AppointmentDetails />}
 										/>
-										<Route path='employees/'>
+										<Route path='employees'>
 											<Route index element={<Employees />} />
 											<Route path=':id'>
 												<Route
@@ -393,6 +393,7 @@ const Dashboard = () => {
 												<Route path='edit' element={<EmployeesEdit />} />
 											</Route>
 										</Route>
+
 										<Route path='clients' element={<Clients />} />
 										<Route path='calendar' element={<CalendarDay />} />
 										<Route path='analytics' element={<Analytics />} />
