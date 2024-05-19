@@ -13,7 +13,7 @@ router.put("/profile/:id", async (req, res) => {
 		gender,
 		description,
 		position,
-		user_role_id,
+		user_role_id = "1",
 		is_bookable,
 	} = req.body;
 
