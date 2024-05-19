@@ -49,7 +49,11 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 									</div>
 									<div className='ab-island__arrow-wrap'>
 										<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs'>
-											<Tag color='success'>Активен</Tag>
+											{employee?.is_bookable === 1 ? (
+												<Tag color='success'>Активен</Tag>
+											) : (
+												<Tag color='error'>Не активен</Tag>
+											)}
 										</div>
 									</div>
 									{/* <p className="personalInfo__flex__pcol-p"></p>
@@ -64,7 +68,9 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 												<div className='ab-info__label'>
 													<span className='ab-description'>Пол</span>
 												</div>
-												<div>Мужской</div>
+												<div>
+													{employee?.gender === "male" ? "Мужской" : "Женский"}
+												</div>
 											</div>
 											<div className='ab-info'>
 												<div className='ab-info__label'>
@@ -74,7 +80,8 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 													<span className='descinfo'>
 														<a
 															target='_blank'
-															href='tel://+79333014156'
+															rel='noreferrer'
+															href={`tel:${employee?.phone}`}
 															className='link'>
 															{employee?.phone}
 														</a>
@@ -91,7 +98,7 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 												<div className='ab-info__label'>
 													<span className='ab-description'>Роль</span>
 												</div>
-												<div>Владелец</div>
+												<div>{employee?.position}</div>
 											</div>
 											<div className='ab-info'>
 												<div className='ab-info__label'>
@@ -112,7 +119,11 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 									</div>
 									<div className='ab-island__arrow-wrap'>
 										<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs'>
-											<Tag color='success'>Запись включена</Tag>
+											{employee?.is_bookable === 1 ? (
+												<Tag color='success'>Включена</Tag>
+											) : (
+												<Tag color='error'>Не включена</Tag>
+											)}
 										</div>
 									</div>
 								</div>
