@@ -22,7 +22,7 @@ const Login = () => {
 		setIsLoading(true); // Активировать индикатор загрузки
 
 		try {
-			const response = await axios.post("https://api.aqua-book.ru/api/login", {
+			const response = await axios.post("http://api.aqua-book.ru/api/login", {
 				email: formState.email,
 				password: formState.password,
 			});

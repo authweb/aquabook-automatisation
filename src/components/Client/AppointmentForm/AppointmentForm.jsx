@@ -35,10 +35,10 @@ const AppointmentForm = ({}) => {
 		async function fetchData() {
 			try {
 				const categoriesResponse = await fetch(
-					"https://api.aqua-book.ru/api/service-categories",
+					"http://api.aqua-book.ru/api/service-categories",
 				);
 				const servicesResponse = await fetch(
-					"https://api.aqua-book.ru/api/services",
+					"http://api.aqua-book.ru/api/services",
 				);
 				const categoriesData = await categoriesResponse.json();
 				const servicesData = await servicesResponse.json();

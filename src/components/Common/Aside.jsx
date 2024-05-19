@@ -36,7 +36,7 @@ const Aside = ({
 		// Функция для загрузки данных услуг
 		const fetchServices = async () => {
 			try {
-				const response = await fetch("https://api.aqua-book.ru/api/services");
+				const response = await fetch("http://api.aqua-book.ru/api/services");
 				const data = await response.json();
 				const servicesArray = Object.values(data.services).flat();
 				setServices(servicesArray);
@@ -58,7 +58,7 @@ const Aside = ({
 		// Функция для загрузки данных сотрудников
 		const fetchEmployees = async () => {
 			try {
-				const response = await fetch("https://api.aqua-book.ru/api/employees");
+				const response = await fetch("http://api.aqua-book.ru/api/employees");
 				const data = await response.json();
 				setEmployees(data.employees);
 			} catch (error) {
@@ -73,7 +73,7 @@ const Aside = ({
 		// Функция для загрузки данных сотрудников
 		const fetchClients = async () => {
 			try {
-				const response = await fetch("https://api.aqua-book.ru/api/clients");
+				const response = await fetch("http://api.aqua-book.ru/api/clients");
 				const data = await response.json();
 				setClients(data.clients);
 			} catch (error) {
@@ -145,7 +145,7 @@ const Aside = ({
 		};
 
 		try {
-			const response = await fetch("https://api.aqua-book.ru/api/clients", {
+			const response = await fetch("http://api.aqua-book.ru/api/clients", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -154,7 +154,7 @@ const Aside = ({
 			});
 
 			if (!response.ok) {
-				throw new Error(`https error! status: ${response.status}`);
+				throw new Error(`http error! status: ${response.status}`);
 			}
 
 			const result = await response.json();

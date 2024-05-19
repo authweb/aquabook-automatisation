@@ -32,7 +32,7 @@ const ServiceAdd = () => {
 		async function fetchCategories() {
 			try {
 				const response = await axios.get(
-					"https://api.aqua-book.ru/api/service-categories",
+					"http://api.aqua-book.ru/api/service-categories",
 				);
 				// Проверяем, есть ли нужный массив в полученных данных
 				if (response.data && Array.isArray(response.data.servicesCategories)) {
@@ -99,7 +99,7 @@ const ServiceAdd = () => {
 		try {
 			// Запрос на добавление новой услуги
 			const response = await axios.post(
-				"https://api.aqua-book.ru/api/services",
+				"http://api.aqua-book.ru/api/services",
 				serviceData,
 			);
 			navigate(-1);
