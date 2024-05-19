@@ -23,7 +23,7 @@ const Register = () => {
 
 		try {
 			const response = await axios.post(
-				"http://api.aqua-book.ru/api/register",
+				"https://api.aqua-book.ru/api/register",
 				{
 					first_name: formState.first_name,
 					last_name: formState.last_name,

@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
-import { HeaderDashboard, CardEdit, Input, Radio, NumberInput } from "../";
+import {
+	HeaderDashboard,
+	CardEdit,
+	Input,
+	Radio,
+	NumberInput,
+	TextArea,
+} from "../";
 
 import axios from "axios";
 
@@ -12,13 +19,6 @@ const PersonalEdit = () => {
 	const navigate = useNavigate();
 
 	const { users, setUsers, updateProfileInfo } = useAuth();
-
-	const [selectedValue, setSelectedValue] = useState("");
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
-	const [phone, setPhone] = useState("");
-	const [position, setPosition] = useState("");
 
 	const [isChanged, setIsChanged] = useState(false);
 	const [isFilled, setIsFilled] = useState(false);
@@ -33,10 +33,10 @@ const PersonalEdit = () => {
 			try {
 				if (users?.id) {
 					const response = await axios.get(
-						`http://api.aqua-book.ru/api/profile/${users?.id}`,
+						`https://api.aqua-book.ru/api/profile/${users?.id}`,
 					);
 					console.log(
-						`URL: http://api.aqua-book.ru/api/profile/${users?.id}`,
+						`URL: https://api.aqua-book.ru/api/profile/${users?.id}`,
 						response.status,
 						response.statusText,
 					); // Проверьте статус и текст ответа
@@ -45,15 +45,17 @@ const PersonalEdit = () => {
 						return;
 					}
 					const data = response.data;
-					setIsBookable(data.is_bookable === 1);
+					setIsBookable(data.is_bookable);
 					setInitialValues({
 						firstName: data.first_name,
 						lastName: data.last_name,
 						selectedValue: data.gender,
 						email: data.email,
+						access: data.access,
 						phone: data.phone,
 						position: data.position,
-						is_bookable: data.is_bookable === 1,
+						description: data.description,
+						is_bookable: data.is_bookable,
 					});
 				}
 			} catch (error) {
@@ -65,33 +67,44 @@ const PersonalEdit = () => {
 	}, [users?.id]);
 
 	useEffect(() => {
-		setIsBookable(users?.is_bookable === 1);
+		setIsBookable(users?.is_bookable);
 		setInitialValues({
 			firstName: users?.first_name || "",
 			lastName: users?.last_name || "",
 			selectedValue: users?.gender || "",
 			email: users?.email || "",
+			access: users?.access || "employee",
 			phone: users?.phone || "",
 			position: users?.position || "",
-			is_bookable: users?.is_bookable === 1,
+			description: users?.description || "",
+			is_bookable: users?.is_bookable,
 		});
 		setCurrentValues({
 			firstName: users?.first_name || "",
 			lastName: users?.last_name || "",
 			selectedValue: users?.gender || "",
 			email: users?.email || "",
+			access: users?.access || "employee",
 			phone: users?.phone || "",
 			position: users?.position || "",
-			is_bookable: users?.is_bookable === 1,
+			description: users?.description || "",
+			is_bookable: users?.is_bookable,
 		});
 	}, [users]);
 
 	const handleChange = event => {
 		const { name, value } = event.target;
-		setCurrentValues(prevValues => ({
-			...prevValues,
-			[name]: value,
-		}));
+		if (name === "gender") {
+			setCurrentValues(prevValues => ({
+				...prevValues,
+				selectedValue: value, // Установка выбранного значения пола
+			}));
+		} else {
+			setCurrentValues(prevValues => ({
+				...prevValues,
+				[name]: value,
+			}));
+		}
 	};
 
 	useEffect(() => {
@@ -111,7 +124,7 @@ const PersonalEdit = () => {
 
 		console.log("isChanged:", isChanged);
 		console.log("isFilled:", isFilled);
-	}, [initialValues, currentValues]);
+	}, [initialValues, currentValues, isChanged, isFilled]);
 
 	const handleSubmit = async event => {
 		event.preventDefault();
@@ -123,15 +136,17 @@ const PersonalEdit = () => {
 				first_name: currentValues.firstName,
 				last_name: currentValues.lastName,
 				email: currentValues.email,
+				access: currentValues.access,
 				phone: currentValues.phone,
 				position: currentValues.position,
-				is_bookable: currentValues.is_bookable ? 1 : 0,
+				description: currentValues.description,
+				is_bookable: currentValues.is_bookable,
 			};
 
 			// Отправляем данные на сервер
-			console.log(profileData);
+			console.log("Profile updated in context:", profileData);
 			const response = await axios.put(
-				`http://api.aqua-book.ru/api/profile/${users?.id}`,
+				`https://api.aqua-book.ru/api/profile/${users?.id}`,
 				profileData,
 			);
 
@@ -144,11 +159,12 @@ const PersonalEdit = () => {
 		}
 	};
 
-	const handleToggleBookable = checked => {
-		setIsBookable(checked);
+	const handleToggleBookable = async checked => {
+		console.log("Toggle Bookable:", checked);
+		setIsBookable(checked ? 1 : 0);
 		setCurrentValues(prevValues => ({
 			...prevValues,
-			is_bookable: checked, // Обновляем значение в currentValues
+			is_bookable: checked ? 1 : 0,
 		}));
 	};
 
@@ -167,12 +183,12 @@ const PersonalEdit = () => {
 								className='grid grid-cols-1 gap-4 items-start'
 								onSubmit={handleSubmit}>
 								<CardEdit
+									cardEdit
 									general='Общая информация'
 									switcher={{
 										checked: isBookable,
 										onChange: handleToggleBookable,
-									}}
-									cardEdit>
+									}}>
 									<div className='ab-info'>
 										<div className='ab-info__label'>
 											<span className='ab-description'>Пол</span>
@@ -182,19 +198,15 @@ const PersonalEdit = () => {
 												<Radio
 													type='radio'
 													name='gender'
-													id='input-31'
-													value={currentValues.selectedValue}
-													prefix='Мужской'
-													checked={selectedValue === "male"}
+													value='male'
+													checked={currentValues.selectedValue === "male"}
 													onChange={handleChange}
 												/>
 												<Radio
 													type='radio'
 													name='gender'
-													id='input-32'
-													value={currentValues.selectedValue}
-													prefix='Женский'
-													checked={selectedValue === "famale"}
+													value='female'
+													checked={currentValues.selectedValue === "female"}
 													onChange={handleChange}
 												/>
 											</span>
@@ -247,6 +259,15 @@ const PersonalEdit = () => {
 										prefix='Должность'
 										onChange={handleChange}
 									/>
+									<TextArea
+										type='text'
+										name='description'
+										autoComplete='description'
+										value={currentValues.description}
+										id='textarea-40'
+										prefix='Описание'
+										onChange={handleChange}
+									/>
 									<div className='ab-select'>
 										<div className='ab-select__input-wrap'>
 											<Input
@@ -272,9 +293,6 @@ const PersonalEdit = () => {
 										"show-bottom-leave-active show-bottom-leave-to": !isChanged,
 									})}
 									style={isChanged ? {} : { display: "none" }}>
-									<button
-										type='button'
-										className='ab-button eb-model-edit__button eb-model-edit__button--mobile md:hidden ab-button_md color-default theme-ghost'></button>
 									<button
 										type='submit'
 										className='ab-button eb-model-edit__button ml-2 md:ml-0 ab-button_md color-accent theme-solid'>
