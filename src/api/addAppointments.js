@@ -23,7 +23,38 @@ router.post("/appointments", async (req, res) => {
 		totalCost === undefined ||
 		clients_id === undefined
 	) {
+		console.error("Missing parameters:", {
+			start,
+			end,
+			selectedServices,
+			serviceEmployeeMap,
+			text,
+			clients_id,
+			totalCost,
+		});
 		return res.status(400).json({ message: "Все поля должны быть заполнены" });
+	}
+
+	// Проверка типов данных
+	if (
+		typeof start !== "string" ||
+		typeof end !== "string" ||
+		typeof text !== "string" ||
+		typeof clients_id !== "number" ||
+		!Array.isArray(selectedServices) ||
+		!Array.isArray(serviceEmployeeMap) ||
+		typeof totalCost !== "number"
+	) {
+		console.error("Invalid data types:", {
+			start,
+			end,
+			selectedServices,
+			serviceEmployeeMap,
+			text,
+			clients_id,
+			totalCost,
+		});
+		return res.status(400).json({ message: "Invalid data types" });
 	}
 
 	let connection;
@@ -48,16 +79,8 @@ router.post("/appointments", async (req, res) => {
 
 		// Добавляем новую запись в таблицу appointments
 		const [appointmentResult] = await connection.execute(
-			"INSERT INTO appointments (start, end, selectedServices, serviceEmployeeMap, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?, ?, ?)",
-			[
-				start,
-				end,
-				selectedServices,
-				serviceEmployeeMap,
-				text,
-				clients_id,
-				totalCost,
-			],
+			"INSERT INTO appointments (start, end, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?)",
+			[start, end, text, clients_id, totalCost],
 		);
 
 		if (appointmentResult.affectedRows === 0) {
