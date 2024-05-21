@@ -72,7 +72,7 @@ router.post("/appointments", async (req, res) => {
 		res.status(500).json({ message: "Server error" });
 	} finally {
 		// Закрываем соединение
-		await db.close();
+		await db.end();
 	}
 });
 
