@@ -14,7 +14,6 @@ dayjs.tz.setDefault("Asia/Krasnoyarsk");
 router.get("/appointments", async (req, res) => {
 	try {
 		const [rows] = await db.execute(`
-            SELECT 
 			SELECT 
 			a.id AS appointment_id, 
 			a.start, 
