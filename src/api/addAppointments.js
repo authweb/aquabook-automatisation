@@ -70,6 +70,9 @@ router.post("/appointments", async (req, res) => {
 		await db.rollback();
 		console.error(error);
 		res.status(500).json({ message: "Server error" });
+	} finally {
+		// Закрываем соединение
+		await db.close();
 	}
 });
 
