@@ -111,21 +111,15 @@ const AddAppointments = ({
 			const newEvent = {
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
-				selectedServices: selectedServices.map(service => service.name), // Преобразуем в массив строк
-				serviceEmployeeMap: serviceEmployeeMapArr, // Преобразуем в массив объектов
+				selectedServices: selectedServices.map(service => service.name),
+				serviceEmployeeMap: serviceEmployeeMapArr,
 				text: appointmentText,
 				totalCost: currentValues.totalCost,
 				clients_id: selectedClient.id,
 			};
 
-			console.log(
-				"Отправляемое время начала:",
-				startDate.format("YYYY-MM-DD HH:mm:ss"),
-			);
-			console.log(
-				"Отправляемое время окончания:",
-				endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
-			);
+			// Логирование данных перед отправкой
+			console.log("Данные для отправки:", newEvent);
 
 			const response = await axios.post(
 				"https://api.aqua-book.ru/api/appointments",
@@ -134,8 +128,6 @@ const AddAppointments = ({
 			if (response.data.errors) {
 				setErrors(response.data.errors);
 			} else {
-				console.log("Server response", response.data);
-				// Очистим выбранные услуги и сотрудников из состояния
 				setSelectedServices([]);
 				setServiceEmployeeMap(new Map());
 				navigate(-1);
