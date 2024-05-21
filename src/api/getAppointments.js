@@ -15,34 +15,34 @@ router.get("/appointments", async (req, res) => {
 	try {
 		const [rows] = await db.execute(`
 			SELECT 
-			a.id AS appointment_id, 
-			a.start, 
-			a.end, 
-			a.selectedServices, 
-			a.serviceEmployeeMap, 
-			a.text, 
-			a.totalCost, 
-			a.clients_id AS client_id, 
-			a.is_paid,
-			c.first_name,
-			c.last_name,
-			c.phone,
-			c.email,
-			s.id AS service_id,
-			s.name AS service_name,
-			e.id AS employee_id,
-			e.first_name AS employee_first_name,
-			e.last_name AS employee_last_name
-		FROM 
-			appointments a 
-		JOIN 
-			clients c ON a.clients_id = c.id 
-		JOIN 
-			service_employee_map sem ON a.id = sem.appointment_id 
-		JOIN 
-			services s ON sem.service_id = s.id 
-		JOIN 
-			employees e ON sem.employee_id = e.id;
+				a.id AS appointment_id, 
+				a.start, 
+				a.end, 
+				a.selectedServices, 
+				a.serviceEmployeeMap, 
+				a.text, 
+				a.totalCost, 
+				a.clients_id AS client_id, 
+				a.is_paid,
+				c.first_name,
+				c.last_name,
+				c.phone,
+				c.email,
+				s.id AS service_id,
+				s.name AS service_name,
+				e.id AS employee_id,
+				e.first_name AS employee_first_name,
+				e.last_name AS employee_last_name
+			FROM 
+				appointments a 
+			JOIN 
+				clients c ON a.clients_id = c.id 
+			LEFT JOIN 
+				service_employee_map sem ON a.id = sem.appointment_id 
+			LEFT JOIN 
+				services s ON sem.service_id = s.id 
+			LEFT JOIN 
+				employees e ON sem.employee_id = e.id;
         `);
 
 		const appointments = rows.reduce((acc, row) => {
@@ -50,7 +50,7 @@ router.get("/appointments", async (req, res) => {
 				appointment_id,
 				start,
 				end,
-				clients_id,
+				client_id,
 				first_name,
 				last_name,
 				phone,
@@ -67,7 +67,7 @@ router.get("/appointments", async (req, res) => {
 				start,
 				end,
 				client: {
-					id: clients_id,
+					id: client_id,
 					first_name,
 					last_name,
 					phone,
@@ -76,15 +76,17 @@ router.get("/appointments", async (req, res) => {
 				services: [],
 			};
 
-			appointment.services.push({
-				id: service_id,
-				name: service_name,
-				employee: {
-					id: employee_id,
-					first_name: employee_first_name,
-					last_name: employee_last_name,
-				},
-			});
+			if (service_id) {
+				appointment.services.push({
+					id: service_id,
+					name: service_name,
+					employee: {
+						id: employee_id,
+						first_name: employee_first_name,
+						last_name: employee_last_name,
+					},
+				});
+			}
 
 			acc[appointment_id] = appointment;
 
