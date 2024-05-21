@@ -48,7 +48,7 @@ router.post("/appointments", async (req, res) => {
 
 		// Добавляем новую запись в таблицу appointments
 		const [appointmentResult] = await connection.execute(
-			"INSERT INTO appointments (start, end, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?)",
+			"INSERT INTO appointments (start, end, selectedServices, serviceEmployeeMap, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?, ?, ?)",
 			[
 				start,
 				end,
