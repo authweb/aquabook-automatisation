@@ -83,12 +83,12 @@ const AddAppointments = ({
 	};
 
 	const addAppointment = async () => {
-		if (!selectedClient || !selectedClient.id || currentValues.cost <= 0) {
+		if (!selectedClient || !selectedClient.id || currentValues.totalCost <= 0) {
 			const errorMessages = [];
 			if (!selectedClient || !selectedClient.id) {
 				errorMessages.push("Необходимо выбрать клиента.");
 			}
-			if (currentValues.cost <= 0) {
+			if (currentValues.totalCost <= 0) {
 				errorMessages.push("Общая стоимость должна быть больше нуля.");
 			}
 			setErrors(errorMessages);
@@ -114,7 +114,7 @@ const AddAppointments = ({
 				selectedServices: selectedServices.map(service => service.name), // Преобразуем в массив строк
 				serviceEmployeeMap: serviceEmployeeMapArr, // Преобразуем в массив объектов
 				text: appointmentText,
-				totalCost: currentValues.cost,
+				totalCost: currentValues.totalCost,
 				clients_id: selectedClient.id,
 			};
 
@@ -135,6 +135,9 @@ const AddAppointments = ({
 				setErrors(response.data.errors);
 			} else {
 				console.log("Server response", response.data);
+				// Очистим выбранные услуги и сотрудников из состояния
+				setSelectedServices([]);
+				setServiceEmployeeMap(new Map());
 				navigate(-1);
 				setErrors([]);
 			}
@@ -152,8 +155,8 @@ const AddAppointments = ({
 
 	// Функция для выбора сотрудника для услуги
 	const handleSelectEmployeeForService = (newServiceId, employee) => {
-		setServiceEmployeeMap(prev => {
-			const updatedMap = new Map(prev);
+		setServiceEmployeeMap(prevMap => {
+			const updatedMap = new Map(prevMap);
 			updatedMap.set(newServiceId, employee);
 			return updatedMap;
 		});

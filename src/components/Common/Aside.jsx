@@ -115,6 +115,13 @@ const Aside = ({
 		});
 	}, [services, clients]);
 
+	useEffect(() => {
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	const handleServiceSelect = service => {
 		const tempId = generateTempId();
 		setTempIdForSelectedService(tempId);
@@ -200,12 +207,6 @@ const Aside = ({
 			closeAside();
 		}
 	};
-	useEffect(() => {
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, []);
 
 	return (
 		<aside
