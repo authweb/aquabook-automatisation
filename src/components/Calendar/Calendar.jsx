@@ -91,6 +91,7 @@ const CalendarDay = () => {
 				setEvents(
 					appointmentsResponse.data.appointments
 						.flatMap(appt => {
+							console.log("Appointment:", appt);
 							// Проверяем, существует ли serviceEmployeeMap и является ли оно строкой
 							if (
 								typeof appt.serviceEmployeeMap === "string" &&
