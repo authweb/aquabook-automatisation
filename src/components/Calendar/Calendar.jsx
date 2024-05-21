@@ -48,14 +48,6 @@ const CalendarDay = () => {
 	}, [timeRange]);
 
 	useEffect(() => {
-		const formattedDate = dayjs(selectedDate).format("YYYY-MM-DD");
-		setConfig(prevConfig => ({
-			...prevConfig,
-			startDate: formattedDate,
-		}));
-	}, [selectedDate]);
-
-	useEffect(() => {
 		async function fetchData() {
 			try {
 				const [

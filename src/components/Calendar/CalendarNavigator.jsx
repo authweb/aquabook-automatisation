@@ -60,20 +60,11 @@ const CalendarNavigator = () => {
 		useContext(CalendarContext);
 
 	const handleDateSelection = args => {
-		// Выводим выбранную дату в консоль для проверки
-		console.log("Выбранная дата:", args.day.value);
-
 		// Форматируем выбранную дату в ожидаемый формат
 		const formattedDate = dayjs(args.day.value).format("YYYY-MM-DD");
 
-		// Выводим отформатированную дату в консоль для проверки
-		console.log("Форматированная дата:", formattedDate);
-
 		// Устанавливаем выбранную дату в состояние
 		setSelectedDate(args.day);
-
-		// Выводим обновленное значение selectedDate в консоль для проверки
-		console.log("Updated selectedDate:", selectedDate);
 
 		// Получаем значение параметра "today" из строки запроса
 		const today = searchParams.get("today");
