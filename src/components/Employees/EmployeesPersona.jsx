@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import useEmployeeData from "../../hooks/useEmployeeData";
 
 import { HeaderDashboard, CardAb } from "../../components";
 import "../../scss/profile.scss";
@@ -8,20 +8,8 @@ import imageUser from "../../assets/images/soon.png";
 
 import { Tag } from "antd";
 
-const EmployeesPersona = ({ onEmployeeData }) => {
-	let { id } = useParams();
-	const [employee, setEmployee] = useState([]);
-
-	useEffect(() => {
-		if (id) {
-			fetch(`https://api.aqua-book.ru/api/employees/${id}`)
-				.then(response => response.json())
-				.then(data => {
-					setEmployee(data.employee);
-					onEmployeeData(data.employee); // вызываем функцию с данными сотрудника
-				});
-		}
-	}, [id, onEmployeeData]);
+const EmployeesPersona = () => {
+	const { employees, error } = useEmployeeData();
 
 	return (
 		<>
@@ -41,7 +29,7 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 									</div>
 									<div className='ab-island__title-wrap'>
 										<h3 className='ab_headline ab-island__title'>
-											{employee?.first_name} {employee?.last_name}
+											{employees?.first_name} {employees?.last_name}
 										</h3>
 									</div>
 									<div className='ab-island__description'>
@@ -49,7 +37,7 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 									</div>
 									<div className='ab-island__arrow-wrap'>
 										<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs'>
-											{employee?.is_bookable === 1 ? (
+											{employees?.is_bookable === 1 ? (
 												<Tag color='success'>Активен</Tag>
 											) : (
 												<Tag color='error'>Не активен</Tag>
@@ -69,7 +57,7 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 													<span className='ab-description'>Пол</span>
 												</div>
 												<div>
-													{employee?.gender === "male" ? "Мужской" : "Женский"}
+													{employees?.gender === "male" ? "Мужской" : "Женский"}
 												</div>
 											</div>
 											<div className='ab-info'>
@@ -81,9 +69,9 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 														<a
 															target='_blank'
 															rel='noreferrer'
-															href={`tel:${employee?.phone}`}
+															href={`tel:${employees?.phone}`}
 															className='link'>
-															{employee?.phone}
+															{employees?.phone}
 														</a>
 													</span>
 												</div>
@@ -92,13 +80,13 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 												<div className='ab-info__label'>
 													<span className='ab-description'>Email</span>
 												</div>
-												<div>{employee?.email}</div>
+												<div>{employees?.email}</div>
 											</div>
 											<div className='ab-info'>
 												<div className='ab-info__label'>
 													<span className='ab-description'>Роль</span>
 												</div>
-												<div>{employee?.position}</div>
+												<div>{employees?.position}</div>
 											</div>
 											<div className='ab-info'>
 												<div className='ab-info__label'>
@@ -119,7 +107,7 @@ const EmployeesPersona = ({ onEmployeeData }) => {
 									</div>
 									<div className='ab-island__arrow-wrap'>
 										<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs'>
-											{employee?.is_bookable === 1 ? (
+											{employees?.is_bookable === 1 ? (
 												<Tag color='success'>Включена</Tag>
 											) : (
 												<Tag color='error'>Не включена</Tag>

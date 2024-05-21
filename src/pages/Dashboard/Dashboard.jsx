@@ -379,17 +379,10 @@ const Dashboard = () => {
 											path='appointments/:eventId'
 											element={<AppointmentDetails />}
 										/>
-										<Route path='employees'>
+										<Route path='employees/'>
 											<Route index element={<Employees />} />
 											<Route path=':id'>
-												<Route
-													index
-													element={
-														<EmployeesPersona
-															onEmployeeData={handleEmployeeData}
-														/>
-													}
-												/>
+												<Route index element={<EmployeesPersona />} />
 												<Route path='edit' element={<EmployeesEdit />} />
 											</Route>
 										</Route>
@@ -418,7 +411,7 @@ const Dashboard = () => {
 											<Route path='employees'>
 												<Route index element={<Employees />} />
 												<Route
-													path='employees/:id'
+													path={`employees/${employees.id}`}
 													element={<EmployeesPersona />}
 												/>
 												<Route path='edit' element={<EmployeesEdit />} />

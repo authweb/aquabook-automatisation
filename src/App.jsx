@@ -36,6 +36,7 @@ const getClassName = location => {
 	const isAppointmentDetailsPage = appointmentDetailsRegex.test(
 		location.pathname,
 	);
+	const bookingRegex = /^\/booking(\/|\/.*)?$/;
 
 	if (
 		location.pathname.includes("/dashboard/calendar/add") ||
@@ -46,13 +47,7 @@ const getClassName = location => {
 		return "eb-auth-layout";
 	} else if (location.pathname === "/register") {
 		return "eb-register-page eb-register-page--has-image";
-	} else if (
-		location.pathname === "/booking" ||
-		location.pathname === "/booking/" ||
-		location.pathname === "/booking/profile" ||
-		location.pathname === "/booking/profile/" ||
-		location.pathname === "/booking/profile/login"
-	) {
+	} else if (bookingRegex.test(location.pathname)) {
 		return "app-wrapper";
 	} else {
 		return "ab-layout";
@@ -62,7 +57,6 @@ const getClassName = location => {
 const App = () => {
 	useUpdateViewportDimensions();
 	const location = useLocation();
-	const navigate = useNavigate();
 	const { users } = useContext(AuthContext);
 	const [_, setUsers] = useState(null);
 	const classNameMain =
