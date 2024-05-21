@@ -130,6 +130,7 @@ const AddAppointments = ({
 				"https://api.aqua-book.ru/api/appointments",
 				newEvent,
 			);
+			console.log(newEvent);
 
 			// Проверка на наличие ошибок в ответе сервера
 			if (response.data.errors) {

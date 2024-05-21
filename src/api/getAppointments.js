@@ -14,13 +14,7 @@ dayjs.tz.setDefault("Asia/Krasnoyarsk");
 router.get("/appointments", async (req, res) => {
 	try {
 		const [rows] = await db.execute(`
-      SELECT a.id as appointment_id, a.start, a.end, c.id as client_id, c.first_name, c.last_name, c.phone, c.email,
-             s.id as service_id, s.name as service_name, e.id as employee_id, e.first_name as employee_first_name, e.last_name as employee_last_name
-      FROM appointments a
-      JOIN clients c ON a.clients_id = c.id
-      JOIN service_employee_map sem ON a.id = sem.appointment_id
-      JOIN services s ON sem.service_id = s.id
-      JOIN employees e ON sem.employee_id = e.id
+    SELECT a.id, a.start, a.end, a.selectedServices, a.serviceEmployeeMap, a.text, a.totalCost, a.clients_id, a.is_paid, c.first_name, c.last_name, c.phone, c.email, s.id as service_id, s.name as service_name, e.id as employee_id, e.first_name as employee_first_name, e.last_name as employee_last_name FROM appointments a JOIN clients c ON a.clients_id = c.id JOIN service_employee_map sem ON a.id = sem.appointment_id JOIN services s ON sem.service_id = s.id JOIN employees e ON sem.employee_id = e.id;
     `);
 
 		const appointments = rows.reduce((acc, row) => {
