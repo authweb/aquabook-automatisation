@@ -84,25 +84,30 @@ const CalendarDay = () => {
 				setEvents(
 					appointmentsResponse.data.appointments
 						.map(appt => {
-							const employeeNames = appt.serviceEmployeeMap.join(",");
-							const employeeIds = employeeNames.map(name => {
-								const employeeId = employeeMap.get(name);
+							const employeeIds = appt.services.map(service => {
+								const employee = service.employee;
+								const employeeId = employeeMap.get(
+									`${employee.first_name} ${employee.last_name}`,
+								);
 								if (employeeId === undefined) {
-									console.error(`Employee ID for '${name}' not found.`);
+									console.error(
+										`Employee ID for '${employee.first_name} ${employee.last_name}' not found.`,
+									);
 								}
 								return employeeId;
 							});
 
-							if (employeeIds.some(id => id === undefined)) {
-								return null; // Не удается найти идентификатор для одного или нескольких сотрудников
-							}
+							// Фильтруем, чтобы убрать неопределенные идентификаторы
+							const filteredEmployeeIds = employeeIds.filter(
+								id => id !== undefined,
+							);
 
 							return {
 								id: appt.id.toString(),
 								start: appt.start,
 								end: appt.end,
-								text: appt.text,
-								resource: employeeIds.join(","), // Список идентификаторов сотрудников, разделенных запятыми
+								text: appt.services.map(service => service.name).join(", "), // Выводим названия всех услуг через запятую
+								resource: filteredEmployeeIds.join(","), // Список идентификаторов сотрудников, разделенных запятыми
 								backColor: "#someColor",
 							};
 						})
