@@ -36,12 +36,28 @@ router.post("/appointments", async (req, res) => {
 		await connection.beginTransaction();
 
 		// Выводим параметры для отладки
-		console.log("Parameters:", { start, end, text, clients_id, totalCost });
+		console.log("Parameters:", {
+			start,
+			end,
+			selectedServices,
+			serviceEmployeeMap,
+			text,
+			clients_id,
+			totalCost,
+		});
 
 		// Добавляем новую запись в таблицу appointments
 		const [appointmentResult] = await connection.execute(
 			"INSERT INTO appointments (start, end, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?)",
-			[start, end, text, clients_id, totalCost],
+			[
+				start,
+				end,
+				selectedServices,
+				serviceEmployeeMap,
+				text,
+				clients_id,
+				totalCost,
+			],
 		);
 
 		if (appointmentResult.affectedRows === 0) {
@@ -78,6 +94,7 @@ router.post("/appointments", async (req, res) => {
 				text,
 				clients_id,
 				totalCost,
+				selectedServices,
 				serviceEmployeeMap,
 			},
 		});
