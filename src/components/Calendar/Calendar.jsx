@@ -57,60 +57,41 @@ const CalendarDay = () => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const [
-					appointmentsResponse,
-					employeesResponse,
-					categoriesResponse,
-					servicesResponse,
-				] = await Promise.all([
+				const [appointmentsResponse, employeesResponse] = await Promise.all([
 					axios.get("https://api.aqua-book.ru/api/appointments"),
 					axios.get("https://api.aqua-book.ru/api/employees"),
-					axios.get("https://api.aqua-book.ru/api/service-categories"),
-					axios.get("https://api.aqua-book.ru/api/services"),
 				]);
 
-				const { servicesCategories } = categoriesResponse.data;
-				const { services } = servicesResponse.data;
+				const { employees } = employeesResponse.data;
 
-				setCategories(servicesCategories);
-				setServices(services);
-
-				setConfig(prevConfig => ({
-					...prevConfig,
-					columns: employeesResponse.data.employees.map(employee => ({
-						name: employee.first_name,
-						id: employee.id.toString(),
-					})),
-				}));
 				// Создаем карту соответствия имени сотрудника и его id
 				const employeeMap = new Map();
-				employeesResponse.data.employees.forEach(employee => {
-					employeeMap.set(employee.first_name, employee.id);
+				employees.forEach(employee => {
+					employeeMap.set(employee.id, employee.first_name);
 				});
 
-				setEvents(
-					appointmentsResponse.data.appointments
-						.map(appt => {
-							const employeeId = employeeMap.get(appt.serviceEmployeeMap);
+				// Преобразуем данные о назначениях в массив событий для календаря
+				const events = appointmentsResponse.data.appointments
+					.map(appt => {
+						const employeeId = appt.employee_id;
+						const employeeName = employeeMap.get(employeeId);
+						if (!employeeName) {
+							console.error(`Employee name for ID '${employeeId}' not found.`);
+							return null;
+						}
+						return {
+							id: appt.id.toString(),
+							start: appt.start,
+							end: appt.end,
+							text: appt.text,
+							resource: employeeId.toString(),
+							backColor: "#someColor",
+							employeeName: employeeName,
+						};
+					})
+					.filter(event => event !== null);
 
-							if (employeeId === undefined) {
-								console.error(
-									`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
-								);
-								return null;
-							}
-
-							return {
-								id: appt.id.toString(),
-								start: appt.start,
-								end: appt.end,
-								text: appt.text,
-								resource: employeeId.toString(),
-								backColor: "#someColor",
-							};
-						})
-						.filter(event => event !== null),
-				);
+				setEvents(events);
 				console.log(appointmentsResponse);
 			} catch (error) {
 				console.error("Error fetching data:", error);
