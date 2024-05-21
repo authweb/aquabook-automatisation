@@ -91,28 +91,40 @@ const CalendarDay = () => {
 				setEvents(
 					appointmentsResponse.data.appointments
 						.flatMap(appt => {
-							// Разбиваем строку serviceEmployeeMap на части
-							const serviceEmployeePairs = appt.serviceEmployeeMap.split(", ");
-							// Создаем массив событий для каждой пары услуга-сотрудник
-							return serviceEmployeePairs.map(pair => {
-								const [serviceName, employeeName] = pair.split(": "); // Предполагаем, что строка имеет формат "Услуга: Сотрудник"
-								const employeeId = employeeMap.get(employeeName);
-								if (employeeId === undefined) {
-									console.error(`Employee ID for '${employeeName}' not found.`);
-									return null;
-								}
-								return {
-									id: appt.id.toString(),
-									start: appt.start,
-									end: appt.end,
-									text: appt.text,
-									resource: employeeId.toString(),
-									backColor: "#someColor",
-								};
-							});
+							// Проверяем, существует ли serviceEmployeeMap и является ли оно строкой
+							if (typeof appt.serviceEmployeeMap === "string") {
+								// Разбиваем строку serviceEmployeeMap на части
+								const serviceEmployeePairs =
+									appt.serviceEmployeeMap.split(", ");
+								// Создаем массив событий для каждой пары услуга-сотрудник
+								return serviceEmployeePairs.map(pair => {
+									const [serviceName, employeeName] = pair.split(": "); // Предполагаем, что строка имеет формат "Услуга: Сотрудник"
+									const employeeId = employeeMap.get(employeeName);
+									if (employeeId === undefined) {
+										console.error(
+											`Employee ID for '${employeeName}' not found.`,
+										);
+										return null;
+									}
+									return {
+										id: appt.id.toString(),
+										start: appt.start,
+										end: appt.end,
+										text: appt.text,
+										resource: employeeId.toString(),
+										backColor: "#someColor",
+									};
+								});
+							} else {
+								console.error(
+									`serviceEmployeeMap is not a string or is undefined for appointment with ID ${appt.id}.`,
+								);
+								return [];
+							}
 						})
 						.filter(event => event !== null),
 				);
+
 				console.log(appointmentsResponse);
 			} catch (error) {
 				console.error("Error fetching data:", error);
