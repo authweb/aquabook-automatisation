@@ -1,7 +1,7 @@
 // addAppointments.js
 const express = require("express");
 const router = express.Router();
-const pool = require("../config/dbConnect");
+const db = require("../config/dbConnect");
 
 router.post("/appointments", async (req, res) => {
 	const {
@@ -30,7 +30,7 @@ router.post("/appointments", async (req, res) => {
 
 	try {
 		// Получаем соединение из пула
-		connection = await pool.getConnection();
+		connection = await db.getConnection();
 
 		// Начинаем транзакцию
 		await connection.beginTransaction();
