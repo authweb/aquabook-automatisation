@@ -92,7 +92,10 @@ const CalendarDay = () => {
 					appointmentsResponse.data.appointments
 						.flatMap(appt => {
 							// Проверяем, существует ли serviceEmployeeMap и является ли оно строкой
-							if (typeof appt.serviceEmployeeMap === "string") {
+							if (
+								typeof appt.serviceEmployeeMap === "string" &&
+								appt.serviceEmployeeMap.trim() !== ""
+							) {
 								// Разбиваем строку serviceEmployeeMap на части
 								const serviceEmployeePairs =
 									appt.serviceEmployeeMap.split(", ");
@@ -117,7 +120,7 @@ const CalendarDay = () => {
 								});
 							} else {
 								console.error(
-									`serviceEmployeeMap is not a string or is undefined for appointment with ID ${appt.id}.`,
+									`serviceEmployeeMap is not a non-empty string or is undefined for appointment with ID ${appt.id}.`,
 								);
 								return [];
 							}
