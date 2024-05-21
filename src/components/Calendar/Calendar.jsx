@@ -84,7 +84,7 @@ const CalendarDay = () => {
 				setEvents(
 					appointmentsResponse.data.appointments
 						.map(appt => {
-							const employeeNames = appt.serviceEmployeeMap.split(", ");
+							const employeeNames = appt.serviceEmployeeMap.join(",");
 							const employeeIds = employeeNames.map(name => {
 								const employeeId = employeeMap.get(name);
 								if (employeeId === undefined) {
