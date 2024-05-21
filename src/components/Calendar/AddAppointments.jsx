@@ -130,7 +130,7 @@ const AddAppointments = ({
 				"https://api.aqua-book.ru/api/appointments",
 				newEvent,
 			);
-			console.log(newEvent);
+			console.log("Server response", response.data);
 
 			// Проверка на наличие ошибок в ответе сервера
 			if (response.data.errors) {
@@ -153,7 +153,7 @@ const AddAppointments = ({
 				// Ошибка при настройке запроса
 				setErrors(["Error setting up request"]);
 			}
-			console.error("Error", error.message);
+			console.error("Error during POST request:", error);
 		}
 	};
 

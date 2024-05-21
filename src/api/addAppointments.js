@@ -13,35 +13,16 @@ router.post("/appointments", async (req, res) => {
 		totalCost,
 	} = req.body;
 
-	const errors = [];
-
-	if (start === undefined) {
-		errors.push("start is missing");
-	}
-
-	if (end === undefined) {
-		errors.push("end is missing");
-	}
-
-	if (text === undefined) {
-		errors.push("text is missing");
-	}
-
-	if (typeof totalCost !== "number") {
-		errors.push("totalCost should be a number");
-	}
-
-	if (typeof clients_id !== "number") {
-		errors.push("clients_id should be a number");
-	}
-
-	if (!Array.isArray(serviceEmployeeMap) || serviceEmployeeMap.length === 0) {
-		errors.push("serviceEmployeeMap should be a non-empty array");
-	}
-
-	if (errors.length > 0) {
-		// Если есть ошибки, отправьте их в ответе
-		return res.status(400).json({ errors });
+	if (
+		!start ||
+		!end ||
+		!selectedServices ||
+		!serviceEmployeeMap ||
+		!text ||
+		!totalCost ||
+		!clients_id
+	) {
+		return res.status(400).json({ message: "Все поля должны быть заполнены" });
 	}
 
 	try {
