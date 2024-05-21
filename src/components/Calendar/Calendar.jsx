@@ -84,13 +84,17 @@ const CalendarDay = () => {
 				setEvents(
 					appointmentsResponse.data.appointments
 						.map(appt => {
-							const employeeId = employeeMap.get(appt.serviceEmployeeMap);
+							const employeeNames = appt.serviceEmployeeMap.split(", ");
+							const employeeIds = employeeNames.map(name => {
+								const employeeId = employeeMap.get(name);
+								if (employeeId === undefined) {
+									console.error(`Employee ID for '${name}' not found.`);
+								}
+								return employeeId;
+							});
 
-							if (employeeId === undefined) {
-								console.error(
-									`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
-								);
-								return null;
+							if (employeeIds.some(id => id === undefined)) {
+								return null; // Не удается найти идентификатор для одного или нескольких сотрудников
 							}
 
 							return {
@@ -98,12 +102,13 @@ const CalendarDay = () => {
 								start: appt.start,
 								end: appt.end,
 								text: appt.text,
-								resource: employeeId.toString(),
+								resource: employeeIds.join(","), // Список идентификаторов сотрудников, разделенных запятыми
 								backColor: "#someColor",
 							};
 						})
 						.filter(event => event !== null),
 				);
+
 				console.log(appointmentsResponse);
 			} catch (error) {
 				console.error("Error fetching data:", error);
