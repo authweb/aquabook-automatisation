@@ -7,22 +7,32 @@ const routes = require("./routes/routes");
 const app = express();
 dotenv.config();
 
+// Использование CORS для всех маршрутов до их определения
+app.use(
+	cors({
+		origin: "https://aqua-book.ru",
+	}),
+);
+
+// Использование парсера JSON для всех маршрутов до их определения
+app.use(express.json());
+
+// Базовый маршрут для проверки работы API
 app.get("/api", (req, res) => {
 	res.json({ message: "Hello from API!" });
 });
 
-app.use(cors());
-app.use(express.json());
-
+// Регистрация маршрутов
 app.use("/api", routes);
-
-const PORT = process.env.API_PORT;
-app.listen(PORT, () => {
-	console.log(`Сервер запущен на порту ${PORT}`);
-});
 
 // Обработка ошибок
 app.use((err, req, res, next) => {
 	console.error(err.stack);
 	res.status(500).send("Something broke!");
+});
+
+// Запуск сервера
+const PORT = process.env.API_PORT || 4000; // Добавляем значение по умолчанию
+app.listen(PORT, () => {
+	console.log(`Сервер запущен на порту ${PORT}`);
 });

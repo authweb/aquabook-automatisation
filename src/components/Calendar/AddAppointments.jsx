@@ -83,7 +83,6 @@ const AddAppointments = ({
 	};
 
 	const addAppointment = async () => {
-		// Проверяем, что все необходимые данные выбраны и корректны
 		if (!selectedClient || !selectedClient.id || currentValues.cost <= 0) {
 			const errorMessages = [];
 			if (!selectedClient || !selectedClient.id) {
@@ -95,7 +94,7 @@ const AddAppointments = ({
 			setErrors(errorMessages);
 			return;
 		}
-		// Формирование текста для поля text
+
 		const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name} ${selectedClient.phone}`;
 		const servicesInfo = selectedServices
 			.map(service => service.name)
@@ -103,7 +102,6 @@ const AddAppointments = ({
 		const serviceEmployeeMapStr = Array.from(serviceEmployeeMap.entries())
 			.map(([, employee]) => `${employee.first_name}`)
 			.join(", ");
-
 		const appointmentText = `${clientInfo}, ${servicesInfo}`;
 
 		try {
@@ -112,7 +110,7 @@ const AddAppointments = ({
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
 				selectedServices: servicesInfo,
 				serviceEmployeeMap: serviceEmployeeMapStr,
-				text: appointmentText, // Здесь используется сформированный текст
+				text: appointmentText,
 				totalCost: currentValues.cost,
 				clients_id: selectedClient.id,
 			};
@@ -130,27 +128,19 @@ const AddAppointments = ({
 				"https://api.aqua-book.ru/api/appointments",
 				newEvent,
 			);
-			console.log("Server response", response.data);
-
-			// Проверка на наличие ошибок в ответе сервера
 			if (response.data.errors) {
 				setErrors(response.data.errors);
 			} else {
 				console.log("Server response", response.data);
 				navigate(-1);
-				setErrors([]); // Очистка ошибок после успешного запроса
-				// Дополнительные действия после успешного создания записи
+				setErrors([]);
 			}
 		} catch (error) {
-			// Обработка ошибок запроса
 			if (error.response) {
-				// Ошибка ответа сервера
 				setErrors(error.response.data.errors || [error.response.data.message]);
 			} else if (error.request) {
-				// Запрос был отправлен, но не было ответа
 				setErrors(["No response was received"]);
 			} else {
-				// Ошибка при настройке запроса
 				setErrors(["Error setting up request"]);
 			}
 			console.error("Error during POST request:", error);
