@@ -107,6 +107,10 @@ const AddAppointments = ({
 		);
 		const appointmentText = `${clientInfo}, ${servicesInfo}`;
 
+		// Логирование данных перед отправкой
+		console.log("selectedServices:", selectedServices);
+		console.log("serviceEmployeeMapArr:", serviceEmployeeMapArr);
+
 		try {
 			const newEvent = {
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
