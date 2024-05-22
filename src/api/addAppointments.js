@@ -3,113 +3,80 @@ const router = express.Router();
 const db = require("../config/dbConnect");
 
 router.post("/appointments", async (req, res) => {
-  const {
-    start,
-    end,
-    text,
-    clients_id,
-    selectedServices,
-    serviceEmployeeMap,
-    totalCost,
-  } = req.body;
+	const {
+		start,
+		end,
+		text,
+		clients_id,
+		selectedServices,
+		serviceEmployeeMap,
+		totalCost,
+	} = req.body;
 
-  // Проверка на наличие всех необходимых параметров
-  if (
-    start === undefined ||
-    end === undefined ||
-    !Array.isArray(selectedServices) ||
-    !Array.isArray(serviceEmployeeMap) ||
-    text === undefined ||
-    totalCost === undefined ||
-    clients_id === undefined
-  ) {
-    console.error("Missing or invalid parameters:", {
-      start,
-      end,
-      selectedServices,
-      serviceEmployeeMap,
-      text,
-      clients_id,
-      totalCost,
-    });
-    return res.status(400).json({ message: "Все поля должны быть заполнены" });
-  }
+	const errors = [];
 
-  let connection;
+	if (start === undefined) {
+		errors.push("start is missing");
+	}
 
-  try {
-    // Получаем соединение из пула
-    connection = await db.getConnection();
+	if (end === undefined) {
+		errors.push("end is missing");
+	}
 
-    // Начинаем транзакцию
-    await connection.beginTransaction();
+	if (text === undefined) {
+		errors.push("text is missing");
+	}
 
-    // Выводим параметры для отладки
-    console.log("Parameters:", {
-      start,
-      end,
-      selectedServices,
-      serviceEmployeeMap,
-      text,
-      clients_id,
-      totalCost,
-    });
+	if (typeof totalCost !== "number") {
+		errors.push("totalCost should be a number");
+	}
 
-    // Добавляем новую запись в таблицу appointments
-    const [appointmentResult] = await connection.execute(
-      "INSERT INTO appointments (start, end, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?)",
-      [start, end, text, clients_id, totalCost]
-    );
+	if (typeof clients_id !== "number") {
+		errors.push("clients_id should be a number");
+	}
 
-    if (appointmentResult.affectedRows === 0) {
-      await connection.rollback();
-      return res.status(400).json({ message: "Failed to create appointment" });
-    }
+	if (errors.length > 0) {
+		// Если есть ошибки, отправьте их в ответе
+		return res.status(400).json({ errors });
+	}
 
-    const appointmentId = appointmentResult.insertId;
+	try {
+		// Добавляем новую запись с новыми столбцами
+		const [appointmentResult] = await db.execute(
+			"INSERT INTO appointments (start, end, selectedServices, serviceEmployeeMap, text, clients_id, totalCost) VALUES (?, ?, ?, ?, ?, ?, ?)",
+			[
+				start,
+				end,
+				selectedServices,
+				serviceEmployeeMap,
+				text,
+				clients_id,
+				totalCost,
+			],
+		);
 
-    // Добавляем записи в таблицу service_employee_map
-    for (const { service_id, employee_id } of serviceEmployeeMap) {
-      if (service_id === undefined || employee_id === undefined) {
-        await connection.rollback();
-        return res.status(400).json({ message: "Invalid service or employee ID" });
-      }
+		if (appointmentResult.affectedRows === 0) {
+			return res.status(400).json({ message: "Failed to create appointment" });
+		}
 
-      await connection.execute(
-        "INSERT INTO service_employee_map (appointment_id, service_id, employee_id) VALUES (?, ?, ?)",
-        [appointmentId, service_id, employee_id]
-      );
-    }
-
-    // Фиксируем транзакцию
-    await connection.commit();
-
-    res.status(201).json({
-      message: "Appointment created successfully",
-      appointment: {
-        id: appointmentId,
-        start,
-        end,
-        text,
-        clients_id,
-        totalCost,
-        selectedServices,
-        serviceEmployeeMap,
-      },
-    });
-  } catch (error) {
-    if (connection) {
-      // Откат транзакции в случае ошибки
-      await connection.rollback();
-    }
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
-  } finally {
-    if (connection) {
-      // Освобождаем соединение
-      connection.release();
-    }
-  }
+		const appointmentId = appointmentResult.insertId;
+		res.status(201).json({
+			message: "Appointment created successfully",
+			appointment: {
+				id: appointmentId,
+				start,
+				end,
+				selectedServices,
+				serviceEmployeeMap,
+				text,
+				clients_id,
+				totalCost,
+			},
+		});
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Server error" });
+	}
 });
 
 module.exports = router;
