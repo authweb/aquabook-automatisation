@@ -12,10 +12,7 @@ import "../../scss/CalendarStyles.scss";
 import { AppointmentDetails } from "../";
 
 const CalendarDay = () => {
-	dayjs.extend(utcPlugin);
-	dayjs.extend(timezonePlugin);
 
-	dayjs.tz.setDefault("Asia/Krasnoyarsk");
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { selectedDate, setSelectedEmployeeId, setCurrentEventId } =
@@ -140,11 +137,13 @@ const CalendarDay = () => {
 				const eventsData = appointmentsResponse.data.appointments
 					.map(appt => {
 
+						const serviceEmployeeName = appt.serviceEmployeeMap || "";
+
 						return {
 							id: appt.id.toString(),
 							start: appt.start,
 							end: appt.end,
-							text: `${appt.text}`,
+							text: `${appt.text}\nСотрудник: ${serviceEmployeeName}`,
 							resource: appt.clients_id.toString(),
 							backColor: "#someColor",
 						};
