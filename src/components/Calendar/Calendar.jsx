@@ -43,9 +43,9 @@ const CalendarDay = () => {
 
 			// Проверяем наличие корректных значений args.start и args.end
 			const selectedStart =
-				args.start && args.start.value ? dayjs(args.start.value).utc() : null;
+				args.start && args.start.value ? dayjs.utc(args.start.value) : null;
 			const selectedEnd =
-				args.end && args.end.value ? dayjs(args.end.value).utc() : null;
+				args.end && args.end.value ? dayjs.utc(args.end.value) : null;
 
 			navigate(
 				`${location.pathname}/add${location.search}&start=${
