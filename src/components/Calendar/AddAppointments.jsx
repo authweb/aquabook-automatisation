@@ -110,7 +110,10 @@ const AddAppointments = ({
 				.join(", ");
 
 			// Преобразуем serviceEmployeeMap в объект перед отправкой на сервер
-			const serviceEmployeeMapObj = Object.fromEntries(serviceEmployeeMap);
+			const serviceEmployeeMapObj = {};
+			for (const [serviceId, employee] of serviceEmployeeMap) {
+				serviceEmployeeMapObj[serviceId] = employee.first_name; // Вместо employee.first_name можно использовать другое поле, например, employee.id
+			}
 
 			const appointmentText = `Выбранные услуги:${selectedServicesString} Клиент: ${clientInfo}
     Сумма: ${currentValues.cost} руб.
