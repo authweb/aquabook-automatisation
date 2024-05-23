@@ -139,14 +139,14 @@ const CalendarDay = () => {
 				// Process the appointments and map serviceEmployeeMap correctly
 				const eventsData = appointmentsResponse.data.appointments
 					.map(appt => {
-						// Directly using the serviceEmployeeNames field
-						const serviceEmployeeNames = appt.serviceEmployeeNames || "";
+						// Directly using the serviceEmployeeMapObj field
+						const serviceEmployeeMapObj = appt.serviceEmployeeMapObj || "";
 
 						return {
 							id: appt.id.toString(),
 							start: appt.start,
 							end: appt.end,
-							text: `${appt.text}\nСотрудники: ${serviceEmployeeNames}`,
+							text: `${appt.text}\nСотрудники: ${serviceEmployeeMapObj}`,
 							resource: appt.clients_id.toString(),
 							backColor: "#someColor",
 						};
