@@ -114,8 +114,8 @@ const AddAppointments = ({
 			const newEvent = {
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
-				selectedServices: selectedServices,
-				serviceEmployeeMap: serviceEmployeeMapArr,
+				selectedServices: servicesInfo,
+				serviceEmployeeMap: serviceEmployeeMapArr.employee_id,
 				text: appointmentText,
 				totalCost: currentValues.cost,
 				clients_id: selectedClient.id,
