@@ -112,7 +112,7 @@ const AddAppointments = ({
 			// Преобразуем serviceEmployeeMap в объект перед отправкой на сервер
 			const serviceEmployeeMapObj = Object.fromEntries(serviceEmployeeMap);
 
-			const appointmentText = `Выбранные услуги:${selectedServicesString}Клиент: ${clientInfo}
+			const appointmentText = `Выбранные услуги:${selectedServicesString} Клиент: ${clientInfo}
     Сумма: ${currentValues.cost} руб.
 `;
 			const newEvent = {
