@@ -23,7 +23,7 @@ const AddAppointments = ({
 	const queryParams = new URLSearchParams(location.search);
 	const endString = queryParams.get("end");
 	const [startDate, setStartDate] = useState(
-		dayjs(queryParams.get("end"), "YYYY-MM-DDTHH:mm:ss"),
+		dayjs(queryParams.get("end"), "YYYY-MM-DDTHH:mm:ss").toDate(),
 	);
 	const endDate = dayjs(endString, "YYYY-MM-DDTHH:mm:ss");
 	const [initialStartDate, setInitialStartDate] = useState(

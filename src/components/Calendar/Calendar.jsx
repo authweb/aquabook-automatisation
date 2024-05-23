@@ -2,12 +2,19 @@ import React, { useState, useEffect, useContext, useCallback } from "react";
 import { DayPilotCalendar } from "daypilot-pro-react";
 import axios from "axios";
 import dayjs from "dayjs";
+import utcPlugin from "dayjs/plugin/utc";
+import timezonePlugin from "dayjs/plugin/timezone";
 import { CalendarContext } from "../../contexts/CalendarContexts";
 import useDateHandler from "../../hooks/useDateHandler";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "../../scss/CalendarStyles.scss";
 import { AppointmentDetails } from "../";
+
+dayjs.extend(utcPlugin);
+dayjs.extend(timezonePlugin);
+
+dayjs.tz.setDefault("Asia/Krasnoyarsk");
 
 const CalendarDay = () => {
 	const navigate = useNavigate();
