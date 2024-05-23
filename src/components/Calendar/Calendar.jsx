@@ -41,9 +41,9 @@ const CalendarDay = () => {
 			console.log(args);
 			setSelectedEmployeeId(args.resource);
 			const selectedStart =
-				args.start && args.start.value ? dayjs.utc(args.start.value) : null;
+				args.start && args.start.value ? dayjs(args.start.value) : null;
 			const selectedEnd =
-				args.end && args.end.value ? dayjs.utc(args.end.value) : null;
+				args.end && args.end.value ? dayjs(args.end.value) : null;
 
 			// При формировании URL
 			navigate(
@@ -172,8 +172,8 @@ const CalendarDay = () => {
 
 						return {
 							id: appt.id.toString(),
-							start: dayjs.utc(appt.start), // Преобразовать в UTC
-							end: dayjs.utc(appt.end), // Преобразовать в UTC
+							start: dayjs(appt.start), // Преобразовать в UTC
+							end: dayjs(appt.end), // Преобразовать в UTC
 							text: appt.text,
 							resource: employeeId.toString(),
 							backColor: "#someColor",
