@@ -97,12 +97,11 @@ const AddAppointments = ({
 			.map(service => service.name)
 			.join(", ");
 
-		const serviceEmployeeMapObj = Array.from(serviceEmployeeMap.entries())
-			.map(
-				([service_id, employee]) =>
-					`${employee.first_name}`,
-			)
-			.join(", ");
+		const serviceEmployeeMapObj = Object.fromEntries(
+			Array.from(serviceEmployeeMap.entries()).map(([service_id, employee]) => [
+				`${employee.first_name}`, // Используем имя сотрудника
+			]),
+		);
 
 		const appointmentText = `Выбранные услуги:${servicesInfo}Клиент: ${clientInfo}
 		Сумма: ${currentValues.cost} руб.
