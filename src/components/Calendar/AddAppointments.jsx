@@ -99,24 +99,20 @@ const AddAppointments = ({
 		const servicesInfo = selectedServices
 			.map(service => service.name)
 			.join(", ");
-		const serviceEmployeeMapArr = Array.from(serviceEmployeeMap.entries()).map(
-			([service_id, employee]) => ({
-				service_id,
-				employee_id: employee.id,
-			}),
-		);
+		const serviceEmployeeMapStr = Array.from(serviceEmployeeMap.entries())
+			.map(([, employee]) => `${employee.first_name}`)
+			.join(", ");
 		const appointmentText = `${clientInfo}, ${servicesInfo}`;
 
 		// Логирование данных перед отправкой
 		console.log("selectedServices:", selectedServices);
-		console.log("serviceEmployeeMapArr:", serviceEmployeeMapArr);
 
 		try {
 			const newEvent = {
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
 				selectedServices: selectedServices.map(service => service.name),
-				serviceEmployeeMap: serviceEmployeeMapArr,
+				serviceEmployeeMap: serviceEmployeeMapStr,
 				text: appointmentText,
 				totalCost: currentValues.totalCost,
 				clients_id: selectedClient.id,
