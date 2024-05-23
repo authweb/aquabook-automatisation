@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContexts";
 import {
 	HomePage,
