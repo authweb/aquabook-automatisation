@@ -141,18 +141,23 @@ const CalendarDay = () => {
 								`Error parsing serviceEmployeeMap for appointment ID ${appt.id}:`,
 								e,
 							);
-							serviceEmployee = null; // Обнуляем serviceEmployee, чтобы избежать ошибок дальше
-						}
-
-						// Если serviceEmployee не был успешно распарсен, игнорируем эту запись
-						if (!serviceEmployee) {
 							return null;
 						}
 
-						const employeeId =
-							Array.isArray(serviceEmployee) && serviceEmployee.length > 0
-								? serviceEmployee[0].employee_id
-								: null;
+						// Проверяем, является ли serviceEmployee объектом
+						if (
+							typeof serviceEmployee !== "object" ||
+							serviceEmployee === null
+						) {
+							console.error(
+								`Invalid format of serviceEmployeeMap for appointment ID ${appt.id}`,
+							);
+							return null;
+						}
+
+						// Извлекаем идентификаторы услуг и сотрудников из объекта serviceEmployee
+						const serviceIds = Object.keys(serviceEmployee);
+						const employeeId = serviceEmployee[serviceIds[0]];
 
 						if (!employeeId || !employeeMap.has(employeeId)) {
 							console.error(
