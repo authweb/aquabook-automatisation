@@ -46,7 +46,6 @@ const AddAppointments = ({
 			(total, service) => total + Number(service.price_from),
 			0,
 		);
-
 		setCurrentValues({ cost: totalCost });
 	}, [selectedServices]);
 
