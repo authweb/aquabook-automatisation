@@ -11,12 +11,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../../scss/CalendarStyles.scss";
 import { AppointmentDetails } from "../";
 
-dayjs.extend(utcPlugin);
-dayjs.extend(timezonePlugin);
-
-dayjs.tz.setDefault("Asia/Krasnoyarsk");
-
 const CalendarDay = () => {
+	dayjs.extend(utcPlugin);
+	dayjs.extend(timezonePlugin);
+
+	dayjs.tz.setDefault("Asia/Krasnoyarsk");
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { selectedDate, setSelectedEmployeeId, setCurrentEventId } =
