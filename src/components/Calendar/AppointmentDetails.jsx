@@ -31,8 +31,9 @@ const AppointmentDetails = () => {
 				const response = await axios.get(
 					`https://api.aqua-book.ru/api/appointments/${currentEventId}`,
 				);
-				setAppointment(response.data.appointment);
-				setIsPaid(response.data.appointment.is_paid);
+				const appointmentData = response.data; // Предположим, что данные о встрече приходят в нужном формате
+				setAppointment(appointmentData.appointment);
+				setIsPaid(appointmentData.appointment.is_paid);
 			} catch (error) {
 				console.error("Ошибка при получении данных события:", error);
 			} finally {
@@ -54,7 +55,8 @@ const AppointmentDetails = () => {
 				const response = await axios.get(
 					`https://api.aqua-book.ru/api/clients/${appointment.clients_id}`,
 				);
-				setClient(response.data.client);
+				const clientData = response.data; // Предположим, что данные о клиенте приходят в нужном формате
+				setClient(clientData.client);
 			} catch (error) {
 				console.error("Ошибка при получении данных клиента:", error);
 			} finally {
