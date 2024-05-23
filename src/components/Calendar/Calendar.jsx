@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { DayPilotCalendar } from "daypilot-pro-react";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -26,6 +26,30 @@ const CalendarDay = () => {
 	]);
 	const [categories, setCategories] = useState([]);
 	const [services, setServices] = useState({});
+
+	const handleEventClick = useCallback(
+		args => {
+			const eventId = args.e.data.id;
+			setCurrentEventId(eventId);
+			navigate(`/dashboard/appointments/${eventId}`);
+		},
+		[navigate, setCurrentEventId],
+	);
+
+	const handleTimeRangeSelected = useCallback(
+		args => {
+			console.log(args);
+			setSelectedEmployeeId(args.resource);
+			const selectedStart = args.start ? dayjs(args.start.value) : null;
+			const selectedEnd = args.end ? dayjs(args.end.value) : null;
+			navigate(
+				`${location.pathname}/add${location.search}&start=${
+					selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
+				}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`,
+			);
+		},
+		[navigate, setSelectedEmployeeId, location.pathname, location.search],
+	);
 
 	const [config, setConfig] = useState({
 		viewType: "Resources",
@@ -144,25 +168,6 @@ const CalendarDay = () => {
 		fetchData();
 	}, []);
 
-	const handleEventClick = args => {
-		const eventId = args.e.data.id;
-		setCurrentEventId(eventId);
-		navigate(`/dashboard/appointments/${eventId}`);
-	};
-
-	const handleTimeRangeSelected = args => {
-		console.log(args);
-		setSelectedEmployeeId(args.resource);
-		const selectedStart = args.resource.start
-			? dayjs(args.resource.start.value)
-			: null;
-		const selectedEnd = args.end ? dayjs(args.end.value) : null;
-		navigate(
-			`${location.pathname}/add${location.search}&start=${
-				selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
-			}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`,
-		);
-	};
 	return (
 		<>
 			<DayPilotCalendar
