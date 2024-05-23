@@ -27,6 +27,30 @@ const CalendarDay = () => {
 	const [categories, setCategories] = useState([]);
 	const [services, setServices] = useState({});
 
+	const [config, setConfig] = useState({
+		viewType: "Resources",
+		startDate: (today
+			? dayjs(today)
+			: selectedDate
+			? dayjs(selectedDate)
+			: dayjs()
+		).format("YYYY-MM-DD"),
+		columns: [],
+		heightSpec: "BusinessHoursNoScroll",
+		theme: "eb-calendar",
+		businessBeginsHour: 9,
+		businessEndsHour: 21,
+		onEventClick: handleEventClick,
+		timeFormat: "Clock24Hours",
+		showNonBusiness: false,
+		timeHeaders: [
+			{ groupBy: "Day", format: "dddd MMMM yyyy" },
+			{ groupBy: "Hour", format: "h tt" },
+		],
+		cellDuration: 15,
+		timeRangeSelectedHandling: "Enabled",
+	});
+
 	useEffect(() => {
 		const startDate =
 			selectedDate instanceof dayjs
@@ -62,49 +86,56 @@ const CalendarDay = () => {
 					axios.get("https://api.aqua-book.ru/api/services"),
 				]);
 
+				console.log("Appointments Response:", appointmentsResponse);
+				console.log("Employees Response:", employeesResponse);
+				console.log("Categories Response:", categoriesResponse);
+				console.log("Services Response:", servicesResponse);
+
 				const { servicesCategories } = categoriesResponse.data;
 				const { services } = servicesResponse.data;
 
 				setCategories(servicesCategories);
 				setServices(services);
 
+				const columns = employeesResponse.data.employees.map(employee => ({
+					name: employee.first_name,
+					id: employee.id.toString(),
+				}));
+
 				setConfig(prevConfig => ({
 					...prevConfig,
-					columns: employeesResponse.data.employees.map(employee => ({
-						name: employee.first_name,
-						id: employee.id.toString(),
-					})),
+					columns,
 				}));
-				// Создаем карту соответствия имени сотрудника и его id
+
+				// Create a map for employee IDs
 				const employeeMap = new Map();
 				employeesResponse.data.employees.forEach(employee => {
 					employeeMap.set(employee.first_name, employee.id);
 				});
 
-				setEvents(
-					appointmentsResponse.data.appointments
-						.map(appt => {
-							const employeeId = employeeMap.get(appt.serviceEmployeeMap);
+				const fetchedEvents = appointmentsResponse.data.appointments
+					.map(appt => {
+						const employeeId = employeeMap.get(appt.serviceEmployeeMap);
 
-							if (employeeId === undefined) {
-								console.error(
-									`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
-								);
-								return null;
-							}
+						if (employeeId === undefined) {
+							console.error(
+								`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
+							);
+							return null;
+						}
 
-							return {
-								id: appt.id.toString(),
-								start: appt.start,
-								end: appt.end,
-								text: appt.text,
-								resource: employeeId.toString(),
-								backColor: "#someColor",
-							};
-						})
-						.filter(event => event !== null),
-				);
-				console.log(appointmentsResponse);
+						return {
+							id: appt.id.toString(),
+							start: appt.start,
+							end: appt.end,
+							text: appt.text,
+							resource: employeeId.toString(),
+							backColor: "#someColor",
+						};
+					})
+					.filter(event => event !== null);
+
+				setEvents(fetchedEvents);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			}
@@ -118,30 +149,6 @@ const CalendarDay = () => {
 		setCurrentEventId(eventId);
 		navigate(`/dashboard/appointments/${eventId}`);
 	};
-
-	const [config, setConfig] = useState({
-		viewType: "Resources",
-		startDate: (today
-			? dayjs(today)
-			: selectedDate
-			? dayjs(selectedDate)
-			: dayjs()
-		).format("YYYY-MM-DD"),
-		columns: [],
-		heightSpec: "BusinessHoursNoScroll",
-		theme: "eb-calendar",
-		businessBeginsHour: 9,
-		businessEndsHour: 21,
-		onEventClick: handleEventClick,
-		timeFormat: "Clock24Hours",
-		showNonBusiness: false,
-		timeHeaders: [
-			{ groupBy: "Day", format: "dddd MMMM yyyy" },
-			{ groupBy: "Hour", format: "h tt" },
-		],
-		cellDuration: 15,
-		timeRangeSelectedHandling: "Enabled",
-	});
 
 	const handleTimeRangeSelected = args => {
 		console.log(args);
