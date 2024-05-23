@@ -40,13 +40,8 @@ const CalendarDay = () => {
 		args => {
 			console.log(args);
 			setSelectedEmployeeId(args.resource);
-
-			// Проверяем наличие корректных значений args.start и args.end
-			const selectedStart =
-				args.start && args.start.value ? dayjs.utc(args.start.value) : null;
-			const selectedEnd =
-				args.end && args.end.value ? dayjs.utc(args.end.value) : null;
-
+			const selectedStart = args.start ? dayjs(args.start.value) : null;
+			const selectedEnd = args.end ? dayjs(args.end.value) : null;
 			navigate(
 				`${location.pathname}/add${location.search}&start=${
 					selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
