@@ -93,16 +93,6 @@ const AddAppointments = ({
 		}
 
 		const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name} ${selectedClient.phone}`;
-		const employeeInfo = Array.from(serviceEmployeeMap.entries())
-			.map(([serviceId, employee]) => {
-				const service = selectedServices.find(
-					service => service.id === serviceId,
-				);
-				return `${employee.first_name} ${employee.last_name}: ${
-					service ? service.name : ""
-				}`;
-			})
-			.join(", ");
 		const servicesInfo = selectedServices
 			.map(service => service.name)
 			.join(", ");
@@ -119,13 +109,16 @@ const AddAppointments = ({
 		// Logging data before sending
 		console.log("selectedServices:", selectedServices);
 		console.log("serviceEmployeeMapArr:", serviceEmployeeMapArr);
+		const serviceEmployeeMapObj = Object.fromEntries(
+			serviceEmployeeMapArr.map(entry => [entry.service_id, entry.employee_id]),
+		);
 
 		try {
 			const newEvent = {
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
 				selectedServices: selectedServices.map(service => service.name),
-				serviceEmployeeMap: serviceEmployeeMapArr,
+				serviceEmployeeMap: serviceEmployeeMapObj,
 				text: appointmentText,
 				totalCost: currentValues.cost,
 				clients_id: selectedClient.id,
