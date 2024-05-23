@@ -96,26 +96,30 @@ const AddAppointments = ({
 		const servicesInfo = selectedServices
 			.map(service => service.name)
 			.join(", ");
-
-		const serviceEmployeeMapObj = Object.fromEntries(
-			Array.from(serviceEmployeeMap.entries()).map(([service_id, employee]) => [
-				`${employee.first_name}`, // Используем имя сотрудника
-			]),
+		const serviceEmployeeMapArr = Array.from(serviceEmployeeMap.entries()).map(
+			([service_id, employee]) => ({
+				employee_id: employee.first_name,
+			}),
 		);
-
 		const appointmentText = `Выбранные услуги:${servicesInfo}Клиент: ${clientInfo}
-		Сумма: ${currentValues.cost} руб.
-	`;
+    Сумма: ${currentValues.cost} руб.
+`;
 
 		// Logging data before sending
 		console.log("selectedServices:", selectedServices);
-		console.log("serviceEmployeeMapObj:", serviceEmployeeMapObj);
+		console.log("serviceEmployeeMapArr:", serviceEmployeeMapArr);
 
 		try {
+			const selectedServicesString = selectedServices
+				.map(service => service.name)
+				.join(", ");
+
+			// Преобразуем serviceEmployeeMap в объект перед отправкой на сервер
+			const serviceEmployeeMapObj = Object.fromEntries(serviceEmployeeMap);
 			const newEvent = {
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
-				selectedServices: selectedServices.map(service => service.name),
+				selectedServices: selectedServicesString,
 				serviceEmployeeMap: serviceEmployeeMapObj,
 				text: appointmentText,
 				totalCost: currentValues.cost,
