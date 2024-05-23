@@ -102,7 +102,7 @@ const AddAppointments = ({
 					service ? service.name : ""
 				}`;
 			})
-			.join("\n");
+			.join(", ");
 		const servicesInfo = selectedServices
 			.map(service => service.name)
 			.join(", ");
