@@ -80,12 +80,12 @@ const AddAppointments = ({
 	};
 
 	const addAppointment = async () => {
-		if (!selectedClient || !selectedClient.id || currentValues.totalCost <= 0) {
+		if (!selectedClient || !selectedClient.id || currentValues.cost <= 0) {
 			const errorMessages = [];
 			if (!selectedClient || !selectedClient.id) {
 				errorMessages.push("Необходимо выбрать клиента.");
 			}
-			if (currentValues.totalCost <= 0) {
+			if (currentValues.cost <= 0) {
 				errorMessages.push("Общая стоимость должна быть больше нуля.");
 			}
 			setErrors(errorMessages);
@@ -104,8 +104,9 @@ const AddAppointments = ({
 		);
 		const appointmentText = `${clientInfo}, ${servicesInfo}`;
 
-		// Логирование данных перед отправкой
+		// Logging data before sending
 		console.log("selectedServices:", selectedServices);
+		console.log("serviceEmployeeMapArr:", serviceEmployeeMapArr);
 
 		try {
 			const newEvent = {
@@ -114,12 +115,12 @@ const AddAppointments = ({
 				selectedServices: selectedServices.map(service => service.name),
 				serviceEmployeeMap: serviceEmployeeMapArr,
 				text: appointmentText,
-				totalCost: currentValues.totalCost,
+				totalCost: currentValues.cost,
 				clients_id: selectedClient.id,
 			};
 
-			// Логирование данных перед отправкой
-			console.log("Данные для отправки:", newEvent);
+			// Logging data before sending
+			console.log("Data to be sent:", newEvent);
 
 			const response = await axios.post(
 				"https://api.aqua-book.ru/api/appointments",
@@ -134,13 +135,23 @@ const AddAppointments = ({
 				setErrors([]);
 			}
 		} catch (error) {
+			let errorMessages = [];
 			if (error.response) {
-				setErrors(error.response.data.errors || [error.response.data.message]);
+				// Server responded with a status other than 2xx
+				console.error("Error response:", error.response);
+				errorMessages = error.response.data.errors || [
+					error.response.data.message,
+				];
 			} else if (error.request) {
-				setErrors(["No response was received"]);
+				// Request was made but no response received
+				console.error("Error request:", error.request);
+				errorMessages = ["No response was received from the server"];
 			} else {
-				setErrors(["Error setting up request"]);
+				// Something else happened while setting up the request
+				console.error("Error setting up request:", error.message);
+				errorMessages = ["An error occurred while setting up the request"];
 			}
+			setErrors(errorMessages);
 			console.error("Error during POST request:", error);
 		}
 	};
