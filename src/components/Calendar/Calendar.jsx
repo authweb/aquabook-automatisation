@@ -139,45 +139,15 @@ const CalendarDay = () => {
 				// Process the appointments and map serviceEmployeeMap correctly
 				const eventsData = appointmentsResponse.data.appointments
 					.map(appt => {
-						let serviceEmployee;
-						try {
-							serviceEmployee = JSON.parse(appt.serviceEmployeeMap);
-						} catch (e) {
-							console.error(
-								`Error parsing serviceEmployeeMap for appointment ID ${appt.id}:`,
-								e,
-							);
-							return null;
-						}
-
-						// Проверяем, является ли serviceEmployee объектом
-						if (
-							typeof serviceEmployee !== "object" ||
-							serviceEmployee === null
-						) {
-							console.error(
-								`Invalid format of serviceEmployeeMap for appointment ID ${appt.id}`,
-							);
-							return null;
-						}
-
-						// Извлекаем идентификаторы услуг и сотрудников из объекта serviceEmployee
-						const serviceIds = Object.keys(serviceEmployee);
-						const employeeId = serviceEmployee[serviceIds[0]];
-
-						if (!employeeId || !employeeMap.has(employeeId)) {
-							console.error(
-								`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
-							);
-							return null;
-						}
+						// Directly using the serviceEmployeeNames field
+						const serviceEmployeeNames = appt.serviceEmployeeNames || "";
 
 						return {
 							id: appt.id.toString(),
 							start: appt.start,
 							end: appt.end,
-							text: appt.text,
-							resource: employeeId.toString(),
+							text: `${appt.text}\nСотрудники: ${serviceEmployeeNames}`,
+							resource: appt.clients_id.toString(),
 							backColor: "#someColor",
 						};
 					})
