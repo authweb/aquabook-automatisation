@@ -23,7 +23,7 @@ const MobileNavigation = ({ stats }) => {
 		<>
 			<div className='ab-bottom-bar ab-page__ab-bottom-bar eb-calendar-page__bottom-bar'>
 				<Link
-					to={`/dashboard/profile/${users.id}`}
+					to={`/dashboard/profile/${users?.id}`}
 					className='ab-icon-menu-item focus-outline nuxt-link-active ab-icon-menu-item--clip ab-icon-menu-item--active'>
 					<IdcardOutlined
 						style={{ fontSize: "24px" }}
