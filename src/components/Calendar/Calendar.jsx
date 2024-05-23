@@ -141,6 +141,11 @@ const CalendarDay = () => {
 								`Error parsing serviceEmployeeMap for appointment ID ${appt.id}:`,
 								e,
 							);
+							serviceEmployee = null; // Обнуляем serviceEmployee, чтобы избежать ошибок дальше
+						}
+
+						// Если serviceEmployee не был успешно распарсен, игнорируем эту запись
+						if (!serviceEmployee) {
 							return null;
 						}
 
