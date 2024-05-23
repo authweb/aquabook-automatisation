@@ -110,38 +110,37 @@ const CalendarDay = () => {
 					axios.get("https://api.aqua-book.ru/api/services"),
 				]);
 
-				console.log("Appointments Response:", appointmentsResponse);
-				console.log("Employees Response:", employeesResponse);
-				console.log("Categories Response:", categoriesResponse);
-				console.log("Services Response:", servicesResponse);
-
 				const { servicesCategories } = categoriesResponse.data;
 				const { services } = servicesResponse.data;
 
 				setCategories(servicesCategories);
 				setServices(services);
 
-				const columns = employeesResponse.data.employees.map(employee => ({
-					name: employee.first_name,
-					id: employee.id.toString(),
-				}));
-
 				setConfig(prevConfig => ({
 					...prevConfig,
-					columns,
+					columns: employeesResponse.data.employees.map(employee => ({
+						name: employee.first_name,
+						id: employee.id.toString(),
+					})),
 				}));
 
-				// Create a map for employee IDs
+				// Create a map of employee ID to employee data
 				const employeeMap = new Map();
 				employeesResponse.data.employees.forEach(employee => {
-					employeeMap.set(employee.first_name, employee.id);
+					employeeMap.set(employee.id, employee);
 				});
 
-				const fetchedEvents = appointmentsResponse.data.appointments
+				// Process the appointments and map serviceEmployeeMap correctly
+				const eventsData = appointmentsResponse.data.appointments
 					.map(appt => {
-						const employeeId = employeeMap.get(appt.serviceEmployeeMap);
+						// Assuming serviceEmployeeMap is an array of objects
+						const serviceEmployee = JSON.parse(appt.serviceEmployeeMap);
+						const employeeId =
+							serviceEmployee.length > 0
+								? serviceEmployee[0].employee_id
+								: null;
 
-						if (employeeId === undefined) {
+						if (!employeeId || !employeeMap.has(employeeId)) {
 							console.error(
 								`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
 							);
@@ -159,7 +158,8 @@ const CalendarDay = () => {
 					})
 					.filter(event => event !== null);
 
-				setEvents(fetchedEvents);
+				setEvents(eventsData);
+				console.log(appointmentsResponse);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			}
