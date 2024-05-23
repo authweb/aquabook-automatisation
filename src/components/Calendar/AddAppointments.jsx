@@ -36,11 +36,9 @@ const AddAppointments = ({
 	const [serviceEmployeeMap, setServiceEmployeeMap] = useState(new Map());
 	const [selectedClient, setSelectedClient] = useState(null);
 	const [endAppointmentTime, setEndAppointmentTime] = useState(startDate);
-
 	const [tempIdMap, setTempIdMap] = useState(new Map());
 	const [serviceIdCounter, setServiceIdCounter] = useState(0);
 	const [currentValues, setCurrentValues] = useState({ cost: 0 });
-
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
