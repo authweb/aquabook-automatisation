@@ -48,10 +48,8 @@ const CalendarDay = () => {
 			// При формировании URL
 			navigate(
 				`${location.pathname}/add${location.search}&start=${
-					selectedStart ? selectedStart.utc().format("YYYY-MM-DDTHH:mm:ss") : ""
-				}&end=${
-					selectedEnd ? selectedEnd.utc().format("YYYY-MM-DDTHH:mm:ss") : ""
-				}`,
+					selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
+				}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`,
 			);
 		},
 		[navigate, setSelectedEmployeeId, location.pathname, location.search],
@@ -174,8 +172,8 @@ const CalendarDay = () => {
 
 						return {
 							id: appt.id.toString(),
-							start: dayjs.utc(appt.start).format(), // Преобразовать в UTC
-							end: dayjs.utc(appt.end).format(), // Преобразовать в UTC
+							start: dayjs.utc(appt.start), // Преобразовать в UTC
+							end: dayjs.utc(appt.end), // Преобразовать в UTC
 							text: appt.text,
 							resource: employeeId.toString(),
 							backColor: "#someColor",
