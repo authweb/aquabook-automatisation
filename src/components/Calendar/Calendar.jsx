@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext, useCallback } from "react";
 import { DayPilotCalendar } from "daypilot-pro-react";
 import axios from "axios";
 import dayjs from "dayjs";
-import utcPlugin from "dayjs/plugin/utc";
-import timezonePlugin from "dayjs/plugin/timezone";
 import { CalendarContext } from "../../contexts/CalendarContexts";
 import useDateHandler from "../../hooks/useDateHandler";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,10 +10,6 @@ import "../../scss/CalendarStyles.scss";
 import { AppointmentDetails } from "../";
 
 const CalendarDay = () => {
-	dayjs.extend(utcPlugin);
-	dayjs.extend(timezonePlugin);
-
-	dayjs.tz.setDefault("Asia/Krasnoyarsk");
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { selectedDate, setSelectedEmployeeId, setCurrentEventId } =
@@ -48,6 +42,7 @@ const CalendarDay = () => {
 			setSelectedEmployeeId(args.resource);
 			const selectedStart = args.start ? dayjs(args.start.value) : null;
 			const selectedEnd = args.end ? dayjs(args.end.value) : null;
+
 			navigate(
 				`${location.pathname}/add${location.search}&start=${
 					selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
@@ -177,7 +172,7 @@ const CalendarDay = () => {
 							start: appt.start,
 							end: appt.end,
 							text: appt.text,
-							resource: appt.employeeId.toString(),
+							resource: employeeId.toString(),
 							backColor: "#someColor",
 						};
 					})
