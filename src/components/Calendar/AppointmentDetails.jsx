@@ -166,7 +166,7 @@ const AppointmentDetails = () => {
 													<div>
 														<div className='eb-user-avatar eb-user-avatar--single-row'>
 															<span className='eb-user-avatar__title'>
-																{serviceEmployeeMap}
+																{serviceEmployeeMap.id}
 															</span>
 														</div>
 													</div>
