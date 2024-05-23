@@ -26,14 +26,16 @@ router.get("/appointments", async (_, res) => {
 				id: appointment.id,
 				start: startInKrasnoyarsk,
 				end: endInKrasnoyarsk,
-				selectedServices: appointment.selectedServices,
-				serviceEmployeeMap: appointment.serviceEmployeeMap,
+				selectedServices: JSON.parse(appointment.selectedServices),
+				serviceEmployeeMap: appointment.serviceEmployeeMap.replace(/"/g, ""),
 				text: appointment.text,
 				clients_id: appointment.clients_id,
 				totalCost: appointment.totalCost,
 				is_paid: appointment.is_paid,
 			};
 		});
+
+		console.log("Appointments from DB:", appointments);
 
 		if (appointments.length === 0) {
 			// Если нет записей, вернем пустой массив
