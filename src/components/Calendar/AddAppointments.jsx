@@ -99,9 +99,12 @@ const AddAppointments = ({
 		const servicesInfo = selectedServices
 			.map(service => service.name)
 			.join(", ");
-		const serviceEmployeeMapStr = Array.from(serviceEmployeeMap.entries())
-			.map(([, employee]) => `${employee.first_name}`)
-			.join(", ");
+		const serviceEmployeeMapArr = Array.from(serviceEmployeeMap.entries()).map(
+			([service_id, employee]) => ({
+				service_id,
+				employee_id: employee.id,
+			}),
+		);
 		const appointmentText = `${clientInfo}, ${servicesInfo}`;
 
 		// Логирование данных перед отправкой
@@ -112,7 +115,7 @@ const AddAppointments = ({
 				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
 				selectedServices: selectedServices.map(service => service.name),
-				serviceEmployeeMap: serviceEmployeeMapStr,
+				serviceEmployeeMap: serviceEmployeeMapArr,
 				text: appointmentText,
 				totalCost: currentValues.totalCost,
 				clients_id: selectedClient.id,
