@@ -99,8 +99,7 @@ const AddAppointments = ({
 
 		const serviceEmployeeMapObj = Object.fromEntries(
 			Array.from(serviceEmployeeMap.entries()).map(([service_id, employee]) => [
-				service_id,
-				`${employee.first_name} ${employee.last_name}`, // Используем имя сотрудника
+				`${employee.first_name}`, // Используем имя сотрудника
 			]),
 		);
 
