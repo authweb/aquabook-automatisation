@@ -112,15 +112,8 @@ const AddAppointments = ({
 				employee_id: employee.id,
 			}),
 		);
-		const appointmentText = `
-    Выбранные услуги:
-    ${servicesInfo}
-
-    Сотрудники:
-    ${employeeInfo}
-
-    Клиент: ${clientInfo}
-    Общая стоимость: ${currentValues.cost}
+		const appointmentText = `Выбранные услуги:${servicesInfo}Клиент: ${clientInfo}
+    Сумма: ${currentValues.cost} руб.
 `;
 
 		// Logging data before sending
