@@ -177,7 +177,7 @@ const CalendarDay = () => {
 							start: appt.start,
 							end: appt.end,
 							text: appt.text,
-							resource: employeeId.toString(),
+							resource: appt.employeeId.toString(),
 							backColor: "#someColor",
 						};
 					})
