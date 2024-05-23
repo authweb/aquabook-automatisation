@@ -243,18 +243,13 @@ const AppointmentDetails = () => {
 						<div className='ab-model-edit__panel'>
 							<div className='ab-modal-buttons ab-modal-buttons--desktop'>
 								<button
-									className='eb-button ab-modal-buttons__button eb-button--color-accent w-full'
-									style={{
-										"--btn-bg": "var(--success-color)",
-										"--btn-fg": "var(--white-color)",
-										"--btn-size": "3.5rem",
-										"--btn-radius": "0.625rem",
-										"--btn-icon-bg": "0.15",
-									}}
+									className='ab-button mt-2 w-full ab-button--size-lg ab-button--theme-solid ab-button--color-accent ab-button--with-text ab-button--icon-highlighted ab-animated-icon-parent ab-button--color-accent'
 									onClick={handlePayment}>
+									<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
 									<span className='eb-button__text'>
 										{isPaid ? "Оплачено" : "Оплата"}
 									</span>
+									<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
 								</button>
 							</div>
 						</div>
