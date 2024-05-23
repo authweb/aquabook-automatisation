@@ -62,11 +62,6 @@ const CalendarDay = () => {
 					axios.get("https://api.aqua-book.ru/api/services"),
 				]);
 
-				console.log("Appointments data:", appointmentsResponse.data);
-				console.log("Employees data:", employeesResponse.data);
-				console.log("Categories data:", categoriesResponse.data);
-				console.log("Services data:", servicesResponse.data);
-
 				const { servicesCategories } = categoriesResponse.data;
 				const { services } = servicesResponse.data;
 
