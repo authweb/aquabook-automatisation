@@ -93,6 +93,16 @@ const AddAppointments = ({
 		}
 
 		const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name} ${selectedClient.phone}`;
+		const employeeInfo = Array.from(serviceEmployeeMap.entries())
+			.map(([serviceId, employee]) => {
+				const service = selectedServices.find(
+					service => service.id === serviceId,
+				);
+				return `${employee.first_name} ${employee.last_name}: ${
+					service ? service.name : ""
+				}`;
+			})
+			.join("\n");
 		const servicesInfo = selectedServices
 			.map(service => service.name)
 			.join(", ");
@@ -102,7 +112,16 @@ const AddAppointments = ({
 				employee_id: employee.id,
 			}),
 		);
-		const appointmentText = `${clientInfo}, ${servicesInfo}`;
+		const appointmentText = `
+    Выбранные услуги:
+    ${servicesInfo}
+
+    Сотрудники:
+    ${employeeInfo}
+
+    Клиент: ${clientInfo}
+    Общая стоимость: ${currentValues.cost}
+`;
 
 		// Logging data before sending
 		console.log("selectedServices:", selectedServices);
