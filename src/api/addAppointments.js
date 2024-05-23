@@ -13,8 +13,6 @@ router.post("/appointments", async (req, res) => {
 		totalCost,
 	} = req.body;
 
-	console.log("Полученные данные:", req.body);
-
 	const errors = [];
 
 	if (start === undefined) {
@@ -49,8 +47,8 @@ router.post("/appointments", async (req, res) => {
 			[
 				start,
 				end,
-				JSON.stringify(selectedServices), // Преобразуем в JSON-строку
-				JSON.stringify(serviceEmployeeMap), // Преобразуем в JSON-строку
+				selectedServices,
+				serviceEmployeeMap,
 				text,
 				clients_id,
 				totalCost,
