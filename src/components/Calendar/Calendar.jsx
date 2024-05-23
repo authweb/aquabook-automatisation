@@ -4,7 +4,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { CalendarContext } from "../../contexts/CalendarContexts";
 import useDateHandler from "../../hooks/useDateHandler";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "../../scss/CalendarStyles.scss";
 import { AppointmentDetails } from "../";
@@ -15,7 +15,7 @@ const CalendarDay = () => {
 	const { selectedDate, setSelectedEmployeeId, setCurrentEventId } =
 		useContext(CalendarContext);
 	const [selectedEvent, setSelectedEvent] = useState(null);
-	const { today, rangeStart, setToday, setRangeStart } = useDateHandler();
+	const { today } = useDateHandler();
 	const [prevConfig, setPrevConfig] = useState({});
 
 	const [events, setEvents] = useState([]);
@@ -133,10 +133,19 @@ const CalendarDay = () => {
 				// Process the appointments and map serviceEmployeeMap correctly
 				const eventsData = appointmentsResponse.data.appointments
 					.map(appt => {
-						// Assuming serviceEmployeeMap is an array of objects
-						const serviceEmployee = JSON.parse(appt.serviceEmployeeMap);
+						let serviceEmployee;
+						try {
+							serviceEmployee = JSON.parse(appt.serviceEmployeeMap);
+						} catch (e) {
+							console.error(
+								`Error parsing serviceEmployeeMap for appointment ID ${appt.id}:`,
+								e,
+							);
+							return null;
+						}
+
 						const employeeId =
-							serviceEmployee.length > 0
+							Array.isArray(serviceEmployee) && serviceEmployee.length > 0
 								? serviceEmployee[0].employee_id
 								: null;
 
