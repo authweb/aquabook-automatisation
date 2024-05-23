@@ -115,15 +115,16 @@ const AddAppointments = ({
 
 		try {
 			const newEvent = {
-				start: startDate.utc().format("YYYY-MM-DD HH:mm:ss"),
-				end: endAppointmentTime.utc().format("YYYY-MM-DD HH:mm:ss"),
+				start: dayjs(startDate.toDate()).utc().format("YYYY-MM-DD HH:mm:ss"),
+				end: dayjs(endAppointmentTime.toDate())
+					.utc()
+					.format("YYYY-MM-DD HH:mm:ss"),
 				selectedServices: selectedServices.map(service => service.name),
 				serviceEmployeeMap: serviceEmployeeMapObj,
 				text: appointmentText,
 				totalCost: currentValues.cost,
 				clients_id: selectedClient.id,
 			};
-
 			// Logging data before sending
 			console.log("Data to be sent:", newEvent);
 
