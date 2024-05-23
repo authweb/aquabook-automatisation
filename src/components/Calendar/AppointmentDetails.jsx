@@ -161,12 +161,12 @@ const AppointmentDetails = () => {
 														{formattedStart} - {formattedEnd}
 													</div>
 													<div className='opacity-50 whitespace-no-wrap'>
-														30 мин.
+														{selectedServices.duration}
 													</div>
 													<div>
 														<div className='eb-user-avatar eb-user-avatar--single-row'>
 															<span className='eb-user-avatar__title'>
-																{serviceEmployeeMap.id}
+																{serviceEmployeeMap.first_name}
 															</span>
 														</div>
 													</div>
