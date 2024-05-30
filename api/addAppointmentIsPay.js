@@ -8,7 +8,7 @@ const db = require('../src/config/dbConnect');
 router.post('/appointments/:id/pay', async (req, res) => {
   const { id } = req.params;
   try {
-    const [result] = await db.execute('UPDATE appointments SET is_paid = true WHERE id = ?', [id]);
+    const [result] = await db.execute('UPDATE appointments2 SET is_paid = true WHERE id = ?', [id]);
     if (result.affectedRows > 0) {
       res.json({ message: 'Payment successful', is_paid: true });
     } else {

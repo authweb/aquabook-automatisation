@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Radio = ({ type, name, id, prefix, value, onChange }) => {
-  const [isRadio, setIsFilled] = useState(false);
+const Radio = ({ type, name, id, prefix, value, checked, onChange }) => {
+  const [isFilled, setIsFilled] = useState(false);
+
+  useEffect(() => {
+    setIsFilled(checked);
+  }, [checked]);
 
   const handleBlur = (event) => {
     setIsFilled(event.target.value !== '');
@@ -10,13 +14,14 @@ const Radio = ({ type, name, id, prefix, value, onChange }) => {
   return (
     <>
       <div className="ab-flow__child">
-        <div className="ab-switch-field is-radio">
+        <div className={`ab-switch-field is-radio ${isFilled ? 'is-filled' : ''}`}>
           <input
             type={type}
             name={name}
             className="ab-switch-field__element"
             value={value}
             id={id}
+            checked={checked}
             onChange={onChange}
             onBlur={handleBlur}
           />
