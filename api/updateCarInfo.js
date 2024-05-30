@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 router.post('/updatecarinfo', async (req, res) => {
   const { clients_id, car_number, car_make, car_model, car_type } = req.body;

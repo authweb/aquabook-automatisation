@@ -8,6 +8,7 @@ import { Switch } from "antd";
 import Aside from "./Aside";
 import Select from "./FormComponents/Select";
 import TextArea from "./FormComponents/TextArea";
+import ServicesItem from "./ServicesItem";
 
 const CardEdit = ({
 	general,
@@ -24,10 +25,8 @@ const CardEdit = ({
 	activeButton,
 	onClientSelect,
 	selectedServices,
-	serviceEmployeeMap,
 	onButtonClick,
 }) => {
-	const { users, setUsers } = useAuth();
 	const [clients, setClients] = useState([]);
 
 	useEffect(() => {
@@ -53,55 +52,9 @@ const CardEdit = ({
 			{cardCalendar && (
 				<div className='ab-card eb-services-island'>
 					<h4 className='ab-sub-headline'>{title}</h4>
-					{selectedServices.map(service => {
-						console.log(`Услуга - ${service.id}: `, service);
-						const employeeForService = serviceEmployeeMap.get(service.id);
-						console.log(
-							`Сотрудник для услуги ${service.id}: `,
-							employeeForService?.first_name,
-						);
-						console.log("Выбранные услуги: ", selectedServices);
-						console.log("Карта сотрудников для услуг: ", serviceEmployeeMap);
-
-						return (
-							<div
-								key={service.id}
-								className='eb-services-island__item cursor-pointer'>
-								<div className='eb-services-island__service'>
-									<div className='flex items-center w-full w-max-full'>
-										<div
-											className='eb-island-icon mr-4 flex-shrink-0 rounded-lg'
-											style={{ width: "50px", height: "50px" }}>
-											<ServiceIcon className='ab-icon icon sprite-eyw text-mono-600 eb-island-icon__icon ab-icon--size-text' />
-										</div>
-										<div className='flex-grow pr-4 overflow-hidden'>
-											{service.name}
-											<div className='flex items-center flex-wrap gap-x-4 gap-y-2 text-xs mt-1'>
-												<div className='whitespace-no-wrap'>
-													{service.startTime} - {service.endTime}
-												</div>
-												<div className='opacity-50 whitespace-no-wrap'>
-													{service.duration} мин.
-												</div>
-												<div>
-													<div className='eb-user-avatar eb-user-avatar--single-row'>
-														<span className='eb-user-avatar__title'>
-															{employeeForService?.first_name || "Не выбран"}
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className='flex-shrink-0'>
-											<strong className='whitespace-no-wrap'>
-												{service.price_from} ₽
-											</strong>
-										</div>
-									</div>
-								</div>
-							</div>
-						);
-					})}
+					{selectedServices.map(selectedServices => (
+						<ServicesItem key={selectedServices.id} service={selectedServices} />
+					))}
 					<button
 						onClick={() => onButtonClick("addService")}
 						type='button'
@@ -222,9 +175,8 @@ const CardEdit = ({
 			)}
 			{activeButton && (
 				<Aside
-					title={`Добавить ${
-						activeButton === "addService" ? "услугу" : "клиента"
-					}`}
+					title={`Добавить ${activeButton === "addService" ? "услугу" : "клиента"
+						}`}
 					closeAside={() => onButtonClick(activeButton)}
 					isAsideOpen={true} // Открываем Aside при активной кнопке
 				/>

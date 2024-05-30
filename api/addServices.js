@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 router.post('/services', async (req, res) => {
   let { category_id, name, description, price_from, price_to, tags, duration } = req.body;
@@ -10,9 +10,9 @@ router.post('/services', async (req, res) => {
   }
 
   category_id = category_id || 0;
-  name = name || ''; 
+  name = name || '';
   description = description || '';
-  price_from = price_from || 0; 
+  price_from = price_from || 0;
   price_to = price_to || 0;
   tags = tags || '';
   duration = duration || 0;

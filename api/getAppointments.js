@@ -4,8 +4,7 @@ const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
 const timezone = require("dayjs/plugin/timezone");
 
-const db = require("../config/dbConnect");
-
+const db = require('../src/config/dbConnect');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -13,8 +12,21 @@ dayjs.tz.setDefault("Asia/Krasnoyarsk");
 
 router.get("/appointments", async (_, res) => {
 	try {
-		const [rows] = await db.execute("SELECT * FROM appointments");
-		const appointments = rows.map(appointment => {
+		const [appointments] = await db.execute("SELECT * FROM appointments2");
+		const [servicesEmployees] = await db.execute(`
+			SELECT 
+			ase.appointment_id, 
+			s.name AS service_name, 
+			e.id AS employee_id
+		FROM 
+			service_employee_map ase
+		JOIN 
+			services s ON ase.service_id = s.id
+		JOIN 
+			employees e ON ase.employee_id = e.id
+		`);
+
+		const appointmentsMap = appointments.reduce((map, appointment) => {
 			const startInKrasnoyarsk = dayjs(appointment.start)
 				.tz("Asia/Krasnoyarsk")
 				.format("YYYY-MM-DD HH:mm:ss");
@@ -22,23 +34,33 @@ router.get("/appointments", async (_, res) => {
 				.tz("Asia/Krasnoyarsk")
 				.format("YYYY-MM-DD HH:mm:ss");
 
-			return {
+			map[appointment.id] = {
 				id: appointment.id,
 				start: startInKrasnoyarsk,
 				end: endInKrasnoyarsk,
-				selectedServices: appointment.selectedServices,
-				serviceEmployeeMap: appointment.serviceEmployeeMap,
 				text: appointment.text,
 				clients_id: appointment.clients_id,
 				totalCost: appointment.totalCost,
 				is_paid: appointment.is_paid,
+				servicesEmployees: []
 			};
+			return map;
+		}, {});
+
+		servicesEmployees.forEach(se => {
+			if (appointmentsMap[se.appointment_id]) {
+				appointmentsMap[se.appointment_id].servicesEmployees.push({
+					service_name: se.service_name,
+					employee_id: se.employee_id  // Включаем employee_id
+				});
+			}
 		});
 
-		console.log("Appointments from DB:", appointments);
+		const appointmentsArray = Object.values(appointmentsMap);
 
-		if (appointments.length === 0) {
-			// Если нет записей, вернем пустой массив
+		console.log("Appointments from DB:", appointmentsArray);
+
+		if (appointmentsArray.length === 0) {
 			return res.json({
 				message: "No appointments found",
 				appointments: [],
@@ -47,7 +69,7 @@ router.get("/appointments", async (_, res) => {
 
 		res.json({
 			message: "Appointments fetched successfully",
-			appointments,
+			appointments: appointmentsArray,
 		});
 	} catch (error) {
 		console.error(error);

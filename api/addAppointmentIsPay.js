@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 // Маршрут для получения конкретной записи по id
 // Пример endpoint для обновления статуса оплаты записи

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 router.get('/myappointments/', async (req, res) => {
   const clients_id = req.params.clients_id;

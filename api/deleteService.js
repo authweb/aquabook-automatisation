@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 router.delete('/services/:id', async (req, res) => {
   const { id } = req.params;

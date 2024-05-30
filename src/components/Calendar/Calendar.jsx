@@ -44,8 +44,7 @@ const CalendarDay = () => {
 			const selectedEnd = args.end ? dayjs(args.end.value) : null;
 
 			navigate(
-				`${location.pathname}/add${location.search}&start=${
-					selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
+				`${location.pathname}/add${location.search}&start=${selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
 				}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`,
 			);
 		},
@@ -57,8 +56,8 @@ const CalendarDay = () => {
 		startDate: (today
 			? dayjs(today)
 			: selectedDate
-			? dayjs(selectedDate)
-			: dayjs()
+				? dayjs(selectedDate)
+				: dayjs()
 		).format("YYYY-MM-DD"),
 		columns: [],
 		heightSpec: "BusinessHoursNoScroll",
@@ -99,87 +98,47 @@ const CalendarDay = () => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const [
-					appointmentsResponse,
-					employeesResponse,
-					categoriesResponse,
-					servicesResponse,
-				] = await Promise.all([
-					axios.get("https://api.aqua-book.ru/api/appointments"),
-					axios.get("https://api.aqua-book.ru/api/employees"),
-					axios.get("https://api.aqua-book.ru/api/service-categories"),
-					axios.get("https://api.aqua-book.ru/api/services"),
+				const [appointmentsResponse, employeesResponse, categoriesResponse, servicesResponse] = await Promise.all([
+					axios.get("/api/appointments"),
+					axios.get("/api/employees"),
+					axios.get("/api/service-categories"),
+					axios.get("/api/services"),
 				]);
+				const appointments = appointmentsResponse.data.appointments;
+				const employees = employeesResponse.data.employees;
+				const servicesCategories = categoriesResponse.data.servicesCategories;
+				const services = servicesResponse.data.services;
 
-				const { servicesCategories } = categoriesResponse.data;
-				const { services } = servicesResponse.data;
+				// Создание колонок на основе данных о сотрудниках
+				const columns = employees.map(employee => ({
+					name: `${employee.first_name}`,
+					id: employee.id.toString(),
+				}));
 
+				// Обновление конфигурации календаря для включения новых колонок
+				setConfig(prevConfig => ({
+					...prevConfig,
+					columns: columns,
+				}));
+
+				// Обработка и установка событий календаря
+				const eventsData = appointments.map(appt => ({
+					id: appt.id.toString(),
+					start: appt.start,
+					end: appt.end,
+					text: appt.text,
+					resource: appt.servicesEmployees.map(se => se.employee_id.toString())[0], // Использование ID первого сотрудника для услуги
+					backColor: "#someColor",
+				}));
+
+				setEvents(eventsData);
+
+				// Установка категорий и услуг
 				setCategories(servicesCategories);
 				setServices(services);
 
-				setConfig(prevConfig => ({
-					...prevConfig,
-					columns: employeesResponse.data.employees.map(employee => ({
-						name: employee.first_name,
-						id: employee.id.toString(),
-					})),
-				}));
-
-				// Create a map of employee ID to employee data
-				const employeeMap = new Map();
-				employeesResponse.data.employees.forEach(employee => {
-					employeeMap.set(employee.id, employee);
-				});
-
-				// Process the appointments and map serviceEmployeeMap correctly
-				const eventsData = appointmentsResponse.data.appointments
-					.map(appt => {
-						let serviceEmployee;
-						try {
-							serviceEmployee = JSON.parse(appt.serviceEmployeeMap);
-						} catch (e) {
-							console.error(
-								`Error parsing serviceEmployeeMap for appointment ID ${appt.id}:`,
-								e,
-							);
-							return null;
-						}
-
-						// Проверяем, является ли serviceEmployee объектом
-						if (
-							typeof serviceEmployee !== "object" ||
-							serviceEmployee === null
-						) {
-							console.error(
-								`Invalid format of serviceEmployeeMap for appointment ID ${appt.id}`,
-							);
-							return null;
-						}
-
-						// Извлекаем идентификаторы услуг и сотрудников из объекта serviceEmployee
-						const serviceIds = Object.keys(serviceEmployee);
-						const employeeId = serviceEmployee[serviceIds[0]];
-
-						if (!employeeId || !employeeMap.has(employeeId)) {
-							console.error(
-								`Employee ID for '${appt.serviceEmployeeMap}' not found.`,
-							);
-							return null;
-						}
-
-						return {
-							id: appt.id.toString(),
-							start: appt.start,
-							end: appt.end,
-							text: appt.text,
-							resource: employeeId.toString(),
-							backColor: "#someColor",
-						};
-					})
-					.filter(event => event !== null);
-
-				setEvents(eventsData);
-				console.log(appointmentsResponse);
+				console.log("Appointments:", appointments);
+				console.log("Columns setup:", columns);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			}
@@ -187,6 +146,7 @@ const CalendarDay = () => {
 
 		fetchData();
 	}, []);
+
 
 	return (
 		<>

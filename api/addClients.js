@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/dbConnect'); // Путь к вашему файлу dbConnect может отличаться
+const db = require('../src/config/dbConnect');
 
 router.post('/clients', async (req, res) => {
   const { first_name, last_name, phone, email } = req.body;

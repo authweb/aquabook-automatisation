@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 router.post('/newappointment', async (req, res) => {
   const { clients_id, car_id, service_id, appointment_date } = req.body;

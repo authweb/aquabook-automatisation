@@ -47,7 +47,7 @@
   "scripts": {
     "build:css": "postcss src/scss/styles.css -o src/scss/index.css",
     "dev:start": "npm run build:css && react-app-rewired start",
-    "dev:server": "nodemon src/api/index.js",
+    "dev:server": "nodemon api/index.js",
     "dev": "concurrently \"npm run dev:start\" \"npm run dev:server\"",
     "build": "npm run build:css && react-app-rewired build && cp build/index.html build/404.html",
     "test": "react-app-rewired test",

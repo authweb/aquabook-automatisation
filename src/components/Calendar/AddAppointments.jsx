@@ -9,172 +9,122 @@ import Aside from "../Common/Aside";
 import { ReactComponent as TimeIcon } from "../../assets/images/time-icon.svg";
 import TextArea from "../Common/FormComponents/TextArea";
 
-const AddAppointments = ({
-	service,
-	setService,
-	categories,
-	setCategories,
-	services,
-	setServices,
-	onAddAppointment,
-}) => {
+const AddAppointments = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const queryParams = new URLSearchParams(location.search);
 	const endString = queryParams.get("end");
-	const [startDate, setStartDate] = useState(
-		dayjs(queryParams.get("end"), "YYYY-MM-DDTHH:mm:ss"),
-	);
+	const [startDate, setStartDate] = useState(dayjs(endString, "YYYY-MM-DDTHH:mm:ss"));
 	const endDate = dayjs(endString, "YYYY-MM-DDTHH:mm:ss");
-	const [initialStartDate, setInitialStartDate] = useState(
-		dayjs(queryParams.get("end"), "YYYY-MM-DDTHH:mm:ss"),
-	);
+	const [initialStartDate, setInitialStartDate] = useState(startDate);
 	const formattedStart = initialStartDate.format("dd, DD MMM YYYY HH:mm");
 	const [activeButton, setActiveButton] = useState(null);
 	const [isAsideOpen, setIsAsideOpen] = useState(false);
 	const [selectedServices, setSelectedServices] = useState([]);
-	const [serviceEmployeeMap, setServiceEmployeeMap] = useState(new Map());
 	const [selectedClient, setSelectedClient] = useState(null);
 	const [endAppointmentTime, setEndAppointmentTime] = useState(startDate);
-	const [tempIdMap, setTempIdMap] = useState(new Map());
-	const [serviceIdCounter, setServiceIdCounter] = useState(0);
 	const [currentValues, setCurrentValues] = useState({ cost: 0 });
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
-		const totalCost = selectedServices.reduce(
-			(total, service) => total + Number(service.price_from),
-			0,
-		);
+		const totalCost = selectedServices.reduce((total, service) => total + Number(service.price_from), 0);
 		setCurrentValues({ cost: totalCost });
 	}, [selectedServices]);
 
-	// Функция для добавления услуги
-	const addService = (service, tempId) => {
-		const newServiceId = serviceIdCounter;
-		setServiceIdCounter(prevId => prevId + 1);
-		console.log(tempId);
-		const serviceEndTime = dayjs(endAppointmentTime).add(
-			service.duration,
-			"minute",
-		);
+	const addService = (service) => {
+		const serviceEndTime = dayjs(endAppointmentTime).add(service.duration, "minute");
 		const serviceWithTimeAndId = {
 			...service,
-			id: tempId,
 			startTime: startDate.format("HH:mm"),
 			endTime: serviceEndTime.format("HH:mm"),
+			employee: service.employee ? service.employee.id : "Не выбран" // Здесь мы добавляем проверку и значение по умолчанию
 		};
 
-		setTempIdMap(prevMap => {
-			const tempIdMap = new Map(prevMap);
-			tempIdMap.set(tempId, newServiceId);
-			return tempIdMap;
+		setSelectedServices(prevServices => {
+			const updatedServices = [...prevServices, serviceWithTimeAndId];
+			console.log('Updated services after adding:', updatedServices);
+			return updatedServices;
 		});
-		setSelectedServices(prevServices => [
-			...prevServices,
-			serviceWithTimeAndId,
-		]);
+
 		if (serviceEndTime.isAfter(endAppointmentTime)) {
 			setEndAppointmentTime(serviceEndTime);
 		}
 	};
 
+
+	const handleSelectEmployeeForService = (serviceId, employee) => {
+		console.log(`Выбор сотрудника для услуги с ID: ${serviceId}`);
+		console.log('Выбранный сотрудник:', employee.id);
+
+		setSelectedServices(prevServices => {
+			const updatedServices = prevServices.map(service => {
+				if (service.id === serviceId) {
+					const updatedService = { ...service, employee: employee || { first_name: "Не выбран" } };
+					console.log('Обновленная услуга:', updatedService);
+					return updatedService;
+				}
+				return service;
+			});
+
+			console.log('Обновленный список услуг:', updatedServices);
+			return updatedServices;
+		});
+	};
+
+	const validateAppointment = () => {
+		const errorMessages = [];
+		if (!selectedClient || !selectedClient.id) errorMessages.push("Необходимо выбрать клиента.");
+		if (selectedServices.length === 0) errorMessages.push("Необходимо добавить хотя бы одну услугу.");
+		if (currentValues.cost <= 0) errorMessages.push("Общая стоимость должна быть больше нуля.");
+		setErrors(errorMessages);
+		return errorMessages.length === 0;
+	};
+
 	const addAppointment = async () => {
-		if (!selectedClient || !selectedClient.id || currentValues.cost <= 0) {
-			const errorMessages = [];
-			if (!selectedClient || !selectedClient.id) {
-				errorMessages.push("Необходимо выбрать клиента.");
-			}
-			if (currentValues.cost <= 0) {
-				errorMessages.push("Общая стоимость должна быть больше нуля.");
-			}
-			setErrors(errorMessages);
-			return;
-		}
+		if (!validateAppointment()) return;
 
 		const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name} ${selectedClient.phone}`;
-		const servicesInfo = selectedServices
-			.map(service => service.name)
-			.join(", ");
-		const serviceEmployeeMapObj = Object.fromEntries(
-			Array.from(serviceEmployeeMap.entries()).map(([service_id, employee]) => [
-				service_id,
-				employee.id,
-				employee.first_name,
-			]),
-		);
+		const servicesInfo = selectedServices.map(service => service.name).join(", ");
+		const appointmentText = `Выбранные услуги: ${servicesInfo} Клиент: ${clientInfo} Сумма: ${currentValues.cost} руб.`;
 
-		const appointmentText = `Выбранные услуги:${servicesInfo}Клиент: ${clientInfo}
-		Сумма: ${currentValues.cost} руб.
-	`;
-
-		// Logging data before sending
-		console.log("selectedServices:", selectedServices);
-		console.log("serviceEmployeeMapObj:", serviceEmployeeMapObj);
+		const newEvent = {
+			start: startDate.format("YYYY-MM-DD HH:mm:ss"),
+			end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
+			selectedServices: selectedServices.map(service => ({
+				id: service.service, // Здесь используйте поле service, а не id
+				name: service.name,
+				employee: service.employee ? service.employee : null,
+			})),
+			text: appointmentText,
+			totalCost: currentValues.cost,
+			clients_id: selectedClient.id,
+		};
 
 		try {
-			const newEvent = {
-				start: startDate.format("YYYY-MM-DD HH:mm:ss"),
-				end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
-				selectedServices: selectedServices.map(service => service.name),
-				serviceEmployeeMap: serviceEmployeeMapObj,
-				text: appointmentText,
-				totalCost: currentValues.cost,
-				clients_id: selectedClient.id,
-			};
+			const response = await axios.post("https://api.aqua-book.ru/api/appointments", newEvent);
 
-			// Logging data before sending
-			console.log("Data to be sent:", newEvent);
-
-			const response = await axios.post(
-				"https://api.aqua-book.ru/api/appointments",
-				newEvent,
-			);
 			if (response.data.errors) {
 				setErrors(response.data.errors);
 			} else {
 				setSelectedServices([]);
-				setServiceEmployeeMap(new Map());
 				navigate(-1);
 				setErrors([]);
 			}
 		} catch (error) {
-			let errorMessages = [];
+			const errorMessages = [];
 			if (error.response) {
-				// Server responded with a status other than 2xx
-				console.error("Error response:", error.response);
-				errorMessages = error.response.data.errors || [
-					error.response.data.message,
-				];
+				errorMessages.push(...(error.response.data.errors || [error.response.data.message]));
 			} else if (error.request) {
-				// Request was made but no response received
-				console.error("Error request:", error.request);
-				errorMessages = ["No response was received from the server"];
+				errorMessages.push("Ответа от сервера получено не было");
 			} else {
-				// Something else happened while setting up the request
-				console.error("Error setting up request:", error.message);
-				errorMessages = ["An error occurred while setting up the request"];
+				errorMessages.push("При настройке запроса произошла ошибка");
 			}
 			setErrors(errorMessages);
-			console.error("Error during POST request:", error);
 		}
 	};
 
-	// Функция для выбора сотрудника для услуги
-	const handleSelectEmployeeForService = (newServiceId, employee) => {
-		setServiceEmployeeMap(prevMap => {
-			const updatedMap = new Map(prevMap);
-			updatedMap.set(newServiceId, employee);
-			return updatedMap;
-		});
-	};
-
-	useEffect(() => {
-		console.log("Обновленный tempIdMap:", tempIdMap);
-	}, [tempIdMap]);
-
 	const openAside = (asideName, action) => {
-		setActiveButton({ name: asideName, action: action });
+		setActiveButton({ name: asideName, action });
 		setIsAsideOpen(true);
 	};
 
@@ -196,11 +146,10 @@ const AddAppointments = ({
 								cardCalendar
 								setSelectedServices={setSelectedServices}
 								selectedServices={selectedServices}
+								onSelectEmployeeForService={handleSelectEmployeeForService}
 								ButtonName='Добавить услугу'
-								serviceEmployeeMap={serviceEmployeeMap}
-								onButtonClick={() =>
-									openAside("service", "addService")
-								}></CardEdit>
+								onButtonClick={() => openAside("service", "addService")}
+							/>
 							<CardEdit
 								title='Клиент'
 								setActiveButton={setActiveButton}
@@ -210,7 +159,7 @@ const AddAppointments = ({
 								ButtonName='Создать нового'
 								onButtonClick={() =>
 									openAside("client", "createClient")
-								}></CardEdit>
+								} />
 							<CardEdit cardInvoice currentValues={currentValues.cost} />
 							{selectedServices.length > 0 && (
 								<div className='ab-invoice eb-page-aside__buttons'>
@@ -221,9 +170,7 @@ const AddAppointments = ({
 													className='ab-button mt-2 w-full ab-button--size-lg ab-button--theme-solid ab-button--color-accent ab-button--with-text ab-button--icon-highlighted ab-animated-icon-parent ab-button--color-accent'
 													onClick={addAppointment}>
 													<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
-													<span className='ab-button__text'>
-														Создать запись
-													</span>
+													<span className='ab-button__text'>Создать запись</span>
 													<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
 												</button>
 											</div>
@@ -236,10 +183,10 @@ const AddAppointments = ({
 							<Aside
 								title='Добавить услугу'
 								closeAside={closeAside}
+								onSelectEmployeeForService={handleSelectEmployeeForService}
 								isAsideOpen={isAsideOpen}
 								action={activeButton.action}
-								onAddService={addService} // Передаем функцию addService в Aside
-								onSelectEmployeeForService={handleSelectEmployeeForService} // Передаем функцию handleSelectEmployeeForService в Aside
+								onAddService={addService}
 								done='Добавить'
 							/>
 						)}

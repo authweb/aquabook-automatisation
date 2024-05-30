@@ -4,7 +4,7 @@ const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 const timezone = require('dayjs/plugin/timezone');
 
-const db = require('../config/dbConnect');
+const db = require('../src/config/dbConnect');
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
