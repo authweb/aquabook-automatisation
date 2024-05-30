@@ -173,7 +173,7 @@ const Aside = ({
 
 	const handleAddService = () => {
 		if (selectedService) {
-			const serviceWithEmployee = selectedEmployee ? { ...selectedService, employee: selectedEmployee.id, employeeName: selectedEmployee.name } : { ...selectedService, employeeName: "Не выбран" };
+			const serviceWithEmployee = selectedEmployee ? { ...selectedService, employee: selectedEmployee, employeeName: selectedEmployee.first_name } : { ...selectedService, employee: null, employeeName: "Не выбран" };
 			console.log('Service to be added:', serviceWithEmployee);
 			onAddService(serviceWithEmployee);
 			closeAside();

@@ -37,8 +37,10 @@ const AddAppointments = () => {
 			...service,
 			startTime: startDate.format("HH:mm"),
 			endTime: serviceEndTime.format("HH:mm"),
-			employee: service.employee ? service.employee.id : "Не выбран" // Здесь мы добавляем проверку и значение по умолчанию
+			employee: service.employee ? { id: service.employee.id, name: service.employee.first_name } : { id: null, name: "Не выбран" }
 		};
+
+		console.log("Service to be added:", serviceWithTimeAndId); // Логируем перед добавлением
 
 		setSelectedServices(prevServices => {
 			const updatedServices = [...prevServices, serviceWithTimeAndId];
@@ -50,7 +52,6 @@ const AddAppointments = () => {
 			setEndAppointmentTime(serviceEndTime);
 		}
 	};
-
 
 	const handleSelectEmployeeForService = (serviceId, employee) => {
 		console.log(`Выбор сотрудника для услуги с ID: ${serviceId}`);
@@ -76,6 +77,10 @@ const AddAppointments = () => {
 		if (!selectedClient || !selectedClient.id) errorMessages.push("Необходимо выбрать клиента.");
 		if (selectedServices.length === 0) errorMessages.push("Необходимо добавить хотя бы одну услугу.");
 		if (currentValues.cost <= 0) errorMessages.push("Общая стоимость должна быть больше нуля.");
+		selectedServices.forEach(service => {
+			if (!service.id) errorMessages.push("Необходимо выбрать услугу.");
+			if (!service.employee) errorMessages.push(`Необходимо выбрать сотрудника для услуги ${service.name}.`);
+		});
 		setErrors(errorMessages);
 		return errorMessages.length === 0;
 	};
@@ -91,14 +96,16 @@ const AddAppointments = () => {
 			start: startDate.format("YYYY-MM-DD HH:mm:ss"),
 			end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
 			selectedServices: selectedServices.map(service => ({
-				id: service.service, // Здесь используйте поле service, а не id
+				id: service.id,  // Убедитесь, что это правильное поле для ID услуги
 				name: service.name,
-				employee: service.employee ? service.employee : null,
+				employee: service.employee ? service.employee.id : null,  // Убедитесь, что передается ID сотрудника
 			})),
 			text: appointmentText,
 			totalCost: currentValues.cost,
 			clients_id: selectedClient.id,
 		};
+
+		console.log("Sending new appointment data:", newEvent);
 
 		try {
 			const response = await axios.post("https://api.aqua-book.ru/api/appointments", newEvent);
@@ -113,6 +120,7 @@ const AddAppointments = () => {
 		} catch (error) {
 			const errorMessages = [];
 			if (error.response) {
+				console.log("Error data:", error.response.data);
 				errorMessages.push(...(error.response.data.errors || [error.response.data.message]));
 			} else if (error.request) {
 				errorMessages.push("Ответа от сервера получено не было");
@@ -122,6 +130,7 @@ const AddAppointments = () => {
 			setErrors(errorMessages);
 		}
 	};
+
 
 	const openAside = (asideName, action) => {
 		setActiveButton({ name: asideName, action });

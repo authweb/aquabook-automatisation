@@ -28,13 +28,22 @@ const CalendarDay = () => {
 	const [services, setServices] = useState({});
 
 	const handleEventClick = useCallback(
-		args => {
+		async (args) => {
 			const eventId = args.e.data.id;
 			setCurrentEventId(eventId);
 			navigate(`/dashboard/appointments/${eventId}`);
+
+			// Fetch the event details from the server
+			try {
+				const response = await axios.get(`/api/appointments/${eventId}`);
+				setSelectedEvent(response.data.appointment);
+			} catch (error) {
+				console.error("Error fetching event details:", error);
+			}
 		},
-		[navigate, setCurrentEventId],
+		[navigate, setCurrentEventId]
 	);
+
 
 	const handleTimeRangeSelected = useCallback(
 		args => {

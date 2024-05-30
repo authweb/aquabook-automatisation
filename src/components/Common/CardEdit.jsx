@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../contexts/AuthContexts";
 import { CheckOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
-import { ReactComponent as ServiceIcon } from "../../assets/images/service.svg";
 import { ReactComponent as UserSvg } from "../../assets/images/tag-user.svg";
-import dayjs from "dayjs";
 import { Switch } from "antd";
 import Aside from "./Aside";
 import Select from "./FormComponents/Select";
@@ -52,8 +49,8 @@ const CardEdit = ({
 			{cardCalendar && (
 				<div className='ab-card eb-services-island'>
 					<h4 className='ab-sub-headline'>{title}</h4>
-					{selectedServices.map(selectedServices => (
-						<ServicesItem key={selectedServices.id} service={selectedServices} />
+					{selectedServices.map(serviceWithEmployee => (
+						<ServicesItem key={serviceWithEmployee.id} service={serviceWithEmployee} />
 					))}
 					<button
 						onClick={() => onButtonClick("addService")}

@@ -1,20 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-
 import dayjs from "dayjs";
-
 import { ReactComponent as TimeIcon } from "../../assets/images/time-icon.svg";
 import { Tag } from "antd";
-import TextArea from "../Common/FormComponents/TextArea";
-
 import { CalendarContext } from "../../contexts/CalendarContexts";
 import HeaderDashboard from "../Common/HeaderDashboard";
 import { ReactComponent as ServiceIcon } from "../../assets/images/service.svg";
 import { ReactComponent as UserSvg } from "../../assets/images/tag-user.svg";
-import CardEdit from "../Common/CardEdit";
-import Aside from "../Common/Aside";
 
-const AppointmentDetails = () => {
+const AppointmentDetails = ({ event }) => {
 	const { currentEventId } = useContext(CalendarContext);
 	const [appointment, setAppointment] = useState(null);
 	const [client, setClient] = useState(null);

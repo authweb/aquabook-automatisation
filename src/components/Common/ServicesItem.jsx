@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as ServiceIcon } from "../../assets/images/service.svg";
 
 const ServicesItem = ({ service }) => {
-    const employeeName = service.employee ? service.employee.first_name : "Не выбран";
+    const employeeName = service.employeeName ? service.employeeName : "Не выбран";
     return (
         <div key={service.id} className='eb-services-island__item cursor-pointer'>
             <div className='eb-services-island__service'>
