@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../../scss/homepage.scss";
 
-import Dashboard from "../../../assets/images/dashboard.svg";
+import Dashboard from "../../../assets/images/dashboard.gif";
 
 const Main = () => {
 	return (
@@ -42,7 +42,7 @@ const Main = () => {
 				<div className='calendar-iframe calendar-iframe--black'>
 					<div className='wrapper wrapper--small relative'>
 						<img
-							className='calendar-iframe__iframe bg-white border-black'
+							className='calendar-iframe__iframe border-black'
 							src={Dashboard}
 							alt='dashboard'
 						/>

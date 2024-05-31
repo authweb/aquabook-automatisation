@@ -63,8 +63,7 @@ import {
 	ServicePage,
 	ServiceAdd,
 } from "../../components/Settings";
-
-import LogoMini from "../../assets/images/logomini.svg";
+import { ReactComponent as Logo } from "../../assets/images/logomini.svg";
 import "../../scss/dashboard.scss";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -283,7 +282,7 @@ const Dashboard = () => {
 										<Link
 											to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
 											<img
-												src={LogoMini}
+												src={Logo}
 												style={{
 													maxWidth: "80%",
 													margin: "0 auto",
@@ -349,9 +348,9 @@ const Dashboard = () => {
 							style={{ background: "#001529" }}>
 							<Content
 								className={wrapperClassName}
-								// style={{
-								// 	margin: "0 16px",
-								// }}
+							// style={{
+							// 	margin: "0 16px",
+							// }}
 							>
 								<Header
 									className='eb-calendar_title'
@@ -361,12 +360,12 @@ const Dashboard = () => {
 									{["/dashboard/services", "/dashboard/clients"].includes(
 										location.pathname,
 									) && (
-										<Dropdown menu={menuProps}>
-											<Button>
-												<Space>Оперции с Excel</Space>
-											</Button>
-										</Dropdown>
-									)}
+											<Dropdown menu={menuProps}>
+												<Button>
+													<Space>Оперции с Excel</Space>
+												</Button>
+											</Dropdown>
+										)}
 									{!isMobile && (
 										<Breadcrumbs breadcrumbNameMap={breadcrumbNameMap} />
 									)}

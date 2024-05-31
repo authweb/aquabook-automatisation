@@ -115,14 +115,11 @@
 }
 
 .calendar-iframe__iframe {
-	border-radius: 16px;
-	box-shadow: 0 0 0 4px currentColor;
 	height: auto;
 	max-width: 100%;
 	outline: none;
 	width: 100%;
 	@media (min-width: 768px) {
-		border-radius: 52px;
 		box-shadow: 0 0 0 8px currentColor;
 	}
 }
