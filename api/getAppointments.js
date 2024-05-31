@@ -58,8 +58,6 @@ router.get("/appointments", async (_, res) => {
 
 		const appointmentsArray = Object.values(appointmentsMap);
 
-		console.log("Appointments from DB:", appointmentsArray);
-
 		if (appointmentsArray.length === 0) {
 			return res.json({
 				message: "No appointments found",

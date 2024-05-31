@@ -10,6 +10,7 @@ import {
 	PieChart,
 	Pie,
 	Cell,
+	ResponsiveContainer
 } from "recharts";
 import { AnalyticsHeader, AppointmentsTable } from "../";
 
@@ -38,8 +39,7 @@ const Analytics = () => {
 		try {
 			// Убедитесь, что ваш API поддерживает эти параметры или настройте их в соответствии с вашим API
 			const response = await fetch(
-				`https://api.aqua-book.ru/api/appointments?month=${
-					month + 1
+				`https://api.aqua-book.ru/api/appointments?month=${month + 1
 				}&year=${year}`,
 			);
 			const data = await response.json();
@@ -96,7 +96,7 @@ const Analytics = () => {
 	const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"]; // Цвета для круговой диаграммы
 
 	return (
-		<div>
+		<div className="container mx-auto p-4">
 			<AnalyticsHeader
 				currentMonth={currentMonth}
 				currentYear={currentYear}
@@ -104,41 +104,51 @@ const Analytics = () => {
 				totalAppointments={totalAppointments}
 				totalCompleted={totalCompleted}
 			/>
-			<BarChart
-				width={1000}
-				height={300}
-				data={barData}
-				margin={{
-					top: 20,
-					left: 20,
-					bottom: 5,
-				}}>
-				<XAxis dataKey='date' />
-				<YAxis />
-				<Tooltip />
-				<Legend />
-				<Bar dataKey='Записей всего' fill='#8884d8' />
-				<Bar dataKey='Выполнено' fill='#82ca9d' />
-			</BarChart>
-			<PieChart width={600} height={300}>
-				<Pie
-					data={formattedPieData}
-					cx='50%'
-					cy='50%'
-					labelLine={false}
-					label={({ name, percent }) =>
-						`${name}: ${(percent * 100).toFixed(0)}%`
-					}
-					outerRadius={100}
-					fill='#8884d8'
-					dataKey='value'>
-					{formattedPieData.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-					))}
-				</Pie>
-				<Tooltip />
-				<Legend />
-			</PieChart>
+			<div className="w-full my-4">
+				<ResponsiveContainer width="100%" height={300}>
+					<BarChart
+						width={1000}
+						height={300}
+						data={barData}
+						margin={{
+							top: 20,
+							left: 20,
+							bottom: 5,
+						}}>
+						<XAxis dataKey='date' />
+						<YAxis />
+						<Tooltip />
+						<Legend />
+						<Bar dataKey='Записей всего' fill='#8884d8' />
+						<Bar dataKey='Выполнено' fill='#82ca9d' />
+					</BarChart>
+				</ResponsiveContainer>
+			</div>
+			<div className="w-full my-4">
+				<ResponsiveContainer width="100%" height={300}>
+					<PieChart width={600} height={300}>
+						<Pie
+							data={formattedPieData}
+							cx='50%'
+							cy='50%'
+							labelLine={false}
+							label={({ name, percent }) =>
+								`${name}: ${(percent * 100).toFixed(0)}%`
+							}
+							outerRadius={100}
+							fill='#8884d8'
+							dataKey='value'>
+							{formattedPieData.map((entry, index) => (
+								<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+							))}
+						</Pie>
+						<Tooltip />
+						<Legend />
+					</PieChart>
+				</ResponsiveContainer>
+			</div>
+
+
 			<AppointmentsTable
 				appointments={appointments}
 				currentMonth={currentMonth}

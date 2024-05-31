@@ -9,8 +9,7 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 		const fetchData = async () => {
 			try {
 				const response = await fetch(
-					`https://api.aqua-book.ru/api/appointments?month=${
-						currentMonth + 1
+					`https://api.aqua-book.ru/api/appointments?month=${currentMonth + 1
 					}&year=${currentYear}`,
 				);
 				const data = await response.json();
@@ -66,21 +65,14 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 		},
 		{
 			title: "Выбранные услуги",
-			dataIndex: "selectedServices",
-			key: "selectedServices",
+			dataIndex: "selectedEmployee",
+			key: "selectedEmployee",
 		},
-		{
-			title: "Сотрудник",
-			dataIndex: "serviceEmployeeMap",
-			key: "serviceEmployeeMap",
-		},
-
 		{
 			title: "Текст заказа",
 			dataIndex: "text",
 			key: "text",
 		},
-
 		{
 			title: "Сумма",
 			dataIndex: "totalCost",
@@ -104,19 +96,22 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 	};
 
 	return (
-		<>
+		<div className="container mx-auto p-4">
 			<Input
 				placeholder='Поиск по записям'
 				onChange={handleSearch}
-				style={{ marginBottom: 8, marginTop: 16 }}
+				className="mb-4 mt-2 p-2 border rounded"
 			/>
 			<Table
 				dataSource={filteredAppointments}
 				columns={columns}
 				rowKey='id'
 				onChange={onChange}
+				pagination={{ pageSize: 10 }}
+				scroll={{ x: true }}
+				className="w-full"
 			/>
-		</>
+		</div>
 	);
 };
 
