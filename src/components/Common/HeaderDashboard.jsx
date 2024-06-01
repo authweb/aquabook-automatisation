@@ -20,24 +20,24 @@ const HeaderDashboard = ({
 	return (
 		<div className='ab-page__heading'>
 			<div className='ab-page-headline'>
-				{showBack && (
-					<div className='ab-page-headline__back-wrapper'>
-						<span
-							className='ab-button w-10 h-10 ab-page-headline__back ab-button_md color-mono theme-solid'
-							onClick={() => navigate(-1)}>
-							<span className='ab-button__overlay'></span>
-							<span className='ab-button__content ab-button__content_md px-2'>
-								<CaretLeftOutlined />
-							</span>
-						</span>
-					</div>
-				)}
 				<div
 					className={
 						containerSmall
 							? "ab-page-headline__container container-small"
 							: "ab-page-headline__container container"
 					}>
+					{showBack && (
+						<div className='ab-page-headline__back-wrapper'>
+							<span
+								className='ab-button w-10 h-10 ab-page-headline__back ab-button_md color-mono theme-solid'
+								onClick={() => navigate(-1)}>
+								<span className='ab-button__overlay'></span>
+								<span className='ab-button__content ab-button__content_md px-2'>
+									<CaretLeftOutlined />
+								</span>
+							</span>
+						</div>
+					)}
 					{titleProfile && (
 						<h1 className='ab-headline ab-page-headline__heading'>
 							{users?.first_name} {users?.last_name}

@@ -75,6 +75,7 @@ const Aside = ({
 			email: clients[0]?.email || '',
 		}));
 	}, [services, clients]);
+	
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {

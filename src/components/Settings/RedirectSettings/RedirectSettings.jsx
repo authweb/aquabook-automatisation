@@ -3,26 +3,20 @@ import { useAuth } from '../../../contexts/AuthContexts';
 import { Link } from 'react-router-dom';
 import { MdArrowForwardIos } from 'react-icons/md';
 
-import '../../../scss/settings.scss';
-
 const RedirectSettings = ({ to, labelText }) => {
   const { users } = useAuth();
 
   return (
-    <>
-      <Link className="settingsInfo" to={to}>
-        {users && (
-          <div className="settingsInfo__flex">
-            <div className="settingsInfo__flex__pcol">
-              <p className="settingsInfo__flex__pcol-p">{labelText}</p>
-            </div>
-            <Link to={to} className="settingsInfo__flex-arrow">
-              <MdArrowForwardIos />
-            </Link>
+    <Link to={to} className="block bg-card p-4 rounded-lg shadow-md hover:bg-gray-300 hover:text-gray-900 transition duration-150">
+      {users && (
+        <div className="flex justify-between items-center">
+          <div>
+            <p className="text-lg font-semibold">{labelText}</p>
           </div>
-        )}
-      </Link>
-    </>
+          <MdArrowForwardIos className="text-xl" />
+        </div>
+      )}
+    </Link>
   );
 };
 

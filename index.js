@@ -6,12 +6,24 @@ const path = require("path");
 const app = express();
 dotenv.config();
 
-// Использование CORS для всех маршрутов до их определения
-app.use(
-    cors({
-        origin: "https://aqua-book.ru",
-    }),
-);
+// Массив разрешенных источников
+const allowedOrigins = [
+    "https://aqua-book.ru",
+    "http://localhost:3001"
+];
+
+// Настройка CORS с проверкой разрешенных источников
+app.use(cors({
+    origin: function (origin, callback) {
+        // разрешить запросы без источника (например, мобильные приложения или curl запросы)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'Политика CORS для этого сайта не позволяет доступ с указанного источника.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 
 // Использование парсера JSON для всех маршрутов до их определения
 app.use(express.json());

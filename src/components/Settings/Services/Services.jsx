@@ -14,7 +14,10 @@ const Services = () => {
 
 	const [categories, setCategories] = useState([]);
 	const [services, setServices] = useState({});
-	const [flatServices, setFlatServices] = useState([]); // новое состояние для хранения всех услуг
+	const [flatServices, setFlatServices] = useState([]);
+	const [filteredServices, setFilteredServices] = useState([]);
+	const [filter, setFilter] = useState("Активные");
+	const [searchText, setSearchText] = useState("");
 
 	useEffect(() => {
 		const fetchServices = async () => {
@@ -33,15 +36,34 @@ const Services = () => {
 	}, []);
 
 	useEffect(() => {
-		// создаем плоский массив услуг из всех категорий
-		const allServices = Object.values(services).reduce(
-			(acc, categoryServices) => {
-				return acc.concat(categoryServices);
-			},
-			[],
-		);
-		setFlatServices(allServices); // обновляем состояние flatServices
-	}, [services]); // этот useEffect будет вызван каждый раз, когда обновляется состояние services
+		const allServices = Object.values(services).reduce((acc, categoryServices) => {
+			return acc.concat(categoryServices);
+		}, []);
+		setFlatServices(allServices);
+	}, [services]);
+
+	useEffect(() => {
+		const filtered = flatServices.filter(service => {
+			if (filter === "Активные") {
+				return service.tags === "Включено";
+			}
+			return true;
+		}).filter(service => {
+			if (searchText === "") {
+				return true;
+			}
+			return service.name.toLowerCase().includes(searchText.toLowerCase());
+		});
+		setFilteredServices(filtered);
+	}, [filter, flatServices, searchText]);
+
+	const handleFilterChange = newFilter => {
+		setFilter(newFilter);
+	};
+
+	const handleSearchChange = e => {
+		setSearchText(e.target.value);
+	};
 
 	const columns = [
 		{
@@ -68,8 +90,8 @@ const Services = () => {
 					tag === "Включено"
 						? "green"
 						: tag === "Выключено"
-						? "volcano"
-						: "gray";
+							? "volcano"
+							: "gray";
 				return <Tag color={color}>{tag}</Tag>;
 			},
 		},
@@ -85,15 +107,21 @@ const Services = () => {
 				to='add'
 			/>
 			<div className='ab-page__content'>
-				<div className='pt-6'>
+				<div className='container pt-6'>
 					<div className='flex flex-wrap items-center'>
 						<div className='mb-4 mr-4 max-w-full'>
 							<div className='ab-slider ab-button-nav ab-button-nav__wrapper'>
 								<span className='ab-slider__scroller'>
-									<a className='ab-button-nav__toggler ab-button-nav__toggler_active'>
+									<a
+										className={`ab-button-nav__toggler ${filter === "Активные" ? "ab-button-nav__toggler_active" : ""}`}
+										onClick={() => handleFilterChange("Активные")}
+									>
 										<span tabIndex={-1}>Активные</span>
 									</a>
-									<a className='ab-button-nav__toggler'>
+									<a
+										className={`ab-button-nav__toggler ${filter === "Все" ? "ab-button-nav__toggler_active" : ""}`}
+										onClick={() => handleFilterChange("Все")}
+									>
 										<span tabIndex={-1}>Все</span>
 									</a>
 								</span>
@@ -110,6 +138,8 @@ const Services = () => {
 										placeholder='Поиск'
 										className='ab-text-field__element p-2'
 										id='input-74'
+										value={searchText}
+										onChange={handleSearchChange}
 									/>
 									<span className='ab-text-field__icon'>
 										<SearchOutlined className='ab-icon ab-search__icon-default h-full w-10 p-3 ab-icon--size-text' />
@@ -120,7 +150,7 @@ const Services = () => {
 					</div>
 					<Table
 						className='ab-table'
-						dataSource={flatServices}
+						dataSource={filteredServices}
 						columns={columns}
 						rowKey='id'
 						onRow={service => ({

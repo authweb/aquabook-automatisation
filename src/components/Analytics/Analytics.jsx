@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
 	BarChart,
 	Bar,
 	XAxis,
 	YAxis,
-	CartesianGrid,
 	Tooltip,
 	Legend,
 	PieChart,
 	Pie,
 	Cell,
-	ResponsiveContainer
+	ResponsiveContainer,
 } from "recharts";
 import { AnalyticsHeader, AppointmentsTable } from "../";
 
@@ -30,17 +29,10 @@ const Analytics = () => {
 		setCurrentYear(newYear);
 	};
 
-	useEffect(() => {
-		fetchData(currentMonth, currentYear);
-	}, [currentMonth, currentYear]);
-
-	// Функция для получения данных с сервера
-	const fetchData = async (month, year) => {
+	const fetchData = useCallback(async (month, year) => {
 		try {
-			// Убедитесь, что ваш API поддерживает эти параметры или настройте их в соответствии с вашим API
 			const response = await fetch(
-				`https://api.aqua-book.ru/api/appointments?month=${month + 1
-				}&year=${year}`,
+				`https://api.aqua-book.ru/api/appointments?month=${month + 1}&year=${year}`,
 			);
 			const data = await response.json();
 			const appointmentsForMonth = data.appointments.filter(appointment => {
@@ -50,14 +42,12 @@ const Analytics = () => {
 					appointmentDate.getFullYear() === year
 				);
 			});
-			setAppointments(appointments);
-			// Обновляем общее количество записей и количество выполненных записей
+			setAppointments(data.appointments);
 			setTotalAppointments(appointmentsForMonth.length);
 			setTotalCompleted(
 				appointmentsForMonth.filter(appointment => appointment.is_paid).length,
 			);
 
-			// Обрабатываем данные для BarChart
 			const daysInMonth = new Date(year, month + 1, 0).getDate();
 			const barDataArray = new Array(daysInMonth).fill(null).map((_, index) => {
 				return { date: index + 1, "Записей всего": 0, Выполнено: 0 };
@@ -73,10 +63,7 @@ const Analytics = () => {
 
 			setBarData(barDataArray);
 
-			// Подготовка данных для PieChart
-			const paidAppointments = appointmentsForMonth.filter(
-				a => a.is_paid,
-			).length;
+			const paidAppointments = appointmentsForMonth.filter(a => a.is_paid).length;
 			const unpaidAppointments = appointmentsForMonth.length - paidAppointments;
 
 			setPieData([
@@ -85,18 +72,19 @@ const Analytics = () => {
 			]);
 		} catch (error) {
 			console.error("Error fetching appointments:", error);
-			// Обработка ошибок, например, установка состояния ошибки или отображение уведомления
 		}
-	};
+	}, []);
 
-	// Преобразование объектов в массивы для использования в диаграммах
-	// const formattedBarData = Object.values(barData);
+	useEffect(() => {
+		fetchData(currentMonth, currentYear);
+	}, [currentMonth, currentYear, fetchData]);
+
 	const formattedPieData = Object.values(pieData);
 
-	const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"]; // Цвета для круговой диаграммы
+	const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 	return (
-		<div className="container mx-auto p-4">
+		<div className="container mx-auto p-4 mb-8">
 			<AnalyticsHeader
 				currentMonth={currentMonth}
 				currentYear={currentYear}
@@ -104,51 +92,50 @@ const Analytics = () => {
 				totalAppointments={totalAppointments}
 				totalCompleted={totalCompleted}
 			/>
-			<div className="w-full my-4">
-				<ResponsiveContainer width="100%" height={300}>
-					<BarChart
-						width={1000}
-						height={300}
-						data={barData}
-						margin={{
-							top: 20,
-							left: 20,
-							bottom: 5,
-						}}>
-						<XAxis dataKey='date' />
-						<YAxis />
-						<Tooltip />
-						<Legend />
-						<Bar dataKey='Записей всего' fill='#8884d8' />
-						<Bar dataKey='Выполнено' fill='#82ca9d' />
-					</BarChart>
-				</ResponsiveContainer>
+			<div className="flex flex-col lg:flex-row lg:justify-between mt-6">
+				<div className="w-full lg:w-2/3 mb-6 lg:mb-0">
+					<ResponsiveContainer width="100%" height={300}>
+						<BarChart
+							width="600"
+							data={barData}
+							margin={{
+								top: 20,
+								left: 20,
+								bottom: 5,
+							}}>
+							<XAxis dataKey='date' />
+							<YAxis/>
+							<Tooltip/>
+							<Legend />
+							<Bar dataKey='Записей всего' fill='#8884d8' />
+							<Bar dataKey='Выполнено' fill='#82ca9d' />
+						</BarChart>
+					</ResponsiveContainer>
+				</div>
+				<div className="w-full lg:w-1/3">
+					<ResponsiveContainer width="100%" height={300}>
+						<PieChart>
+							<Pie
+								data={formattedPieData}
+								cx='50%'
+								cy='50%'
+								labelLine={false}
+								label={({ name, percent }) =>
+									`${name}: ${(percent * 100).toFixed(0)}%`
+								}
+								outerRadius={100}
+								fill='#8884d8'
+								dataKey='value'>
+								{formattedPieData.map((entry, index) => (
+									<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+								))}
+							</Pie>
+							<Tooltip />
+							<Legend />
+						</PieChart>
+					</ResponsiveContainer>
+				</div>
 			</div>
-			<div className="w-full my-4">
-				<ResponsiveContainer width="100%" height={300}>
-					<PieChart width={600} height={300}>
-						<Pie
-							data={formattedPieData}
-							cx='50%'
-							cy='50%'
-							labelLine={false}
-							label={({ name, percent }) =>
-								`${name}: ${(percent * 100).toFixed(0)}%`
-							}
-							outerRadius={100}
-							fill='#8884d8'
-							dataKey='value'>
-							{formattedPieData.map((entry, index) => (
-								<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-							))}
-						</Pie>
-						<Tooltip />
-						<Legend />
-					</PieChart>
-				</ResponsiveContainer>
-			</div>
-
-
 			<AppointmentsTable
 				appointments={appointments}
 				currentMonth={currentMonth}
@@ -157,4 +144,5 @@ const Analytics = () => {
 		</div>
 	);
 };
+
 export default Analytics;

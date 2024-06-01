@@ -519,7 +519,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 
 .ab-button-nav {
 	background-color: #e7eaed;
-	background-color: $button-e-color;
+	background-color: var(--button-e-color);
 	color: #535557;
 	color: $white-color;
 	border: none;
@@ -536,8 +536,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		font-size: 0.625rem;
 		line-height: 1.6;
 		border-radius: 0;
-		border-top: 2px solid $button-e-color;
-		border-bottom: 2px solid $button-e-color;
+		border-top: 2px solid var(--button-e-color);
+		border-bottom: 2px solid var(--button-e-color);
 		> span {
 			text-transform: uppercase;
 			padding-left: 1rem;
@@ -548,16 +548,16 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		}
 		&:first-child {
 			border-radius: 1rem 0 0 1rem;
-			border-left: 2px solid $button-e-color;
+			border-left: 2px solid var(--button-e-color);
 		}
 		&:last-child {
 			border-radius: 0 1rem 1rem 0;
-			border-right: 2px solid $button-e-color;
+			border-right: 2px solid var(--button-e-color);
 		}
 		&_active {
 			> span {
 				background-color: #fff;
-				background-color: $button-e-color-hover;
+				background-color: var(--button-e-color-hover);
 				color: #14171d;
 				color: $gray-color;
 				border-radius: 0.125rem;
@@ -1056,7 +1056,6 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			align-items: center;
 			justify-content: center;
 			margin-right: 10px;
-			margin-left: 1.5rem;
 			@media (min-width: 1024px) {
 				& {
 					border-radius: 0.625rem;
@@ -1094,7 +1093,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		padding-top: 1rem;
 		padding-bottom: 5rem;
 		min-height: 360px;
-		background-color: $bg-color;
+		background-color: var(--bg-color);
 		@media (min-width: 1024px) {
 			& {
 				padding-top: 1.5rem;
@@ -1114,22 +1113,17 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	}
 }
 
-.ab-headline {
-	font-family: $font-family;
-	font-style: normal;
-	font-weight: 700;
-}
-
 .ab-headline,
 .ab-nav__title,
 .ab-sub-headline,
 .ab-title {
-	font-family: $font-family;
+	font-family: var(--font-family);
 	font-style: normal;
 	font-weight: 700;
 }
 
 .ab-headline {
+	flex: 9;
 	font-size: 1.25rem;
 	line-height: 1.15;
 }

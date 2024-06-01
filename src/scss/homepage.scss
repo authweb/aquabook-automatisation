@@ -1,9 +1,5 @@
 @import "./globalscss/variables";
 
-.text-white {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
 .top-block__animation-heading > * {
 	--delay: 120ms;
 	--duration: 500ms;
@@ -104,11 +100,6 @@
 	width: 100%;
 }
 
-.bg-white {
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
-}
-
 .border-black {
 	--tw-border-opacity: 1;
 	border-color: rgb(20 23 29 / var(--tw-border-opacity)) !important;
@@ -119,9 +110,6 @@
 	max-width: 100%;
 	outline: none;
 	width: 100%;
-	@media (min-width: 768px) {
-		box-shadow: 0 0 0 8px currentColor;
-	}
 }
 
 @keyframes ew-fade-in-bottom {

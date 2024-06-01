@@ -281,16 +281,12 @@ const Dashboard = () => {
 										}}>
 										<Link
 											to={`/dashboard/calendar?today=${stats.today}&range_start=${stats.rangeStart}`}>
-											<img
-												src={Logo}
-												style={{
-													maxWidth: "80%",
-													margin: "0 auto",
-													display: "flex",
-													justifyContent: "center",
-												}}
-												alt='AquaBook Logo'
-											/>
+											<Logo style={{
+												maxWidth: "80%",
+												margin: "0 auto",
+												display: "flex",
+												justifyContent: "center"
+											}} />
 										</Link>
 										<Menu.Item key='dashboard' icon={<CalendarOutlined />}>
 											<Link
@@ -344,14 +340,9 @@ const Dashboard = () => {
 						)}
 
 						<Layout
-							className={layoutClassName}
-							style={{ background: "#001529" }}>
+							className={layoutClassName} style={{ background: "#001529" }}>
 							<Content
-								className={wrapperClassName}
-							// style={{
-							// 	margin: "0 16px",
-							// }}
-							>
+								className={wrapperClassName}>
 								<Header
 									className='eb-calendar_title'
 									style={{

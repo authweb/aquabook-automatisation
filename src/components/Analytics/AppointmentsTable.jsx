@@ -9,8 +9,7 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 		const fetchData = async () => {
 			try {
 				const response = await fetch(
-					`https://api.aqua-book.ru/api/appointments?month=${currentMonth + 1
-					}&year=${currentYear}`,
+					`https://api.aqua-book.ru/api/appointments?month=${currentMonth + 1}&year=${currentYear}`,
 				);
 				const data = await response.json();
 				const filteredAppointments = data.appointments
@@ -26,7 +25,10 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 						rowNumber: index + 1,
 						start: new Date(appointment.start).toLocaleString(),
 						end: new Date(appointment.end).toLocaleString(),
+						client: appointment.client,
 						is_paid: appointment.is_paid === 1 ? "Оплачено" : "Не оплачено",
+						services: appointment.servicesEmployees.map(se => se.service_name).join(", "), // Преобразование в строку
+						employees: appointment.servicesEmployees.map(se => se.employee_name).join(", "), // Преобразование в строку
 					}));
 				setAppointments(filteredAppointments);
 			} catch (error) {
@@ -43,7 +45,7 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 
 	const filteredAppointments = appointments.filter(appointment => {
 		const searchTarget =
-			`${appointment.selectedServices} ${appointment.text} ${appointment.start} ${appointment.end} ${appointment.serviceEmployeeMap} ${appointment.is_paid}`.toLowerCase();
+			`${appointment.services} ${appointment.text} ${appointment.start} ${appointment.end} ${appointment.employees} ${appointment.is_paid}`.toLowerCase();
 		return searchTarget.includes(searchText);
 	});
 
@@ -64,14 +66,19 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 			key: "end",
 		},
 		{
-			title: "Выбранные услуги",
-			dataIndex: "selectedEmployee",
-			key: "selectedEmployee",
+			title: "Клиент",
+			dataIndex: "client",
+			key: "client",
 		},
 		{
-			title: "Текст заказа",
-			dataIndex: "text",
-			key: "text",
+			title: "Выбранные услуги",
+			dataIndex: "services",
+			key: "services",
+		},
+		{
+			title: "Выбранный сотрудник",
+			dataIndex: "employees",
+			key: "employees",
 		},
 		{
 			title: "Сумма",
@@ -96,22 +103,24 @@ const AppointmentsTable = ({ currentMonth, currentYear }) => {
 	};
 
 	return (
-		<div className="container mx-auto p-4">
+		<>
 			<Input
 				placeholder='Поиск по записям'
 				onChange={handleSearch}
-				className="mb-4 mt-2 p-2 border rounded"
+				className="mb-4 mt-2 p-2 border rounded w-full md:w-1/2"
 			/>
-			<Table
-				dataSource={filteredAppointments}
-				columns={columns}
-				rowKey='id'
-				onChange={onChange}
-				pagination={{ pageSize: 10 }}
-				scroll={{ x: true }}
-				className="w-full"
-			/>
-		</div>
+			<div className="overflow-x-auto mb-4">
+				<Table
+					dataSource={filteredAppointments}
+					columns={columns}
+					rowKey='id'
+					onChange={onChange}
+					pagination={{ pageSize: 10 }}
+					scroll={{ x: 800 }}
+					className="w-full"
+				/>
+			</div>
+		</>
 	);
 };
 
