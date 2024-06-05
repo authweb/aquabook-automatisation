@@ -1,0 +1,716 @@
+2024-06-02 23:13 +03:00: (node:92558) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:13 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:13 +03:00: (node:92558) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:14 +03:00: (node:92889) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:14 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:14 +03:00: (node:92889) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:15 +03:00: (node:93230) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:15 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:15 +03:00: (node:93230) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:15 +03:00: (node:93626) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:15 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:15 +03:00: (node:93626) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:18 +03:00: (node:94403) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:18 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:18 +03:00: (node:94403) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:18 +03:00: (node:94625) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:18 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:18 +03:00: (node:94625) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:21 +03:00: (node:95344) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:21 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:21 +03:00: (node:95344) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:30 +03:00: error Command failed with exit code 1.
+2024-06-02 23:32 +03:00: (node:96510) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-02 23:32 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-02 23:32 +03:00: (node:96510) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:30 +03:00: error Command failed with exit code 1.
+2024-06-03 06:30 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 06:30 +03:00: (node:103311) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 06:30 +03:00: (node:103311) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:48 +03:00: error Command failed with exit code 1.
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:48 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:48 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:48 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:48 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:48 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:48 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:48 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:48 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:48 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:48 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:48 +03:00:   requireStack: []
+2024-06-03 06:48 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:49 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:49 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:49 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:49 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:49 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:49 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:49 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:49 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:49 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:49 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:49 +03:00:   requireStack: []
+2024-06-03 06:49 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-03 06:50 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 06:50 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-03 06:50 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 06:50 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 06:50 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 06:50 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 06:50 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-03 06:50 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-03 06:50 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 06:50 +03:00:   requireStack: []
+2024-06-03 06:50 +03:00: }
+2024-06-03 06:50 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 06:50 +03:00: (node:108987) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:50 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 06:50 +03:00: (node:108987) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:50 +03:00: [0;33mOne of your dependencies, babel-preset-react-app, is importing the
+2024-06-03 06:50 +03:00: "@babel/plugin-proposal-private-property-in-object" package without
+2024-06-03 06:50 +03:00: declaring it in its dependencies. This is currently working because
+2024-06-03 06:50 +03:00: "@babel/plugin-proposal-private-property-in-object" is already in your
+2024-06-03 06:50 +03:00: node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+2024-06-03 06:50 +03:00: 
+2024-06-03 06:50 +03:00: babel-preset-react-app is part of the create-react-app project, [1mwhich
+2024-06-03 06:50 +03:00: is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+2024-06-03 06:50 +03:00: ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+2024-06-03 06:50 +03:00: your devDependencies to work around this error. This will make this message
+2024-06-03 06:50 +03:00: go away.[0m
+2024-06-03 06:50 +03:00:   
+2024-06-03 06:55 +03:00: error Command failed with exit code 1.
+2024-06-03 06:55 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 06:55 +03:00: (node:110315) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:55 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 06:55 +03:00: (node:110315) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:57 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 06:57 +03:00: (node:111082) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 06:57 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 06:57 +03:00: (node:111082) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:00 +03:00: /home/admin/aquabook-automatisation/node_modules/react-scripts/scripts/start.js:19
+2024-06-03 07:00 +03:00:   throw err;
+2024-06-03 07:00 +03:00:   ^
+2024-06-03 07:00 +03:00: 
+2024-06-03 07:00 +03:00: [Error: ENOENT: no such file or directory, stat '/home/admin/aquabook-automatisation/node_modules/.cache/default-development/0.pack'] {
+2024-06-03 07:00 +03:00:   errno: -2,
+2024-06-03 07:00 +03:00:   code: 'ENOENT',
+2024-06-03 07:00 +03:00:   syscall: 'stat',
+2024-06-03 07:00 +03:00:   path: '/home/admin/aquabook-automatisation/node_modules/.cache/default-development/0.pack'
+2024-06-03 07:00 +03:00: }
+2024-06-03 07:00 +03:00: 
+2024-06-03 07:00 +03:00: Node.js v20.13.1
+2024-06-03 07:00 +03:00: error Command failed with exit code 1.
+2024-06-03 07:04 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 07:04 +03:00: (node:112989) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:04 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 07:04 +03:00: (node:112989) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:09 +03:00: error Command failed with exit code 1.
+2024-06-03 07:09 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 07:09 +03:00: (node:113848) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:09 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 07:09 +03:00: (node:113848) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:27 +03:00: Cannot find SASS rule in 'oneOf' rules
+2024-06-03 07:27 +03:00: (node:116199) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:27 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 07:27 +03:00: (node:116199) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:37 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 07:37 +03:00: (node:2518) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:37 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 07:37 +03:00: (node:2518) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:46 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 07:46 +03:00: (node:3795) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:46 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 07:46 +03:00: (node:3795) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:54 +03:00: /home/admin/aquabook-automatisation/node_modules/react-scripts/scripts/start.js:19
+2024-06-03 07:54 +03:00:   throw err;
+2024-06-03 07:54 +03:00:   ^
+2024-06-03 07:54 +03:00: 
+2024-06-03 07:54 +03:00: [Error: ENOENT: no such file or directory, stat '/home/admin/aquabook-automatisation/node_modules/.cache/default-development/0.pack'] {
+2024-06-03 07:54 +03:00:   errno: -2,
+2024-06-03 07:54 +03:00:   code: 'ENOENT',
+2024-06-03 07:54 +03:00:   syscall: 'stat',
+2024-06-03 07:54 +03:00:   path: '/home/admin/aquabook-automatisation/node_modules/.cache/default-development/0.pack'
+2024-06-03 07:54 +03:00: }
+2024-06-03 07:54 +03:00: 
+2024-06-03 07:54 +03:00: Node.js v20.13.1
+2024-06-03 07:54 +03:00: error Command failed with exit code 1.
+2024-06-03 07:55 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 07:55 +03:00: (node:5122) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 07:55 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 07:55 +03:00: (node:5122) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 08:16 +03:00: error Command failed with exit code 1.
+2024-06-03 08:16 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 08:16 +03:00: (node:6858) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 08:16 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 08:16 +03:00: (node:6858) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 08:20 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 08:20 +03:00: (node:7615) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 08:20 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 08:20 +03:00: (node:7615) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 15:41 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 15:41 +03:00: (node:13302) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 15:41 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 15:41 +03:00: (node:13302) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:08 +03:00: error Command failed with exit code 1.
+2024-06-03 16:09 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 16:09 +03:00: (node:15725) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:09 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 16:09 +03:00: (node:15725) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:23 +03:00: error Command failed with exit code 1.
+2024-06-03 16:24 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 16:24 +03:00: (node:16693) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:24 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 16:24 +03:00: (node:16693) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:40 +03:00: error Command failed with exit code 1.
+2024-06-03 16:40 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 16:40 +03:00: (node:17677) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:40 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 16:40 +03:00: (node:17677) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:43 +03:00: error Command failed with exit code 1.
+2024-06-03 16:43 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 16:43 +03:00: (node:18194) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:43 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 16:43 +03:00: (node:18194) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:46 +03:00: error Command failed with exit code 1.
+2024-06-03 16:46 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 16:46 +03:00: (node:18706) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 16:46 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 16:46 +03:00: (node:18706) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:04 +03:00: error Command failed with exit code 1.
+2024-06-03 17:04 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 17:04 +03:00: (node:19928) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:04 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 17:04 +03:00: (node:19928) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:30 +03:00: error Command failed with exit code 1.
+2024-06-03 17:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 17:30 +03:00: (node:21600) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 17:30 +03:00: (node:21600) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:35 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 17:35 +03:00: (node:22624) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:35 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 17:35 +03:00: (node:22624) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:44 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 17:44 +03:00: (node:23552) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 17:44 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 17:44 +03:00: (node:23552) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:00 +03:00: error Command failed with exit code 1.
+2024-06-03 18:00 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 18:00 +03:00: (node:24860) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:00 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 18:00 +03:00: (node:24860) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:23 +03:00: error Command failed with exit code 1.
+2024-06-03 18:23 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 18:23 +03:00: (node:26727) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:23 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 18:23 +03:00: (node:26727) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:30 +03:00: error Command failed with exit code 1.
+2024-06-03 18:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 18:30 +03:00: (node:27383) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 18:30 +03:00: (node:27383) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:57 +03:00: error Command failed with exit code 1.
+2024-06-03 18:57 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 18:57 +03:00: (node:29261) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 18:57 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 18:57 +03:00: (node:29261) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 19:03 +03:00: error Command failed with exit code 1.
+2024-06-03 19:03 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 19:03 +03:00: (node:30174) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 19:03 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 19:03 +03:00: (node:30174) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 19:30 +03:00: error Command failed with exit code 1.
+2024-06-03 19:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 19:30 +03:00: (node:34371) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 19:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 19:30 +03:00: (node:34371) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 19:51 +03:00: error Command failed with exit code 1.
+2024-06-03 19:52 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 19:52 +03:00: (node:36437) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 19:52 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 19:52 +03:00: (node:36437) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 20:30 +03:00: error Command failed with exit code 1.
+2024-06-03 20:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-03 20:30 +03:00: (node:37781) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-03 20:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-03 20:30 +03:00: (node:37781) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 06:30 +03:00: error Command failed with exit code 1.
+2024-06-04 06:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 06:30 +03:00: (node:43487) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 06:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 06:30 +03:00: (node:43487) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 07:30 +03:00: error Command failed with exit code 1.
+2024-06-04 07:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 07:30 +03:00: (node:45771) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 07:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 07:30 +03:00: (node:45771) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 08:30 +03:00: error Command failed with exit code 1.
+2024-06-04 08:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 08:30 +03:00: (node:46948) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 08:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 08:30 +03:00: (node:46948) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 08:57 +03:00: error Command failed with exit code 1.
+2024-06-04 08:57 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 08:57 +03:00: (node:49174) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 08:57 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 08:57 +03:00: (node:49174) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:09 +03:00: error Command failed with exit code 1.
+2024-06-04 09:10 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 09:10 +03:00: (node:50132) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:10 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 09:10 +03:00: (node:50132) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:11 +03:00: error Command failed with exit code 1.
+2024-06-04 09:11 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 09:11 +03:00: (node:50642) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:11 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 09:11 +03:00: (node:50642) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:30 +03:00: error Command failed with exit code 1.
+2024-06-04 09:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 09:30 +03:00: (node:52355) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 09:30 +03:00: (node:52355) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:33 +03:00: error Command failed with exit code 1.
+2024-06-04 09:34 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 09:34 +03:00: (node:53309) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 09:34 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 09:34 +03:00: (node:53309) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 10:01 +03:00: error Command failed with exit code 1.
+2024-06-04 10:01 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-04 10:01 +03:00: (node:55636) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-04 10:01 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-04 10:01 +03:00: (node:55636) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 03:38 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 03:38 +03:00: (node:84467) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 03:38 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 03:38 +03:00: (node:84467) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:29 +03:00: error Command failed with exit code 1.
+2024-06-05 04:29 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 04:29 +03:00: (node:88428) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:29 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 04:29 +03:00: (node:88428) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:30 +03:00: error Command failed with exit code 1.
+2024-06-05 04:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 04:30 +03:00: (node:88874) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 04:30 +03:00: (node:88874) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:37 +03:00: error Command failed with exit code 1.
+2024-06-05 04:38 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 04:38 +03:00: (node:90133) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:38 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 04:38 +03:00: (node:90133) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:45 +03:00: error Command failed with exit code 1.
+2024-06-05 04:45 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 04:45 +03:00: (node:91322) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:45 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 04:45 +03:00: (node:91322) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:57 +03:00: error Command failed with exit code 1.
+2024-06-05 04:58 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 04:58 +03:00: (node:93756) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 04:58 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 04:58 +03:00: (node:93756) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:24 +03:00: error Command failed with exit code 1.
+2024-06-05 05:24 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 05:24 +03:00: (node:96850) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:24 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 05:24 +03:00: (node:96850) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:29 +03:00: error Command failed with exit code 1.
+2024-06-05 05:29 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 05:29 +03:00: (node:97837) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:29 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 05:29 +03:00: (node:97837) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:30 +03:00: error Command failed with exit code 1.
+2024-06-05 05:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 05:30 +03:00: (node:98360) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 05:30 +03:00: (node:98360) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:32 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 05:32 +03:00: (node:99002) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:32 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 05:32 +03:00: (node:99002) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:46 +03:00: error Command failed with exit code 1.
+2024-06-05 05:47 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 05:47 +03:00: (node:101190) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 05:47 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 05:47 +03:00: (node:101190) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:05 +03:00: error Command failed with exit code 1.
+2024-06-05 06:05 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:05 +03:00: (node:104405) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:05 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:05 +03:00: (node:104405) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:06 +03:00: error Command failed with exit code 1.
+2024-06-05 06:07 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:07 +03:00: (node:104927) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:07 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:07 +03:00: (node:104927) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:30 +03:00: error Command failed with exit code 1.
+2024-06-05 06:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:30 +03:00: (node:107888) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:30 +03:00: (node:107888) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:32 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:32 +03:00: (node:108726) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:32 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:32 +03:00: (node:108726) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:38 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:38 +03:00: (node:109461) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:38 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:38 +03:00: (node:109461) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:45 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:45 +03:00: (node:110283) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:45 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:45 +03:00: (node:110283) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:46 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:46 +03:00: (node:111375) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:46 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:46 +03:00: (node:111375) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:47 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:47 +03:00: (node:112039) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:47 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:47 +03:00: (node:112039) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:48 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:48 +03:00: (node:112659) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:48 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:48 +03:00: (node:112659) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:50 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:50 +03:00: (node:113507) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:50 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:50 +03:00: (node:113507) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:53 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:53 +03:00: (node:923) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:53 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:53 +03:00: (node:923) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:56 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-05 06:56 +03:00: (node:2395) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-05 06:56 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-05 06:56 +03:00: (node:2395) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.

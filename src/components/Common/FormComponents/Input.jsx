@@ -38,10 +38,9 @@ const Input = ({
 
 	return (
 		<label
-			htmlFor={id}
-			className={`flex ${colsSpan} ${labelClassName} ab-text-field is-text ${
-				isFocused || isValueFilled ? "is-filled" : ""
-			} has-label`}>
+			htmlFor={`input-${id}`}
+			className={`flex ${colsSpan} ${labelClassName} ab-text-field is-text ${isFocused || isValueFilled ? "is-filled" : ""
+				} has-label`}>
 			<div className='relative w-full'>
 				<input
 					type={type}
@@ -51,7 +50,7 @@ const Input = ({
 					create-placeholder={createPlaceholder}
 					required={required}
 					className={`${inputClassName} ab-text-field__element p-3`}
-					id={id}
+					id={`input-${id}`}
 					value={value}
 					onChange={onChange}
 					onBlur={handleBlur}
@@ -62,13 +61,13 @@ const Input = ({
 				</div>
 				{iconGroup && (
 					<span className='ab-text-field__icon'>
-						<button className='ab-button h-full ab-button_md color-accent theme-icon'>
+						<button type="button" className='ab-button h-full ab-button_md color-accent theme-icon'>
 							<span className='ab-button__overlay'></span>
 							<span className='ab-button__content ab-button__content_md'>
 								<span className='ab-button__text'>{iconOne}</span>
 							</span>
 						</button>
-						<button className='ab-button h-full ab-button_md color-accent theme-icon'>
+						<button type="button" className='ab-button h-full ab-button_md color-accent theme-icon'>
 							<span className='ab-button__overlay'></span>
 							<span className='ab-button__content ab-button__content_md'>
 								<span className='ab-button__text'>{iconTwo}</span>

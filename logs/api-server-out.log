@@ -1,0 +1,1031 @@
+2024-06-02 23:10 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:10 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:10 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:10 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:10 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:10 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:11 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:11 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:11 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:11 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:11 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:11 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:11 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:11 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:11 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:12 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:12 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:12 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:12 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:12 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:12 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:12 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:12 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:12 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:12 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:12 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:12 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:12 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:12 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:12 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:13 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:13 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:13 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:13 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:13 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:13 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:13 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:13 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:13 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:14 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:14 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:14 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:14 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:14 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:14 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:14 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:14 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:15 +03:00: Неудачная попытка входа: неверный пароль для email test@test.ru
+2024-06-02 23:15 +03:00: Неудачная попытка входа: неверный пароль для email test@test.ru
+2024-06-02 23:15 +03:00: Пользователь вошел в систему: test@test.ru
+2024-06-02 23:15 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:15 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:15 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:15 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:15 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:17 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:17 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:17 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:17 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:17 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:17 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:17 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:17 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:17 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:18 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:18 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:18 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-02 23:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:18 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:18 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:18 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:18 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:18 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:21 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-02 23:21 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-02 23:21 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-02 23:21 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-02 23:21 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-02 23:21 +03:00: Сервер запущен на порту 4000
+2024-06-02 23:30 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 06:57 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 06:57 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 06:57 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 06:57 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 06:57 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 06:57 +03:00: Сервер запущен на порту 4000
+2024-06-03 06:59 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 06:59 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 06:59 +03:00: Сервер запущен на порту 4000
+2024-06-03 06:59 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 06:59 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 06:59 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 06:59 +03:00: Сервер запущен на порту 4000
+2024-06-03 06:59 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 06:59 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 06:59 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 06:59 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 06:59 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:03 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:03 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:03 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 07:04 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 07:04 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 07:04 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 07:04 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 07:04 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:04 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:06 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:06 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:06 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:07 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:07 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:07 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:07 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:07 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:07 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:09 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 07:36 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 07:36 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 07:36 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 07:36 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 07:36 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:36 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:40 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:40 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:40 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:42 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:46 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:46 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:46 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:46 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:46 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:46 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:46 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:46 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:46 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 07:46 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 07:46 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 07:46 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 07:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:46 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:48 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 07:48 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:48 +03:00: Сервер запущен на порту 4000
+2024-06-03 07:55 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 07:55 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 07:55 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 07:55 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 07:55 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 07:55 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:13 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 08:13 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:13 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:14 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 08:14 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:14 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:15 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 08:15 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:15 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:16 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 08:16 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 08:16 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 08:16 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 08:16 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:16 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:17 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 08:17 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:17 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:18 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 08:18 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:18 +03:00: Сервер запущен на порту 4000
+2024-06-03 08:20 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 08:20 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 08:20 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 08:20 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 08:20 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 08:20 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 08:20 +03:00: Сервер запущен на порту 4000
+2024-06-03 15:39 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 15:39 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 15:39 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 15:39 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 15:39 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 15:39 +03:00: Сервер запущен на порту 4000
+2024-06-03 15:52 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 15:52 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 15:52 +03:00: Сервер запущен на порту 4000
+2024-06-03 15:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 15:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 15:53 +03:00: Сервер запущен на порту 4000
+2024-06-03 15:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-03 15:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 15:53 +03:00: Сервер запущен на порту 4000
+2024-06-03 16:08 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 16:08 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 16:08 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 16:08 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 16:08 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 16:08 +03:00: Сервер запущен на порту 4000
+2024-06-03 16:23 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 16:23 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 16:23 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 16:23 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 16:23 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 16:23 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 16:23 +03:00: Сервер запущен на порту 4000
+2024-06-03 16:40 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 16:40 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 16:40 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 16:40 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 16:40 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 16:40 +03:00: Сервер запущен на порту 4000
+2024-06-03 16:43 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 16:43 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 16:43 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 16:43 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 16:43 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 16:43 +03:00: Сервер запущен на порту 4000
+2024-06-03 16:46 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 16:46 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 16:46 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 16:46 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 16:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 16:46 +03:00: Сервер запущен на порту 4000
+2024-06-03 17:04 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 17:04 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 17:04 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 17:04 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 17:04 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 17:04 +03:00: Сервер запущен на порту 4000
+2024-06-03 17:30 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 17:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 17:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 17:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 17:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 17:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 17:30 +03:00: Сервер запущен на порту 4000
+2024-06-03 17:35 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 17:35 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 17:35 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 17:35 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 17:35 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 17:35 +03:00: Сервер запущен на порту 4000
+2024-06-03 17:43 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 17:43 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 17:43 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 17:43 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 17:43 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 17:43 +03:00: Сервер запущен на порту 4000
+2024-06-03 17:45 +03:00: Received POST request to /api/appointments
+2024-06-03 17:45 +03:00: Request body: {
+2024-06-03 17:45 +03:00:   start: 'Invalid Date',
+2024-06-03 17:45 +03:00:   end: 'Invalid Date',
+2024-06-03 17:45 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 70 } ],
+2024-06-03 17:45 +03:00:   text: 'Выбранные услуги: Мойка кузова Клиент: Мария Петрова +7 923 456 78 90 Сумма: 450 руб.',
+2024-06-03 17:45 +03:00:   totalCost: 450,
+2024-06-03 17:45 +03:00:   clients_id: 13
+2024-06-03 17:45 +03:00: }
+2024-06-03 17:45 +03:00: Created appointment with ID: 36
+2024-06-03 18:00 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 18:00 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 18:00 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 18:00 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 18:00 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 18:00 +03:00: Сервер запущен на порту 4000
+2024-06-03 18:13 +03:00: Received POST request to /api/appointments
+2024-06-03 18:13 +03:00: Request body: {
+2024-06-03 18:13 +03:00:   start: 'Invalid Date',
+2024-06-03 18:13 +03:00:   end: 'Invalid Date',
+2024-06-03 18:13 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 55 } ],
+2024-06-03 18:13 +03:00:   text: 'Выбранные услуги: Мойка кузова Клиент: Николай Сидоров +7 934 567 89 01 Сумма: 450 руб.',
+2024-06-03 18:13 +03:00:   totalCost: 450,
+2024-06-03 18:13 +03:00:   clients_id: 17
+2024-06-03 18:13 +03:00: }
+2024-06-03 18:13 +03:00: Created appointment with ID: 37
+2024-06-03 18:19 +03:00: Received POST request to /api/appointments
+2024-06-03 18:19 +03:00: Request body: {
+2024-06-03 18:19 +03:00:   start: '2024-06-03 13:00:00',
+2024-06-03 18:19 +03:00:   end: '2024-06-03 13:30:00',
+2024-06-03 18:19 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 55 } ],
+2024-06-03 18:19 +03:00:   text: 'Выбранные услуги: Мойка кузова Клиент: Мария Петрова +7 923 456 78 90 Сумма: 450 руб.',
+2024-06-03 18:19 +03:00:   totalCost: 450,
+2024-06-03 18:19 +03:00:   clients_id: 13
+2024-06-03 18:19 +03:00: }
+2024-06-03 18:19 +03:00: Created appointment with ID: 38
+2024-06-03 18:23 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 18:23 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 18:23 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 18:23 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 18:23 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 18:23 +03:00: Сервер запущен на порту 4000
+2024-06-03 18:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 18:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 18:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 18:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 18:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 18:30 +03:00: Сервер запущен на порту 4000
+2024-06-03 18:57 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 18:57 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 18:57 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 18:57 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 18:57 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 18:57 +03:00: Сервер запущен на порту 4000
+2024-06-03 19:03 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 19:03 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 19:03 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 19:03 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 19:03 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 19:03 +03:00: Сервер запущен на порту 4000
+2024-06-03 19:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 19:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 19:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 19:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 19:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 19:30 +03:00: Сервер запущен на порту 4000
+2024-06-03 19:51 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-03 19:51 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 19:51 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 19:51 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 19:51 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 19:51 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 19:52 +03:00: Сервер запущен на порту 4000
+2024-06-03 20:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-03 20:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-03 20:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-03 20:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-03 20:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-03 20:30 +03:00: Сервер запущен на порту 4000
+2024-06-04 06:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 06:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 06:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 06:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 06:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 06:30 +03:00: Сервер запущен на порту 4000
+2024-06-04 06:30 +03:00: Received POST request to /api/appointments
+2024-06-04 06:30 +03:00: Request body: {
+2024-06-04 06:30 +03:00:   start: '2024-06-04 12:00:00',
+2024-06-04 06:30 +03:00:   end: '2024-06-04 12:50:00',
+2024-06-04 06:30 +03:00:   selectedServices: [ { id: 69, name: 'Трехфазная мойка кузова', employee: 55 } ],
+2024-06-04 06:30 +03:00:   text: 'Выбранные услуги: Трехфазная мойка кузова Клиент: Николай Сидоров +7 934 567 89 01 Сумма: 800 руб.',
+2024-06-04 06:30 +03:00:   totalCost: 800,
+2024-06-04 06:30 +03:00:   clients_id: 17
+2024-06-04 06:30 +03:00: }
+2024-06-04 06:30 +03:00: Created appointment with ID: 39
+2024-06-04 07:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 07:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 07:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 07:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 07:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 07:30 +03:00: Сервер запущен на порту 4000
+2024-06-04 08:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 08:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 08:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 08:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 08:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 08:30 +03:00: Сервер запущен на порту 4000
+2024-06-04 08:57 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 08:57 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 08:57 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 08:57 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 08:57 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 08:57 +03:00: Сервер запущен на порту 4000
+2024-06-04 09:00 +03:00: Received POST request to /api/appointments
+2024-06-04 09:00 +03:00: Request body: {
+2024-06-04 09:00 +03:00:   start: '2024-06-04 17:30:00',
+2024-06-04 09:00 +03:00:   end: '2024-06-04 18:00:00',
+2024-06-04 09:00 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 55 } ],
+2024-06-04 09:00 +03:00:   text: 'Выбранные услуги: Мойка кузова <br/> Клиент: Николай Сидоров +7 934 567 89 01 <br/> Сумма: 450 руб.',
+2024-06-04 09:00 +03:00:   totalCost: 450,
+2024-06-04 09:00 +03:00:   clients_id: 17
+2024-06-04 09:00 +03:00: }
+2024-06-04 09:00 +03:00: Created appointment with ID: 40
+2024-06-04 09:09 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-04 09:09 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 09:09 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 09:09 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 09:09 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 09:09 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 09:09 +03:00: Сервер запущен на порту 4000
+2024-06-04 09:11 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 09:11 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 09:11 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 09:11 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 09:11 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 09:11 +03:00: Сервер запущен на порту 4000
+2024-06-04 09:16 +03:00: Received POST request to /api/appointments
+2024-06-04 09:16 +03:00: Request body: {
+2024-06-04 09:16 +03:00:   start: '2024-06-04 10:15:00',
+2024-06-04 09:16 +03:00:   end: '2024-06-04 10:45:00',
+2024-06-04 09:16 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 55 } ],
+2024-06-04 09:16 +03:00:   text: 'Выбранные услуги: Мойка кузова <br/> Клиент: Николай Сидоров +7 934 567 89 01 <br/> Сумма: 450 руб.',
+2024-06-04 09:16 +03:00:   totalCost: 450,
+2024-06-04 09:16 +03:00:   clients_id: 17
+2024-06-04 09:16 +03:00: }
+2024-06-04 09:16 +03:00: Created appointment with ID: 41
+2024-06-04 09:21 +03:00: Received POST request to /api/appointments
+2024-06-04 09:21 +03:00: Request body: {
+2024-06-04 09:21 +03:00:   start: '2024-06-04 09:00:00',
+2024-06-04 09:21 +03:00:   end: '2024-06-04 09:30:00',
+2024-06-04 09:21 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 29 } ],
+2024-06-04 09:21 +03:00:   text: 'Выбранные услуги: Мойка кузова <br/> Клиент: Николай Сидоров +7 934 567 89 01 <br/> Сумма: 450 руб.',
+2024-06-04 09:21 +03:00:   totalCost: 450,
+2024-06-04 09:21 +03:00:   clients_id: 17
+2024-06-04 09:21 +03:00: }
+2024-06-04 09:21 +03:00: Created appointment with ID: 42
+2024-06-04 09:23 +03:00: Received POST request to /api/appointments
+2024-06-04 09:23 +03:00: Request body: {
+2024-06-04 09:23 +03:00:   start: '2024-06-04 11:15:00',
+2024-06-04 09:23 +03:00:   end: '2024-06-04 11:55:00',
+2024-06-04 09:23 +03:00:   selectedServices: [ { id: 68, name: 'Двухфазная мойка кузова', employee: 55 } ],
+2024-06-04 09:23 +03:00:   text: 'Выбранные услуги: Двухфазная мойка кузова <br/> Клиент: Мария Петрова +7 923 456 78 90 <br/> Сумма: 650 руб.',
+2024-06-04 09:23 +03:00:   totalCost: 650,
+2024-06-04 09:23 +03:00:   clients_id: 13
+2024-06-04 09:23 +03:00: }
+2024-06-04 09:23 +03:00: Created appointment with ID: 43
+2024-06-04 09:29 +03:00: Received POST request to /api/appointments
+2024-06-04 09:29 +03:00: Request body: {
+2024-06-04 09:29 +03:00:   start: '2024-06-04T04:15:00+00:00',
+2024-06-04 09:29 +03:00:   end: '2024-06-04T04:45:00+00:00',
+2024-06-04 09:29 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 55 } ],
+2024-06-04 09:29 +03:00:   text: 'Выбранные услуги: Мойка кузова <br/> Клиент: Мария Петрова +7 923 456 78 90 <br/> Сумма: 450 руб.',
+2024-06-04 09:29 +03:00:   totalCost: 450,
+2024-06-04 09:29 +03:00:   clients_id: 13
+2024-06-04 09:29 +03:00: }
+2024-06-04 09:29 +03:00: Created appointment with ID: 44
+2024-06-04 09:29 +03:00: Received POST request to /api/appointments
+2024-06-04 09:29 +03:00: Request body: {
+2024-06-04 09:29 +03:00:   start: '2024-06-04T02:15:00+00:00',
+2024-06-04 09:29 +03:00:   end: '2024-06-04T02:55:00+00:00',
+2024-06-04 09:29 +03:00:   selectedServices: [ { id: 68, name: 'Двухфазная мойка кузова', employee: 55 } ],
+2024-06-04 09:29 +03:00:   text: 'Выбранные услуги: Двухфазная мойка кузова <br/> Клиент: Ольга Кузнецова +7 945 678 90 12 <br/> Сумма: 650 руб.',
+2024-06-04 09:29 +03:00:   totalCost: 650,
+2024-06-04 09:29 +03:00:   clients_id: 18
+2024-06-04 09:29 +03:00: }
+2024-06-04 09:29 +03:00: Created appointment with ID: 45
+2024-06-04 09:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 09:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 09:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 09:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 09:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 09:30 +03:00: Сервер запущен на порту 4000
+2024-06-04 09:31 +03:00: Received POST request to /api/appointments
+2024-06-04 09:31 +03:00: Request body: {
+2024-06-04 09:31 +03:00:   start: '2024-06-04T02:45:00+00:00',
+2024-06-04 09:31 +03:00:   end: '2024-06-04T03:15:00+00:00',
+2024-06-04 09:31 +03:00:   selectedServices: [ { id: 67, name: 'Мойка кузова', employee: 70 } ],
+2024-06-04 09:31 +03:00:   text: 'Выбранные услуги: Мойка кузова <br/> Клиент: Ольга Кузнецова +7 945 678 90 12 <br/> Сумма: 450 руб.',
+2024-06-04 09:31 +03:00:   totalCost: 450,
+2024-06-04 09:31 +03:00:   clients_id: 18
+2024-06-04 09:31 +03:00: }
+2024-06-04 09:31 +03:00: Created appointment with ID: 46
+2024-06-04 09:31 +03:00: Received POST request to /api/appointments
+2024-06-04 09:31 +03:00: Request body: {
+2024-06-04 09:31 +03:00:   start: '2024-06-04T03:00:00+00:00',
+2024-06-04 09:31 +03:00:   end: '2024-06-04T03:50:00+00:00',
+2024-06-04 09:31 +03:00:   selectedServices: [ { id: 69, name: 'Трехфазная мойка кузова', employee: 29 } ],
+2024-06-04 09:31 +03:00:   text: 'Выбранные услуги: Трехфазная мойка кузова <br/> Клиент: Ольга Кузнецова +7 945 678 90 12 <br/> Сумма: 800 руб.',
+2024-06-04 09:31 +03:00:   totalCost: 800,
+2024-06-04 09:31 +03:00:   clients_id: 18
+2024-06-04 09:31 +03:00: }
+2024-06-04 09:31 +03:00: Created appointment with ID: 47
+2024-06-04 09:32 +03:00: Received POST request to /api/appointments
+2024-06-04 09:32 +03:00: Request body: {
+2024-06-04 09:32 +03:00:   start: '2024-06-04T04:00:00+00:00',
+2024-06-04 09:32 +03:00:   end: '2024-06-04T04:40:00+00:00',
+2024-06-04 09:32 +03:00:   selectedServices: [ { id: 68, name: 'Двухфазная мойка кузова', employee: 70 } ],
+2024-06-04 09:32 +03:00:   text: 'Выбранные услуги: Двухфазная мойка кузова <br/> Клиент: Дмитрий Смирнов +7 956 789 01 23 <br/> Сумма: 650 руб.',
+2024-06-04 09:32 +03:00:   totalCost: 650,
+2024-06-04 09:32 +03:00:   clients_id: 19
+2024-06-04 09:32 +03:00: }
+2024-06-04 09:32 +03:00: Created appointment with ID: 48
+2024-06-04 09:33 +03:00: Received POST request to /api/appointments
+2024-06-04 09:33 +03:00: Request body: {
+2024-06-04 09:33 +03:00:   start: '2024-06-04T04:45:00+00:00',
+2024-06-04 09:33 +03:00:   end: '2024-06-04T06:45:00+00:00',
+2024-06-04 09:33 +03:00:   selectedServices: [
+2024-06-04 09:33 +03:00:     {
+2024-06-04 09:33 +03:00:       id: 74,
+2024-06-04 09:33 +03:00:       name: 'Детейлинг мойка с элементами химчистки',
+2024-06-04 09:33 +03:00:       employee: 29
+2024-06-04 09:33 +03:00:     }
+2024-06-04 09:33 +03:00:   ],
+2024-06-04 09:33 +03:00:   text: 'Детейлинг мойка с элементами химчистки\n' +
+2024-06-04 09:33 +03:00:     '\t\tКлиент: Елена Морозова +7 967 890 12 34',
+2024-06-04 09:33 +03:00:   totalCost: 3000,
+2024-06-04 09:33 +03:00:   clients_id: 29
+2024-06-04 09:33 +03:00: }
+2024-06-04 09:33 +03:00: Created appointment with ID: 49
+2024-06-04 09:34 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 09:34 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 09:34 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 09:34 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 09:34 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 09:34 +03:00: Сервер запущен на порту 4000
+2024-06-04 09:39 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-04 09:39 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 09:39 +03:00: Сервер запущен на порту 4000
+2024-06-04 09:59 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-04 09:59 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 09:59 +03:00: Сервер запущен на порту 4000
+2024-06-04 10:01 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 10:01 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 10:01 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 10:01 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 10:01 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 10:01 +03:00: Сервер запущен на порту 4000
+2024-06-04 10:05 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-04 10:05 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-04 10:05 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-04 10:05 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-04 10:05 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-04 10:05 +03:00: Сервер запущен на порту 4000
+2024-06-04 10:06 +03:00: Received POST request to /api/appointments
+2024-06-04 10:06 +03:00: Request body: {
+2024-06-04 10:06 +03:00:   start: '2024-06-04T08:15:00Z',
+2024-06-04 10:06 +03:00:   end: '2024-06-04T08:55:00Z',
+2024-06-04 10:06 +03:00:   selectedServices: [ { id: 68, name: 'Двухфазная мойка кузова', employee: 55 } ],
+2024-06-04 10:06 +03:00:   text: 'Двухфазная мойка кузова\n\t\tКлиент: Ольга Кузнецова +7 945 678 90 12',
+2024-06-04 10:06 +03:00:   totalCost: 650,
+2024-06-04 10:06 +03:00:   clients_id: 18
+2024-06-04 10:06 +03:00: }
+2024-06-04 10:06 +03:00: Created appointment with ID: 50
+2024-06-04 10:11 +03:00: {
+2024-06-04 10:11 +03:00:   first_name: '123123',
+2024-06-04 10:11 +03:00:   last_name: '123123',
+2024-06-04 10:11 +03:00:   email: 'test@test.ru',
+2024-06-04 10:11 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 10:11 +03:00:   position: 'Чмо',
+2024-06-04 10:11 +03:00:   description: '',
+2024-06-04 10:11 +03:00:   gender: 'male',
+2024-06-04 10:11 +03:00:   is_bookable: 1
+2024-06-04 10:11 +03:00: }
+2024-06-04 10:14 +03:00: Пользователь вошел в систему: 123321@123.ru
+2024-06-04 10:14 +03:00: Пользователь вошел в систему: 123321@123.ru
+2024-06-04 20:22 +03:00: {
+2024-06-04 20:22 +03:00:   first_name: '123123',
+2024-06-04 20:22 +03:00:   last_name: '123123',
+2024-06-04 20:22 +03:00:   email: 'test@test.ru',
+2024-06-04 20:22 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:22 +03:00:   position: 'Чмо',
+2024-06-04 20:22 +03:00:   description: '',
+2024-06-04 20:22 +03:00:   gender: 'male',
+2024-06-04 20:22 +03:00:   is_bookable: 0
+2024-06-04 20:22 +03:00: }
+2024-06-04 20:22 +03:00: {
+2024-06-04 20:22 +03:00:   first_name: '123123',
+2024-06-04 20:22 +03:00:   last_name: '123123',
+2024-06-04 20:22 +03:00:   email: 'test@test.ru',
+2024-06-04 20:22 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:22 +03:00:   position: 'Чмо',
+2024-06-04 20:22 +03:00:   description: '',
+2024-06-04 20:22 +03:00:   gender: 'male',
+2024-06-04 20:22 +03:00:   is_bookable: 0
+2024-06-04 20:22 +03:00: }
+2024-06-04 20:22 +03:00: {
+2024-06-04 20:22 +03:00:   first_name: '123123',
+2024-06-04 20:22 +03:00:   last_name: '123123',
+2024-06-04 20:22 +03:00:   email: 'test@test.ru',
+2024-06-04 20:22 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:22 +03:00:   position: 'Чмо',
+2024-06-04 20:22 +03:00:   description: '',
+2024-06-04 20:22 +03:00:   gender: 'male',
+2024-06-04 20:22 +03:00:   is_bookable: 1
+2024-06-04 20:22 +03:00: }
+2024-06-04 20:22 +03:00: {
+2024-06-04 20:22 +03:00:   first_name: '123123',
+2024-06-04 20:22 +03:00:   last_name: '123123',
+2024-06-04 20:22 +03:00:   email: 'test@test.ru',
+2024-06-04 20:22 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:22 +03:00:   position: 'Чмо',
+2024-06-04 20:22 +03:00:   description: 'Чмо',
+2024-06-04 20:22 +03:00:   gender: 'male',
+2024-06-04 20:22 +03:00:   is_bookable: 1
+2024-06-04 20:22 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'female',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'female',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-04 20:23 +03:00: {
+2024-06-04 20:23 +03:00:   first_name: '123123',
+2024-06-04 20:23 +03:00:   last_name: '123',
+2024-06-04 20:23 +03:00:   email: 'test@test.ru',
+2024-06-04 20:23 +03:00:   phone: '+7 123 123 12 32',
+2024-06-04 20:23 +03:00:   position: 'Чмо',
+2024-06-04 20:23 +03:00:   description: 'Чмо',
+2024-06-04 20:23 +03:00:   gender: 'male',
+2024-06-04 20:23 +03:00:   is_bookable: 1
+2024-06-04 20:23 +03:00: }
+2024-06-05 04:15 +03:00: Received POST request to /api/appointments
+2024-06-05 04:15 +03:00: Request body: {
+2024-06-05 04:15 +03:00:   start: '2024-06-13T04:30:00+00:00',
+2024-06-05 04:15 +03:00:   end: '2024-06-13T06:00:00+00:00',
+2024-06-05 04:15 +03:00:   selectedServices: [ { id: 79, name: 'demo', employee: 55 } ],
+2024-06-05 04:15 +03:00:   text: 'demo\n\t\tКлиент: Николай Сидоров +7 934 567 89 01',
+2024-06-05 04:15 +03:00:   totalCost: 10000,
+2024-06-05 04:15 +03:00:   clients_id: 17
+2024-06-05 04:15 +03:00: }
+2024-06-05 04:15 +03:00: Created appointment with ID: 51
+2024-06-05 04:26 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 04:26 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:26 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:26 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 04:26 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:26 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:26 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 04:26 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:26 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:29 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 04:29 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 04:29 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 04:29 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 04:29 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:29 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 04:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 04:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 04:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 04:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:30 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:35 +03:00: Received POST request to /api/appointments
+2024-06-05 04:35 +03:00: Request body: {
+2024-06-05 04:35 +03:00:   start: '2024-06-05T08:45:00+00:00',
+2024-06-05 04:35 +03:00:   end: '2024-06-05T09:15:00+00:00',
+2024-06-05 04:35 +03:00:   selectedServices: [ { id: 89, name: 'Услуга тест', employee: 70 } ],
+2024-06-05 04:35 +03:00:   text: 'Услуга тест\n\t\tКлиент: Ольга Кузнецова +7 945 678 90 12',
+2024-06-05 04:35 +03:00:   totalCost: 100,
+2024-06-05 04:35 +03:00:   clients_id: 18
+2024-06-05 04:35 +03:00: }
+2024-06-05 04:35 +03:00: Created appointment with ID: 52
+2024-06-05 04:38 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 04:38 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 04:38 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 04:38 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 04:38 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:38 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:45 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 04:45 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 04:45 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 04:45 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 04:45 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:45 +03:00: Сервер запущен на порту 4000
+2024-06-05 04:57 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-05 04:58 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 04:58 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 04:58 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 04:58 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 04:58 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 04:58 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:10 +03:00: {
+2024-06-05 05:10 +03:00:   gender: '',
+2024-06-05 05:10 +03:00:   first_name: 'Ооооольга',
+2024-06-05 05:10 +03:00:   last_name: 'Моргуногиубери',
+2024-06-05 05:10 +03:00:   email: 'nesegalavodyarku@pivo.ru',
+2024-06-05 05:10 +03:00:   phone: '+7 999 999 99 99',
+2024-06-05 05:10 +03:00:   access: 'employee',
+2024-06-05 05:10 +03:00:   position: '',
+2024-06-05 05:10 +03:00:   description: '',
+2024-06-05 05:10 +03:00:   is_bookable: 0
+2024-06-05 05:10 +03:00: }
+2024-06-05 05:10 +03:00: SQL query parameters: [
+2024-06-05 05:10 +03:00:   'Ооооольга',
+2024-06-05 05:10 +03:00:   'Моргуногиубери',
+2024-06-05 05:10 +03:00:   '+7 999 999 99 99',
+2024-06-05 05:10 +03:00:   'nesegalavodyarku@pivo.ru',
+2024-06-05 05:10 +03:00:   '1',
+2024-06-05 05:10 +03:00:   '',
+2024-06-05 05:10 +03:00:   '',
+2024-06-05 05:10 +03:00:   '',
+2024-06-05 05:10 +03:00:   0,
+2024-06-05 05:10 +03:00:   '29'
+2024-06-05 05:10 +03:00: ]
+2024-06-05 05:16 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:16 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:16 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:24 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 05:24 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 05:24 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 05:24 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 05:24 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:24 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:29 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 05:29 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 05:29 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 05:29 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 05:29 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:29 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:30 +03:00: [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+2024-06-05 05:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 05:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 05:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 05:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 05:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:30 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:40 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:40 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:40 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:42 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:42 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:42 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:43 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:43 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:43 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:43 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:43 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:43 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:44 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:44 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:44 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:44 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:44 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:45 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:45 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:45 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:45 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:45 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:45 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:45 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:46 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 05:46 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 05:46 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 05:46 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 05:46 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:46 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:49 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:49 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:49 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:53 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:53 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:53 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:53 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:53 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:53 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:54 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:54 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:54 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:54 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:54 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:54 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:55 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:55 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:55 +03:00: Сервер запущен на порту 4000
+2024-06-05 05:55 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:55 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:55 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 05:55 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 05:55 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:05 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:05 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:05 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:05 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:05 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:05 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:06 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:06 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:06 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:06 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:06 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:06 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:30 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:30 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:30 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:30 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:30 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:30 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:30 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:38 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:38 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:38 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:38 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:38 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:38 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:44 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:44 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:44 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:45 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:45 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:45 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:45 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:45 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:45 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:48 +03:00: yarn run v1.22.22
+2024-06-05 06:48 +03:00: $ /home/admin/aquabook-automatisation/node_modules/.bin/nodemon api/index.js
+2024-06-05 06:48 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:48 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:48 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:48 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:48 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:48 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:48 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:48 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:48 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:48 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:48 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:48 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:48 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:48 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:48 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:49 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:49 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:49 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:49 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:49 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:49 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:49 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:49 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:49 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:49 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:49 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:49 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:49 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:49 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:49 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:50 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:50 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:50 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:50 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:50 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:50 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:53 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:53 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:53 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:53 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:53 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:53 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:56 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 06:56 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 06:56 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 06:56 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 06:56 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:56 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:57 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:57 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:57 +03:00: Сервер запущен на порту 4000
+2024-06-05 06:58 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 06:58 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 06:58 +03:00: Сервер запущен на порту 4000
+2024-06-05 07:00 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 07:00 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 07:00 +03:00: Сервер запущен на порту 4000
+2024-06-05 07:02 +03:00: [33m[nodemon] 2.0.22[39m
+2024-06-05 07:02 +03:00: [33m[nodemon] to restart at any time, enter `rs`[39m
+2024-06-05 07:02 +03:00: [33m[nodemon] watching path(s): *.*[39m
+2024-06-05 07:02 +03:00: [33m[nodemon] watching extensions: js,mjs,json[39m
+2024-06-05 07:02 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 07:02 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 07:02 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 07:02 +03:00: [32m[nodemon] restarting due to changes...[39m
+2024-06-05 07:02 +03:00: [32m[nodemon] starting `node api/index.js`[39m
+2024-06-05 07:02 +03:00: Сервер запущен на порту 4000
+2024-06-05 07:05 +03:00: {
+2024-06-05 07:05 +03:00:   first_name: 'Евгений',
+2024-06-05 07:05 +03:00:   last_name: 'Сергеев',
+2024-06-05 07:05 +03:00:   email: '123321@123.ru',
+2024-06-05 07:05 +03:00:   phone: '+7 333 333 33 33',
+2024-06-05 07:05 +03:00:   position: '123124',
+2024-06-05 07:05 +03:00:   description: '123123',
+2024-06-05 07:05 +03:00:   gender: 'male',
+2024-06-05 07:05 +03:00:   is_bookable: 1
+2024-06-05 07:05 +03:00: }

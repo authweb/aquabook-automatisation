@@ -8,6 +8,7 @@ import Button from "./FormComponents/Button";
 const HeaderDashboard = ({
 	showBack,
 	title,
+	flex_1,
 	titleProfile,
 	titleEmployee,
 	buttons,
@@ -71,7 +72,9 @@ const HeaderDashboard = ({
 						</div>
 					</div>
 				</div>
-				<div className='flex-1'></div>
+				{flex_1 && (
+					<div className='flex-1'></div>
+				)}
 				{/* <div className="headerUser__box">
 					<MdArrowBackIos
 						className="headerUser__box-icon"

@@ -11,22 +11,27 @@
   border-radius: 20px;
 
   margin-bottom: 10px;
+
   &__box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     &-icon,
     &-space {
       display: flex;
       flex: 1;
     }
+
     &-icon {
       font-size: $font-size-22;
       margin-left: 15px;
+
       &:hover {
         cursor: pointer;
       }
     }
+
     &-title {
       display: flex;
       flex: 4;
@@ -34,14 +39,16 @@
     }
   }
 }
+
 .personalSettings {
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
+
   &__section {
-    background-color: $card-color;
+    background-color: var(--bg-color);
     border-radius: 20px;
     padding: 20px;
     height: 100%;
@@ -54,11 +61,13 @@
   flex-direction: column;
   justify-content: space-between; // Добавлено свойство для выравнивания по центру
   height: 97.5vh;
+
   .settings-section {
     background-color: $bg-color;
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 10px;
+
     &:last-child {
       margin-top: auto;
       margin-bottom: 0;
@@ -104,9 +113,11 @@
   border-radius: 10px;
   padding: 10px;
   margin: 2px 0 2px 0;
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
+
   &__flex {
     display: flex;
     flex-direction: row;
@@ -117,9 +128,11 @@
     &__pcol {
       display: flex;
       flex-direction: column;
+
       &-p {
         color: $gray-text-color;
         margin: 0;
+
         &:first-child {
           font-size: $font-size-16;
           font-weight: 500;
@@ -127,6 +140,7 @@
         }
       }
     }
+
     &-arrow {
       display: flex;
       flex-wrap: wrap;

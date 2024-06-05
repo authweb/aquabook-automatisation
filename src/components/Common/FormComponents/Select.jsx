@@ -12,6 +12,7 @@ const Select = ({
 	onSelect,
 	prefixSvg,
 	selectedValue,
+	id
 }) => {
 	const [dropdownVisible, setDropdownVisible] = useState(false);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -49,7 +50,8 @@ const Select = ({
 		setSearchTerm(event.target.value);
 	};
 
-	const handleSelectOption = option => {
+	const handleSelectOption = (event, option) => {
+		event.preventDefault(); // Предотвращаем событие отправки формы
 		setSelectedOption(getDisplayValue(option));
 		onSelect(option);
 		setDropdownVisible(false);
@@ -65,10 +67,9 @@ const Select = ({
 				<div className='ab-select eb-select-white-prefix'>
 					<div className='ab-select__input-wrap' onClick={toggleDropdown}>
 						<label
-							htmlFor='input-56'
-							className={`flex flex-1 ab-text-field is-text has-label has-icon ${
-								isFocused || selectedOption || searchTerm ? "is-filled" : ""
-							}`}>
+							htmlFor={`input-${id}`}
+							className={`flex flex-1 ab-text-field is-text has-label has-icon ${isFocused || selectedOption || searchTerm ? "is-filled" : ""
+								}`}>
 							{prefixSvg && (
 								<div className='ab-text-field__prefix'>
 									<div className='eb-island-icon ml-4 rounded-md'>
@@ -79,7 +80,7 @@ const Select = ({
 							<div className='relative w-full'>
 								<input
 									type='text'
-									id='input-56'
+									id={`input-${id}`}
 									className='ab-text-field__element p-3'
 									value={selectedOption ? selectedOption : searchTerm}
 									onBlur={handleBlur}
@@ -88,7 +89,11 @@ const Select = ({
 								/>
 								<div className='ab-text-field__label'>{inputTitle}</div>
 								<span className='ab-text-field__icon'>
-									<button className='ab-button h-full ab-button_md color-accent theme-icon'>
+									{/* вот здесь */}
+									<button
+										type="button"
+										className='ab-button h-full ab-button_md color-accent theme-icon'
+										onClick={toggleDropdown}>
 										<span className='ab-button__overlay'></span>
 										<span className='ab-button__content ab-button__content_md'>
 											<span className='ab-button__text'>
@@ -103,9 +108,8 @@ const Select = ({
 					{dropdownVisible && (
 						<div
 							ref={dropdownRef}
-							className={`ab-select__dropdown ${
-								dropdownVisible ? "" : "ab-select__dropdown--hidden"
-							}`}
+							className={`ab-select__dropdown ${dropdownVisible ? "" : "ab-select__dropdown--hidden"
+								}`}
 							style={{
 								position: "absolute",
 								// margin: "0px",
@@ -113,9 +117,10 @@ const Select = ({
 							}}>
 							{filteredOptions.map(option => (
 								<button
+									type="button"
 									key={option.id}
 									className='ab-dropdown-button ab-dropdown-button_default'
-									onClick={() => handleSelectOption(option)}>
+									onClick={(e) => handleSelectOption(e, option)}>
 									<span className='flex items-start white'>
 										<span className='flex max-w-full'>
 											<div

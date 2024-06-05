@@ -20,12 +20,11 @@ const Radio = ({ type, name, id, prefix, value, checked, onChange }) => {
             name={name}
             className="ab-switch-field__element"
             value={value}
-            id={id}
             checked={checked}
             onChange={onChange}
             onBlur={handleBlur}
           />
-          <label htmlFor={id} className="ab-switch-field__label">
+          <label className="ab-switch-field__label">
             {prefix}
           </label>
         </div>

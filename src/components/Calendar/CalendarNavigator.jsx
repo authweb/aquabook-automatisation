@@ -1,70 +1,22 @@
 import React, { useContext, useEffect } from "react";
-import { DayPilot, DayPilotNavigator } from "daypilot-pro-react";
+import Calendar from "react-calendar";
 import { CalendarContext } from "../../contexts/CalendarContexts";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
-import "../../scss/CalendarStyles.scss";
-
-const russianLocale = {
-	dayNames: [
-		"Воскресенье",
-		"Понедельник",
-		"Вторник",
-		"Среда",
-		"Четверг",
-		"Пятница",
-		"Суббота",
-	],
-	dayNamesShort: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-	monthNames: [
-		"Январь",
-		"Февраль",
-		"Март",
-		"Апрель",
-		"Май",
-		"Июнь",
-		"Июль",
-		"Август",
-		"Сентябрь",
-		"Октябрь",
-		"Ноябрь",
-		"Декабрь",
-	],
-	monthNamesShort: [
-		"Янв",
-		"Фев",
-		"Мар",
-		"Апр",
-		"Май",
-		"Июн",
-		"Июл",
-		"Авг",
-		"Сен",
-		"Окт",
-		"Ноя",
-		"Дек",
-	],
-	timePattern: "H:mm",
-	datePattern: "dd.MM.yyyy",
-	dateTimePattern: "dd.MM.yyyy H:mm",
-	weekStarts: 1, // Начало недели с понедельника
-};
-
-DayPilot.Locale.register(new DayPilot.Locale("ru-ru", russianLocale));
+import "react-calendar/dist/Calendar.css";
+import "../../scss/CalendarStyles.scss"; // Ваши стили для календаря
 
 const CalendarNavigator = () => {
 	const navigate = useNavigate();
-
 	const [searchParams] = useSearchParams();
-	const { selectedDate, setSelectedDate, setRangeStart } =
-		useContext(CalendarContext);
+	const { selectedDate, setSelectedDate, setRangeStart } = useContext(CalendarContext);
 
-	const handleDateSelection = args => {
+	const handleDateSelection = date => {
 		// Форматируем выбранную дату в ожидаемый формат
-		const formattedDate = dayjs(args.day.value).format("YYYY-MM-DD");
+		const formattedDate = dayjs(date).format("YYYY-MM-DD");
 
 		// Устанавливаем выбранную дату в состояние
-		setSelectedDate(args.day);
+		setSelectedDate(date);
 
 		// Получаем значение параметра "today" из строки запроса
 		const today = searchParams.get("today");
@@ -76,15 +28,25 @@ const CalendarNavigator = () => {
 		navigate(`/dashboard/calendar?today=${today}&range_start=${formattedDate}`);
 	};
 
+	useEffect(() => {
+		const labelElement = document.querySelector('.custom-calendar .react-calendar__navigation__label');
+		if (labelElement) {
+			labelElement.style.flexGrow = '2';
+		}
+	}, []);
+
 	return (
-		<DayPilotNavigator
-			theme={"eb-calendar_"}
-			locale={"ru-ru"}
-			selectMode={"day"}
-			showMonths={1}
-			selectionDay={selectedDate}
-			autoFocusOnClick={true}
-			onTimeRangeSelect={handleDateSelection}
+		<Calendar
+			onChange={handleDateSelection}
+			value={selectedDate}
+			locale="ru-RU"
+			minDetail="month"
+			maxDetail="month"
+			next2Label={null}
+			prev2Label={null}
+			showNeighboringMonth={true}
+			showNavigation={true}
+			className="custom-calendar"
 		/>
 	);
 };

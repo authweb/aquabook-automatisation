@@ -32,12 +32,12 @@ const Login = () => {
 				response.data.user;
 			login({ token, id, first_name, last_name, phone, email });
 
-			navigate(`/dashboard/profile/${id}`);
+			navigate(`/dashboard/users/${id}`);
 		} catch (err) {
 			console.error(err.response || err.message);
 			setError(
 				err.response?.data?.message ||
-					"Произошла ошибка при авторизации. Пожалуйста, попробуйте ещё раз.",
+				"Произошла ошибка при авторизации. Пожалуйста, попробуйте ещё раз.",
 			);
 			setFormState(prevState => ({ ...prevState, password: "" })); // Очистить поле пароля
 			setIsLoading(false); // Выключить индикатор загрузки при ошибке

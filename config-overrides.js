@@ -4,8 +4,13 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-// Ваша функция для модификации настроек devServer
 const overrideDevServerConfig = () => config => {
+	config.setupMiddlewares = (middlewares, devServer) => {
+		if (!devServer) {
+			throw new Error('webpack-dev-server is not defined');
+		}
+		return middlewares;
+	};
 	return {
 		...config,
 		allowedHosts: [
@@ -17,28 +22,48 @@ const overrideDevServerConfig = () => config => {
 	};
 };
 
-// Ваша текущая функция override для обновления правил Webpack
 const overrideWebpackConfig = (config, env) => {
-	const ruleIndex = config.module.rules.findIndex(rule => rule.oneOf);
-	if (ruleIndex !== -1) {
-		const rule = config.module.rules[ruleIndex];
-		const sassRuleIndex = rule.oneOf.findIndex(
-			r => r.test && r.test.toString().includes("sass|scss"),
-		);
-		if (sassRuleIndex !== -1) {
-			const sassRule = rule.oneOf[sassRuleIndex];
+	const oneOfRule = config.module.rules.find(rule => Array.isArray(rule.oneOf));
+	if (oneOfRule) {
+		const sassRule = oneOfRule.oneOf.find(rule => rule.test && rule.test.toString().includes("sass|scss"));
+		if (sassRule) {
 			sassRule.use.push({
 				loader: require.resolve("sass-loader"),
 				options: {
 					additionalData: "@import './src/scss/globalscss/_global.scss';",
 				},
 			});
+		} else {
+			// Добавляем правило для SASS/SCSS файлов, если оно не найдено
+			oneOfRule.oneOf.push({
+				test: /\.(sass|scss)$/,
+				use: [
+					require.resolve('style-loader'),
+					require.resolve('css-loader'),
+					{
+						loader: require.resolve('sass-loader'),
+						options: {
+							additionalData: "@import './src/scss/globalscss/_global.scss';",
+						},
+					},
+				],
+			});
+			console.error("SASS rule was not found and has been added to 'oneOf' rules");
 		}
 	} else {
 		console.error("Cannot find 'oneOf' rule in Webpack config");
 	}
 
-	// Добавляем оптимизацию для продакшн сборок
+	config.resolve = {
+		...config.resolve,
+		fallback: {
+			"http": require.resolve("stream-http"),
+			"https": require.resolve("https-browserify"),
+			"zlib": require.resolve("browserify-zlib"),
+			"stream": require.resolve("stream-browserify"),
+		}
+	};
+
 	if (env === 'production') {
 		config.optimization = {
 			...config.optimization,

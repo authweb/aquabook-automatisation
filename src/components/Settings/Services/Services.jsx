@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../../../contexts/AuthContexts";
 import axios from "axios";
 import { HeaderDashboard } from "../../../components";
 import "../../../scss/profile.scss";
 import { SearchOutlined } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { Table, Tag } from "antd";
 
 const Services = () => {
-	const { users } = useAuth();
 	const navigate = useNavigate();
 
-	const [categories, setCategories] = useState([]);
 	const [services, setServices] = useState({});
 	const [flatServices, setFlatServices] = useState([]);
 	const [filteredServices, setFilteredServices] = useState([]);
 	const [filter, setFilter] = useState("Активные");
 	const [searchText, setSearchText] = useState("");
+	const [categories, setCategories] = useState([]); // Добавлено определение setCategories
+	const [pageSize, setPageSize] = useState(15);
+
+
 
 	useEffect(() => {
 		const fetchServices = async () => {
@@ -45,7 +45,7 @@ const Services = () => {
 	useEffect(() => {
 		const filtered = flatServices.filter(service => {
 			if (filter === "Активные") {
-				return service.tags === "Включено";
+				return service.tags === 1; // Изменено условие для проверки tags
 			}
 			return true;
 		}).filter(service => {
@@ -72,9 +72,14 @@ const Services = () => {
 			key: "name",
 		},
 		{
-			title: "Цена",
+			title: "Цена от",
 			dataIndex: "price_from",
 			key: "price-from",
+		},
+		{
+			title: "Цена до",
+			dataIndex: "price_to",
+			key: "price-to",
 		},
 		{
 			title: "Длительность",
@@ -86,17 +91,12 @@ const Services = () => {
 			dataIndex: "tags",
 			key: "tags",
 			render: tag => {
-				let color =
-					tag === "Включено"
-						? "green"
-						: tag === "Выключено"
-							? "volcano"
-							: "gray";
-				return <Tag color={color}>{tag}</Tag>;
+				let color = tag === 1 ? "green" : "volcano";
+				let text = tag === 1 ? "Включено" : "Выключено";
+				return <Tag color={color}>{text}</Tag>;
 			},
 		},
 	];
-	console.log(services);
 
 	return (
 		<>
@@ -112,18 +112,18 @@ const Services = () => {
 						<div className='mb-4 mr-4 max-w-full'>
 							<div className='ab-slider ab-button-nav ab-button-nav__wrapper'>
 								<span className='ab-slider__scroller'>
-									<a
+									<button
 										className={`ab-button-nav__toggler ${filter === "Активные" ? "ab-button-nav__toggler_active" : ""}`}
 										onClick={() => handleFilterChange("Активные")}
 									>
 										<span tabIndex={-1}>Активные</span>
-									</a>
-									<a
+									</button>
+									<button
 										className={`ab-button-nav__toggler ${filter === "Все" ? "ab-button-nav__toggler_active" : ""}`}
 										onClick={() => handleFilterChange("Все")}
 									>
 										<span tabIndex={-1}>Все</span>
-									</a>
+									</button>
 								</span>
 							</div>
 						</div>
@@ -153,6 +153,13 @@ const Services = () => {
 						dataSource={filteredServices}
 						columns={columns}
 						rowKey='id'
+						pagination={{
+							className: 'custom-pagination',
+							pageSize: pageSize,
+							showSizeChanger: true,
+							pageSizeOptions: ['15', '30', '45', '60'],
+							onShowSizeChange: (current, size) => setPageSize(size),
+						}}
 						onRow={service => ({
 							onClick: () => {
 								navigate(`${service.id}`);

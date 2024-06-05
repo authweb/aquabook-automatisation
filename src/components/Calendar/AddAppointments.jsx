@@ -3,19 +3,25 @@ import HeaderDashboard from "../Common/HeaderDashboard";
 import CardEdit from "../Common/CardEdit";
 import { useLocation, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import axios from "axios";
 import { Layout, Tag } from "antd";
 import Aside from "../Common/Aside";
 import { ReactComponent as TimeIcon } from "../../assets/images/time-icon.svg";
 import TextArea from "../Common/FormComponents/TextArea";
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 const AddAppointments = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const queryParams = new URLSearchParams(location.search);
+	const startString = queryParams.get("start");
 	const endString = queryParams.get("end");
-	const [startDate, setStartDate] = useState(dayjs(endString, "YYYY-MM-DDTHH:mm:ss"));
-	const endDate = dayjs(endString, "YYYY-MM-DDTHH:mm:ss");
+	const [startDate, setStartDate] = useState(dayjs.tz(startString, "YYYY-MM-DDTHH:mm:ss", "Asia/Krasnoyarsk"));
+	const endDate = dayjs.tz(endString, "YYYY-MM-DDTHH:mm:ss", "Asia/Krasnoyarsk");
 	const [initialStartDate, setInitialStartDate] = useState(startDate);
 	const formattedStart = initialStartDate.format("dd, DD MMM YYYY HH:mm");
 	const [activeButton, setActiveButton] = useState(null);
@@ -90,11 +96,12 @@ const AddAppointments = () => {
 
 		const clientInfo = `${selectedClient.first_name} ${selectedClient.last_name} ${selectedClient.phone}`;
 		const servicesInfo = selectedServices.map(service => service.name).join(", ");
-		const appointmentText = `Выбранные услуги: ${servicesInfo} Клиент: ${clientInfo} Сумма: ${currentValues.cost} руб.`;
+		const appointmentText = `${servicesInfo}
+		Клиент: ${clientInfo}`;
 
 		const newEvent = {
-			start: startDate.format("YYYY-MM-DD HH:mm:ss"),
-			end: endAppointmentTime.format("YYYY-MM-DD HH:mm:ss"),
+			start: startDate.utc().format(), // Преобразование в формат UTC
+			end: endAppointmentTime.utc().format(), // Преобразование в формат UTC
 			selectedServices: selectedServices.map(service => ({
 				id: service.id,  // Убедитесь, что это правильное поле для ID услуги
 				name: service.name,

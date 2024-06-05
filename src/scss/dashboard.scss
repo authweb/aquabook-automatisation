@@ -4,6 +4,7 @@
 	transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
 	transition-property: transform, opacity;
 }
+
 .show-bottom-leave-active {
 	transition: 0.2s cubic-bezier(0.32, 0, 0.67, 0);
 	transition-property: transform, opacity;
@@ -20,6 +21,7 @@
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 1;
 	}
@@ -29,6 +31,7 @@
 	0% {
 		opacity: 1;
 	}
+
 	100% {
 		opacity: 1;
 	}
@@ -39,6 +42,7 @@
 	from {
 		opacity: 1;
 	}
+
 	to {
 		opacity: 0;
 	}
@@ -51,6 +55,7 @@
 	color: #383868;
 	color: rgba(var(--c-mono-900-rgb), var(--text-opacity, 1));
 }
+
 .eb-booking-complete__icon {
 	display: block;
 	padding: 0.5rem;
@@ -64,6 +69,7 @@
 	align-items: center;
 	justify-content: center;
 	transform: translateY(-1.5rem);
+
 	&--default {
 		color: var(--c-mono-300);
 	}
@@ -76,10 +82,11 @@
 		background-position: top;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
+
 		&--default {
 			color: rgba(var(--c-on-surface-rgb), 1);
 			color: rgba(var(--c-on-surface-rgb), var(--text-opacity, 1));
-			background-color: rgba($bg-color, 1);
+			background-color: rgba(var(--bg-color-none-rgb), 1);
 			background-image: url("../assets/images/timebg.svg");
 		}
 	}
@@ -91,16 +98,19 @@
 	margin-right: 1rem;
 	margin-bottom: 0.75rem;
 }
+
 .eb-booking-invoice__list dt:last-of-type {
-	color: rgba($white-color, 1);
+	color: rgba(var(--black-color-none-rgb), 1);
 	margin-bottom: 0;
 	font-weight: 700;
 }
+
 .eb-booking-invoice__list dd {
 	display: block;
 	margin-bottom: 0.75rem;
 	text-align: right;
 }
+
 .eb-booking-invoice__list dd:last-of-type {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
@@ -108,6 +118,7 @@
 	font-weight: 700;
 	margin-top: -0.125rem;
 }
+
 .eb-booking-invoice__decor {
 	display: block;
 	margin-left: -1rem;
@@ -121,6 +132,7 @@
 	position: relative;
 	overflow: hidden;
 }
+
 .eb-booking-invoice__decor:before {
 	background-color: rgba(var(--c-surface-rgb), 1);
 	background-color: rgba(var(--c-surface-rgb), var(--bg-opacity, 1));
@@ -135,28 +147,33 @@
 	top: 0;
 	left: 0;
 }
+
 .eb-booking-invoice__decor svg {
-	fill: rgba($white-color, 1);
+	fill: rgba(var(--black-color-none-rgb), 1);
 	width: 100%;
 	height: auto;
 	position: absolute;
 	left: 0;
 	top: 0;
 }
+
 html[data-dark="true"] .eb-booking-invoice__decor:before {
 	box-shadow: 0 0.75rem 1.5rem rgba(186, 186, 216, 0.1);
 }
+
 /* Календарь */
 
 .ab {
 	&-invoice {
 		display: block;
+
 		@media (min-width: 1024px) {
 			& {
 				display: none !important;
 			}
 		}
 	}
+
 	&-model {
 		&-edit {
 			&__panel {
@@ -171,6 +188,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		}
 	}
 }
+
 .eb {
 	&-booking {
 		&-invoice {
@@ -181,6 +199,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&-page {
 		&-aside {
 			@media (min-width: 1024px) {
@@ -193,10 +212,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 				margin-top: 1.5rem;
 				position: sticky;
 				bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-				bottom: calc(
-					1rem + env(safe-area-inset-bottom, 0px) +
-						var(--page-aside-buttons-bottom, 0px)
-				);
+				bottom: calc(1rem + env(safe-area-inset-bottom, 0px) + var(--page-aside-buttons-bottom, 0px));
+
 				@media (min-width: 1024px) {
 					bottom: 1.5rem;
 					margin-bottom: env(safe-area-inset-bottom, 0);
@@ -213,10 +230,11 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 
 			&__aside {
 				display: none;
+
 				@media (min-width: 1024px) {
 					& {
 						background-color: var(--card-color);
-						color: var(--white-color);
+						color: var(--dark-blue-color);
 						padding: 1.5rem 2rem;
 						flex-shrink: 0;
 						width: 375px;
@@ -227,9 +245,11 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&-model {
 		&-edit {
 			padding-bottom: 1.5rem;
+
 			&__panel {
 				position: sticky;
 				margin-top: 2rem;
@@ -239,13 +259,16 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 				border-radius: 0.625rem;
 				z-index: 10;
 			}
+
 			&__button {
 				white-space: nowrap;
 				flex: 1 1 0%;
 				margin-top: 0.5rem;
+
 				&--mobile {
 					flex: none;
 				}
+
 				@media (min-width: 692px) {
 					& {
 						margin-top: 1rem;
@@ -255,11 +278,13 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&-button {
 		&-dashed {
-			border: 2px dashed $gray-color;
+			border: 2px dashed var(--gray-color);
 		}
 	}
+
 	&-services {
 		&-island {
 			&__item {
@@ -269,6 +294,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&-calendar {
 		--calendar-safe-offest-top: env(safe-area-inset-top, 0px);
 		--calendar-title-height: 4.5rem;
@@ -279,38 +305,36 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		display: grid;
 		grid-template-columns: 1fr; // Весь календарь в одном столбце
 		grid-template-rows:
-			var(--calendar-title-height)
-			var(--calendar-header-height)
-			auto 2rem 2rem;
+			var(--calendar-title-height) var(--calendar-header-height) auto 2rem 2rem;
 		touch-action: pan-x pan-y;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		user-select: none;
 		-webkit-user-drag: none;
 		padding: 0 var(--calendar-padding);
+
 		@media (min-width: 768px) {
 			& {
 				--calendar-title-height: 5.5rem;
 			}
 		}
+
 		@media (max-width: 768px) {
 			& {
 				display: grid;
 				grid-template-columns: 1fr; // весь календарь теперь будет в одном столбце
 				grid-template-rows:
-					var(--calendar-title-height)
-					var(--calendar-header-height)
-					auto
-					2rem
-					2rem;
+					var(--calendar-title-height) var(--calendar-header-height) auto 2rem 2rem;
 			}
 		}
+
 		@media (min-width: 1024px) {
 			& {
 				--calendar-padding: 2rem;
 				position: relative;
 			}
 		}
+
 		&_colheader_back {
 			grid-row: 2;
 			grid-column: 2;
@@ -319,23 +343,23 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			top: 0;
 			z-index: 2;
 		}
+
 		&__info,
 		&_title {
 			display: flex;
 			align-items: center;
-			background-color: $bg-color;
+			background-color: var(--bg-color);
 		}
+
 		&_title {
 			grid-column: 1/-1;
 			grid-row: 1;
-			padding: $header-padding-top $header-padding-horizontal
-				clamp(
-					1px,
+			padding: $header-padding-top $header-padding-horizontal clamp(1px,
 					calc($header-padding-bottom - $calendar-safe-offest-top),
-					$header-padding-bottom
-				);
+					$header-padding-bottom);
 			position: relative;
 			z-index: 5;
+
 			@media (min-width: 1024px) {
 				& {
 					padding-left: 0;
@@ -344,10 +368,13 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 				}
 			}
 		}
+
 		&-page {
 			max-width: 100%;
 			min-height: 100vh;
 			padding-bottom: env(safe-area-inset-bottom, 0);
+			background-color: rgba(var(--bg-color-none-rgb), 1);
+
 			@media (min-width: 1024px) {
 				& {
 					display: flex;
@@ -356,11 +383,12 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 					overflow: hidden;
 				}
 			}
+
 			&__aside {
 				@media (min-width: 1024px) {
 					& {
-						background-color: $card-color;
-						color: $white-color;
+						background-color: var(--bg-color);
+						color: var(--black-color);
 						padding: 1.5rem 2rem 1rem;
 						max-width: 375px !important;
 						min-width: 100%;
@@ -374,13 +402,15 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 					}
 				}
 			}
+
 			&__calendar {
 				min-height: calc(100vh - 4rem);
+
 				@media (min-width: 1024px) {
 					& {
 						width: 100% !important;
 						height: 100vh;
-						overflow-y: auto;
+						overflow-y: hidden;
 						scroll-behavior: smooth;
 					}
 				}
@@ -389,8 +419,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	}
 }
 
-.eb-services-island__item + .eb-services-island__item {
-	border-top: 1px solid var(--c-mono-800);
+.eb-services-island__item+.eb-services-island__item {
+	border-top: 1px solid var(--gray-text-color);
 }
 
 /* Стили для классов */
@@ -410,17 +440,18 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 
 .ab-button.theme-ghost.color-default,
 .ab-page-headline__back {
-	background: $button-e-color;
-	box-shadow: 0 0 0 1px $button-e-color inset;
-	color: $white-color;
+	background: var(--button-e-color);
+	box-shadow: 0 0 0 1px var(--button-e-color) inset;
+	color: rgba(var(--black-color-none-rgb), 1);
+
 	&:hover {
-		background: $button-e-color-hover;
+		background: var(--button-e-color-hover);
 	}
 }
 
 .custom {
 	&_layout {
-		background: $bg-color;
+		background: var(--bg-color);
 		height: 100vh;
 	}
 }
@@ -439,13 +470,14 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-button.theme-circle,
-.ab-button.theme-circle > .ab-button__overlay,
+.ab-button.theme-circle>.ab-button__overlay,
 .ab-button.theme-ghost,
-.ab-button.theme-ghost > .ab-button__overlay,
+.ab-button.theme-ghost>.ab-button__overlay,
 .ab-button.theme-outline,
 .ab-button.theme-solid:not(.color-google),
 .ab-button:not(.color-google) .ab-button__overlay {
 	border-radius: 0.9375rem;
+
 	@media (min-width: 1024px) {
 		& {
 			border-radius: 0.625rem;
@@ -472,7 +504,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	min-height: $avatar-size, 2.25rem;
 	border-radius: 2.25rem;
 	border-radius: $avatar-size, 2.25rem;
-	> * {
+
+	>* {
 		grid-row: 1/-1;
 		grid-column: 1/-1;
 		display: flex;
@@ -496,6 +529,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	position: relative;
 	max-width: 100%;
 	overflow: hidden;
+
 	&__scroller {
 		display: flex;
 		width: 100%;
@@ -506,7 +540,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		overflow: auto;
 		scroll-behavior: smooth;
 		scroll-snap-type: x mandatory;
-		> * {
+
+		>* {
 			flex: 0 0 auto;
 			-webkit-user-select: none;
 			-moz-user-select: none;
@@ -521,13 +556,15 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	background-color: #e7eaed;
 	background-color: var(--button-e-color);
 	color: #535557;
-	color: $white-color;
+	color: rgba(var(--black-color-none-rgb), 1);
 	border: none;
 	border-radius: 1rem;
+
 	&__wrapper {
 		padding-top: 0;
 		padding-bottom: 0;
 	}
+
 	&__toggler {
 		padding-left: 0;
 		padding-right: 0;
@@ -538,7 +575,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		border-radius: 0;
 		border-top: 2px solid var(--button-e-color);
 		border-bottom: 2px solid var(--button-e-color);
-		> span {
+
+		>span {
 			text-transform: uppercase;
 			padding-left: 1rem;
 			padding-right: 1rem;
@@ -546,16 +584,19 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			border-radius: calc(1rem - 2px);
 			min-height: 2.75rem;
 		}
+
 		&:first-child {
 			border-radius: 1rem 0 0 1rem;
 			border-left: 2px solid var(--button-e-color);
 		}
+
 		&:last-child {
 			border-radius: 0 1rem 1rem 0;
 			border-right: 2px solid var(--button-e-color);
 		}
+
 		&_active {
-			> span {
+			>span {
 				background-color: #fff;
 				background-color: var(--button-e-color-hover);
 				color: #14171d;
@@ -568,7 +609,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-button-nav__toggler,
-.ab-button-nav__toggler > span {
+.ab-button-nav__toggler>span {
 	color: $gray-text-color;
 	display: flex;
 	align-items: center;
@@ -583,7 +624,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	line-height: 1.5rem;
 	position: relative;
 	transition: border-color 0.2s;
-	background-color: $bg-color;
+	background-color: var(--bg-color);
+
 	&__element {
 		width: 100%;
 		border-radius: 0.125rem;
@@ -591,21 +633,22 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		display: block;
-		background-color: #fff;
-		background-color: $bg-color;
-		color: #14171d;
-		color: $gray-text-color;
+		background-color: var(--bg-color);
+		color: var(--gray-text-color);
 		line-height: 1.5;
 		filter: none;
 	}
+
 	&__element {
 		box-shadow: none;
 	}
+
 	&__element {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
 	}
+
 	&__label {
 		position: absolute;
 		opacity: 0.5;
@@ -618,6 +661,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		transform-origin: left top;
 		transition: transform 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
 	}
+
 	&__icon {
 		position: absolute;
 		right: 0;
@@ -670,8 +714,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	max-width: calc(100% - 3rem);
 }
 
-.ab-text-field__element:not([readonly]):focus + .ab-text-field__label,
-.is-filled .ab-text-field__element + .ab-text-field__label {
+.ab-text-field__element:not([readonly]):focus+.ab-text-field__label,
+.is-filled .ab-text-field__element+.ab-text-field__label {
 	transform: scale(0.67) translateY(-50%);
 }
 
@@ -692,6 +736,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	color: inherit;
 	fill: currentColor;
 	vertical-align: middle;
+
 	&--size {
 		&-text {
 			width: 1em;
@@ -702,14 +747,16 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 
 .ab-description {
 	font-size: 0.875rem;
-	color: $gray-text-color;
+	color: var(--gray-text-color);
 }
 
 .ab-info {
 	word-break: break-word;
+
 	&__label {
 		margin-bottom: 0.25rem;
-		> .ab-description {
+
+		>.ab-description {
 			font-size: 0.75rem;
 			margin-bottom: 0;
 		}
@@ -720,7 +767,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	display: none;
 }
 
-.ab-button:not([disabled]):hover > .ab-button__overlay {
+.ab-button:not([disabled]):hover>.ab-button__overlay {
 	opacity: 0.2;
 }
 
@@ -762,6 +809,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	min-width: 3rem;
 	min-height: 3rem;
 	height: 100%;
+
 	@media (min-width: 1024px) {
 		& {
 			padding-top: 0.75rem;
@@ -773,27 +821,22 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-button {
-	background-color: var(--btn-bg-color);
-	border: var(--btn-border-width, 2px) solid
-		var(--btn-border-color, var(--btn-bg-color));
+	background-color: var(--primary-color);
 	border-radius: 0.625rem;
-	border-radius: var(--btn-radius, 0.625rem);
 	color: var(--btn-color);
 	display: inline-flex;
-	font-weight: 400;
+	font-weight: 600;
 	gap: 0.5rem;
 	line-height: 1.125rem;
 	min-height: 3rem;
-	min-height: var(--btn-size, 3rem);
 	min-width: 3rem;
-	min-width: var(--btn-min-width, var(--btn-size, 3rem));
 	padding: 0.375rem;
-	padding: var(--btn-padding-y, 0.375rem) var(--btn-padding-x, 0.375rem);
 	position: relative;
 	text-align: center;
 	text-decoration: none;
 	transition: background-color 0.1s, border-color 0.1s;
 	vertical-align: middle;
+
 	&__overlay {
 		position: absolute;
 		top: 0;
@@ -806,11 +849,13 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		background-color: currentColor;
 		transition: opacity 0.2s;
 	}
+
 	&__text {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
+
 	&__text {
 		white-space: nowrap;
 	}
@@ -840,22 +885,24 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 .ab-button--size-lg {
 	--btn-size: 3.5rem;
 }
+
 .ab-button--with-text {
 	--btn-padding-x: 1rem;
 }
+
 .ab-button--color-accent:where(.ab-button--theme-solid) {
 	--btn-bg-color: var(--success-color);
 	--btn-color: var(--white-color);
 	--btn-bg-hover: var(--success-color-hover);
 }
+
 .ab-button--theme-solid {
 	--btn-border-width: 0;
-	--btn-bg-hover-fallback: color-mix(
-		in srgb,
-		var(--btn-bg-color) 90%,
-		var(--black-color)
-	);
+	--btn-bg-hover-fallback: color-mix(in srgb,
+			var(--btn-bg-color) 90%,
+			var(--black-color));
 }
+
 .ab-button--icon-highlighted {
 	justify-content: space-between;
 }
@@ -866,9 +913,10 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 
 .ab-select {
 	position: relative;
+
 	&__dropdown {
 		background-color: rgba(var(--bg-color-none-rgb), 1);
-		color: rgba(var(--white-color-none-rgb), 1);
+		color: rgba(var(--black-color-none-rgb), 1);
 		border-radius: 0.25rem;
 		visibility: visible;
 		pointer-events: all;
@@ -881,10 +929,11 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		bottom: auto;
 		max-height: calc(100vh - 1rem);
 		z-index: 120;
+
 		@media (min-width: 692px) {
 			& {
 				background-color: rgba(var(--bg-color-none-rgb), 1);
-				color: rgba(var(--white-color-none-rgb), 1);
+				color: rgba(var(--black-color-none-rgb), 1);
 				box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 				overflow: auto;
 				overscroll-behavior: contain;
@@ -898,6 +947,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 				z-index: 120;
 			}
 		}
+
 		&--hidden {
 			visibility: hidden;
 			pointer-events: none;
@@ -915,6 +965,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	border: 1px solid var(--gray-color);
 	margin: 0px;
 	transform: translate(0px, 40px);
+
 	@media (min-width: 692px) {
 		& {
 			transform: translate(0px);
@@ -925,13 +976,16 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 .ab-dropdown-button {
 	display: block;
 	width: 100%;
-	& > span {
+
+	&>span {
 		display: flex;
 		padding: 0.75rem 1.25rem;
 	}
+
 	&_default {
 		color: inherit;
 	}
+
 	@media (min-width: 692px) {
 		& {
 			font-size: 0.875rem;
@@ -941,7 +995,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			position: relative;
 			padding: 2px;
 			border-radius: 0.125rem;
-			& > span {
+
+			&>span {
 				display: block;
 				padding: calc(0.75rem - 2px) calc(1rem - 2px);
 			}
@@ -950,14 +1005,16 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .eb-island-icon {
-	background-color: rgba($bg-color, 1);
-	color: rgba(var(--c-on-mono-900-rgb), 1);
+	background-color: rgba(var(--bg-color-none-rgb), 1);
+	color: rgba(var(--black-color-none-rgb), 1);
 	display: grid;
 	flex-shrink: 0;
-	& > * {
+
+	&>* {
 		grid-column: 1/-1;
 		grid-row: 1/-1;
 	}
+
 	&__icon {
 		margin: auto;
 	}
@@ -972,15 +1029,15 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	height: 100%;
 }
 
-.ab-text-field > div:first-child:not(.ab-tooltip),
-.ab-text-field > span:first-child:not(.ab-tooltip) {
+.ab-text-field>div:first-child:not(.ab-tooltip),
+.ab-text-field>span:first-child:not(.ab-tooltip) {
 	border-top-left-radius: 0.625rem;
 	border-bottom-left-radius: 0.625rem;
 }
 
 .eb-select-white-prefix .ab-text-field__prefix {
-	background-color: rgba($bg-color, 1);
-	color: rgba($white-color, 1);
+	background-color: rgba(var(--bg-color-none-rgb), 1);
+	color: rgba(var(--black-color-none-rgb), 1);
 }
 
 .ab-text-field__postfix,
@@ -1006,33 +1063,38 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-page {
-	background-color: $bg-color;
-	color: rgba($white-color, 1);
+	background-color: rgba(var(--bg-color-none-rgb), 1);
+	color: rgba(var(--black-color-none-rgb), 1);
 	width: 100%;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
+
 	&-menu {
 		&-buttons {
 			display: flex;
 		}
 	}
+
 	&-headline {
-		color: $white-color;
+		color: rgba(var(--black-color-none-rgb), 1);
 		display: flex;
 		padding-top: 1rem;
+
 		@media (min-width: 1024px) {
 			& {
 				padding-top: 1.5rem;
 			}
 		}
+
 		&__container {
 			flex-grow: 1;
 			display: flex;
 			align-items: center;
 			min-width: 0;
 		}
+
 		&__heading {
 			font-size: 1.5rem;
 			line-height: 2rem;
@@ -1040,6 +1102,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			padding-bottom: 0.25rem;
 			margin: 0;
 		}
+
 		&__buttons {
 			display: flex;
 			justify-content: flex-end;
@@ -1048,6 +1111,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			font-size: 1rem;
 			min-width: 0;
 		}
+
 		&__back {
 			border-radius: 0.9375rem;
 			width: 3rem;
@@ -1056,6 +1120,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			align-items: center;
 			justify-content: center;
 			margin-right: 10px;
+
 			@media (min-width: 1024px) {
 				& {
 					border-radius: 0.625rem;
@@ -1063,6 +1128,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 					height: 2.5rem;
 				}
 			}
+
 			&-wrapper {
 				flex: 1 1 0%;
 				display: flex;
@@ -1070,41 +1136,47 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&__wrapper {
 		--w-full: 1200px;
 		max-width: 1200px;
-		width: calc(
-			100% - 24px
-		); /* Вычитаем 6px отступ слева и 6px отступ справа */
+		width: calc(100% - 24px);
+		/* Вычитаем 6px отступ слева и 6px отступ справа */
 		margin: 0 auto;
-		color: var(--white-color);
+		color: var(--black-color);
 		margin-bottom: 10px;
 	}
+
 	&__heading {
 		display: contents;
+
 		@media (min-width: 1024px) {
 			& {
 				position: relative;
 			}
 		}
 	}
+
 	&__content {
 		flex-grow: 1;
 		padding-top: 1rem;
 		padding-bottom: 5rem;
 		min-height: 360px;
 		background-color: var(--bg-color);
+
 		@media (min-width: 1024px) {
 			& {
 				padding-top: 1.5rem;
 			}
 		}
 	}
+
 	&__grid {
 		display: grid;
 		grid-gap: 1rem;
 		gap: 1rem;
 	}
+
 	@media (min-width: 1024px) {
 		&__grid {
 			grid-template-columns: repeat(2, minmax(1rem, 1fr));
@@ -1139,6 +1211,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		margin-top: calc($flow-gap * -1);
 		min-width: 0;
 	}
+
 	&__child {
 		display: block;
 		min-width: 0;
@@ -1165,37 +1238,45 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		width: 1.25rem;
 		height: 1.25rem;
 		box-shadow: none;
+
 		&:checked {
-			background-color: $secondary-color;
+			background-color: var(--secondary-color);
 			color: #fff;
 			border-color: inherit;
 			background-size: 100% 100%;
 		}
 	}
+
 	&__element {
 		width: 1.875rem;
 		height: 1.875rem;
 	}
+
 	&__label {
 		padding-top: 0.275rem;
 		font-size: 0.875rem;
 		line-height: 1.5;
 	}
+
 	&__label {
 		padding-left: 0.5rem;
 		cursor: pointer;
 		vertical-align: middle;
 	}
+
 	&__label {
 		padding-left: 0.625rem;
 	}
 }
+
 .ab-switch-field.is-radio .ab-switch-field__element {
 	border-radius: 50%;
 }
+
 .ab-switch-field.is-radio .ab-switch-field__element:checked {
 	border-radius: 50%;
 }
+
 .ab-switch-field.is-radio .ab-switch-field__element:checked {
 	background-image: url("../assets/images/radio.svg");
 }
@@ -1209,10 +1290,12 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 .ab-switch-field {
 	display: flex;
 }
+
 .ab-switch-field.is-switcher {
 	display: flex;
 	align-items: center;
 }
+
 .ab-switch-field.is-switcher {
 	align-items: center;
 }
@@ -1224,27 +1307,31 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		grid-template-areas: "icon title arrow" "icon description description" "options options options";
 		margin: calc($card-padding-y * -1) calc($card-padding-x * -1);
 		padding: $card-padding-y $card-padding-x;
+
 		@media (min-width: 692px) {
 			& {
 				grid-template-columns:
-					minmax(min-content, max-content) 1fr minmax(min-content, max-content)
-					minmax(min-content, max-content);
+					minmax(min-content, max-content) 1fr minmax(min-content, max-content) minmax(min-content, max-content);
 				grid-template-areas: "icon title options arrow" "icon description options arrow";
 			}
 		}
 	}
+
 	&__content {
 		&-wrap {
 			margin: 0 $card-padding-x * -1;
 		}
 	}
+
 	&__content,
 	&__footer {
 		padding: $card-padding-y $card-padding-x 0;
 	}
+
 	&__options {
 		grid-area: options;
 		padding-top: 0.5rem;
+
 		@media (min-width: 692px) {
 			& {
 				display: flex;
@@ -1256,6 +1343,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&__arrow {
 		&-wrap {
 			grid-area: arrow;
@@ -1263,9 +1351,10 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			align-items: center;
 			justify-content: flex-end;
 			color: #838587;
-			color: $gray-text-color;
+			color: rgba(var(--gray-color-none-rgb), 0.7);
 			max-height: $island-icon-height-media;
 			padding-left: 0.5rem;
+
 			@media (min-width: 692px) {
 				& {
 					align-self: stretch;
@@ -1274,19 +1363,20 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&-icon {
 		background-color: rgba(30, 30, 30, 1);
-		background-color: rgba(30, 30, 30, 0.1);
 		color: rgba(255, 255, 255, 1);
-		color: rgba(255, 255, 255, 0.1);
 		display: grid;
 		flex-shrink: 0;
 	}
+
 	&__icon {
 		&-wrap {
 			grid-area: icon;
 			padding-right: 0.5rem;
 			max-width: calc($island-icon-height + 0.5rem);
+
 			@media (min-width: 692px) {
 				& {
 					padding-right: 1rem;
@@ -1295,9 +1385,11 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			}
 		}
 	}
+
 	&-avatar {
 		&__icon {
 			display: grid;
+
 			&-userpic {
 				font-size: 1.25rem;
 				line-height: 1.75rem;
@@ -1307,25 +1399,31 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 				transition: opacity 0.12s;
 			}
 		}
+
 		&__separator {
 			margin: $card-padding-y 0 0;
 		}
 	}
+
 	&__title {
 		grid-area: title;
+
 		&-wrap {
 			grid-area: title;
 			align-self: center;
 			min-width: 0;
+
 			&--middle {
 				grid-row: 1/-1;
 			}
 		}
 	}
+
 	&__description {
 		grid-area: description;
 		padding-top: 5px;
 		min-width: 0;
+
 		@media (min-width: 692px) {
 			& {
 				align-self: center;
@@ -1334,18 +1432,21 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	}
 }
 
-.ab-card {
+.ab-page .ab-card {
 	display: block;
 	min-width: 100%;
-	color: $white-color;
+	color: rgba(var(--dark-blue-color-none-rgb), 1);
 	background-color: var(--card-color);
 	border-radius: 1.25rem;
 	padding: $card-padding-y $card-padding-x;
+
 	&__header {
 		display: flex;
+
 		&--offset {
 			margin-bottom: 0.5rem;
 		}
+
 		&--offset {
 			margin-bottom: 0.75rem;
 		}
@@ -1376,7 +1477,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 .ab-bottom-bar {
 	box-shadow: none;
 	border-top: 1px solid rgba(var(--c-on-surface-rgb), 0.1);
-	& > * {
+
+	&>* {
 		flex-basis: 5rem;
 		flex-grow: 1;
 		flex-shrink: 1;
@@ -1407,6 +1509,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	align-items: center;
 	color: inherit;
 	position: relative;
+
 	&__text {
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -1416,9 +1519,11 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		max-width: 100%;
 		margin: 0 auto 0.25rem;
 	}
+
 	&--clip {
 		overflow: hidden;
 	}
+
 	&__icon {
 		&-block {
 			padding: 1rem 0.75rem;
@@ -1427,6 +1532,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 			text-align: center;
 			position: relative;
 			line-height: 1;
+
 			&--clip {
 				overflow: hidden;
 				padding: 0.5rem 0.25rem 0.25rem;
@@ -1446,6 +1552,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	padding: 0 !important;
 	margin: 0;
 	max-width: 100%;
+
 	&__container {
 		position: relative;
 		display: flex;
@@ -1457,6 +1564,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		height: -moz-max-content;
 		height: max-content;
 	}
+
 	&__buttons {
 		position: fixed;
 		width: 100%;
@@ -1466,11 +1574,13 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		color: rgba(var(--c-on-surface-rgb), var(--text-opacity, 1));
 		bottom: env(safe-area-inset-bottom, 0);
 	}
+
 	&__buttons {
 		bottom: 0;
-		border-top: 1px solid rgba($white-color, 0.1);
+		border-top: 1px solid rgba(var(--black-color-none-rgb), 0.1);
 		padding: 1.25rem 1.5rem calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
 	}
+
 	&-buttons {
 		display: flex;
 		align-items: center;
@@ -1479,14 +1589,16 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		gap: 1rem;
 		width: 100%;
 	}
+
 	&__dialog {
 		position: relative;
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
 		background-color: rgba(var(--card-color-none-rgb), 1);
-		color: rgba(var(--white-color-none-rgb), 1);
+		color: rgba(var(--black-color-none-rgb), 1);
 	}
+
 	&__header {
 		display: flex;
 		align-items: center;
@@ -1495,6 +1607,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		padding-right: 1.5rem;
 		padding-top: 1.5rem;
 	}
+
 	&__header {
 		padding-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
 		padding-top: var(--header-padding-top);
@@ -1505,20 +1618,23 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		min-height: calc(env(safe-area-inset-top, 0px) + 4rem);
 		min-height: var(--header-height);
 	}
+
 	&__title {
 		margin: 0;
 		text-align: left;
 		font-size: 1.25rem;
 		line-height: 1.75rem;
 		line-height: 1.25;
-		font-family: $font-family;
+		font-family: var(--font-family);
 		font-weight: 500;
 	}
+
 	&__close {
 		position: absolute;
 		top: 1rem;
 		right: 1rem;
 	}
+
 	&__close {
 		width: 3rem;
 		height: 3rem;
@@ -1526,17 +1642,21 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		right: 1.5rem;
 		right: var(--header-padding-horizontal);
 	}
+
 	&__content {
 		margin-left: auto;
 		margin-right: auto;
 		padding: 1.5rem;
 		max-width: 100%;
+
 		&--buttons {
 			padding-bottom: 4rem;
 		}
 	}
+
 	&__content {
 		padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+
 		&--buttons {
 			padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 7rem);
 		}
@@ -1571,11 +1691,12 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 @media (min-width: 692px) {
 	.ab-modal[class*="is-overlay-aside"] {
 		background-color: rgba(20, 23, 29, 0.4);
-		background-color: rgba($black-color, 0.4);
+		background-color: rgba(var(--black-color-none-rgb), 0.4);
 		color: #fff;
 		color: rgba(var(--c-on-overlay-rgb), var(--text-opacity, 1));
 		overflow: hidden;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__container {
 		align-items: stretch;
 		justify-content: flex-end;
@@ -1594,38 +1715,47 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		padding-top: 1.5rem;
 		min-height: auto;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__header {
 		padding-top: 1.5rem;
 		padding-left: 2rem;
 		padding-right: 2rem;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__title {
 		font-size: 1rem;
 		line-height: 1.125;
 		font-weight: 700;
 	}
+
 	.ab-modal__close {
 		width: 2.5rem;
 		height: 2.5rem;
 		top: calc(env(safe-area-inset-top, 0) + 4rem);
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__close {
 		top: 0.75rem;
 		right: 2rem;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__body {
 		flex-grow: 1;
 	}
+
 	.ab-modal:not(.is-aside):not([class*="is-overlay-aside"]) .ab-modal__content,
 	.ab-modal__content--buttons {
 		padding: 2rem;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__content--buttons {
 		padding-bottom: 4rem;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__content--buttons {
 		padding-bottom: 7rem;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__buttons {
 		margin-top: auto;
 		position: sticky;
@@ -1635,12 +1765,14 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	.ab-modal__buttons {
 		position: static;
 	}
+
 	.ab-modal__buttons {
 		padding-left: 2rem;
 		padding-right: 2rem;
 		border-bottom-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__dialog {
 		display: flex;
 		flex-direction: column;
@@ -1649,12 +1781,15 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		max-height: 100vh;
 		max-height: var(--viewport-height, 100vh);
 	}
+
 	.ab-modal.is-overlay-aside .ab-modal__dialog {
 		width: 320px;
 	}
+
 	.ab-modal.is-overlay-aside .ab-modal__dialog {
 		width: 375px;
 	}
+
 	.ab-modal[class*="is-overlay-aside"] .ab-modal__dialog {
 		max-height: 100vh;
 		max-height: var(--viewport-height, 100vh);
@@ -1662,7 +1797,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
-	background-color: $button-e-color; /* Замените этот цвет на тот, который вам нужен */
+	background-color: var(--button-e-color);
+	/* Замените этот цвет на тот, который вам нужен */
 }
 
 .eb-button {
@@ -1680,6 +1816,81 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	background-image: linear-gradient(transparent, transparent);
 	color: var(--btn-fg);
 	position: relative;
+}
+
+/* CSS for pagination styling */
+.custom-pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.custom-pagination .ant-pagination {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.custom-pagination .ant-pagination-options {
+	margin-left: auto;
+}
+
+/* Additional styles to match the look from the image */
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next,
+.custom-pagination .ant-pagination-item {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	background: var(--card-color);
+	color: var(--gray-color);
+	border: none;
+	margin: 0 2px;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.custom-pagination .ant-pagination-options {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: var(--gray-color);
+	border: none;
+	margin: 0 2px;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.custom-pagination .ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+	border-color: var(--primary-color);
+}
+
+.custom-pagination .ant-pagination-item-active {
+	display: flex;
+	background: var(--secondary-color);
+	color: var(--white-color);
+	text-align: center;
+	align-items: center;
+
+	&:hover {
+		border-color: var(--white-color);
+	}
+}
+
+.custom-pagination .ant-pagination-item-active a {
+	color: var(--white-color);
+	text-align: center;
+
+	&:hover {
+		color: var(--white-color);
+	}
+}
+
+.custom-pagination .ant-pagination-next .ant-pagination-item-link,
+.custom-pagination .ant-pagination-disabled .ant-pagination-item-link {
+	display: flex;
+	align-items: center;
 }
 
 .modal-transition-aside-enter-active,
@@ -1708,11 +1919,13 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 @media (min-width: 692px) {
+
 	.modal-transition-overlay-aside-enter-active,
 	.modal-transition-overlay-aside-large-enter-active,
 	.modal-transition-overlay-aside-medium-enter-active {
 		transition: opacity 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
+
 	.modal-transition-overlay-aside-enter,
 	.modal-transition-overlay-aside-large-enter,
 	.modal-transition-overlay-aside-large-leave-to,
@@ -1722,6 +1935,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 		opacity: 0;
 		transform: none;
 	}
+
 	.modal-transition-overlay-aside-large-leave-active,
 	.modal-transition-overlay-aside-leave-active,
 	.modal-transition-overlay-aside-medium-leave-active {

@@ -1,11 +1,13 @@
 @import "./globalscss/variables";
 @import "dashboard.scss";
+
 .eb {
 	&-auth {
 		&-layout {
 			&__container {
 				max-width: 100%;
 				padding: 0 0 2.5rem;
+
 				@media (min-width: 1024px) {
 					margin: auto;
 					padding: 1.25rem;
@@ -16,11 +18,13 @@
 	}
 }
 
-.ab-card {
+.eb-auth-layout__container .ab-card {
 	--tw-bg-opacity: 1;
 	background-color: rgb(0 16 31 / var(--tw-bg-opacity)) !important;
+
 	&__logreg {
 		border-radius: 0 0 1rem 1rem !important;
+
 		@media (min-width: 1024px) {
 			border-radius: 1.25rem !important;
 		}

@@ -10,7 +10,7 @@ dotenv.config();
 // Массив разрешенных источников
 const allowedOrigins = [
 	"https://aqua-book.ru",
-	"http://localhost:3001"
+	"http://localhost:5000"
 ];
 
 // Настройка CORS с проверкой разрешенных источников

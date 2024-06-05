@@ -39,7 +39,7 @@ const ServicesManagement = () => {
 						{categories.map((category) => (
 							<button
 								key={category.id}
-								className={`p-2 text-left ${activeTab === category.id ? "bg-gray-300 text-gray-900 rounded-lg" : ""
+								className={`p-2 text-left ${activeTab === category.id ? "bg-gray-300 text-gray-900 rounded-lg" : "text-gray-900"
 									}`}
 								onClick={() => setActiveTab(category.id)}
 							>
@@ -55,13 +55,13 @@ const ServicesManagement = () => {
 							>
 								{services[category.id] && (
 									<div className="overflow-x-auto">
-										<table className="min-w-full bg-card">
+										<table className="min-w-full bg-card text-gray-900">
 											<thead>
 												<tr>
-													<th className="py-2 px-4 border border-slate-400 w-1/5">Название услуги</th>
-													<th className="py-2 px-4 border border-slate-400 w-2/5">Описание</th>
-													<th className="py-2 px-4 border border-slate-400 w-1/5">Цена от</th>
-													<th className="py-2 px-4 border border-slate-400 w-1/5">Цена до</th>
+													<th className="py-2 px-4 border border-slate-600 w-1/5">Название услуги</th>
+													<th className="py-2 px-4 border border-slate-600 w-2/5">Описание</th>
+													<th className="py-2 px-4 border border-slate-600 w-1/5">Цена от</th>
+													<th className="py-2 px-4 border border-slate-600 w-1/5">Цена до</th>
 												</tr>
 											</thead>
 											<tbody>

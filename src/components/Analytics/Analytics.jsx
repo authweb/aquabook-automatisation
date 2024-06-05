@@ -84,7 +84,7 @@ const Analytics = () => {
 	const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 	return (
-		<div className="container mx-auto p-4 mb-8">
+		<div className="container p-4 mx-auto mb-8">
 			<AnalyticsHeader
 				currentMonth={currentMonth}
 				currentYear={currentYear}
@@ -104,8 +104,8 @@ const Analytics = () => {
 								bottom: 5,
 							}}>
 							<XAxis dataKey='date' />
-							<YAxis/>
-							<Tooltip/>
+							<YAxis />
+							<Tooltip />
 							<Legend />
 							<Bar dataKey='Записей всего' fill='#8884d8' />
 							<Bar dataKey='Выполнено' fill='#82ca9d' />
@@ -120,12 +120,13 @@ const Analytics = () => {
 								cx='50%'
 								cy='50%'
 								labelLine={false}
-								label={({ name, percent }) =>
-									`${name}: ${(percent * 100).toFixed(0)}%`
+								label={({ percent }) =>
+									`${(percent * 100).toFixed(0)}%`
 								}
 								outerRadius={100}
 								fill='#8884d8'
-								dataKey='value'>
+								dataKey='value'
+								>
 								{formattedPieData.map((entry, index) => (
 									<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
 								))}

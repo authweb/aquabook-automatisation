@@ -1,39 +1,55 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-import { DayPilotCalendar } from "daypilot-pro-react";
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import { format, parse, startOfWeek, getDay } from 'date-fns';
 import axios from "axios";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import { ru } from 'date-fns/locale';
 import { CalendarContext } from "../../contexts/CalendarContexts";
 import useDateHandler from "../../hooks/useDateHandler";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-import "../../scss/CalendarStyles.scss";
+import 'react-big-calendar/lib/css/react-big-calendar.css'; // Подключение стилей
+import "../../scss/CalendarStyles.scss"; // Подключение ваших собственных стилей
 import { AppointmentDetails } from "../";
+
+// Подключение плагинов
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const locales = {
+	'ru': ru,
+};
+
+const localizer = dateFnsLocalizer({
+	format: (date, formatStr, options) => format(date, formatStr, { locale: ru }),
+	parse: (date, formatStr, options) => parse(date, formatStr, new Date(), { locale: ru }),
+	startOfWeek: (options) => startOfWeek(new Date(), { locale: ru }),
+	getDay: (date, options) => getDay(date, { locale: ru }),
+	locales,
+});
 
 const CalendarDay = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { selectedDate, setSelectedEmployeeId, setCurrentEventId } =
-		useContext(CalendarContext);
+	const [searchParams] = useSearchParams();
+	const { setSelectedEmployeeId, setCurrentEventId } = useContext(CalendarContext);
+	const { today, rangeStart, setToday, setRangeStart } = useDateHandler(); // Получаем сегодня из хука
 	const [selectedEvent, setSelectedEvent] = useState(null);
-	const { today } = useDateHandler();
-	const [prevConfig, setPrevConfig] = useState({});
+	const [hoveredEvent, setHoveredEvent] = useState(null);
 
 	const [events, setEvents] = useState([]);
-	const [date, setDate] = useState(dayjs());
-	const [timeRange, setTimeRange] = useState([
-		dayjs().startOf("hour"),
-		dayjs().endOf("hour"),
-	]);
 	const [categories, setCategories] = useState([]);
 	const [services, setServices] = useState({});
+	const [resources, setResources] = useState([]); // Добавляем состояние для ресурсов
 
 	const handleEventClick = useCallback(
-		async (args) => {
-			const eventId = args.e.data.id;
+		async (event) => {
+			const eventId = event.id;
 			setCurrentEventId(eventId);
 			navigate(`/dashboard/appointments/${eventId}`);
 
-			// Fetch the event details from the server
 			try {
 				const response = await axios.get(`/api/appointments/${eventId}`);
 				setSelectedEvent(response.data.appointment);
@@ -44,65 +60,18 @@ const CalendarDay = () => {
 		[navigate, setCurrentEventId]
 	);
 
-
-	const handleTimeRangeSelected = useCallback(
-		args => {
-			console.log(args);
-			setSelectedEmployeeId(args.resource);
-			const selectedStart = args.start ? dayjs(args.start.value) : null;
-			const selectedEnd = args.end ? dayjs(args.end.value) : null;
-
+	const handleDateClick = useCallback(
+		(slotInfo) => {
+			const timePart = dayjs(slotInfo.start).format("HH:mm:ss");
+			const rangeStart = searchParams.get("range_start");
+			const selectedStart = `${rangeStart}T${timePart}`;
 			navigate(
-				`${location.pathname}/add${location.search}&start=${selectedStart ? selectedStart.format("YYYY-MM-DDTHH:mm:ss") : ""
-				}&end=${selectedEnd ? selectedEnd.format("YYYY-MM-DDTHH:mm:ss") : ""}`,
+				`${location.pathname}/add?today=${today}&range_start=${rangeStart}&start=${selectedStart}`,
 			);
 		},
-		[navigate, setSelectedEmployeeId, location.pathname, location.search],
+		[navigate, location.pathname, searchParams, today],
 	);
 
-	const [config, setConfig] = useState({
-		viewType: "Resources",
-		startDate: (today
-			? dayjs(today)
-			: selectedDate
-				? dayjs(selectedDate)
-				: dayjs()
-		).format("YYYY-MM-DD"),
-		columns: [],
-		heightSpec: "BusinessHoursNoScroll",
-		theme: "eb-calendar",
-		businessBeginsHour: 9,
-		businessEndsHour: 21,
-		onEventClick: handleEventClick,
-		timeFormat: "Clock24Hours",
-		showNonBusiness: false,
-		timeHeaders: [
-			{ groupBy: "Day", format: "dddd MMMM yyyy" },
-			{ groupBy: "Hour", format: "h tt" },
-		],
-		cellDuration: 15,
-		timeRangeSelectedHandling: "Enabled",
-	});
-
-	useEffect(() => {
-		const startDate =
-			selectedDate instanceof dayjs
-				? selectedDate.format("YYYY-MM-DD")
-				: dayjs(selectedDate).format("YYYY-MM-DD");
-
-		setPrevConfig(prevConfig => ({
-			...prevConfig,
-			startDate: startDate,
-		}));
-	}, [selectedDate, setPrevConfig]);
-
-	useEffect(() => {
-		console.log("Date state updated:", date);
-	}, [date]);
-
-	useEffect(() => {
-		console.log("Time range state updated:", timeRange);
-	}, [timeRange]);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -118,36 +87,33 @@ const CalendarDay = () => {
 				const servicesCategories = categoriesResponse.data.servicesCategories;
 				const services = servicesResponse.data.services;
 
-				// Создание колонок на основе данных о сотрудниках
-				const columns = employees.map(employee => ({
-					name: `${employee.first_name}`,
-					id: employee.id.toString(),
-				}));
+				const eventsData = appointments.map((appt) => {
+					const localStart = dayjs(appt.start).tz("Asia/Krasnoyarsk").toDate();
+					const localEnd = dayjs(appt.end).tz("Asia/Krasnoyarsk").toDate();
 
-				// Обновление конфигурации календаря для включения новых колонок
-				setConfig(prevConfig => ({
-					...prevConfig,
-					columns: columns,
-				}));
+					return {
+						id: appt.id.toString(),
+						start: localStart,
+						end: localEnd,
+						title: appt.text || "No Title",
+						resourceId: appt.servicesEmployees.map((se) => se.employee_id.toString())[0],
+					};
+				});
 
-				// Обработка и установка событий календаря
-				const eventsData = appointments.map(appt => ({
-					id: appt.id.toString(),
-					start: appt.start,
-					end: appt.end,
-					text: appt.text,
-					resource: appt.servicesEmployees.map(se => se.employee_id.toString())[0], // Использование ID первого сотрудника для услуги
-					backColor: "#someColor",
+				const resourcesData = employees.map(emp => ({
+					id: emp.id.toString(),
+					title: emp.first_name
 				}));
 
 				setEvents(eventsData);
+				setResources(resourcesData);
 
-				// Установка категорий и услуг
 				setCategories(servicesCategories);
 				setServices(services);
 
 				console.log("Appointments:", appointments);
-				console.log("Columns setup:", columns);
+				console.log("Events setup:", eventsData);
+				console.log("Resources setup:", resourcesData);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			}
@@ -156,16 +122,83 @@ const CalendarDay = () => {
 		fetchData();
 	}, []);
 
+	useEffect(() => {
+		const updateCalendarHeight = () => {
+			const calendarContainer = document.querySelector(".rbc-calendar");
+			if (calendarContainer) {
+				const windowHeight = window.innerHeight;
+				const headerHeight = 60; // Высота верхнего хедера
+				const paddingBottom = 20; // Отступ снизу
+				const calendarHeight = windowHeight - headerHeight - paddingBottom;
+				calendarContainer.style.height = `${calendarHeight}px`;
+				calendarContainer.style.paddingBottom = `${paddingBottom}px`;
+			}
+		};
+
+		updateCalendarHeight();
+		window.addEventListener("resize", updateCalendarHeight);
+
+		return () => {
+			window.removeEventListener("resize", updateCalendarHeight);
+		};
+	}, []);
+
+	useEffect(() => {
+		const rangeStartParam = searchParams.get("range_start");
+		if (rangeStartParam) {
+			setRangeStart(rangeStartParam);
+		}
+	}, [searchParams, setRangeStart]);
+
+	const dateToday = rangeStart ? new Date(rangeStart) : new Date();
+
+	const minTime = new Date(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate(), 9, 0);
+	const maxTime = new Date(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate(), 21, 0);
 
 	return (
 		<>
-			<DayPilotCalendar
-				className='eb-calendar__columns'
-				startDate={config.startDate}
+			<Calendar
+				className="ab-schedule-custom"
+				localizer={localizer}
 				events={events}
-				{...config}
-				onTimeRangeSelected={handleTimeRangeSelected}
+				resources={resources}
+				startAccessor="start"
+				endAccessor="end"
+				titleAccessor="title"
+				resourceIdAccessor="id"
+				resourceTitleAccessor="title"
+				selectable
+				date={dateToday}
+				onSelectEvent={handleEventClick}
+				onSelectSlot={handleDateClick}
+				onMouseOver={(event) => setHoveredEvent(event)}
+				views={{ day: true }} // Только день
+				defaultView='day'
+				style={{ height: '100vh' }} // Высота на весь экран
+				min={minTime} // Начало рабочего дня
+				max={maxTime} // Конец рабочего дня
+				step={15}
+				timeslots={4}
+				toolbar={false} // Отключение шапки
+				messages={{
+					today: 'Сегодня',
+					previous: 'Назад',
+					next: 'Вперед',
+					month: 'Месяц',
+					week: 'Неделя',
+					day: 'День',
+					date: 'Дата',
+					time: 'Время',
+					event: 'Событие',
+				}}
 			/>
+			{hoveredEvent && (
+				<div className="hovered-event-details">
+					<p>{hoveredEvent.title}</p>
+					<p>{hoveredEvent.start.toLocaleString()}</p>
+					<p>{hoveredEvent.end.toLocaleString()}</p>
+				</div>
+			)}
 			{selectedEvent && <AppointmentDetails event={selectedEvent} />}
 		</>
 	);

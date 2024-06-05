@@ -1,396 +1,174 @@
 @import "./globalscss/variables";
 
-/* 
-DayPilot Calendar Theme 
-https://themes.daypilot.org/calendar/theme/n6dqld
-Theme Designer Version: 2021.09.25.67272
-*/
-// .eb-calendar__main {
-// }
-.eb-calendar_main,
-.eb-calendar_main td {
-	font-family: $font-family;
-	font-size: 13px;
-}
-.eb-calendar_event {
-	color: var(--white-color);
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-}
-.eb-calendar_event_inner {
-	position: absolute;
-	overflow: hidden;
-	left: 0px;
-	right: 0px;
-	top: 0px;
-	bottom: 0px;
-	margin: 0px;
-	background-color: #006be6;
-
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#006deb),
-		to(#0069e1)
-	);
-	background: -webkit-linear-gradient(top, #006deb 0%, #0069e1);
-	background: -moz-linear-gradient(top, #006deb 0%, #0069e1);
-	background: -ms-linear-gradient(top, #006deb 0%, #0069e1);
-	background: -o-linear-gradient(top, #006deb 0%, #0069e1);
-	background: linear-gradient(to bottom, #006deb 0%, #0069e1);
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#006deb", endColorStr="#0069e1");
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid var(--white-color);
-	padding: 2px;
-	padding-left: 6px;
-	text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.2),
-		0px 1px 0px rgba(255, 255, 255, 1);
-}
-// .eb-calendar__alldayevent {
-// }
-.eb-calendar_alldayevent_inner {
-	position: absolute;
-	overflow: hidden;
-	left: 1px;
-	right: 0px;
-	top: 1px;
-	bottom: 0px;
-	margin: 0px;
-	color: var(--white-color);
-	background-color: #001529;
-	background: -webkit-gradient(
-		linear,
-		to left top,
-		to left bottom,
-		from(#1f1f1f),
-		to(#1d1d1d)
-	);
-	background: -webkit-linear-gradient(top, #1f1f1f 0%, #1d1d1d);
-	background: -moz-linear-gradient(top, #1f1f1f 0%, #1d1d1d);
-	background: -ms-linear-gradient(top, #1f1f1f 0%, #1d1d1d);
-	background: -o-linear-gradient(top, #1f1f1f 0%, #1d1d1d);
-	background: linear-gradient(to bottom, #1f1f1f 0%, #1d1d1d);
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#1f1f1f", endColorStr="#1d1d1d");
-	padding: 2px;
-	border: 1px solid #cccccc;
-	text-align: left;
-}
-.eb-calendar_alldayheader_inner {
-	text-align: center;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	border-right: 1px solid #c0c0c0;
-	border-bottom: 1px solid #c0c0c0;
-	color: var(--white-color);
-	background: #001529;
-}
-.eb-calendar_colheader_inner {
-	text-align: center;
-	padding: 2px;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	border-right: 1px solid #c0c0c0;
-	border-bottom: 1px solid #c0c0c0;
-	color: var(--white-color);
-	background: #001529;
-}
-.eb-calendar_rowheader_inner {
-	font-size: 16pt;
-	text-align: right;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	border-right: 1px solid #c0c0c0;
-	border-bottom: 1px solid #c0c0c0;
-	color: var(--white-color);
-	background: #001529;
-}
-.eb-calendar_rowheader_minutes {
-	font-size: 10px;
-	vertical-align: super;
-	padding-left: 2px;
-	padding-right: 2px;
-}
-.eb-calendar_corner_inner {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	border-right: 1px solid #c0c0c0;
-	border-bottom: 1px solid #c0c0c0;
-	color: var(--white-color);
-	background: #001529;
-}
-.eb-calendar_cornerright_inner {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	border-right: 1px solid #c0c0c0;
-	border-bottom: 1px solid #c0c0c0;
-	color: var(--white-color);
-	background: #001529;
-}
-.eb-calendar_rowheader_inner {
-	padding: 2px;
-}
-.eb-calendar_cell_inner {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	border-right: 1px solid #4d4d4d;
-	border-bottom: 1px solid #4d4d4d;
-	background: #001529;
-}
-.eb-calendar_cell_business .eb-calendar_cell_inner {
-	background: #001529;
-}
-.eb-calendar_message {
-	padding: 10px;
-	opacity: 0.9;
-	filter: alpha(opacity=90);
-	color: var(--white-color);
-	background: #ffa216;
-}
-.eb-calendar_shadow_inner {
-	background-color: #666666;
-	opacity: 0.5;
-	filter: alpha(opacity=50);
-	height: 100%;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-}
-.eb-calendar_event_bar {
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	width: 4px;
-	background-color: #9dc8e8;
-}
-.eb-calendar_event_bar_inner {
-	position: absolute;
-	width: 4px;
-	background-color: #1066a8;
-}
-.eb-calendar_event_delete {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAI5JREFUKFNtkLERgCAMRbmzdK8s4gAUlhYOYEHJEJYOYOEwDmGBPxC4kOPfvePy84MGR0RJ2N1A8H3N6DATwSQ57m2ql8NBG+AEM7D+UW+wjdfUPgerYNgB5gOLRHqhcasg84C2QxPMtrUhSqQIhg7ypy9VM2EUZPI/4rQ7rGxqo9sadTegw+UdjeDLAKUfhbaQUVPIfJYAAAAASUVORK5CYII=)
-		center center no-repeat;
-	opacity: 0.6;
-	--ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-	cursor: pointer;
-}
-.eb-calendar_event_delete:hover {
-	opacity: 1;
-	--ms-filter: none;
-}
-.eb-calendar_scroll_up {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAB3RJTUUH2wESDiYcrhwCiQAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAARnQU1BAACxjwv8YQUAAACcSURBVHjaY2AgF9wWsTW6yGMlhi7OhC7AyMDQzMnBXIpFHAFuCtuaMTP+P8nA8P/b1x//FfW/HHuF1UQmxv+NUP1c3OxMVVhNvCVi683E8H8LXOY/w9+fTH81tF8fv4NiIpBRj+YoZtZ/LDUoJmKYhsVUpv0MDiyMDP96sIYV0FS2/8z9ICaLlOhvS4b/jC//MzC8xBG0vJeF7GQBlK0xdiUzCtsAAAAASUVORK5CYII=);
-}
-.eb-calendar_scroll_down {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiMAAC4jAXilP3YAAACqSURBVChTY7wpam3L9J+xmQEP+PGPKZZxP4MDi4zI78uMDIwa2NT+Z2DYovrmiC+TI8OBP/8ZmEqwGvif4e8vxr+FIDkmEKH25vBWBgbG0+iK/zEwLtF+ffwOXCGI8Y+BoRFFIdC030x/WmBiYBNhpgLdswNJ8RSYaSgmgk39z1gPUfj/29ef/9rwhQTDHRHbrbdEbLvRFcGthkkAra/9/uMvhkK8piNLAgCRpTnNn4AEmAAAAABJRU5ErkJggg==);
-}
-.eb-calendar_now {
-	background-color: red;
-}
-.eb-calendar_now:before {
-	content: "";
-	top: -5px;
-	border-width: 5px;
-	border-color: transparent transparent transparent red;
-	border-style: solid;
-	width: 0px;
-	height: 0px;
-	position: absolute;
-	--moz-transform: scale(0.9999);
-}
-.eb-calendar_shadow_forbidden .eb-calendar_shadow_inner {
-	background-color: red;
-}
-.eb-calendar_shadow_top {
-	box-sizing: border-box;
-	padding: 2px;
-	border: 1px solid #ccc;
-	background: #fff;
-	background: -webkit-gradient(
-		linear,
-		to left top,
-		to left bottom,
-		from(var(--white-color)),
-		to(#eeeeee)
-	);
-	background: -webkit-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: -moz-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: -ms-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: -o-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: linear-gradient(to bottom, var(--white-color) 0%, #eeeeee);
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="var(--white-color)", endColorStr="#eeeeee");
-}
-.eb-calendar_shadow_bottom {
-	box-sizing: border-box;
-	padding: 2px;
-	border: 1px solid #ccc;
-	background: #fff;
-	background: -webkit-gradient(
-		linear,
-		to left top,
-		to left bottom,
-		from(var(--white-color)),
-		to(#eeeeee)
-	);
-	background: -webkit-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: -moz-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: -ms-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: -o-linear-gradient(top, var(--white-color) 0%, #eeeeee);
-	background: linear-gradient(to bottom, var(--white-color) 0%, #eeeeee);
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="var(--white-color)", endColorStr="#eeeeee");
-}
-.eb-calendar_crosshair_vertical,
-.eb-calendar_crosshair_horizontal,
-.eb-calendar_crosshair_left,
-.eb-calendar_crosshair_top {
-	background-color: gray;
-	opacity: 0.2;
-	filter: alpha(opacity=20);
-}
-.eb-calendar_loading {
-	background-color: orange;
-	color: white;
-	padding: 2px;
-}
-.eb-calendar_scroll {
-	background-color: #f3f3f3;
+.react-calendar {
+	border: 0 !important;
 }
 
-// /*----------------DayPicker----------------*/
-
-.eb-calendar__main {
-	font-family: $font-family;
-	font-size: 12px;
-	width: 100% !important;
-	height: 100% !important;
+.custom-calendar .react-calendar__viewContainer {
+	border-radius: 12px;
+	background-color: var(--card-color);
+	padding: 2em 0.5em;
 }
 
-.eb-calendar__month {
+.custom-calendar .react-calendar__navigation {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between; // Это распределит пространство между элементами равномерно
-	height: auto; // Или установите фиксированную высоту, если это необходимо
-	padding: 10px; // Отступ внутри контейнера календаря
+	justify-content: space-between;
 }
 
-.eb-calendar__main *,
-.eb-calendar__main *:before,
-.eb-calendar__main *:after {
-	box-sizing: border-box;
-}
-/* month header */
-.eb-calendar__title,
-.eb-calendar__titleleft,
-.eb-calendar__titleright {
-	color: var(--white-color);
-	background: #001529;
-	background: -webkit-gradient(
-		linear,
-		to left top,
-		to left bottom,
-		from(#00182f),
-		to(#001223)
-	);
-	background: -webkit-linear-gradient(top, #00182f 0%, #001223);
-	background: -moz-linear-gradient(top, #00182f 0%, #001223);
-	background: -ms-linear-gradient(top, #00182f 0%, #001223);
-	background: -o-linear-gradient(top, #00182f 0%, #001223);
-	background: linear-gradient(to bottom, #00182f 0%, #001223);
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#00182f", endColorStr="#001223");
-}
-.eb-calendar__title {
+.custom-calendar .react-calendar__navigation__prev-button {
+	order: 1;
 	text-align: center;
-}
-.eb-calendar__titleleft,
-.eb-calendar__titleright {
-	text-align: center;
-}
-/* day headers */
-.eb-calendar__dayheader {
-	color: var(--white-color);
-	background: #001529;
-	text-align: center;
-	font-size: 14px; // Настройте размер шрифта в соответствии с вашим дизайном
-	padding: 5px 0; // Настройте отступы
+	background-color: var(--card-color);
+	font-size: x-large;
+	font-weight: 500;
+	border-radius: 12px;
+	/* Переместить кнопку "Назад" вправо */
 }
 
-.eb-calendar__dayother,
-.eb-calendar__day,
-.eb-calendar__cell,
-.eb-calendar__weekend {
-	flex: 1 0 14%; // Растягиваем элементы, чтобы они заняли 14% родительского элемента
-	margin: 2px; // Отступ между элементами
-	height: auto; // Высота элементов
+.custom-calendar .react-calendar__navigation__label {
+	order: 0;
+	/* Переместить заголовок влево */
+	padding-left: 12px;
+	font-size: large;
+	font-weight: 600;
+	/* Центрировать текст заголовка */
 }
 
-/* day cells */
-.eb-calendar__day {
-	&:active {
-		border: 1px solid rgba(255, 0, 0, 0.562);
+.custom-calendar .react-calendar__navigation__next-button {
+	order: 2;
+	margin-left: 6px;
+	text-align: center;
+	background-color: var(--card-color);
+	font-size: x-large;
+	font-weight: 500;
+	border-radius: 12px;
+	/* Переместить кнопку "Вперед" влево */
+}
+
+.custom-calendar .react-calendar__tile--active {
+	border-radius: 8px;
+	border: 1px solid var(--primary-color);
+	background-color: var(--primary-color);
+}
+
+.custom-calendar .react-calendar__tile:enabled:hover,
+.custom-calendar .react-calendar__tile:enabled:focus {
+	background-color: transparent;
+	border: 1px solid var(--primary-color);
+}
+
+.custom-calendar .react-calendar__tile--active:enabled:hover,
+.custom-calendar .react-calendar__tile--active:enabled:focus {
+	background-color: var(--primary-color);
+}
+
+.custom-calendar .react-calendar__tile {
+	border-radius: 8px;
+	border: 1px solid transparent;
+}
+
+
+
+.custom-calendar .react-calendar button {}
+
+.custom-calendar .react-calendar__navigation button:disabled {
+	background-color: transparent;
+}
+
+.ab-schedule-custom {
+	.rbc-toolbar {
+		display: none;
+		/* Убираем тулбар */
+	}
+
+	.rbc-calendar {
+		background-color: var(--card-color);
+		/* Цвет фона */
+		color: var(--gray-text-color);
+		/* Цвет текста */
+		border: none;
+	}
+
+	.rbc-time-header {
+		background-color: var(--card-color);
+		border: none;
+		/* Цвет фона хедера */
+	}
+
+	.rbc-time-header-cell {
+		border: none;
+		color: #ffffff;
+	}
+
+	.rbc-timeslot-group {
+		border: none;
+		height: 120px;
+	}
+
+	.rbc-time-slot {
+		border-top: 1px solid var(--card-color);
+		height: 60px;
+	}
+
+	.rbc-event {
+		background-color: #ff7a00;
+		/* Цвет событий */
+		border: 1px solid #ff7a00;
+		color: #ffffff;
+	}
+
+	.rbc-selected-cell {
+		background-color: rgba(255, 122, 0, 0.5);
+		/* Цвет выделенной ячейки */
+	}
+
+	.rbc-today {
+		background-color: var(--bg-color);
+	}
+
+	.rbc-off-range-bg {
+		background-color: var(--bg-color);
+		/* Цвет ячеек вне диапазона */
+	}
+
+	.rbc-time-content {
+		border-top: 2px solid var(--card-color);
+		overflow-y: auto;
+		/* Включаем вертикальный скролл для контента */
+		height: calc(100vh - 6rem);
+		/* Высота контента для календаря */
+	}
+
+	.rbc-time-header-content {
+		border-right: 1px solid var(--card-color);
+	}
+
+	.rbc-day-slot .rbc-time-slot {
+		border-top: 1px solid var(--card-color);
+	}
+
+	.rbc-time-column .rbc-time-slot {
+		&:hover {
+			background-color: rgba(255, 122, 0, 0.2);
+			/* Цвет заливки при наведении */
+			cursor: pointer;
+		}
+	}
+
+	.rbc-time-column .rbc-timeslot-group {
+		flex: none;
 	}
 }
-.eb-calendar__cell {
-	color: var(--white-color);
-	background: #001529;
-	text-align: center;
-	padding: 4px;
-	margin: 4px;
-	box-sizing: border-box;
-}
 
-.eb-calendar__cell_text {
-	padding: 0px;
-}
-.eb-calendar__weeknumber {
-	color: var(--white-color);
-	background: #001529;
-	text-align: center;
-	padding: 4px;
-	width: 40px; // Установите желаемую ширину
-	height: 40px; // Установите желаемую высоту
-}
-.eb-calendar__weekend {
-	color: var(--white-color);
-	background: #001529;
-	text-align: center;
-	padding: 0px;
-}
-.eb-calendar__dayother {
-	color: gray;
-}
-.eb-calendar__todaybox {
-	border: 1px solid red;
-}
-.eb-calendar__busy {
-	font-weight: bold;
-}
-.eb-calendar__select .eb-calendar__cell_box {
-	background-color: #001529;
-}
-
-.eb-calendar__day:active,
-.eb-calendar__cell:hover {
-	border: 1px solid rgba(255, 0, 0, 0.562);
+.hovered-event-details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	z-index: 10;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	pointer-events: none;
+	/* Чтобы информация не мешала взаимодействию с календарем */
 }

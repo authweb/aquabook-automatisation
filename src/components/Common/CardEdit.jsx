@@ -58,7 +58,7 @@ const CardEdit = ({
 						className='ab-button w-full mt-4 eb-button-dashed ab-button_md color-accent theme-outline'>
 						<span className='ab-button__overlay'></span>
 						<span className='ab-button__content ab-button__content_md'>
-							<PlusOutlined style={{ color: "#ff7a00" }} />
+							<PlusOutlined style={{ color: "rgb(0, 16, 31)" }} />
 							<span className='ab-button__text ml-1'>{ButtonName}</span>
 						</span>
 					</button>
@@ -76,6 +76,7 @@ const CardEdit = ({
 						</button>
 					</div>
 					<Select
+						id="68"
 						options={clients}
 						renderOption={client => (
 							<>
@@ -99,7 +100,6 @@ const CardEdit = ({
 							/>
 						}
 						inputTitle={onClientSelect ? "Клиент" : "Не выбран (Анонимный)"}
-						id='input-56'
 					/>
 				</div>
 			)}

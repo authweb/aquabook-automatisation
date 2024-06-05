@@ -1,8 +1,8 @@
 import React from "react";
 
-const CheckBox = ({ isChecked, onChange }) => {
+const CheckBox = ({ isChecked, onChange, field_label }) => {
 	return (
-		<ui-kit-checkbox>
+		<ui-kit-checkbox class="flex flex-row">
 			<label className={`checkbox-label ${isChecked ? "checked" : ""}`}>
 				<input
 					type='checkbox'
@@ -29,6 +29,7 @@ const CheckBox = ({ isChecked, onChange }) => {
 					</svg>
 				</ui-kit-svg-icon>
 			</label>
+			<label className="pl-2.5 pt-1">{field_label}</label>
 		</ui-kit-checkbox>
 	);
 };

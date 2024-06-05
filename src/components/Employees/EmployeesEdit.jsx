@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useEmployeeData from "../../hooks/useEmployeeData";
 import classNames from "classnames";
 import {
@@ -16,6 +16,7 @@ import axios from "axios";
 import { CloseOutlined, CaretDownOutlined } from "@ant-design/icons";
 
 const EmployeesEdit = () => {
+	const { id } = useParams();
 	const navigate = useNavigate();
 	const { employees, error } = useEmployeeData();
 
@@ -23,72 +24,70 @@ const EmployeesEdit = () => {
 	const [isFilled, setIsFilled] = useState(false);
 	const [initialValues, setInitialValues] = useState({});
 	const [currentValues, setCurrentValues] = useState({});
-	const [isBookable, setIsBookable] = useState(true);
+	const [isBookable, setIsBookable] = useState(false);
 
-	useEffect(() => {
-		async function fetchEmployeeData() {
-			try {
-				if (employees?.id) {
-					// Добавляем проверку наличия employee и его id
-					const response = await axios.get(
-						`https://api.aqua-book.ru/api/employees/${employees.id}`,
-					);
-					if (response.status !== 200) {
-						console.error("Server error:", response.statusText);
-						return;
-					}
-					const employees = response.employees;
-					setIsBookable(employees.is_bookable);
-					setInitialValues({
-						firstName: employees.first_name,
-						lastName: employees.last_name,
-						selectedValue: employees.gender,
-						email: employees.email,
-						access: employees.access,
-						phone: employees.phone,
-						position: employees.position,
-						description: employees.description,
-						is_bookable: employees.is_bookable,
-					});
-					setCurrentValues({
-						firstName: employees.first_name,
-						lastName: employees.last_name,
-						selectedValue: employees.gender,
-						email: employees.email,
-						access: employees.access,
-						phone: employees.phone,
-						position: employees.position,
-						description: employees.description,
-						is_bookable: employees.is_bookable,
-					});
-				} else {
-					console.error("Employee ID is undefined or employee is not defined");
-				}
-			} catch (error) {
-				console.error("Error fetching employee data:", error);
+	const fetchEmployeeData = async (employeeId) => {
+		try {
+			const response = await axios.get(`https://api.aqua-book.ru/api/employees/${employeeId}`);
+			if (response.status !== 200) {
+				console.error("Server error:", response.statusText);
+				return;
 			}
-		}
-
-		fetchEmployeeData();
-	}, []);
-
-	// Handle changes in form fields
-	const handleChange = event => {
-		const { name, value } = event.target;
-		if (name === "gender") {
-			setCurrentValues(prevValues => ({
-				...prevValues,
-				selectedValue: value,
-			}));
-		} else {
-			setCurrentValues(prevValues => ({
-				...prevValues,
-				[name]: value,
-			}));
+			const employee = response.data.employee;
+			setIsBookable(employee.is_bookable === 1);
+			setInitialValues({
+				firstName: employee.first_name || "",
+				lastName: employee.last_name || "",
+				selectedValue: employee.gender || "",
+				email: employee.email || "",
+				access: employee.access || "",
+				phone: employee.phone || "",
+				position: employee.position || "",
+				description: employee.description || "",
+				is_bookable: employee.is_bookable,
+			});
+			setCurrentValues({
+				firstName: employee.first_name || "",
+				lastName: employee.last_name || "",
+				selectedValue: employee.gender || "",
+				email: employee.email || "",
+				access: employee.access || "",
+				phone: employee.phone || "",
+				position: employee.position || "",
+				description: employee.description || "",
+				is_bookable: employee.is_bookable,
+			});
+		} catch (error) {
+			console.error("Error fetching employee data:", error);
 		}
 	};
 
-	// Monitor changes in form values
+	useEffect(() => {
+		if (id) {
+			fetchEmployeeData(id);
+		}
+	}, [id]);
+
+	useEffect(() => {
+		if (initialValues && currentValues) {
+			let changed = false;
+			for (let key in initialValues) {
+				if (initialValues[key] !== currentValues[key]) {
+					changed = true;
+				}
+			}
+			setIsChanged(changed);
+		}
+	}, [initialValues, currentValues]);
+
+	const handleChange = event => {
+		const { name, value } = event.target;
+		setCurrentValues(prevValues => ({
+			...prevValues,
+			[name]: value,
+		}));
+	};
+
 	useEffect(() => {
 		let changed = false;
 		let filled = true;
@@ -104,7 +103,6 @@ const EmployeesEdit = () => {
 		setIsFilled(filled);
 	}, [initialValues, currentValues]);
 
-	// Handle form submission
 	const handleSubmit = async event => {
 		event.preventDefault();
 		try {
@@ -120,22 +118,22 @@ const EmployeesEdit = () => {
 				is_bookable: currentValues.is_bookable,
 			};
 
-			if (!employees?.id) {
+			if (!id) {
 				console.error("Employee ID is undefined");
 				return;
 			}
 
 			const response = await axios.put(
-				`https://api.aqua-book.ru/api/employees/${employees.id}`,
+				`https://api.aqua-book.ru/api/employees/${id}`,
 				employeeData,
 			);
 			console.log("Employee updated successfully:", response.data);
+			navigate(`/dashboard/employees/${id}`);
 		} catch (error) {
 			console.error("Error updating employee:", error);
 		}
 	};
 
-	// Handle bookable toggle
 	const handleToggleBookable = checked => {
 		setIsBookable(checked ? 1 : 0);
 		setCurrentValues(prevValues => ({
@@ -144,7 +142,6 @@ const EmployeesEdit = () => {
 		}));
 	};
 
-	// Handle cancel action
 	const handleCancel = () => {
 		navigate(-1);
 	};

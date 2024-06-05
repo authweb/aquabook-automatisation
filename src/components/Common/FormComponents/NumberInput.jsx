@@ -22,7 +22,7 @@ const Input = ({ id, prefix, name, onChange, value, autoComplete, required, cols
 
   return (
     <label
-      htmlFor={id}
+      htmlFor={`input-${id}`}
       className={`flex ${colsSpan} ab-text-field is-text is-filled
        has-label`}>
       <div className="relative w-full">
@@ -33,7 +33,7 @@ const Input = ({ id, prefix, name, onChange, value, autoComplete, required, cols
           autoComplete={autoComplete}
           required={required}
           className="ab-text-field__element p-3"
-          id={id}
+          id={`input-${id}`}
           value={value}
           onChange={onChange}
           onBlur={handleBlur}

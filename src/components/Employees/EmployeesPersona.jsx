@@ -1,6 +1,6 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import useEmployeeData from "../../hooks/useEmployeeData";
-
 import { HeaderDashboard, CardAb } from "../../components";
 import "../../scss/profile.scss";
 
@@ -9,7 +9,14 @@ import imageUser from "../../assets/images/soon.png";
 import { Tag } from "antd";
 
 const EmployeesPersona = () => {
+	const { id } = useParams();
 	const { employees, error } = useEmployeeData();
+
+	const employee = employees.find(emp => emp.id.toString() === id);
+
+	if (!employee) {
+		return <div>Сотрудник не найден</div>;
+	}
 
 	return (
 		<>
@@ -29,15 +36,15 @@ const EmployeesPersona = () => {
 									</div>
 									<div className='ab-island__title-wrap'>
 										<h3 className='ab_headline ab-island__title'>
-											{employees?.first_name} {employees?.last_name}
+											{employee?.first_name} {employee?.last_name}
 										</h3>
 									</div>
 									<div className='ab-island__description'>
-										<div className='ab-description'>Владелец</div>
+										<div className='ab-description'>{employee?.position}</div>
 									</div>
 									<div className='ab-island__arrow-wrap'>
 										<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs'>
-											{employees?.is_bookable === 1 ? (
+											{employee?.is_bookable === 1 ? (
 												<Tag color='success'>Активен</Tag>
 											) : (
 												<Tag color='error'>Не активен</Tag>
@@ -57,7 +64,7 @@ const EmployeesPersona = () => {
 													<span className='ab-description'>Пол</span>
 												</div>
 												<div>
-													{employees?.gender === "male" ? "Мужской" : "Женский"}
+													{employee?.gender === "male" ? "Мужской" : "Женский"}
 												</div>
 											</div>
 											<div className='ab-info'>
@@ -69,9 +76,9 @@ const EmployeesPersona = () => {
 														<a
 															target='_blank'
 															rel='noreferrer'
-															href={`tel:${employees?.phone}`}
+															href={`tel:${employee?.phone}`}
 															className='link'>
-															{employees?.phone}
+															{employee?.phone}
 														</a>
 													</span>
 												</div>
@@ -80,19 +87,19 @@ const EmployeesPersona = () => {
 												<div className='ab-info__label'>
 													<span className='ab-description'>Email</span>
 												</div>
-												<div>{employees?.email}</div>
+												<div>{employee?.email}</div>
 											</div>
 											<div className='ab-info'>
 												<div className='ab-info__label'>
 													<span className='ab-description'>Роль</span>
 												</div>
-												<div>{employees?.position}</div>
+												<div>{employee?.position}</div>
 											</div>
 											<div className='ab-info'>
 												<div className='ab-info__label'>
 													<span className='ab-description'>Описание</span>
 												</div>
-												<div>—</div>
+												<div>{employee?.description}</div>
 											</div>
 										</div>
 									</div>
@@ -107,7 +114,7 @@ const EmployeesPersona = () => {
 									</div>
 									<div className='ab-island__arrow-wrap'>
 										<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg text-xs'>
-											{employees?.is_bookable === 1 ? (
+											{employee?.is_bookable === 1 ? (
 												<Tag color='success'>Включена</Tag>
 											) : (
 												<Tag color='error'>Не включена</Tag>

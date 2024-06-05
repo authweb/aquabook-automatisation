@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { CardEdit, Input, HeaderDashboard, Select, Switcher } from "../../";
 
-import axios from "axios";
 
+import axios from "axios";
 import { CloseOutlined, CaretDownOutlined } from "@ant-design/icons";
 import TextArea from "../../Common/FormComponents/TextArea";
+import CheckBox from "../../Common/FormComponents/Checkbox";
 
 const ServiceAdd = () => {
 	const navigate = useNavigate();
@@ -22,11 +23,12 @@ const ServiceAdd = () => {
 		description: "",
 		price_from: "",
 		price_to: "",
-		tags: "",
+		tags: true,
 		duration: "",
+		is_top: false,
 	});
 
-	const [isBookable, setIsBookable] = useState(true);
+	const [isRangePrice, setIsRangePrice] = useState(false);
 
 	useEffect(() => {
 		async function fetchCategories() {
@@ -34,9 +36,8 @@ const ServiceAdd = () => {
 				const response = await axios.get(
 					"https://api.aqua-book.ru/api/service-categories",
 				);
-				// Проверяем, есть ли нужный массив в полученных данных
 				if (response.data && Array.isArray(response.data.servicesCategories)) {
-					setCategories(response.data.servicesCategories); // Обновляем состояние categories нужными данными
+					setCategories(response.data.servicesCategories);
 				} else {
 					console.error(
 						"Полученные данные не содержат массив категорий: ",
@@ -52,20 +53,23 @@ const ServiceAdd = () => {
 	}, []);
 
 	useEffect(() => {
-		// Поиск данных выбранной категории по ID или другому уникальному ключу
 		const selectedCategoryData = categories.find(
 			category => category.id === selectedCategoryId,
 		);
-
-		// Установка выбранной категории в состояние
 		setSelectedCategory(selectedCategoryData);
 	}, [categories, selectedCategoryId]);
 
 	const handleToggleBookable = checked => {
-		setIsBookable(checked);
 		setFormState(prevValues => ({
 			...prevValues,
-			is_bookable: checked, // Обновляем значение в currentValues
+			tags: checked,
+		}));
+	};
+
+	const handleToggleTopService = checked => {
+		setFormState(prevValues => ({
+			...prevValues,
+			is_top: checked,
 		}));
 	};
 
@@ -76,43 +80,72 @@ const ServiceAdd = () => {
 			[name]: value,
 		}));
 
-		// Проверяем, изменилось ли хоть одно поле формы относительно начальных значений
 		const formChanged = Object.keys(formState).some(
 			key => formState[key] !== initialValues[key],
 		);
 		setIsChanged(formChanged);
 	};
 
+	const handleRangePriceChange = checked => {
+		setIsRangePrice(checked);
+		if (!checked) {
+			setFormState(prevValues => ({
+				...prevValues,
+				price_to: "", // Clear price_to if range price is disabled
+			}));
+		}
+	};
+
+	const handleSelectChange = (category) => {
+		setSelectedCategory(category);
+		setFormState(prevState => ({
+			...prevState,
+			category_id: category.id,
+		}));
+	};
+
 	const handleSubmit = async event => {
 		event.preventDefault();
 
 		const serviceData = {
-			category_id: formState?.category_id || "",
-			name: formState?.name || "",
-			description: formState?.description || "",
-			price_from: formState?.price_from || "",
-			price_to: formState?.price_to || "",
-			tags: formState?.tags || "",
-			duration: formState?.duration || "",
+			category_id: formState.category_id,
+			name: formState.name,
+			description: formState.description,
+			price_from: formState.price_from,
+			price_to: isRangePrice ? formState.price_to : formState.price_from, // Use price_from if range price is not enabled
+			tags: formState.tags ? 1 : 0,
+			duration: formState.duration,
+			is_top: formState.is_top ? 1 : 0,
 		};
-		console.log(serviceData);
+
+		console.log("Отправка данных:", serviceData);
+
 		try {
-			// Запрос на добавление новой услуги
-			const response = await axios.post(
-				"http://api.aqua-book.ru/api/services",
+			await axios.post(
+				"https://api.aqua-book.ru/api/services",
 				serviceData,
 			);
+
+			if (formState.is_top) {
+				const popularCategory = categories.find(category => category.name === "Популярные услуги");
+				if (popularCategory) {
+					await axios.post(
+						"https://api.aqua-book.ru/api/services",
+						{ ...serviceData, category_id: popularCategory.id },
+					);
+				}
+			}
+
 			navigate(-1);
-			console.log("Service added:", response.data);
-			// Обработка после успешного добавления (например, очистка формы или редирект)
 		} catch (error) {
-			console.error("Error adding service:", error);
+			console.error("Error adding service:", error.response ? error.response.data : error.message);
 		}
 	};
 
 	const handleCancel = () => {
 		navigate(-1);
 	};
+
 	return (
 		<>
 			<HeaderDashboard showBack title='Создать услугу' containerSmall />
@@ -125,7 +158,7 @@ const ServiceAdd = () => {
 								onSubmit={handleSubmit}>
 								<CardEdit
 									switcher={{
-										checked: isBookable,
+										checked: formState.tags,
 										onChange: handleToggleBookable,
 									}}
 									cardEdit>
@@ -137,34 +170,26 @@ const ServiceAdd = () => {
 										prefix='Название услуги'
 										onChange={handleChange}
 									/>
-									<Select
-										options={categories} // Используем массив категорий вместо услуг
-										renderOption={category => (
-											<>
-												<span className='block whitespace-normal ml-3'>
-													{category.name}
-												</span>
-											</>
-										)}
-										getDisplayValue={category => category.name} // Получаем имя категории для отображения
-										filterFunction={(
-											category,
-											searchTerm, // Функция фильтрации для поиска
-										) =>
-											category.name
-												.toLowerCase()
-												.includes(searchTerm.toLowerCase())
-										}
-										onSelect={category => {
-											setSelectedCategory(category); // Устанавливаем выбранную категорию (если нужно сохранить весь объект)
-											setFormState(prevState => ({
-												...prevState,
-												category_id: category.id,
-											})); // Обновляем category_id в formState
-										}}
-										inputTitle='Категория' // Заголовок для поля выбора категории
-									/>
+									<div onClick={e => e.stopPropagation()}>
+										<Select
+											id="88"
+											options={categories}
+											renderOption={category => (
+												<>
+													<span className='block whitespace-normal ml-3'>
+														{category.name}
+													</span>
+												</>
+											)}
 
+											getDisplayValue={category => category.name}
+											filterFunction={(category, searchTerm) =>
+												category.name.toLowerCase().includes(searchTerm.toLowerCase())
+											}
+											onSelect={handleSelectChange}
+											inputTitle='Категория'
+										/>
+									</div>
 									<TextArea
 										type='text'
 										name='description'
@@ -174,8 +199,11 @@ const ServiceAdd = () => {
 										prefix='Описание услуги'
 										onChange={handleChange}
 									/>
-									<Switcher field_label='Топ услуга' />
-
+									<Switcher
+										field_label='Топ услуга'
+										checked={formState.is_top}
+										onChange={handleToggleTopService}
+									/>
 									<div className='ab-select'>
 										<div className='ab-select__input-wrap'>
 											<Input
@@ -195,7 +223,7 @@ const ServiceAdd = () => {
 								</CardEdit>
 								<CardEdit general='Настройки продолжительности' cardForm>
 									<Input
-										type='duration'
+										type='number'
 										name='duration'
 										autoComplete='duration'
 										value={formState.duration}
@@ -206,15 +234,45 @@ const ServiceAdd = () => {
 									<Switcher field_label='Пауза после услуги' />
 								</CardEdit>
 								<CardEdit general='Настройки цены' cardForm>
-									<Input
-										type='price_from'
-										name='price_from'
-										autoComplete='price_from'
-										value={formState.price_from}
-										id='input-37'
-										prefix='Базовая цена (руб.)'
-										onChange={handleChange}
-									/>
+
+									<CheckBox
+										isChecked={isRangePrice}
+										onChange={e => handleRangePriceChange(e.target.checked)}
+										field_label="Указать диапазон цены"
+									>
+									</CheckBox>
+									{isRangePrice ? (
+										<>
+											<Input
+												type='number'
+												name='price_from'
+												autoComplete='price_from'
+												value={formState.price_from}
+												id='input-38'
+												prefix='Цена от (руб.)'
+												onChange={handleChange}
+											/>
+											<Input
+												type='number'
+												name='price_to'
+												autoComplete='price_to'
+												value={formState.price_to}
+												id='input-39'
+												prefix='Цена до (руб.)'
+												onChange={handleChange}
+											/>
+										</>
+									) : (
+										<Input
+											type='number'
+											name='price_from'
+											autoComplete='price_from'
+											value={formState.price_from}
+											id='input-40'
+											prefix='Базовая цена (руб.)'
+											onChange={handleChange}
+										/>
+									)}
 								</CardEdit>
 								<div
 									className={classNames("eb-model-edit__panel", {

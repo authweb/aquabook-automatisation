@@ -1,0 +1,511 @@
+2024-06-02 23:14 +03:00: Error: Политика CORS для этого сайта не позволяет доступ с указанного источника.
+2024-06-02 23:14 +03:00:     at origin (/home/admin/aquabook-automatisation/api/index.js:23:20)
+2024-06-02 23:14 +03:00:     at /home/admin/aquabook-automatisation/node_modules/cors/lib/index.js:219:13
+2024-06-02 23:14 +03:00:     at optionsCallback (/home/admin/aquabook-automatisation/node_modules/cors/lib/index.js:199:9)
+2024-06-02 23:14 +03:00:     at corsMiddleware (/home/admin/aquabook-automatisation/node_modules/cors/lib/index.js:204:7)
+2024-06-02 23:14 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-02 23:14 +03:00:     at trim_prefix (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:328:13)
+2024-06-02 23:14 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:286:9
+2024-06-02 23:14 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-02 23:14 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-02 23:14 +03:00:     at expressInit (/home/admin/aquabook-automatisation/node_modules/express/lib/middleware/init.js:40:5)
+2024-06-02 23:14 +03:00: Error: Политика CORS для этого сайта не позволяет доступ с указанного источника.
+2024-06-02 23:14 +03:00:     at origin (/home/admin/aquabook-automatisation/api/index.js:23:20)
+2024-06-02 23:14 +03:00:     at /home/admin/aquabook-automatisation/node_modules/cors/lib/index.js:219:13
+2024-06-02 23:14 +03:00:     at optionsCallback (/home/admin/aquabook-automatisation/node_modules/cors/lib/index.js:199:9)
+2024-06-02 23:14 +03:00:     at corsMiddleware (/home/admin/aquabook-automatisation/node_modules/cors/lib/index.js:204:7)
+2024-06-02 23:14 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-02 23:14 +03:00:     at trim_prefix (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:328:13)
+2024-06-02 23:14 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:286:9
+2024-06-02 23:14 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-02 23:14 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-02 23:14 +03:00:     at expressInit (/home/admin/aquabook-automatisation/node_modules/express/lib/middleware/init.js:40:5)
+2024-06-03 07:00 +03:00: Error: Cannot find module '../encodings'
+2024-06-03 07:00 +03:00: Require stack:
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/node_modules/iconv-lite/lib/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/parsers/string.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packets/packet.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packet_parser.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/connection.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/promise.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/src/config/dbConnect.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/userLogin.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/routes/routes.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/index.js
+2024-06-03 07:00 +03:00:     at PromisePool.execute (/home/admin/aquabook-automatisation/node_modules/mysql2/promise.js:374:22)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/api/appointments.js:15:41
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:149:13)
+2024-06-03 07:00 +03:00:     at Route.dispatch (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:119:3)
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:284:15
+2024-06-03 07:00 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-03 07:00 +03:00:     at Function.handle (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:175:3) {
+2024-06-03 07:00 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 07:00 +03:00:   errno: undefined,
+2024-06-03 07:00 +03:00:   sql: undefined,
+2024-06-03 07:00 +03:00:   sqlState: undefined,
+2024-06-03 07:00 +03:00:   sqlMessage: undefined
+2024-06-03 07:00 +03:00: }
+2024-06-03 07:00 +03:00: Error: Cannot find module '../encodings'
+2024-06-03 07:00 +03:00: Require stack:
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/node_modules/iconv-lite/lib/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/parsers/string.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packets/packet.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packet_parser.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/connection.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/promise.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/src/config/dbConnect.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/userLogin.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/routes/routes.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/index.js
+2024-06-03 07:00 +03:00:     at PromisePool.execute (/home/admin/aquabook-automatisation/node_modules/mysql2/promise.js:374:22)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/api/employees.js:7:29
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:149:13)
+2024-06-03 07:00 +03:00:     at Route.dispatch (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:119:3)
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:284:15
+2024-06-03 07:00 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-03 07:00 +03:00:     at Function.handle (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:175:3) {
+2024-06-03 07:00 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 07:00 +03:00:   errno: undefined,
+2024-06-03 07:00 +03:00:   sql: undefined,
+2024-06-03 07:00 +03:00:   sqlState: undefined,
+2024-06-03 07:00 +03:00:   sqlMessage: undefined
+2024-06-03 07:00 +03:00: }
+2024-06-03 07:00 +03:00: Error: Cannot find module '../encodings'
+2024-06-03 07:00 +03:00: Require stack:
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/node_modules/iconv-lite/lib/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/parsers/string.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packets/packet.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packet_parser.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/connection.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/promise.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/src/config/dbConnect.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/userLogin.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/routes/routes.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/index.js
+2024-06-03 07:00 +03:00:     at PromisePool.execute (/home/admin/aquabook-automatisation/node_modules/mysql2/promise.js:374:22)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/api/services.js:7:33
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:149:13)
+2024-06-03 07:00 +03:00:     at Route.dispatch (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:119:3)
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:284:15
+2024-06-03 07:00 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-03 07:00 +03:00:     at Function.handle (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:175:3) {
+2024-06-03 07:00 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 07:00 +03:00:   errno: undefined,
+2024-06-03 07:00 +03:00:   sql: undefined,
+2024-06-03 07:00 +03:00:   sqlState: undefined,
+2024-06-03 07:00 +03:00:   sqlMessage: undefined
+2024-06-03 07:00 +03:00: }
+2024-06-03 07:00 +03:00: Error: Cannot find module '../encodings'
+2024-06-03 07:00 +03:00: Require stack:
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/node_modules/iconv-lite/lib/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/parsers/string.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packets/packet.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packet_parser.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/connection.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/promise.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/src/config/dbConnect.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/userLogin.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/routes/routes.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/index.js
+2024-06-03 07:00 +03:00:     at PromisePool.execute (/home/admin/aquabook-automatisation/node_modules/mysql2/promise.js:374:22)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/api/servicesCategories.js:7:33
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:149:13)
+2024-06-03 07:00 +03:00:     at Route.dispatch (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:119:3)
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:284:15
+2024-06-03 07:00 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-03 07:00 +03:00:     at Function.handle (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:175:3) {
+2024-06-03 07:00 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 07:00 +03:00:   errno: undefined,
+2024-06-03 07:00 +03:00:   sql: undefined,
+2024-06-03 07:00 +03:00:   sqlState: undefined,
+2024-06-03 07:00 +03:00:   sqlMessage: undefined
+2024-06-03 07:00 +03:00: }
+2024-06-03 07:00 +03:00: Error: Cannot find module '../encodings'
+2024-06-03 07:00 +03:00: Require stack:
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/node_modules/iconv-lite/lib/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/parsers/string.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packets/packet.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/packet_parser.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/lib/connection.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/index.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/node_modules/mysql2/promise.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/src/config/dbConnect.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/userLogin.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/routes/routes.js
+2024-06-03 07:00 +03:00: - /home/admin/aquabook-automatisation/api/index.js
+2024-06-03 07:00 +03:00:     at PromisePool.execute (/home/admin/aquabook-automatisation/node_modules/mysql2/promise.js:374:22)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/api/employees.js:7:29
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:149:13)
+2024-06-03 07:00 +03:00:     at Route.dispatch (/home/admin/aquabook-automatisation/node_modules/express/lib/router/route.js:119:3)
+2024-06-03 07:00 +03:00:     at Layer.handle [as handle_request] (/home/admin/aquabook-automatisation/node_modules/express/lib/router/layer.js:95:5)
+2024-06-03 07:00 +03:00:     at /home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:284:15
+2024-06-03 07:00 +03:00:     at Function.process_params (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:346:12)
+2024-06-03 07:00 +03:00:     at next (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:280:10)
+2024-06-03 07:00 +03:00:     at Function.handle (/home/admin/aquabook-automatisation/node_modules/express/lib/router/index.js:175:3) {
+2024-06-03 07:00 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 07:00 +03:00:   errno: undefined,
+2024-06-03 07:00 +03:00:   sql: undefined,
+2024-06-03 07:00 +03:00:   sqlState: undefined,
+2024-06-03 07:00 +03:00:   sqlMessage: undefined
+2024-06-03 07:00 +03:00: }
+2024-06-03 07:03 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-03 07:03 +03:00:   throw err;
+2024-06-03 07:03 +03:00:   ^
+2024-06-03 07:03 +03:00: 
+2024-06-03 07:03 +03:00: Error: Cannot find module 'express'
+2024-06-03 07:03 +03:00: Require stack:
+2024-06-03 07:03 +03:00: - /home/admin/aquabook-automatisation/api/index.js
+2024-06-03 07:03 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-03 07:03 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-03 07:03 +03:00:     at Module.require (node:internal/modules/cjs/loader:1233:19)
+2024-06-03 07:03 +03:00:     at require (node:internal/modules/helpers:179:18)
+2024-06-03 07:03 +03:00:     at Object.<anonymous> (/home/admin/aquabook-automatisation/api/index.js:1:17)
+2024-06-03 07:03 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-03 07:03 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-03 07:03 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-03 07:03 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-03 07:03 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12) {
+2024-06-03 07:03 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-03 07:03 +03:00:   requireStack: [ '/home/admin/aquabook-automatisation/api/index.js' ]
+2024-06-03 07:03 +03:00: }
+2024-06-03 07:03 +03:00: 
+2024-06-03 07:03 +03:00: Node.js v20.13.1
+2024-06-05 06:45 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:45 +03:00:   throw err;
+2024-06-05 06:45 +03:00:   ^
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:45 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:45 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:45 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:45 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:45 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:45 +03:00:   requireStack: []
+2024-06-05 06:45 +03:00: }
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Node.js v20.13.1
+2024-06-05 06:45 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:45 +03:00:   throw err;
+2024-06-05 06:45 +03:00:   ^
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:45 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:45 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:45 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:45 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:45 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:45 +03:00:   requireStack: []
+2024-06-05 06:45 +03:00: }
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Node.js v20.13.1
+2024-06-05 06:45 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:45 +03:00:   throw err;
+2024-06-05 06:45 +03:00:   ^
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:45 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:45 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:45 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:45 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:45 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:45 +03:00:   requireStack: []
+2024-06-05 06:45 +03:00: }
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Node.js v20.13.1
+2024-06-05 06:45 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:45 +03:00:   throw err;
+2024-06-05 06:45 +03:00:   ^
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:45 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:45 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:45 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:45 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:45 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:45 +03:00:   requireStack: []
+2024-06-05 06:45 +03:00: }
+2024-06-05 06:45 +03:00: 
+2024-06-05 06:45 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:46 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:46 +03:00:   throw err;
+2024-06-05 06:46 +03:00:   ^
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:46 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:46 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:46 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:46 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:46 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:46 +03:00:   requireStack: []
+2024-06-05 06:46 +03:00: }
+2024-06-05 06:46 +03:00: 
+2024-06-05 06:46 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-05 06:47 +03:00: node:internal/modules/cjs/loader:1148
+2024-06-05 06:47 +03:00:   throw err;
+2024-06-05 06:47 +03:00:   ^
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/nodemon'
+2024-06-05 06:47 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-05 06:47 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-05 06:47 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-05 06:47 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-05 06:47 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-05 06:47 +03:00:   requireStack: []
+2024-06-05 06:47 +03:00: }
+2024-06-05 06:47 +03:00: 
+2024-06-05 06:47 +03:00: Node.js v20.13.1

@@ -177,8 +177,8 @@ const AppointmentDetails = () => {
 									<button className='focus-outline'>
 										<div className='pl-1 py-1'>
 											<div className='whitespace-no-wrap leading-none relative inline-block rounded-lg bg-surface text-xs'>
-												<Tag color='cyan' className='relative inline-flex items-center leading-5 px-2 rounded-lg'>
-													Новая запись
+												<Tag color='orange' className='relative inline-flex items-center leading-5 px-2 rounded-lg'>
+													Редактирование записи
 												</Tag>
 											</div>
 										</div>

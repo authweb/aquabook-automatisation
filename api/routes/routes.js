@@ -15,6 +15,7 @@ const updateCarInfo = require("../updateCarInfo");
 const deleteCarInfo = require("../deleteCarInfo");
 
 //Клиенты - сотрудники
+const departments = require("../departments");
 const employees = require("../employees");
 const employee = require("../employeeId");
 const EditProfile = require("../editProfile");
@@ -38,9 +39,8 @@ router.post("/services", services);
 router.post("/service-categories", servicesCategories);
 router.post("/clients", addClients);
 router.post("/appointments", appointments);
+router.post("/departments", departments);
 router.post("/appointments/:id/pay", appointments);
-router.put("/profile/:id", EditProfile);
-router.put("/employees/:id", EditEmployee);
 
 //Получение записей из таблицы базы данных
 router.get("/employees/:id", employee);
@@ -53,16 +53,21 @@ router.get("/service-categories", servicesCategories);
 router.get("/appointments", appointments);
 router.get("/appointments/:id", appointments);
 router.get("/profile/:id", profile);
+router.get("/departments", departments);
 
 //Удаление записей из таблицы базы данных
 router.delete("/deletecarinfo", deleteCarInfo);
 router.delete("/service/:id", services);
 router.delete("/service-categories/:id", servicesCategories);
 router.delete("/appointments/:id", appointments);
+router.delete("/departments/:id", departments);
 
 //Обновление записей в таблице базы данных
 router.put("/service/:id", services);
 router.put("/service_categories/:id", servicesCategories);
 router.put("/appointments/:id", appointments);
+router.put("/profile/:id", EditProfile);
+router.put("/employees/:id", EditEmployee);
+router.put("/departments/:id", departments);
 
 module.exports = router;

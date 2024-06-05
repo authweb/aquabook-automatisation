@@ -49,7 +49,8 @@ const Aside = ({
 	useEffect(() => {
 		fetchData('https://api.aqua-book.ru/api/services', (data) => {
 			const servicesArray = Object.values(data.services).flat();
-			setServices(servicesArray);
+			const filteredServices = servicesArray.filter(service => service.tags === 1);
+			setServices(filteredServices);
 		});
 		fetchData('https://api.aqua-book.ru/api/employees', (data) => setEmployees(data.employees));
 		fetchData('https://api.aqua-book.ru/api/clients', (data) => setClients(data.clients));
@@ -75,7 +76,7 @@ const Aside = ({
 			email: clients[0]?.email || '',
 		}));
 	}, [services, clients]);
-	
+
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -220,6 +221,7 @@ const Aside = ({
 							{action === "addService" && (
 								<div className='grid grid-cols-1 gap-6 items-start'>
 									<Select
+										id="66"
 										options={services}
 										renderOption={(service) => (
 											<>
@@ -264,7 +266,7 @@ const Aside = ({
 													})
 												}
 												prefix='Цена'
-												id='input-45'
+												id='45'
 											/>
 											<Input
 												type='text'
@@ -278,9 +280,10 @@ const Aside = ({
 													})
 												}
 												prefix='Длительность'
-												id='input-46'
+												id='46'
 											/>
 											<Select
+												id="67"
 												options={employees}
 												renderOption={(employee) => (
 													<>
@@ -317,6 +320,7 @@ const Aside = ({
 										name='firstName'
 										autoComplete='firstName'
 										prefix='Имя'
+										id="48"
 										value={formValues.firstName}
 										onChange={(e) =>
 											setFormValues({
@@ -330,6 +334,7 @@ const Aside = ({
 										name='lastName'
 										autoComplete='lastName'
 										prefix='Фамилия'
+										id="49"
 										value={formValues.lastName}
 										onChange={(e) =>
 											setFormValues({
@@ -342,7 +347,7 @@ const Aside = ({
 										name='phone'
 										autoComplete='phone'
 										prefix='Телефон'
-										id='input-55'
+										id='55'
 										value={formValues.phone}
 										onChange={(e) =>
 											setFormValues({
