@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
 import axios from 'axios';
 
@@ -11,81 +11,84 @@ const breadcrumbNameMap = {
   "/dashboard/users": "Профиль",
   "/dashboard/settings": "Настройки",
   "/dashboard/settings/services": "Услуги",
+  "/dashboard/settings/employees": "Сотрудники",
   "/dashboard/clients": "Клиенты",
   "/dashboard/analytics": "Аналитика",
   "/dashboard/calendar": "Календарь"
 };
 
-const Breadcrumbs = () => {
-  const location = useLocation();
-  const params = useParams();
-  const [breadcrumbNames, setBreadcrumbNames] = useState(breadcrumbNameMap);
+const fetchName = async (type, id) => {
+  let url = '';
+  switch (type) {
+    case 'employees':
+      url = `https://api.aqua-book.ru/api/employees/${id}`;
+      break;
+    case 'services':
+      url = `https://api.aqua-book.ru/api/services/${id}`;
+      break;
+    case 'clients':
+      url = `https://api.aqua-book.ru/api/clients/${id}`;
+      break;
+    case 'users':
+      url = `https://api.aqua-book.ru/api/users/${id}`;
+      break;
+    default:
+      return '';
+  }
 
-  const fetchData = async (type, id) => {
-    let url = '';
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+
+    let name = '';
     switch (type) {
       case 'employees':
-        url = `https://api.aqua-book.ru/api/employees/${id}`;
+        name = data.employee.first_name;
         break;
       case 'services':
-        url = `https://api.aqua-book.ru/api/services/${id}`;
+        name = data.service.name;
         break;
       case 'clients':
-        url = `https://api.aqua-book.ru/api/clients/${id}`;
+        name = data.clients.first_name;
         break;
-      case 'profile':
-        url = `https://api.aqua-book.ru/api/users/${id}`;
+      case 'users':
+        name = data.users.first_name;
         break;
       default:
-        return;
+        break;
     }
+    return name;
+  } catch (error) {
+    console.error(`Error fetching ${type} data:`, error);
+    return '';
+  }
+};
 
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-
-      let name = '';
-      switch (type) {
-        case 'employees':
-          name = `${data.first_name}`;
-          break;
-        case 'services':
-          name = data.name;
-          break;
-        case 'clients':
-          name = `${data.first_name}`;
-          break;
-        case 'users':
-          name = `${data.first_name}`;
-          break;
-        default:
-          break;
-      }
-
-      setBreadcrumbNames((prev) => ({
-        ...prev,
-        [`/dashboard/${type}/${id}`]: name,
-      }));
-    } catch (error) {
-      console.error(`Error fetching ${type} data:`, error);
-    }
-  };
+const Breadcrumbs = () => {
+  const location = useLocation();
+  const [breadcrumbNames, setBreadcrumbNames] = useState(breadcrumbNameMap);
 
   useEffect(() => {
     const pathSnippets = location.pathname.split("/").filter((i) => i);
-    if (pathSnippets.length > 2) {
-      const type = pathSnippets[1];
-      const id = pathSnippets[2];
-      if (!breadcrumbNames[`/dashboard/${type}/${id}`]) {
-        fetchData(type, id);
+    const fetchAndSetName = async () => {
+      if (pathSnippets.length > 2) {
+        const type = pathSnippets[pathSnippets.length - 2];
+        const id = pathSnippets[pathSnippets.length - 1];
+        if (!breadcrumbNames[`${location.pathname}`]) {
+          const name = await fetchName(type, id);
+          setBreadcrumbNames(prev => ({
+            ...prev,
+            [`${location.pathname}`]: name,
+          }));
+        }
       }
-    }
-  }, [location.pathname, breadcrumbNames]);
+    };
 
-  const pathSnippets = location.pathname.split("/").filter((i) => i);
+    fetchAndSetName();
+  }, [location.pathname]);
 
-  const extraBreadcrumbItems = pathSnippets.map((_, index) => {
-    const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
+  const extraBreadcrumbItems = location.pathname.split("/").filter((i) => i).map((_, index) => {
+    const url = `/${location.pathname.split("/").filter((i) => i).slice(0, index + 1).join("/")}`;
     return (
       <Breadcrumb.Item key={url}>
         <Link to={url}>

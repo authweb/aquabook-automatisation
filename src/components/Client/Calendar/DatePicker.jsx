@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	format,
 	startOfMonth,
@@ -8,20 +8,45 @@ import {
 	addDays,
 	getDay,
 	isToday,
+	isAfter,
+	setHours,
+	setMinutes,
+	isBefore,
+	startOfDay,
+	getWeek,
 } from "date-fns";
 import TimeSlot from "./TimeSlot";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import ProfileButton from "../../Common/FormComponents/ProfileButton";
 
 // Основной компонент календаря
-const DatePicker = () => {
-	const [selectedDate, setSelectedDate] = useState(null);
-	const [selectedTime, setSelectedTime] = useState(null);
+const DatePicker = ({ selectedDate, setSelectedDate, selectedTime, setSelectedTime, onCloseModal }) => {
+	// const [selectedDate, setSelectedDate] = useState(new Date());
+	// const [selectedTime, setSelectedTime] = useState(null);
 	const [currentMonth, setCurrentMonth] = useState(new Date());
 	const [currentWeekIndex, setCurrentWeekIndex] = useState(0);
 
 	// Предположим, что мы рендерим 3 блока .calendar-days-container
 	const visibleWeeksCount = 3;
+
+	useEffect(() => {
+		const today = new Date();
+		const firstDayOfMonth = startOfMonth(today);
+		const weeksInMonth = eachDayOfInterval({
+			start: firstDayOfMonth,
+			end: endOfMonth(today),
+		}).reduce((weeks, day) => {
+			const weekIndex = getWeek(day, { weekStartsOn: 1 });
+			if (!weeks.includes(weekIndex)) {
+				weeks.push(weekIndex);
+			}
+			return weeks;
+		}, []);
+		const currentWeek = getWeek(today, { weekStartsOn: 1 });
+		const initialWeekIndex = weeksInMonth.indexOf(currentWeek);
+		setCurrentWeekIndex(initialWeekIndex);
+		setCurrentMonth(today);
+	}, []);
 
 	const WeekNames = () => {
 		const weekDays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
@@ -41,12 +66,8 @@ const DatePicker = () => {
 		end: endOfMonth(currentMonth),
 	});
 
-	// Определение первой и последней недели для видимости
-	const firstWeekIndex = currentWeekIndex;
-	const lastWeekIndex = firstWeekIndex + visibleWeeksCount;
-
 	let startDayOfWeek = getDay(startOfMonth(currentMonth));
-	if (startDayOfWeek === 0) startDayOfWeek = 7; // Если воскресенье, считаем его седьмым днём
+	if (startDayOfWeek === 0) startDayOfWeek = 7;
 
 	const paddedDays = Array.from({ length: startDayOfWeek - 1 }, (_, i) =>
 		addDays(startOfMonth(currentMonth), -i - 1),
@@ -61,7 +82,7 @@ const DatePicker = () => {
 	}, []);
 
 	// Выбираем только видимые недели
-	const visibleWeeks = weeks.slice(firstWeekIndex, lastWeekIndex);
+	const visibleWeeks = weeks.slice(currentWeekIndex, currentWeekIndex + visibleWeeksCount);
 
 	// Логика переключения недель
 	const handlePrevWeek = () => {
@@ -91,7 +112,7 @@ const DatePicker = () => {
 
 		for (let hour = startHour; hour <= endHour; hour++) {
 			for (let minute = 0; minute < 60; minute += intervalInMinutes) {
-				const time = `${hour.toString().padStart(2, "")}:${minute
+				const time = `${hour.toString().padStart(2, "0")}:${minute
 					.toString()
 					.padStart(2, "0")}`;
 
@@ -109,39 +130,53 @@ const DatePicker = () => {
 		day: generateTimeSlots(12, 17, 15),
 		evening: generateTimeSlots(18, 20, 15),
 	};
+
 	const handleTimeSelect = time => {
 		setSelectedTime(time);
 	};
-	// Заглушка для определения доступности временных слотов
-	const isTimeSlotAvailable = time => true;
 
-	const handleDateSelect = date => {
-		setSelectedDate(date);
-		// Сброс выбранного времени
+	// Заглушка для определения доступности временных слотов
+	const isTimeSlotAvailable = time => {
+		if (selectedDate && isToday(selectedDate)) {
+			const [hour, minute] = time.split(":").map(Number);
+			const slotTime = setMinutes(setHours(new Date(), hour), minute);
+			return isAfter(slotTime, new Date());
+		}
+		return true;
+	};
+
+	const handleDateSelect = (day) => {
+		setSelectedDate(day);
 		setSelectedTime(null);
 	};
 
+	// Рендеринг дневных слотов
 	const renderVisibleWeeks = visibleWeeks.map((week, weekIndex) => (
 		<div className='calendar-days-container' key={weekIndex}>
 			{week.map((day, dayIndex) => {
-				// Check if the day is the current day
 				const isCurrentDay = isToday(day);
-
-				// CSS class setup for ui-kit-calendar-day depending on the condition
+				const isSelectedDay = format(day, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd");
 				let dayClass =
 					format(day, "MM") === format(currentMonth, "MM")
 						? isCurrentDay
-							? "active today"
-							: ""
-						: "greyed-out";
-
-				// Conditionally include the background div for the current day
-				let currentDayBackground = isCurrentDay ? (
+							? isSelectedDay
+								? "today active"
+								: "today"
+							: isSelectedDay
+								? "active"
+								: ""
+						: "";
+				let currentDayBackground = isSelectedDay ? (
 					<div className='background'></div>
 				) : null;
 
 				return (
-					<div className='calendar-day'>
+					<div
+						className={`${isBefore(day, startOfDay(new Date())) ? "calendar-day greyed-out disabled" : "calendar-day"}`}
+						key={dayIndex}
+						onClick={() =>
+							!isBefore(day, startOfDay(new Date())) && handleDateSelect(day)
+						}>
 						<ui-kit-calendar-day class={`${dayClass.trim()}`} key={dayIndex}>
 							<div className='calendar-day-number'>
 								<span className='calendar-day-number-text'>
@@ -157,24 +192,29 @@ const DatePicker = () => {
 	));
 
 	// Рендеринг временных слотов
-	const renderTimeSlots = (slots, partOfDay) => (
-		<page-scrollable-time-intervals>
-			<p className='label'>{partOfDay}</p>
-			<ui-kit-horizontal-scrollable>
-				<div className='flex-container'>
-					{slots.map(time => (
-						<TimeSlot
-							key={time}
-							time={time}
-							available={isTimeSlotAvailable(time)}
-							isSelected={selectedTime === time} // Свойство для определения активности слота
-							onSelect={handleTimeSelect}
-						/>
-					))}
-				</div>
-			</ui-kit-horizontal-scrollable>
-		</page-scrollable-time-intervals>
-	);
+	const renderTimeSlots = (slots, partOfDay) => {
+		const availableSlots = slots.filter(isTimeSlotAvailable);
+		if (availableSlots.length === 0) return null;
+
+		return (
+			<page-scrollable-time-intervals key={partOfDay}>
+				<p className='label'>{partOfDay}</p>
+				<ui-kit-horizontal-scrollable>
+					<div className='flex-container'>
+						{availableSlots.map(time => (
+							<TimeSlot
+								key={time}
+								time={time}
+								available={isTimeSlotAvailable(time)}
+								isSelected={selectedTime === time}
+								onSelect={handleTimeSelect}
+							/>
+						))}
+					</div>
+				</ui-kit-horizontal-scrollable>
+			</page-scrollable-time-intervals>
+		);
+	};
 
 	return (
 		<>
@@ -218,7 +258,13 @@ const DatePicker = () => {
 					</div>
 				</page-loader>
 			</div>
-			<ProfileButton title='Продолжить' className='select-time-button' />
+			<ProfileButton
+				title='Продолжить'
+				className='select-time-button'
+				onCloseModal={selectedDate && selectedTime ? onCloseModal : undefined}
+				disabled={!selectedDate || !selectedTime}
+				disabledClass="button-disabled"
+			/>
 		</>
 	);
 };

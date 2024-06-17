@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../src/config/dbConnect');
 
-router.get('/profile/:id', async (req, res) => {
+router.get('/users/:id', async (req, res) => {
   const { id } = req.params;
 
   try {

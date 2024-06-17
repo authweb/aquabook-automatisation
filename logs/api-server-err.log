@@ -509,3 +509,98 @@
 2024-06-05 06:47 +03:00: }
 2024-06-05 06:47 +03:00: 
 2024-06-05 06:47 +03:00: Node.js v20.13.1
+2024-06-07 06:29 +03:00: node:internal/modules/package_json_reader:93
+2024-06-07 06:29 +03:00:         throw error;
+2024-06-07 06:29 +03:00:         ^
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: SyntaxError: Error parsing /home/admin/aquabook-automatisation/package.json: Expected ',' or '}' after property value in JSON at position 1534
+2024-06-07 06:29 +03:00:     at parse (<anonymous>)
+2024-06-07 06:29 +03:00:     at read (node:internal/modules/package_json_reader:80:16)
+2024-06-07 06:29 +03:00:     at readPackage (node:internal/modules/package_json_reader:141:10)
+2024-06-07 06:29 +03:00:     at readPackageScope (node:internal/modules/package_json_reader:164:19)
+2024-06-07 06:29 +03:00:     at shouldUseESMLoader (node:internal/modules/run_main:81:15)
+2024-06-07 06:29 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:161:24)
+2024-06-07 06:29 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-07 06:29 +03:00:   path: '/home/admin/aquabook-automatisation/package.json'
+2024-06-07 06:29 +03:00: }
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: Node.js v20.13.1
+2024-06-07 06:29 +03:00: node:internal/modules/package_json_reader:93
+2024-06-07 06:29 +03:00:         throw error;
+2024-06-07 06:29 +03:00:         ^
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: SyntaxError: Error parsing /home/admin/aquabook-automatisation/package.json: Expected ',' or '}' after property value in JSON at position 1534
+2024-06-07 06:29 +03:00:     at parse (<anonymous>)
+2024-06-07 06:29 +03:00:     at read (node:internal/modules/package_json_reader:80:16)
+2024-06-07 06:29 +03:00:     at readPackage (node:internal/modules/package_json_reader:141:10)
+2024-06-07 06:29 +03:00:     at readPackageScope (node:internal/modules/package_json_reader:164:19)
+2024-06-07 06:29 +03:00:     at shouldUseESMLoader (node:internal/modules/run_main:81:15)
+2024-06-07 06:29 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:161:24)
+2024-06-07 06:29 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-07 06:29 +03:00:   path: '/home/admin/aquabook-automatisation/package.json'
+2024-06-07 06:29 +03:00: }
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: Node.js v20.13.1
+2024-06-07 06:29 +03:00: node:internal/modules/package_json_reader:93
+2024-06-07 06:29 +03:00:         throw error;
+2024-06-07 06:29 +03:00:         ^
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: SyntaxError: Error parsing /home/admin/aquabook-automatisation/package.json: Unexpected token '}', ..."emap": 
+2024-06-07 06:29 +03:00:   },
+2024-06-07 06:29 +03:00:   "esli"... is not valid JSON
+2024-06-07 06:29 +03:00:     at parse (<anonymous>)
+2024-06-07 06:29 +03:00:     at read (node:internal/modules/package_json_reader:80:16)
+2024-06-07 06:29 +03:00:     at readPackage (node:internal/modules/package_json_reader:141:10)
+2024-06-07 06:29 +03:00:     at readPackageScope (node:internal/modules/package_json_reader:164:19)
+2024-06-07 06:29 +03:00:     at shouldUseESMLoader (node:internal/modules/run_main:81:15)
+2024-06-07 06:29 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:161:24)
+2024-06-07 06:29 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-07 06:29 +03:00:   path: '/home/admin/aquabook-automatisation/package.json'
+2024-06-07 06:29 +03:00: }
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: Node.js v20.13.1
+2024-06-07 06:29 +03:00: node:internal/modules/package_json_reader:93
+2024-06-07 06:29 +03:00:         throw error;
+2024-06-07 06:29 +03:00:         ^
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: SyntaxError: Error parsing /home/admin/aquabook-automatisation/package.json: Bad control character in string literal in JSON at position 1570
+2024-06-07 06:29 +03:00:     at parse (<anonymous>)
+2024-06-07 06:29 +03:00:     at read (node:internal/modules/package_json_reader:80:16)
+2024-06-07 06:29 +03:00:     at readPackage (node:internal/modules/package_json_reader:141:10)
+2024-06-07 06:29 +03:00:     at readPackageScope (node:internal/modules/package_json_reader:164:19)
+2024-06-07 06:29 +03:00:     at shouldUseESMLoader (node:internal/modules/run_main:81:15)
+2024-06-07 06:29 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:161:24)
+2024-06-07 06:29 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-07 06:29 +03:00:   path: '/home/admin/aquabook-automatisation/package.json'
+2024-06-07 06:29 +03:00: }
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: Node.js v20.13.1
+2024-06-07 06:29 +03:00: node:internal/modules/package_json_reader:93
+2024-06-07 06:29 +03:00:         throw error;
+2024-06-07 06:29 +03:00:         ^
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: SyntaxError: Error parsing /home/admin/aquabook-automatisation/package.json: Bad control character in string literal in JSON at position 1580
+2024-06-07 06:29 +03:00:     at parse (<anonymous>)
+2024-06-07 06:29 +03:00:     at read (node:internal/modules/package_json_reader:80:16)
+2024-06-07 06:29 +03:00:     at readPackage (node:internal/modules/package_json_reader:141:10)
+2024-06-07 06:29 +03:00:     at readPackageScope (node:internal/modules/package_json_reader:164:19)
+2024-06-07 06:29 +03:00:     at shouldUseESMLoader (node:internal/modules/run_main:81:15)
+2024-06-07 06:29 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:161:24)
+2024-06-07 06:29 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-07 06:29 +03:00:   path: '/home/admin/aquabook-automatisation/package.json'
+2024-06-07 06:29 +03:00: }
+2024-06-07 06:29 +03:00: 
+2024-06-07 06:29 +03:00: Node.js v20.13.1
+2024-06-13 11:38 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/nodemon'
+2024-06-13 11:38 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-13 11:38 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-13 11:38 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-13 11:38 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-13 11:38 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-13 11:38 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-13 11:38 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-13 11:38 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-13 11:38 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-13 11:38 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-13 11:38 +03:00:   requireStack: []
+2024-06-13 11:38 +03:00: }

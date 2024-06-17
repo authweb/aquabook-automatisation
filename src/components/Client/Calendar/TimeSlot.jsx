@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Компонент для отдельного временного слота
 const TimeSlot = ({ time, isSelected, available, onSelect }) => {
@@ -8,12 +8,10 @@ const TimeSlot = ({ time, isSelected, available, onSelect }) => {
 		}
 	};
 
-	// Исправьте интерполяцию классов на бэктики ` `
 	return (
 		<ui-kit-chips
-			class={`time-interval${available ? "" : "unavailable"} ${
-				isSelected ? "active" : ""
-			}`}
+			class={`time-interval${available ? "" : " unavailable"} ${isSelected ? " active" : ""
+				}`}
 			onClick={handleClick}>
 			<span>{time}</span>
 		</ui-kit-chips>

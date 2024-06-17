@@ -166,7 +166,7 @@ const ServiceAdd = () => {
 										type='text'
 										name='name'
 										value={formState.name}
-										id='input-35'
+										id='35'
 										prefix='Название услуги'
 										onChange={handleChange}
 									/>
@@ -195,7 +195,7 @@ const ServiceAdd = () => {
 										name='description'
 										autoComplete='description'
 										value={formState.description}
-										id='input-36'
+										id='36'
 										prefix='Описание услуги'
 										onChange={handleChange}
 									/>
@@ -211,7 +211,7 @@ const ServiceAdd = () => {
 												placeholder='Администратор'
 												createPlaceholder='Создайте новый отдел'
 												autoComplete='off'
-												id='input-46'
+												id='46'
 												prefix='Отдел'
 												iconGroup
 												iconOne={<CloseOutlined />}
@@ -227,7 +227,7 @@ const ServiceAdd = () => {
 										name='duration'
 										autoComplete='duration'
 										value={formState.duration}
-										id='input-37'
+										id='37'
 										prefix='Длительность (мин)'
 										onChange={handleChange}
 									/>
@@ -248,7 +248,7 @@ const ServiceAdd = () => {
 												name='price_from'
 												autoComplete='price_from'
 												value={formState.price_from}
-												id='input-38'
+												id='38'
 												prefix='Цена от (руб.)'
 												onChange={handleChange}
 											/>
@@ -257,7 +257,7 @@ const ServiceAdd = () => {
 												name='price_to'
 												autoComplete='price_to'
 												value={formState.price_to}
-												id='input-39'
+												id='39'
 												prefix='Цена до (руб.)'
 												onChange={handleChange}
 											/>
@@ -268,7 +268,7 @@ const ServiceAdd = () => {
 											name='price_from'
 											autoComplete='price_from'
 											value={formState.price_from}
-											id='input-40'
+											id='40'
 											prefix='Базовая цена (руб.)'
 											onChange={handleChange}
 										/>

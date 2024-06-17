@@ -2,18 +2,21 @@ import React from "react";
 
 const CheckBox = ({ isChecked, onChange, field_label }) => {
 	return (
-		<ui-kit-checkbox class="flex flex-row">
-			<label className={`checkbox-label ${isChecked ? "checked" : ""}`}>
+		<div className="ui-kit-checkbox flex flex-row">
+			<label className={`${isChecked ? "checkbox-label checked" : "checkbox-label"}`}>
 				<input
 					type='checkbox'
 					className='checkbox__input'
-					onChange={onChange}
+					onChange={(e) => {
+						e.stopPropagation();  // Предотвращаем всплытие события
+						onChange(e);
+					}}
 					checked={isChecked}
 				/>
 				<span className='checked__mark'></span>
-				<ui-kit-svg-icon
+				<div
 					name='checkbox-checkmark'
-					class='checkbox-checkmark sized'>
+					className='ui-kit-svg-icon checkbox-checkmark sized'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='24'
@@ -27,10 +30,10 @@ const CheckBox = ({ isChecked, onChange, field_label }) => {
 							fill='currentColor'
 						/>
 					</svg>
-				</ui-kit-svg-icon>
+				</div>
 			</label>
 			<label className="pl-2.5 pt-1">{field_label}</label>
-		</ui-kit-checkbox>
+		</div>
 	);
 };
 

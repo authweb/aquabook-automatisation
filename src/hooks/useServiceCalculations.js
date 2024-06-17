@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const useServiceCalculations = selectedServices => {
 	const [validServices, setValidServices] = useState([]);
@@ -11,7 +11,7 @@ const useServiceCalculations = selectedServices => {
 	const [totalMaxPrice, setTotalMaxPrice] = useState(0);
 
 	// Фильтрация выбранных услуг и вычисление стоимости и времени
-	const calculateServices = () => {
+	const calculateServices = useCallback(() => {
 		const filteredServices = selectedServices.filter(
 			service => service && service.duration != null,
 		);
@@ -54,7 +54,7 @@ const useServiceCalculations = selectedServices => {
 
 		setTotalMinPrice(prices.totalMinPrice);
 		setTotalMaxPrice(prices.totalMaxPrice);
-	};
+	}, [selectedServices]);
 
 	// Форматирование времени
 	const formatDuration = () =>

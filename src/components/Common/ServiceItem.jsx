@@ -18,13 +18,25 @@ const ServiceItem = ({ selectedServices }) => {
 	}
 
 	return (
-		<page-services-item class='service-item frame'>
-			<ui-kit-simple-cell>
+		<div className='page-services-item service-item frame'>
+			<div className="ui-kit-simple-cell">
 				<div className='left-part' style={{ width: 48 }}></div>
-				<div className='center-part'>{selectedServices.name}</div>
-				<div className='right-part'>{priceText}</div>
-			</ui-kit-simple-cell>
-		</page-services-item>
+				<div className='center-part'>
+					<div className="short-info">
+						<div className="service-item-title">
+							{selectedServices.name}
+						</div>
+					</div>
+				</div>
+				<div className='right-part'>
+					<div className="service-actions">
+						<div className="service-item-price">
+							{priceText}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 };
 

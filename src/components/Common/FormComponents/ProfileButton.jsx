@@ -5,24 +5,32 @@ const ProfileButton = ({
 	onNextStep,
 	onPrevStep,
 	onOpenModal,
+	onCloseModal,
 	totalServices,
 	to,
 	title,
 	className,
+	disabledClass,
 	locator,
+	disabled,
 }) => {
 	return (
 		<ui-kit-button class={`${className}`} data-locator={`${locator}`}>
 			<button
-				className='button type-primary size-medium full-width'
+				className={`button type-primary size-medium full-width ${disabled ? disabledClass : ""}`}
 				tabIndex='0'
 				onClick={e => {
-					e.preventDefault(); // Prevent default form submission
-					if (onSubmit) onSubmit(e); // Call onSubmit if defined
-					if (onNextStep) onNextStep(); // Call onNextStep if defined
-					if (onPrevStep) onPrevStep(); // Call onPrevStep if defined
-					if (onOpenModal) onOpenModal(); // Call onPrevStep if defined
-				}}>
+					e.preventDefault();
+					if (!disabled) { // Проверяем, не заблокирована ли кнопка
+						if (onSubmit) onSubmit(e);
+						if (onNextStep) onNextStep();
+						if (onPrevStep) onPrevStep();
+						if (onOpenModal) onOpenModal();
+						if (onCloseModal) onCloseModal();
+					}
+				}}
+				disabled={disabled} // Применяем атрибут disabled, если кнопка заблокирована
+			>
 				<span className='button__row'>
 					<div className='button__start-icon'></div>
 					<div className='button__content'>{title}</div>

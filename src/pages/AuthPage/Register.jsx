@@ -53,6 +53,7 @@ const Register = () => {
 		}));
 	};
 
+
 	return (
 		<>
 			<Header
@@ -112,29 +113,29 @@ const Register = () => {
 							value={formState.phone}
 							onChange={inputChangeHandler}
 						/>
+						<button
+							className='ab-button col-span-2 mt-2 w-full ab-button--size-lg ab-button--theme-solid ab-button--color-accent ab-button--with-text ab-button--icon-highlighted ab-animated-icon-parent ab-button--color-accent'
+							type='submit'>
+							<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
+							<span className='ab-button__text'>Зарегистрироваться</span>
+							<span className='ab-button__icon-wrapper ab-button__icon-wrapper--right ab-button__icon-wrapper--highlighted'>
+								<svg
+									aria-hidden='true'
+									viewBox='0 0 24 24'
+									xmlns='http://www.w3.org/2000/svg'
+									className='ab-icon ab-icon--size-text ab-icon--animated'>
+									<path
+										d='M2.4 12c0-.66.54-1.2 1.2-1.2h15.6a1.2 1.2 0 0 1 0 2.4H3.6A1.2 1.2 0 0 1 2.4 12Z'
+										className='svg-arrow-line'></path>
+									<path
+										fillRule='evenodd'
+										d='M14.12 4.84a1.2 1.2 0 1 0-1.55 1.85l6.3 5.28-6.3 5.3a1.2 1.2 0 1 0 1.54 1.82l7.36-6.16c.3-.24.45-.6.45-.96a1.2 1.2 0 0 0-.46-.95l-7.35-6.18Z'
+										clipRule='evenodd'
+										className='svg-arrow-chevron'></path>
+								</svg>
+							</span>
+						</button>
 					</div>
-					<button
-						className='ab-button mt-2 w-full ab-button--size-lg ab-button--theme-solid ab-button--color-accent ab-button--with-text ab-button--icon-highlighted ab-animated-icon-parent ab-button--color-accent'
-						type='submit'>
-						<span className='ab-button__icon-wrapper ab-button__icon-wrapper--left ab-button__icon-wrapper--placeholder'></span>
-						<span className='ab-button__text'>Зарегистрироваться</span>
-						<span className='ab-button__icon-wrapper ab-button__icon-wrapper--right ab-button__icon-wrapper--highlighted'>
-							<svg
-								aria-hidden='true'
-								viewBox='0 0 24 24'
-								xmlns='http://www.w3.org/2000/svg'
-								className='ab-icon ab-icon--size-text ab-icon--animated'>
-								<path
-									d='M2.4 12c0-.66.54-1.2 1.2-1.2h15.6a1.2 1.2 0 0 1 0 2.4H3.6A1.2 1.2 0 0 1 2.4 12Z'
-									className='svg-arrow-line'></path>
-								<path
-									fillRule='evenodd'
-									d='M14.12 4.84a1.2 1.2 0 1 0-1.55 1.85l6.3 5.28-6.3 5.3a1.2 1.2 0 1 0 1.54 1.82l7.36-6.16c.3-.24.45-.6.45-.96a1.2 1.2 0 0 0-.46-.95l-7.35-6.18Z'
-									clipRule='evenodd'
-									className='svg-arrow-chevron'></path>
-							</svg>
-						</span>
-					</button>
 				</form>
 				<div className='ab-card mt-2'>
 					<h2 className='ab-title flex'>

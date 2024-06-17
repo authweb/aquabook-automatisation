@@ -18,6 +18,22 @@
 	}
 }
 
+.ab-card {
+	--card-padding-x: 1.25rem;
+	--card-padding-y: 1.25rem;
+	background-color: #fff;
+	background-color: var(--dark-blue-color);
+	border-radius: 1.25rem;
+	box-shadow: none;
+	color: #14171d;
+	color: var(--white-color);
+	display: block;
+	min-width: 100%;
+	padding: 1.25rem;
+	padding: var(--card-padding-y) var(--card-padding-x);
+}
+
+
 .eb-auth-layout__container .ab-card {
 	--tw-bg-opacity: 1;
 	background-color: rgb(0 16 31 / var(--tw-bg-opacity)) !important;

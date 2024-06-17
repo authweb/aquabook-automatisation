@@ -8,18 +8,20 @@ const ServiceList = ({
 	onServiceSelect,
 }) => {
 	return (
-		<page-services-list>
-			{categories.map(category => (
-				<ContentService
-					key={category.id}
-					category={category}
-					services={category.services}
-					selectedServices={selectedServices}
-					toggleService={toggleService}
-					// isScrolling={isScrolling}
-				/>
-			))}
-		</page-services-list>
+		<div className="page-services-list">
+			<div className="container">
+				{categories.map(category => (
+					<ContentService
+						key={category.id}
+						category={category}
+						services={category.services}
+						selectedServices={selectedServices}
+						toggleService={toggleService}
+					/>
+				))}
+			</div>
+
+		</div>
 	);
 };
 

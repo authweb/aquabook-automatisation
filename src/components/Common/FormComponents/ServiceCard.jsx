@@ -30,68 +30,65 @@ const ServiceCard = ({ service, onToggle, isSelected }) => {
 		return <div>Сервис не указан.</div>; // Безопасно обрабатываем отсутствие service
 	}
 
-	return (
-		<page-services-card
-			onClick={onToggle}
-			class={`service-card ${isSelected ? "selected" : ""}`}>
-			<ui-kit-service-card>
-				<div>
-					<ui-kit-simple-cell class='card-content-container'>
-						<div className='center-part'>
-							<div className='main-content'>
-								<div className='title-block__title'>{service.name}</div>
-								{/* comment-expanded */}
-								<div
-									className={`comment${
-										isDescriptionExpanded ? " comment-expanded" : ""
-									}`}>
-									<span className='comment__seance-length'>
-										{service.duration} мин
-										<span
-											className={`divider${
-												isDescriptionExpanded ? " divider__more" : ""
-											}`}>
-											{" "}
-											·{" "}
-										</span>
-									</span>
+	const handleCardClick = (e) => {
+		e.stopPropagation();
+		if (!e.target.closest('.checkbox-label')) {
+			onToggle(service.id);
+		}
+	}
 
-									<span className='comment__description'>
-										<span className='description'>
-											{isDescriptionExpanded
-												? service.description
-												: getDescriptionPreview(service.description)}
-										</span>
+	return (
+		<div
+			onClick={handleCardClick}
+			className={`page-services-card ${isSelected ? "service-card selected" : "service-card"}`}>
+			<div className="ui-kit-service-card">
+				<div className='ui-kit-simple-cell card-content-container'>
+					<div className='center-part'>
+						<div className='main-content'>
+							<div className='title-block__title'>{service.name}</div>
+							<div
+								className={`${isDescriptionExpanded ? "comment comment-expanded" : "comment"}`}>
+								<span className='comment__seance-length'>
+									{service.duration} мин
+									<span
+										className={`${isDescriptionExpanded ? "divider divider__more" : "divider"}`}>
+										{" "}·{" "}
 									</span>
-									{service.description && service.description.length > 50 && (
-										<span className='comment__more' onClick={handleMoreClick}>
-											{isDescriptionExpanded ? "скрыть" : "еще"}
-										</span>
-									)}
-								</div>
-								<div className='footer'>
-									<div className='price-range'>
-										{service.price_to === 0.0 || service.price_to === "0.00"
-											? `от ${service.price_from} ₽`
-											: `${service.price_from} – ${service.price_to} ₽`}
-									</div>
+								</span>
+								<span className='comment__description'>
+									<span className='description'>
+										{isDescriptionExpanded
+											? service.description
+											: getDescriptionPreview(service.description)}
+									</span>
+								</span>
+								{service.description && service.description.length > 50 && (
+									<span className='comment__more' onClick={handleMoreClick}>
+										{isDescriptionExpanded ? "скрыть" : "еще"}
+									</span>
+								)}
+							</div>
+							<div className='footer'>
+								<div className='price-range'>
+									{service.price_to === 0.0 || service.price_to === "0.00"
+										? `от ${service.price_from} ₽`
+										: `${service.price_from} – ${service.price_to} ₽`}
 								</div>
 							</div>
 						</div>
-						<div className='right-part'>
-							<CheckBox
-								isChecked={isSelected}
-								// onChange={e => {
-								// 	e.stopPropagation(); // Предотвратить всплытие события при клике
-								// 	onToggle(service);
-								// }}
-								onChange={() => onToggle(service)}
-							/>
-						</div>
-					</ui-kit-simple-cell>
+					</div>
+					<div className='right-part'>
+						<CheckBox
+							isChecked={isSelected}
+							onChange={e => {
+								e.stopPropagation();
+								onToggle(service.id);
+							}}
+						/>
+					</div>
 				</div>
-			</ui-kit-service-card>
-		</page-services-card>
+			</div>
+		</div>
 	);
 };
 

@@ -9,23 +9,22 @@ const ContentService = ({
 	isScrolling,
 }) => {
 	if (!category) {
-		// Render nothing or a placeholder if category is undefined
-		return <div>Loading...</div>; // Shows a loading state if the category data is not yet available
+		return <div>Loading...</div>;
 	}
 
 	return (
-		<page-services-group class='inner-container' id={`category-${category.id}`}>
+		<div className='page-services-group inner-container' id={`category-${category.id}`}>
 			<h2 className='label category-title'>{category.name}</h2>
 
 			{services?.map(service => (
 				<ServiceCard
 					key={service.id}
 					service={service}
-					isSelected={selectedServices.some(s => s.id === service.id)} // Используйте метод some для проверки наличия по ID
-					onToggle={() => toggleService(service)} // Передаем объект service вместо selectedServices
+					isSelected={selectedServices.some(s => s.id === service.id)}
+					onToggle={() => toggleService(service)}
 				/>
 			))}
-		</page-services-group>
+		</div>
 	);
 };
 

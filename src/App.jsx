@@ -54,6 +54,23 @@ const getClassName = location => {
 	}
 };
 
+const AppRoutes = () => (
+	<Routes>
+		<Route path='/' element={<HomePage />} />
+		<Route path='/login' element={<Login />} />
+		<Route path='/register' element={<Register />} />
+		<Route path='booking/*'>
+			<Route index element={<Appointment />} />
+			<Route path='profile/*'>
+				<Route index element={<Profile />} />
+				<Route path='login' element={<LoginToProfile />} />
+			</Route>
+		</Route>
+		<Route path='dashboard/*' element={<Dashboard />} />
+		<Route path='*' element={<div>404 Not Found</div>} />
+	</Routes>
+);
+
 const App = () => {
 	useUpdateViewportDimensions();
 	const location = useLocation();
@@ -63,29 +80,33 @@ const App = () => {
 		location.pathname === "/" ? "flex flex-col min-h-screen" : "";
 	const className = getClassName(location);
 
+	useEffect(() => {
+		const bookingRegex = /^\/booking(\/|\/.*)?$/;
+		if (bookingRegex.test(location.pathname)) {
+			document.body.style.backgroundColor = "#f5f5f5"; // Замените на нужный цвет
+		} else {
+			document.body.style.backgroundColor = ""; // Сброс цвета
+		}
+	}, [location.pathname]);
+
+	const isBookingPage = /^\/booking(\/|\/.*)?$/.test(location.pathname);
+
 	return (
-		<div id='__layout'>
-			<div className={className}>
-				<AuthProvider>
-					<UserContext.Provider value={{ users, setUsers }}>
-						<Routes>
-							<Route path='/' element={<HomePage />} />
-							<Route path='/login' element={<Login />} />
-							<Route path='/register' element={<Register />} />
-							<Route path='booking/*'>
-								<Route index element={<Appointment />} />
-								<Route path='profile/*'>
-									<Route index element={<Profile />} />
-									<Route path='login' element={<LoginToProfile />} />
-								</Route>
-							</Route>
-							<Route path='dashboard/*' element={<Dashboard />} />
-							<Route path='*' element={<div>404 Not Found</div>} />
-						</Routes>
-					</UserContext.Provider>
-				</AuthProvider>
-			</div>
-		</div>
+		<AuthProvider>
+			<UserContext.Provider value={{ users, setUsers }}>
+				{isBookingPage ? (
+					<div className={className}>
+						<AppRoutes />
+					</div>
+				) : (
+					<div id='__layout'>
+						<div className={className}>
+							<AppRoutes />
+						</div>
+					</div>
+				)}
+			</UserContext.Provider>
+		</AuthProvider>
 	);
 };
 

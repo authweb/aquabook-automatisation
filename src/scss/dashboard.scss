@@ -650,6 +650,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	}
 
 	&__label {
+		color: (rgba(var(--black-color-none-rgb), 1));
 		position: absolute;
 		opacity: 0.5;
 		overflow: hidden;
@@ -728,6 +729,7 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-text-field.has-label .ab-text-field__element {
+
 	padding-top: 1rem;
 	padding-bottom: 0.5rem;
 }
@@ -862,8 +864,8 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 }
 
 .ab-button--theme-solid:where(:not(:disabled)):hover {
-	background-color: var(--btn-bg-hover, var(--btn-bg-hover-fallback));
-	border-color: var(--btn-bg-hover, var(--btn-bg-hover-fallback));
+	background-color: (rgba(var(--button-e-color-none-rgb), 0.8));
+	border-color: (rgba(var(--button-e-color-none-rgb), 0.8));
 }
 
 .ab-button,
@@ -1192,6 +1194,10 @@ html[data-dark="true"] .eb-booking-invoice__decor:before {
 	font-family: var(--font-family);
 	font-style: normal;
 	font-weight: 700;
+}
+
+.ab-title {
+	margin-bottom: 1rem !important;
 }
 
 .ab-headline {

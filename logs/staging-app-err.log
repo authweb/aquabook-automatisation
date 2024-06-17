@@ -714,3 +714,267 @@
 2024-06-05 06:56 +03:00: (node:2395) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 2024-06-05 06:56 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
 2024-06-05 06:56 +03:00: (node:2395) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 06:45 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 06:45 +03:00: (node:57945) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 06:45 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 06:45 +03:00: (node:57945) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 06:49 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 06:49 +03:00: (node:954) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 06:49 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 06:49 +03:00: (node:954) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 07:30 +03:00: error Command failed with exit code 1.
+2024-06-08 07:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 07:30 +03:00: (node:4520) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 07:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 07:30 +03:00: (node:4520) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 08:30 +03:00: error Command failed with exit code 1.
+2024-06-08 08:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 08:30 +03:00: (node:7332) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 08:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 08:30 +03:00: (node:7332) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 09:30 +03:00: error Command failed with exit code 1.
+2024-06-08 09:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 09:30 +03:00: (node:9822) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 09:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 09:30 +03:00: (node:9822) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 10:19 +03:00: error Command failed with exit code 1.
+2024-06-08 10:20 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 10:20 +03:00: (node:12902) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 10:20 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 10:20 +03:00: (node:12902) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 11:30 +03:00: error Command failed with exit code 1.
+2024-06-08 11:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-08 11:30 +03:00: (node:15893) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-08 11:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-08 11:30 +03:00: (node:15893) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 06:30 +03:00: error Command failed with exit code 1.
+2024-06-09 06:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 06:30 +03:00: (node:31276) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 06:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 06:30 +03:00: (node:31276) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 06:33 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 06:33 +03:00: (node:1202) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 06:33 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 06:33 +03:00: (node:1202) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 07:30 +03:00: error Command failed with exit code 1.
+2024-06-09 07:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 07:30 +03:00: (node:7505) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 07:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 07:30 +03:00: (node:7505) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 08:30 +03:00: error Command failed with exit code 1.
+2024-06-09 08:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 08:30 +03:00: (node:10235) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 08:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 08:30 +03:00: (node:10235) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 09:27 +03:00: error Command failed with exit code 1.
+2024-06-09 09:27 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 09:27 +03:00: (node:13611) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 09:27 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 09:27 +03:00: (node:13611) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 09:30 +03:00: error Command failed with exit code 1.
+2024-06-09 09:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 09:30 +03:00: (node:14512) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 09:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 09:30 +03:00: (node:14512) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 10:03 +03:00: error Command failed with exit code 1.
+2024-06-09 10:03 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 10:03 +03:00: (node:17901) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 10:03 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 10:03 +03:00: (node:17901) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 10:17 +03:00: error Command failed with exit code 1.
+2024-06-09 10:17 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 10:17 +03:00: (node:19407) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 10:17 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 10:17 +03:00: (node:19407) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 10:30 +03:00: error Command failed with exit code 1.
+2024-06-09 10:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-09 10:30 +03:00: (node:20293) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-09 10:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-09 10:30 +03:00: (node:20293) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 09:30 +03:00: error Command failed with exit code 1.
+2024-06-10 09:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 09:30 +03:00: (node:46883) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 09:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 09:30 +03:00: (node:46883) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 14:30 +03:00: error Command failed with exit code 1.
+2024-06-10 14:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 14:30 +03:00: (node:57669) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 14:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 14:30 +03:00: (node:57669) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 16:30 +03:00: error Command failed with exit code 1.
+2024-06-10 16:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 16:30 +03:00: (node:64478) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 16:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 16:30 +03:00: (node:64478) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 20:15 +03:00: error Command failed with exit code 1.
+2024-06-10 20:15 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 20:15 +03:00: (node:68043) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 20:15 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 20:15 +03:00: (node:68043) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 20:17 +03:00: error Command failed with exit code 1.
+2024-06-10 20:17 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 20:17 +03:00: (node:68697) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 20:17 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 20:17 +03:00: (node:68697) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:06 +03:00: error Command failed with exit code 1.
+2024-06-10 21:06 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:06 +03:00: (node:70348) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:06 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:06 +03:00: (node:70348) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:06 +03:00: error Command failed with exit code 1.
+2024-06-10 21:06 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:06 +03:00: (node:70534) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:06 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:06 +03:00: (node:70534) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:06 +03:00: error Command failed with exit code 1.
+2024-06-10 21:07 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:07 +03:00: (node:70728) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:07 +03:00: (node:70728) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: error Command failed with exit code 1.
+2024-06-10 21:07 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:07 +03:00: (node:70919) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:07 +03:00: (node:70919) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: error Command failed with exit code 1.
+2024-06-10 21:07 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:07 +03:00: (node:71107) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:07 +03:00: (node:71107) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: error Command failed with exit code 1.
+2024-06-10 21:07 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:07 +03:00: (node:71297) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:07 +03:00: (node:71297) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:07 +03:00: error Command failed with exit code 1.
+2024-06-10 21:08 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:08 +03:00: (node:71484) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:08 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:08 +03:00: (node:71484) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:08 +03:00: error Command failed with exit code 1.
+2024-06-10 21:08 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-10 21:08 +03:00: (node:71683) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-10 21:08 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-10 21:08 +03:00: (node:71683) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:26 +03:00: error Command failed with exit code 1.
+2024-06-13 11:27 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 11:27 +03:00: (node:124596) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:27 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 11:27 +03:00: (node:124596) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:27 +03:00: error Command failed with exit code 1.
+2024-06-13 11:27 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 11:27 +03:00: (node:124894) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:27 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 11:27 +03:00: (node:124894) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:29 +03:00: error Command failed with exit code 1.
+2024-06-13 11:31 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 11:31 +03:00: (node:1361) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:31 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 11:31 +03:00: (node:1361) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:35 +03:00: error Command failed with exit code 1.
+2024-06-13 11:35 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 11:35 +03:00: (node:3436) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:35 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 11:35 +03:00: (node:3436) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:38 +03:00: error Command failed with exit code 1.
+2024-06-13 11:38 +03:00: Error: Cannot find module '/home/admin/aquabook-automatisation/node_modules/.bin/yarn'
+2024-06-13 11:38 +03:00:     at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+2024-06-13 11:38 +03:00:     at Module._load (node:internal/modules/cjs/loader:986:27)
+2024-06-13 11:38 +03:00:     at Object.<anonymous> (/home/admin/.npm/_npx/5f7878ce38f1eb13/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+2024-06-13 11:38 +03:00:     at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-06-13 11:38 +03:00:     at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2024-06-13 11:38 +03:00:     at Module.load (node:internal/modules/cjs/loader:1208:32)
+2024-06-13 11:38 +03:00:     at Module._load (node:internal/modules/cjs/loader:1024:12)
+2024-06-13 11:38 +03:00:     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-06-13 11:38 +03:00:     at node:internal/main/run_main_module:28:49 {
+2024-06-13 11:38 +03:00:   code: 'MODULE_NOT_FOUND',
+2024-06-13 11:38 +03:00:   requireStack: []
+2024-06-13 11:38 +03:00: }
+2024-06-13 11:38 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 11:38 +03:00: (node:4648) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:38 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 11:38 +03:00: (node:4648) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:42 +03:00: error Command failed with exit code 1.
+2024-06-13 11:43 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 11:43 +03:00: (node:5146) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 11:43 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 11:43 +03:00: (node:5146) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 12:30 +03:00: error Command failed with exit code 1.
+2024-06-13 12:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-13 12:30 +03:00: (node:11360) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-13 12:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-13 12:30 +03:00: (node:11360) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:26 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 06:26 +03:00: (node:959) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:26 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 06:26 +03:00: (node:959) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:30 +03:00: error Command failed with exit code 1.
+2024-06-16 06:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 06:30 +03:00: (node:2356) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 06:30 +03:00: (node:2356) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:31 +03:00: error Command failed with exit code 1.
+2024-06-16 06:31 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 06:31 +03:00: (node:2659) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:31 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 06:31 +03:00: (node:2659) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:38 +03:00: error Command failed with exit code 1.
+2024-06-16 06:38 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 06:38 +03:00: (node:3569) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:38 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 06:38 +03:00: (node:3569) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:51 +03:00: error Command failed with exit code 1.
+2024-06-16 06:51 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 06:51 +03:00: (node:5463) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:51 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 06:51 +03:00: (node:5463) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:54 +03:00: error Command failed with exit code 1.
+2024-06-16 06:54 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 06:54 +03:00: (node:6202) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 06:54 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 06:54 +03:00: (node:6202) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:01 +03:00: error Command failed with exit code 1.
+2024-06-16 07:01 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:01 +03:00: (node:7394) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:01 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:01 +03:00: (node:7394) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:02 +03:00: error Command failed with exit code 1.
+2024-06-16 07:02 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:02 +03:00: (node:7770) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:02 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:02 +03:00: (node:7770) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:13 +03:00: error Command failed with exit code 1.
+2024-06-16 07:13 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:13 +03:00: (node:9377) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:13 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:13 +03:00: (node:9377) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:14 +03:00: error Command failed with exit code 1.
+2024-06-16 07:14 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:14 +03:00: (node:9919) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:14 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:14 +03:00: (node:9919) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:22 +03:00: error Command failed with exit code 1.
+2024-06-16 07:22 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:22 +03:00: (node:10748) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:22 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:22 +03:00: (node:10748) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:25 +03:00: error Command failed with exit code 1.
+2024-06-16 07:25 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:25 +03:00: (node:11328) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:25 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:25 +03:00: (node:11328) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:30 +03:00: error Command failed with exit code 1.
+2024-06-16 07:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 07:30 +03:00: (node:11884) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 07:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 07:30 +03:00: (node:11884) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 08:30 +03:00: error Command failed with exit code 1.
+2024-06-16 08:30 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-16 08:30 +03:00: (node:12668) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-16 08:30 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-16 08:30 +03:00: (node:12668) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-17 05:46 +03:00: error Command failed with exit code 1.
+2024-06-17 05:47 +03:00: SASS rule was not found and has been added to 'oneOf' rules
+2024-06-17 05:47 +03:00: (node:30412) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2024-06-17 05:47 +03:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2024-06-17 05:47 +03:00: (node:30412) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.

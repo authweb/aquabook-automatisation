@@ -1,41 +1,34 @@
-import React, { useEffect, useState } from "react";
-import ProfileButton from "../../Common/FormComponents/ProfileButton";
-import ServiceItem from "../../Common/ServiceItem";
-import useServiceCalculations from "../../../hooks/useServiceCalculations";
+import React, { useState } from "react";
 import HeaderBooking from "../../HomePage/Header/HeaderBooking";
-
 import "../../../scss/modal.scss";
 import DatePicker from "../Calendar/DatePicker";
+import ServiceDetails from "./ServiceDetails";
+import BottomPanel from "./BottomPanel";
 
 const AppointmentClient = ({
 	styleCss,
 	selectedServices,
 	onPrevStep,
 	onNextStep,
+	totalMinPrice,
+	totalMaxPrice,
+	formatDuration,
 }) => {
 	const [showModal, setShowModal] = useState(false);
+	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [selectedTime, setSelectedTime] = useState(null);
 
 	const openModal = () => {
 		setShowModal(true);
 	};
 
-	const closeModal = e => {
-		if (e.target === e.currentTarget) {
+	const closeModal = (e) => {
+		if (!e || e.target === e.currentTarget) {
 			setShowModal(false);
 		}
-		setShowModal(false);
 	};
 
-	const modalClasses = showModal ? "dirty showed" : "dirty"; // Добавляем класс showed при showModal === true
-
-	// Используем хук для вычисления результатов на основе выбранных услуг
-	const { totalMinPrice, totalMaxPrice, formatDuration, calculateServices } =
-		useServiceCalculations(selectedServices);
-
-	// Вызываем функцию calculateServices хука при изменении selectedServices
-	useEffect(() => {
-		calculateServices();
-	}, [selectedServices]);
+	const modalClasses = showModal ? "showed" : ""; // Добавляем класс showed при showModal === true
 
 	// Фильтруем выбранные услуги, чтобы оставить только те, у которых есть максимальная цена или цена "от"
 	const servicesWithMaxPrice = selectedServices.filter(
@@ -46,40 +39,24 @@ const AppointmentClient = ({
 	return (
 		<>
 			<div className='create-record-container' style={styleCss}>
-				<page-substrate class='substrate'>
-					<page-record-card>
-						<div className='master-wrapper'></div>
-						<page-horizontal-line class='horizontal-line'></page-horizontal-line>
-						<div className='services'>
-							<page-ordered-services-list class='services-list'>
-								{Array.isArray(servicesWithMaxPrice) &&
-									servicesWithMaxPrice.map((service, index) => (
-										<ServiceItem key={index} selectedServices={service} />
-									))}
-							</page-ordered-services-list>
-						</div>
-					</page-record-card>
-				</page-substrate>
-			</div>
-			<page-bottom-panel>
-				<div className='time-and-price'>
-					{/* Выполняем условие для отображения цены "от" */}
-					<p className='price'>{`${totalMinPrice} ${
-						totalMaxPrice === 0 ? "от" : "-"
-					} ${totalMaxPrice} ₽`}</p>
-					<p className='time'>от {formatDuration()}</p>
-				</div>
-				<ProfileButton
-					title='Выбрать дату и время'
-					locator='select_date_time_btn'
-					onOpenModal={openModal}
+				<ServiceDetails
+					servicesWithMaxPrice={servicesWithMaxPrice}
+					selectedServices={selectedServices}
 				/>
-			</page-bottom-panel>
+			</div>
+			<BottomPanel
+				totalMinPrice={totalMinPrice}
+				totalMaxPrice={totalMaxPrice}
+				formatDuration={formatDuration}
+				selectedDate={selectedDate}
+				selectedTime={selectedTime}
+				openModal={openModal}
+				onNextStep={onNextStep}
+				closeModal={closeModal}
+			/>
 			<page-modal-outlet>
 				{showModal && (
-					<div
-						className={`page-modal ${modalClasses}`}
-						style={{ height: "100%" }}>
+					<page-modal class={`dirty ${modalClasses}`} style={{ height: "100%" }}>
 						<div className='background-modal' onClick={closeModal}></div>
 						<div className='modal'>
 							<div className='window-header'>
@@ -93,12 +70,18 @@ const AppointmentClient = ({
 							</div>
 							<div className='modal-body'>
 								<router-outlet></router-outlet>
-								<app-select-time>
-									<DatePicker />
-								</app-select-time>
+								<page-select-time>
+									<DatePicker
+										selectedDate={selectedDate}
+										setSelectedDate={setSelectedDate}
+										selectedTime={selectedTime}
+										setSelectedTime={setSelectedTime}
+										onCloseModal={closeModal}
+									/>
+								</page-select-time>
 							</div>
 						</div>
-					</div>
+					</page-modal>
 				)}
 			</page-modal-outlet>
 		</>

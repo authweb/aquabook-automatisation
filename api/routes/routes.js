@@ -52,7 +52,7 @@ router.get("/services/:id", services);
 router.get("/service-categories", servicesCategories);
 router.get("/appointments", appointments);
 router.get("/appointments/:id", appointments);
-router.get("/profile/:id", profile);
+router.get("/users/:id", profile);
 router.get("/departments", departments);
 
 //Удаление записей из таблицы базы данных
@@ -66,7 +66,7 @@ router.delete("/departments/:id", departments);
 router.put("/service/:id", services);
 router.put("/service_categories/:id", servicesCategories);
 router.put("/appointments/:id", appointments);
-router.put("/profile/:id", EditProfile);
+router.put("/users/:id", EditProfile);
 router.put("/employees/:id", EditEmployee);
 router.put("/departments/:id", departments);
 

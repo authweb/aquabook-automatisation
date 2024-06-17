@@ -12,6 +12,7 @@ const HeaderToLogin = ({
 	buttons,
 	to,
 	containerSmall,
+	handlePrevStep,
 }) => {
 	const navigate = useNavigate();
 	const { users, setUsers } = useAuth();
@@ -28,6 +29,12 @@ const HeaderToLogin = ({
 								<page-header-button class='back-button'>
 									<CaretLeftOutlined />
 								</page-header-button>
+							</div>
+						)}
+
+						{handlePrevStep && (
+							<div className='leading clickable' onClick={handlePrevStep}>
+								<CaretLeftOutlined className='header__icon sized' />
 							</div>
 						)}
 

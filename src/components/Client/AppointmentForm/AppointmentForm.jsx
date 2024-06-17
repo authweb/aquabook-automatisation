@@ -6,32 +6,26 @@ import HeaderAddition from "../../Common/HeaderAddition";
 import { HeaderUser } from "../..";
 import HeaderBooking from "../../HomePage/Header/HeaderBooking";
 import AppointmentClient from "./AppointmentClient";
+import useServiceCalculations from "../../../hooks/useServiceCalculations";
+import AppointmentsCheckout from "./AppointmentsCheckout";
+import { FormProvider, useForm } from "../../../contexts/FormContext";
 
-const AppointmentForm = ({}) => {
-	// Здесь будем хранить состояние формы
-	const [formState, setFormState] = useState({
-		name: "",
-		phone: "",
-		email: "",
-		employee: "",
-		car: "",
-		date: "",
-		time: "",
-		selectedServices: [],
-		message: "",
-		carNumber: "",
-	});
+const AppointmentFormComponent = () => {
+	const { formState, setFormState } = useForm();
+	const { totalMinPrice, totalMaxPrice, formatDuration, calculateServices } =
+		useServiceCalculations(formState.selectedServices);
 
-	// Здесь будем хранить текущий шаг формы
+	useEffect(() => {
+		calculateServices();
+	}, [formState.selectedServices, calculateServices]);
+
 	const [step, setStep] = useState(1);
 	const [categories, setCategories] = useState([]);
 	const [activeCategoryId, setActiveCategoryId] = useState(null);
-	// const [checkedState, setCheckedState] = useState({});
 	const [selectedServices, setSelectedServices] = useState([]);
 	const [isScrolling, setIsScrolling] = useState([]);
 
 	useEffect(() => {
-		// Функция для загрузки данных
 		async function fetchData() {
 			try {
 				const categoriesResponse = await fetch(
@@ -43,7 +37,6 @@ const AppointmentForm = ({}) => {
 				const categoriesData = await categoriesResponse.json();
 				const servicesData = await servicesResponse.json();
 
-				// Проверка, что ответ сервера содержит данные услуг в ожидаемом формате
 				if (
 					servicesData.services &&
 					typeof servicesData.services === "object"
@@ -61,7 +54,6 @@ const AppointmentForm = ({}) => {
 						[],
 					);
 
-					// Добавление услуг в соответствующие категории
 					const enrichedCategories = categoriesData.servicesCategories.map(
 						category => ({
 							...category,
@@ -87,9 +79,8 @@ const AppointmentForm = ({}) => {
 
 	const handleInputChange = useCallback(({ target: { name, value } }) => {
 		setFormState(prevState => ({ ...prevState, [name]: value }));
-	}, []);
+	}, [setFormState]);
 
-	// Функция для обработки выбора категории услуг
 	const handleCategorySelect = useCallback(id => {
 		setActiveCategoryId(id);
 		setIsScrolling(true);
@@ -98,8 +89,7 @@ const AppointmentForm = ({}) => {
 			const offset = 100;
 			const elementPosition =
 				categoryElement.getBoundingClientRect().top +
-				window.pageYOffset -
-				offset;
+				window.scrollY - offset;
 			window.scrollTo({ top: elementPosition, behavior: "smooth" });
 		} else {
 			console.log(`Element with id category-${id} not found`);
@@ -107,7 +97,6 @@ const AppointmentForm = ({}) => {
 		setTimeout(() => setIsScrolling(false), 1000);
 	}, []);
 
-	// Функция для выбора или отмены выбора услуги
 	const toggleService = useCallback(service => {
 		setSelectedServices(prevServices => {
 			const isServiceSelected = prevServices.some(s => s.id === service.id);
@@ -115,7 +104,6 @@ const AppointmentForm = ({}) => {
 				? prevServices.filter(s => s.id !== service.id)
 				: [...prevServices, service];
 
-			// Обновляем состояние formState, чтобы отразить выбранные услуги
 			setFormState(prevState => ({
 				...prevState,
 				selectedServices: updatedServices,
@@ -123,19 +111,21 @@ const AppointmentForm = ({}) => {
 
 			return updatedServices;
 		});
-	}, []);
+	}, [setFormState]);
 
 	useEffect(() => {
 		console.log("Selected services updated:", selectedServices);
 	}, [selectedServices]);
 
-	// Обработчик перехода на следующий шаг
-	const handleNextStep = () => {
-		// Передаем в selectedServices из formState
+	const handleNextStep = (date, time) => {
 		const formDataWithServices = {
 			...formState,
 			selectedServices: formState.selectedServices,
+			date: date || formState.date,
+			time: time || formState.time,
 		};
+
+		setFormState(formDataWithServices);
 		console.log("Объединяем данные", formDataWithServices);
 
 		if (step < 4) {
@@ -147,15 +137,12 @@ const AppointmentForm = ({}) => {
 		console.log("Состояние формы после перехода:", formState);
 	};
 
-	// Обработчик перехода на предыдущий шаг
 	const handlePrevStep = () => {
 		setStep(step - 1);
 	};
 
-	// Обработчик отправки формы
 	const handleSubmit = e => {
 		e.preventDefault();
-		// Объединяем данные формы с выбранными услугами
 		const formDataWithServices = { ...formState, selectedServices };
 		console.log("Отправка формы", formDataWithServices);
 	};
@@ -167,11 +154,11 @@ const AppointmentForm = ({}) => {
 					<>
 						<page-services-page>
 							<HeaderUser
-								showBack
 								title='AquaBook'
 								description='Краснодарская 40ж'
 								to='profile/'
 							/>
+							<HeaderAddition titleSection="Выбрать услугу" className="title-wrapper" />
 							<HeaderAddition
 								categories={categories}
 								activeCategoryId={activeCategoryId}
@@ -212,20 +199,49 @@ const AppointmentForm = ({}) => {
 								selectedServices={formState.selectedServices}
 								onPrevStep={handlePrevStep}
 								onNextStep={handleNextStep}
+								totalMinPrice={totalMinPrice}
+								totalMaxPrice={totalMaxPrice}
+								formatDuration={formatDuration}
 							/>
 						</page-create-record>
 					</>
 				);
 			case 3:
-				return <></>;
+				return (
+					<>
+						<div className="page-checkout">
+							<HeaderUser
+								handlePrevStep={handlePrevStep}
+								title='AquaBook'
+								description='Краснодарская 40ж'
+							/>
+							<div>
+								<HeaderAddition className="title-wrapper" titleSection="Детали заказа" />
+								<AppointmentsCheckout
+									selectedServices={formState.selectedServices}
+									totalMinPrice={totalMinPrice}
+									totalMaxPrice={totalMaxPrice}
+									formatDuration={formatDuration} />
+							</div>
+						</div>
+					</>
+				);
 			case 4:
-				return <></>;
+				return <><div>Step on 4</div></>;
 			default:
 				return null;
 		}
 	};
 
 	return <>{renderStep()}</>;
+};
+
+const AppointmentForm = () => {
+	return (
+		<FormProvider>
+			<AppointmentFormComponent />
+		</FormProvider>
+	);
 };
 
 export default AppointmentForm;
